@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Hugo test</title>
+    <title>Posts on (не)Уникальный опыт</title>
     <link>https://fi5t.github.io/posts/</link>
-    <description>Recent content in Posts on Hugo test</description>
+    <description>Recent content in Posts on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-ru</language>
-    <lastBuildDate>Fri, 08 May 2020 20:13:08 +0300</lastBuildDate>
+    <lastBuildDate>Sat, 09 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://fi5t.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Test</title>
-      <link>https://fi5t.github.io/posts/my-first-post/</link>
-      <pubDate>Fri, 08 May 2020 20:13:08 +0300</pubDate>
+      <title>Как выбрать сервер для web приложения</title>
+      <link>https://fi5t.github.io/posts/choose-hardware-configuration/</link>
+      <pubDate>Sat, 09 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://fi5t.github.io/posts/my-first-post/</guid>
-      <description>Test Test Test </description>
+      <guid>https://fi5t.github.io/posts/choose-hardware-configuration/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Привет. Можешь помочь с требованиям к прод серверу ? Какой мощности нам хватит?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Вот такое сообщение я получил от менеджера в конце рабочего дня. Стоит ли говорить, что приложение для которого нужно было подобрать сервер еще не существовало даже в виде требований. Следовательно, посчитать хоть какой-то примерный &lt;a href=&#34;https://en.wikipedia.org/wiki/Web_server#requests_per_second&#34;&gt;RPS&lt;/a&gt; не представлялось возможным.&lt;/p&gt;</description>
     </item>
     
   </channel>

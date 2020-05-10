@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ru" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Как выбрать сервер для web приложения - (не)Уникальный опыт</title>
+  <meta name="description" content="
+Привет. Можешь помочь с требованиям к прод серверу ? Какой мощности нам хватит?
+
+Вот такое сообщение я получил от менеджера в конце рабочего дня. Стоит ли говорить, что приложение для которого нужно было подобрать сервер еще не существовало даже в виде требований. Следовательно, посчитать хоть какой-то примерный RPS не представлялось возможным.">
+  <meta name="author" content="Fi5t"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "(не)Уникальный опыт",
+    
+    "url": "https:\/\/fi5t.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/fi5t.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/fi5t.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/fi5t.github.io\/posts\/choose-hardware-configuration\/",
+          "name": "Как выбрать сервер для web приложения"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Fi5t"
+  },
+  "headline": "Как выбрать сервер для web приложения",
+  "description" : " Привет. Можешь помочь с требованиям к прод серверу ? Какой мощности нам хватит?\n Вот такое сообщение я получил от менеджера в конце рабочего дня. Стоит ли говорить, что приложение для которого нужно было подобрать сервер еще не существовало даже в виде требований. Следовательно, посчитать хоть какой-то примерный RPS не представлялось возможным.\n",
+  "inLanguage" : "ru",
+  "wordCount":  446 ,
+  "datePublished" : "2020-05-09T00:00:00",
+  "dateModified" : "2020-05-09T00:00:00",
+  "image" : "https:\/\/fi5t.github.io\/img\/avatar-icon.jpg",
+  "keywords" : [ "backend, философия" ],
+  "mainEntityOfPage" : "https:\/\/fi5t.github.io\/posts\/choose-hardware-configuration\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/fi5t.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/fi5t.github.io\/img\/avatar-icon.jpg",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Как выбрать сервер для web приложения" />
+<meta property="og:description" content="
+Привет. Можешь помочь с требованиям к прод серверу ? Какой мощности нам хватит?
+
+Вот такое сообщение я получил от менеджера в конце рабочего дня. Стоит ли говорить, что приложение для которого нужно было подобрать сервер еще не существовало даже в виде требований. Следовательно, посчитать хоть какой-то примерный RPS не представлялось возможным.">
+<meta property="og:image" content="https://fi5t.github.io/img/avatar-icon.jpg" />
+<meta property="og:url" content="https://fi5t.github.io/posts/choose-hardware-configuration/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="(не)Уникальный опыт" />
+
+  <meta name="twitter:title" content="Как выбрать сервер для web приложения" />
+  <meta name="twitter:description" content="
+Привет. Можешь помочь с требованиям к прод серверу ? Какой мощности нам хватит?
+
+Вот такое сообщение я получил от менеджера в конце рабочего дня. Стоит ли говорить, что приложение для которого нужно …">
+  <meta name="twitter:image" content="https://fi5t.github.io/img/avatar-icon.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@Fi5t" />
+  <meta name="twitter:creator" content="@Fi5t" />
+  <link href='https://fi5t.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.69.0" />
+  <link rel="alternate" href="https://fi5t.github.io/index.xml" type="application/rss+xml" title="(не)Уникальный опыт"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fi5t.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://fi5t.github.io/css/syntax.css" /><link rel="stylesheet" href="https://fi5t.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Навигация</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://fi5t.github.io/">(не)Уникальный опыт</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="(не)Уникальный опыт" href="https://fi5t.github.io/">
+            <img class="avatar-img" src="https://fi5t.github.io/img/avatar-icon.jpg" alt="(не)Уникальный опыт" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="posts-heading">
+              
+                <h1>Как выбрать сервер для web приложения</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <blockquote>
+<p>Привет. Можешь помочь с требованиям к прод серверу ? Какой мощности нам хватит?</p>
+</blockquote>
+<p>Вот такое сообщение я получил от менеджера в конце рабочего дня. Стоит ли говорить, что приложение для которого нужно было подобрать сервер еще не существовало даже в виде требований. Следовательно, посчитать хоть какой-то примерный <a href="https://en.wikipedia.org/wiki/Web_server#requests_per_second">RPS</a> не представлялось возможным.</p>
+<p>Сразу стоит сказать, что задача с такими входными данными не имеет правильного решения в принципе. Лучшее что тут можно сделать это погадать на частоте моргания светодиодов роутера и выдать что-то вроде:</p>
+<blockquote>
+<p>CPU: 2.6GHz 4 cores; RAM: 8Gb; HDD: 50Gb</p>
+</blockquote>
+<p>Но подойдет ли эта конфигурация под ваше конкретное приложение? Тут все зависит от ряда параметров:</p>
+<ul>
+<li>насколько хорошо и оптимально написано приложение</li>
+<li>насколько тяжелые операции будут выполняться</li>
+<li>каков характер этих операций</li>
+<li>ожидаемое количество RPS</li>
+<li>какие сервисы помимо самого приложения будут крутиться на этом сервере</li>
+<li>и т.п.</li>
+</ul>
+<p>Несмотря на это, все же можно привести ряд общих рекомендаций, которые могут быть хорошей отправной точкой для таких расчетов. При этом всегда стоит понимать, что железо бывает разное. Ваш личный &ldquo;блейд&rdquo; стоящий в соседней серверной где вы имеете 100% времени CPU и дохлый shared хостинг за 139р./мес это совершенно разные вещи (ваш К.О.) и это тоже добавляет неизвестных в наше уравнение. Но вернемся к рекомендациям.</p>
+<ol>
+<li>Взять список компонентов с которыми потенциально будет работать приложение и поискать конкретные рекомендации по железу для этих компонентов. Например в качестве базы данных планируется использовать PostgreSQL. В этом случае гуглим наиболее свежие данные и бенчмарки по железу для этой СУБД. После этого упражнения нужно выявить самый прожорливый компонент и взять его требования к железу в качестве опорной точки. И уже к этой опорной точке &ldquo;докидывать&rdquo; мощности ориентируясь на требования других компонентов.</li>
+<li>Руководствуясь собственным опытом написания приложений на том или ином фреймворке можно прикинуть конфигурацию железа для нового проекта. Цепочка рассуждений может выглядеть так: <em>на прошлом проекте мы использовали <code>Django</code> + <code>PostgreSQL</code> + <code>Redis</code> + <code>Gunicorn</code> + <code>RabbitMQ</code> и выдерживали 4000 RPS. При этом конфигурация железа у нас была такая-то</em>. После этого можно провести экстраполяцию на текущий проект. Если произвести расчет нужно для неизвестного фреймворка, то тут опять придется гуглить свежие бенчмарки для этого фреймворка или искать информацию на сайте производителя.</li>
+<li>Если вам повезло и приложение уже написано, но еще не опубликовано, то можно написать нагрузочный тест и в реальном времени посмотреть сколько ресурсов оно будет жрать под нагрузкой. Это позволит более-менее не промахнуться с выбором серверных мощностей.</li>
+<li>Если ожидается интенсивная работа с большими массивами данных на запись/чтение, то лучше отдать предпочтение SSD.</li>
+</ol>
+<p>Также хочу привести несколько полезных ссылок, которые могут помочь в подобных расчетах:</p>
+<ul>
+<li><a href="https://www.nginx.com/resources/datasheets/nginx-plus-sizing-guide/">Sizing Guide for Deploying NGINX Plus on Bare Metal Servers</a></li>
+<li><a href="https://www.techempower.com/benchmarks/">TechEmpower Web Framework Benchmark</a></li>
+<li><a href="https://github.com/aio-libs/aiohttp-benchmarks">aiohttp benchmarks</a></li>
+<li><a href="https://magic.io/blog/uvloop-blazing-fast-python-networking/">uvloop: Blazing fast Python networking</a></li>
+<li><a href="https://www.freecodecamp.org/news/million-requests-per-second-with-python-95c137af319/">A million requests per second with Python</a></li>
+<li><a href="https://pgtune.leopard.in.ua/">PGTune</a></li>
+<li><a href="http://pgconfigurator.cybertec.at/">Cybertec PostgreSQL Configurator</a></li>
+</ul>
+
+        
+          <div class="blog-tags">
+            
+              <a href="https://fi5t.github.io//tags/backend/">backend</a>&nbsp;
+            
+              <a href="https://fi5t.github.io//tags/%D1%84%D0%B8%D0%BB%D0%BE%D1%81%D0%BE%D1%84%D0%B8%D1%8F/">философия</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=https%3a%2f%2ffi5t.github.io%2fposts%2fchoose-hardware-configuration%2f&amp;text=%d0%9a%d0%b0%d0%ba%20%d0%b2%d1%8b%d0%b1%d1%80%d0%b0%d1%82%d1%8c%20%d1%81%d0%b5%d1%80%d0%b2%d0%b5%d1%80%20%d0%b4%d0%bb%d1%8f%20web%20%d0%bf%d1%80%d0%b8%d0%bb%d0%be%d0%b6%d0%b5%d0%bd%d0%b8%d1%8f&amp;via=Fi5t" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ffi5t.github.io%2fposts%2fchoose-hardware-configuration%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=https%3a%2f%2ffi5t.github.io%2fposts%2fchoose-hardware-configuration%2f&amp;title=%d0%9a%d0%b0%d0%ba%20%d0%b2%d1%8b%d0%b1%d1%80%d0%b0%d1%82%d1%8c%20%d1%81%d0%b5%d1%80%d0%b2%d0%b5%d1%80%20%d0%b4%d0%bb%d1%8f%20web%20%d0%bf%d1%80%d0%b8%d0%bb%d0%be%d0%b6%d0%b5%d0%bd%d0%b8%d1%8f" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2ffi5t.github.io%2fposts%2fchoose-hardware-configuration%2f&amp;title=%d0%9a%d0%b0%d0%ba%20%d0%b2%d1%8b%d0%b1%d1%80%d0%b0%d1%82%d1%8c%20%d1%81%d0%b5%d1%80%d0%b2%d0%b5%d1%80%20%d0%b4%d0%bb%d1%8f%20web%20%d0%bf%d1%80%d0%b8%d0%bb%d0%be%d0%b6%d0%b5%d0%bd%d0%b8%d1%8f" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2ffi5t.github.io%2fposts%2fchoose-hardware-configuration%2f&amp;title=%d0%9a%d0%b0%d0%ba%20%d0%b2%d1%8b%d0%b1%d1%80%d0%b0%d1%82%d1%8c%20%d1%81%d0%b5%d1%80%d0%b2%d0%b5%d1%80%20%d0%b4%d0%bb%d1%8f%20web%20%d0%bf%d1%80%d0%b8%d0%bb%d0%be%d0%b6%d0%b5%d0%bd%d0%b8%d1%8f" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2ffi5t.github.io%2fposts%2fchoose-hardware-configuration%2f&amp;description=%d0%9a%d0%b0%d0%ba%20%d0%b2%d1%8b%d0%b1%d1%80%d0%b0%d1%82%d1%8c%20%d1%81%d0%b5%d1%80%d0%b2%d0%b5%d1%80%20%d0%b4%d0%bb%d1%8f%20web%20%d0%bf%d1%80%d0%b8%d0%bb%d0%be%d0%b6%d0%b5%d0%bd%d0%b8%d1%8f" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+
+              </div>
+            </section>
+        
+
+        
+          
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+          
+        </ul>
+      
+
+
+      
+        
+          
+          <div class="disqus-comments">
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "not-unique-x" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+          </div>
+          
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="https://github.com/Fi5t" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/Fi5t" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/channel/UCEQbFCRm8LreenuEAMOSB1A" title="Youtube">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-youtube fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://soundcloud.com/dry-rmr" title="SoundCloud">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-soundcloud fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              Fi5t
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://fi5t.github.io/">(не)Уникальный опыт</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          На базе <a href="https://gohugo.io">Hugo v0.69.0</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://fi5t.github.io/js/main.js"></script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://fi5t.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+
