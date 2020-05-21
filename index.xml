@@ -2,21 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>(не)Уникальный опыт</title>
-    <link>https://fi5t.github.io/</link>
+    <link>https://fi5t.xyz/</link>
     <description>Recent content on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-ru</language>
-    <lastBuildDate>Sat, 09 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2020 20:44:03 +0300</lastBuildDate>
     
-	<atom:link href="https://fi5t.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://fi5t.xyz/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Секретные технологии документирования API</title>
+      <link>https://fi5t.xyz/posts/secret-technologies/</link>
+      <pubDate>Thu, 21 May 2020 20:44:03 +0300</pubDate>
+      
+      <guid>https://fi5t.xyz/posts/secret-technologies/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Disclamer:&lt;/strong&gt; Все совпадения случайны. Если вы узнали в этом тексте себя, то это ошибка и ваше больное воображение. Я это все придумал.&lt;/p&gt;
+&lt;p&gt;Темные времена, когда спецификации API создавались в файлах .txt и .docx прошли и теперь все используют нормальные форматы написания спецификаций. Да-да, моей наивности нет предела. В ходе очередного обсуждения с менеджером выяснилось, что есть заказчик с сервером которого нужно проинтегрироваться.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Как выбрать сервер для web приложения</title>
-      <link>https://fi5t.github.io/posts/choose-hardware-configuration/</link>
+      <link>https://fi5t.xyz/posts/choose-hardware-configuration/</link>
       <pubDate>Sat, 09 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://fi5t.github.io/posts/choose-hardware-configuration/</guid>
+      <guid>https://fi5t.xyz/posts/choose-hardware-configuration/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Привет. Можешь помочь с требованиям к прод серверу ? Какой мощности нам хватит?&lt;/p&gt;
 &lt;/blockquote&gt;

@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on (не)Уникальный опыт</title>
-    <link>https://fi5t.github.io/tags/</link>
+    <link>https://fi5t.xyz/tags/</link>
     <description>Recent content in Tags on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-ru</language>
     <lastBuildDate>Sat, 09 May 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://fi5t.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://fi5t.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>backend</title>
-      <link>https://fi5t.github.io/tags/backend/</link>
+      <link>https://fi5t.xyz/tags/backend/</link>
       <pubDate>Sat, 09 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://fi5t.github.io/tags/backend/</guid>
+      <guid>https://fi5t.xyz/tags/backend/</guid>
       <description></description>
     </item>
     
     <item>
       <title>философия</title>
-      <link>https://fi5t.github.io/tags/%D1%84%D0%B8%D0%BB%D0%BE%D1%81%D0%BE%D1%84%D0%B8%D1%8F/</link>
+      <link>https://fi5t.xyz/tags/%D1%84%D0%B8%D0%BB%D0%BE%D1%81%D0%BE%D1%84%D0%B8%D1%8F/</link>
       <pubDate>Sat, 09 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://fi5t.github.io/tags/%D1%84%D0%B8%D0%BB%D0%BE%D1%81%D0%BE%D1%84%D0%B8%D1%8F/</guid>
+      <guid>https://fi5t.xyz/tags/%D1%84%D0%B8%D0%BB%D0%BE%D1%81%D0%BE%D1%84%D0%B8%D1%8F/</guid>
       <description></description>
     </item>
     
