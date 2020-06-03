@@ -6,10 +6,19 @@
     <description>Recent content in Posts on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-ru</language>
-    <lastBuildDate>Thu, 21 May 2020 20:44:03 +0300</lastBuildDate>
+    <lastBuildDate>Wed, 03 Jun 2020 11:28:37 +0300</lastBuildDate>
     
 	<atom:link href="https://fi5t.xyz/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Путь программиста</title>
+      <link>https://fi5t.xyz/posts/programmers-way/</link>
+      <pubDate>Wed, 03 Jun 2020 11:28:37 +0300</pubDate>
+      
+      <guid>https://fi5t.xyz/posts/programmers-way/</guid>
+      <description>&lt;p&gt;Мне тут дядя из Джанхота новую партию чая прислал, а под чай, как известно, хорошо пишутся всякие разглагольствования на тему будущего, прошлого и настоящего. Говорить сегодня будем о программистах, я же больше ни про кого ничего не знаю. Расскажу, как я вижу путь развития современного программиста и дам в меру &lt;del&gt;без&lt;/del&gt;полезные советы о том как идти по этому пути.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Секретные технологии документирования API</title>
