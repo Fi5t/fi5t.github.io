@@ -6,10 +6,19 @@
     <description>Recent content in Tags on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-ru</language>
-    <lastBuildDate>Thu, 21 May 2020 20:44:03 +0300</lastBuildDate>
+    <lastBuildDate>Wed, 03 Jun 2020 11:28:37 +0300</lastBuildDate>
     
 	<atom:link href="https://fi5t.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>философия</title>
+      <link>https://fi5t.xyz/tags/%D1%84%D0%B8%D0%BB%D0%BE%D1%81%D0%BE%D1%84%D0%B8%D1%8F/</link>
+      <pubDate>Wed, 03 Jun 2020 11:28:37 +0300</pubDate>
+      
+      <guid>https://fi5t.xyz/tags/%D1%84%D0%B8%D0%BB%D0%BE%D1%81%D0%BE%D1%84%D0%B8%D1%8F/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>openapi</title>
@@ -35,15 +44,6 @@
       <pubDate>Sat, 09 May 2020 00:00:00 +0000</pubDate>
       
       <guid>https://fi5t.xyz/tags/backend/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>философия</title>
-      <link>https://fi5t.xyz/tags/%D1%84%D0%B8%D0%BB%D0%BE%D1%81%D0%BE%D1%84%D0%B8%D1%8F/</link>
-      <pubDate>Sat, 09 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://fi5t.xyz/tags/%D1%84%D0%B8%D0%BB%D0%BE%D1%81%D0%BE%D1%84%D0%B8%D1%8F/</guid>
       <description></description>
     </item>
     

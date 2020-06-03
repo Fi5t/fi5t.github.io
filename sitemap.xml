@@ -13,17 +13,22 @@
   </url>
   
   <url>
+    <loc>https://fi5t.xyz/tags/</loc>
+    <lastmod>2020-06-03T11:28:37+03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://fi5t.xyz/posts/programmers-way/</loc>
     <lastmod>2020-06-03T11:28:37+03:00</lastmod>
   </url>
   
   <url>
-    <loc>https://fi5t.xyz/tags/openapi/</loc>
-    <lastmod>2020-05-21T20:44:03+03:00</lastmod>
+    <loc>https://fi5t.xyz/tags/%D1%84%D0%B8%D0%BB%D0%BE%D1%81%D0%BE%D1%84%D0%B8%D1%8F/</loc>
+    <lastmod>2020-06-03T11:28:37+03:00</lastmod>
   </url>
   
   <url>
-    <loc>https://fi5t.xyz/tags/</loc>
+    <loc>https://fi5t.xyz/tags/openapi/</loc>
     <lastmod>2020-05-21T20:44:03+03:00</lastmod>
   </url>
   
@@ -44,11 +49,6 @@
   
   <url>
     <loc>https://fi5t.xyz/posts/choose-hardware-configuration/</loc>
-    <lastmod>2020-05-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://fi5t.xyz/tags/%D1%84%D0%B8%D0%BB%D0%BE%D1%81%D0%BE%D1%84%D0%B8%D1%8F/</loc>
     <lastmod>2020-05-09T00:00:00+00:00</lastmod>
   </url>
   
