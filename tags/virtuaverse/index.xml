@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>virtuaverse on (не)Уникальный опыт</title>
+    <link>https://fi5t.xyz/tags/virtuaverse/</link>
+    <description>Recent content in virtuaverse on (не)Уникальный опыт</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru-ru</language>
+    <lastBuildDate>Fri, 22 May 2020 18:46:15 +0300</lastBuildDate>
+    
+	<atom:link href="https://fi5t.xyz/tags/virtuaverse/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Прохождение VirtuaVerse</title>
+      <link>https://fi5t.xyz/posts/virtuaverse-walkthrough/</link>
+      <pubDate>Fri, 22 May 2020 18:46:15 +0300</pubDate>
+      
+      <guid>https://fi5t.xyz/posts/virtuaverse-walkthrough/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://steamcdn-a.akamaihd.net/steam/apps/1019310/header.jpg?t=1589700643&#34; alt=&#34;Pins from manual&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
