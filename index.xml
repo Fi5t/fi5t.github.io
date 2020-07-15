@@ -6,10 +6,19 @@
     <description>Recent content on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-ru</language>
-    <lastBuildDate>Wed, 03 Jun 2020 11:28:37 +0300</lastBuildDate>
+    <lastBuildDate>Wed, 15 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://fi5t.xyz/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Шифрование данных в Python без херни</title>
+      <link>https://fi5t.xyz/posts/python-eats-tink/</link>
+      <pubDate>Wed, 15 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fi5t.xyz/posts/python-eats-tink/</guid>
+      <description>&lt;p&gt;Этот пост должен был выйти сильно раньше, но я не смог собрать &lt;a href=&#34;https://github.com/google/tink&#34;&gt;&lt;strong&gt;Tink&lt;/strong&gt;&lt;/a&gt; для Python-а и поэтому остался ждать релиза &lt;code&gt;1.4.0&lt;/code&gt; где они &lt;a href=&#34;https://github.com/google/tink/issues/358&#34;&gt;пообещали&lt;/a&gt; добавить уже собранный пакет в PyPI. Наконец-то релиз настал, а с ним появилась возможность нормально покопаться в питонячьих биндингах для Tink и рассказать об этом вам.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Путь программиста</title>
