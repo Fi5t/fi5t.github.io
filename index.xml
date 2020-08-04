@@ -6,10 +6,22 @@
     <description>Recent content on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-ru</language>
-    <lastBuildDate>Wed, 15 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 04 Aug 2020 14:13:10 +0300</lastBuildDate>
     
 	<atom:link href="https://fi5t.xyz/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Старый Drozer MacOS не испортит</title>
+      <link>https://fi5t.xyz/posts/drozer-on-mac/</link>
+      <pubDate>Tue, 04 Aug 2020 14:13:10 +0300</pubDate>
+      
+      <guid>https://fi5t.xyz/posts/drozer-on-mac/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Drozer - The Leading Security Assessment Framework for Android.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Обычно я не использую &lt;strong&gt;Drozer&lt;/strong&gt;, а еще реже (никогда) я использую его на MacOS. Обычно это все уже есть в Kali Linux и устанавливать ничего не нужно. Но необходимость появилась, а вместе с ней пришлось знатно покувыркаться и поправить скрипты самого Drozer-а чтобы все заработало. После чего я все удалил, потому что в системе было знатно насрано после всех этих замечательных туторилов и issue на гитхабе. В итоге стало понятно, что есть два нормальных способа установки. &lt;a href=&#34;https://hub.docker.com/r/hexpwn/drozer-docker&#34;&gt;Через Docker&lt;/a&gt;, и так как показано ниже. Все остальное - зло, ад и слезы по бездарно потраченным часам жизни.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Шифрование данных в Python без херни</title>
