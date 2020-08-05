@@ -21,5 +21,16 @@
 &lt;p&gt;I spent a lot of time trying to make it work. Eventually, I had to rewrite a piece of class loader script&amp;hellip; A living hell! When everything started working right, I came up with a better way of installing Drozer on macOS and removed all this stuff . In fact, there are two good ways to do it. The Docker-way and the following one&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>Android Context</title>
+      <link>https://fi5t.xyz/en/posts/android-context/</link>
+      <pubDate>Wed, 11 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://fi5t.xyz/en/posts/android-context/</guid>
+      <description>I&amp;rsquo;ve come across an interesting article and want to share you my notes based on it. I made these notes as the mind map.
+    Original article: Mastering Android context
+XMind file: Download</description>
+    </item>
+    
   </channel>
 </rss>

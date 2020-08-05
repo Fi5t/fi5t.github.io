@@ -20,9 +20,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>Installing Drozer on macOS Catalina - (not)Unique experience</title>
-  <meta name="description" content="In general, I don&rsquo;t use Drozer. And using this tool on macOS is unusual for me. If I do some &ldquo;pentest things&rdquo; I just take my Kali Linux with pre-installed Drozer and use it there. But the day has come, and I decided to install Drozer on my macOS. It was a real hell =)
-I spent a lot of time trying to make it work. Eventually, I had to rewrite a piece of class loader script&hellip; A living hell! When everything started working right, I came up with a better way of installing Drozer on macOS and removed all this stuff . In fact, there are two good ways to do it. The Docker-way and the following one">
+  <title>Android Context - (not)Unique experience</title>
+  <meta name="description" content="I&rsquo;ve come across an interesting article and want to share you my notes based on it. I made these notes as the mind map.
+    Original article: Mastering Android context
+XMind file: Download">
   <meta name="author" content="Fi5t"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -58,8 +59,8 @@ I spent a lot of time trying to make it work. Eventually, I had to rewrite a pie
         "@type": "ListItem",
         "position": 3,
         "item": {
-          "@id": "https:\/\/fi5t.xyz\/en\/posts\/drozer-on-mac\/",
-          "name": "Installing drozer on mac o s catalina"
+          "@id": "https:\/\/fi5t.xyz\/en\/posts\/android-context\/",
+          "name": "Android context"
         }
     }]
 }
@@ -70,15 +71,15 @@ I spent a lot of time trying to make it work. Eventually, I had to rewrite a pie
   "author": {
     "name" : "Fi5t"
   },
-  "headline": "Installing Drozer on macOS Catalina",
-  "description" : "In general, I don\u0026rsquo;t use Drozer. And using this tool on macOS is unusual for me. If I do some \u0026ldquo;pentest things\u0026rdquo; I just take my Kali Linux with pre-installed Drozer and use it there. But the day has come, and I decided to install Drozer on my macOS. It was a real hell =)\nI spent a lot of time trying to make it work. Eventually, I had to rewrite a piece of class loader script\u0026hellip; A living hell! When everything started working right, I came up with a better way of installing Drozer on macOS and removed all this stuff . In fact, there are two good ways to do it. The Docker-way and the following one\n",
+  "headline": "Android Context",
+  "description" : "I\u0026rsquo;ve come across an interesting article and want to share you my notes based on it. I made these notes as the mind map.\n    Original article: Mastering Android context\nXMind file: Download",
   "inLanguage" : "en",
-  "wordCount":  275 ,
-  "datePublished" : "2020-08-05T12:17:39",
-  "dateModified" : "2020-08-05T12:17:39",
+  "wordCount":  32 ,
+  "datePublished" : "2018-07-11T00:00:00",
+  "dateModified" : "2018-07-11T00:00:00",
   "image" : "https:\/\/fi5t.xyz\/img\/avatar-icon.jpg",
-  "keywords" : [ "security, android, drozer" ],
-  "mainEntityOfPage" : "https:\/\/fi5t.xyz\/en\/posts\/drozer-on-mac\/",
+  "keywords" : [ "android" ],
+  "mainEntityOfPage" : "https:\/\/fi5t.xyz\/en\/posts\/android-context\/",
   "publisher" : {
     "@type": "Organization",
     "name" : "https:\/\/fi5t.xyz",
@@ -92,16 +93,19 @@ I spent a lot of time trying to make it work. Eventually, I had to rewrite a pie
 }
 </script>
 
-<meta property="og:title" content="Installing Drozer on macOS Catalina" />
-<meta property="og:description" content="In general, I don&rsquo;t use Drozer. And using this tool on macOS is unusual for me. If I do some &ldquo;pentest things&rdquo; I just take my Kali Linux with pre-installed Drozer and use it there. But the day has come, and I decided to install Drozer on my macOS. It was a real hell =)
-I spent a lot of time trying to make it work. Eventually, I had to rewrite a piece of class loader script&hellip; A living hell! When everything started working right, I came up with a better way of installing Drozer on macOS and removed all this stuff . In fact, there are two good ways to do it. The Docker-way and the following one">
+<meta property="og:title" content="Android Context" />
+<meta property="og:description" content="I&rsquo;ve come across an interesting article and want to share you my notes based on it. I made these notes as the mind map.
+    Original article: Mastering Android context
+XMind file: Download">
 <meta property="og:image" content="https://fi5t.xyz/img/avatar-icon.jpg" />
-<meta property="og:url" content="https://fi5t.xyz/en/posts/drozer-on-mac/" />
+<meta property="og:url" content="https://fi5t.xyz/en/posts/android-context/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="(not)Unique experience" />
 
-  <meta name="twitter:title" content="Installing Drozer on macOS Catalina" />
-  <meta name="twitter:description" content="In general, I don&rsquo;t use Drozer. And using this tool on macOS is unusual for me. If I do some &ldquo;pentest things&rdquo; I just take my Kali Linux with pre-installed Drozer and use it there. …">
+  <meta name="twitter:title" content="Android Context" />
+  <meta name="twitter:description" content="I&rsquo;ve come across an interesting article and want to share you my notes based on it. I made these notes as the mind map.
+    Original article: Mastering Android context
+XMind file: Download">
   <meta name="twitter:image" content="https://fi5t.xyz/img/avatar-icon.jpg" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@Fi5t" />
@@ -246,7 +250,7 @@ if (!doNotTrack) {
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           <div class="posts-heading">
             
-            <h1>Installing Drozer on macOS Catalina</h1>
+            <h1>Android Context</h1>
             
             
             <hr class="small">
@@ -265,71 +269,26 @@ if (!doNotTrack) {
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <p>In general, I don&rsquo;t use Drozer. And using this tool on macOS is unusual for me. If I do some &ldquo;pentest things&rdquo; I just take my Kali Linux with pre-installed Drozer and use it there. But the day has come, and I decided to install Drozer on my macOS. It was a real hell =)</p>
-<p>I spent a lot of time trying to make it work. Eventually, I had to rewrite a piece of class loader script&hellip; A living hell! When everything started working right, I came up with a better way of installing Drozer on macOS and removed all this stuff . In fact, there are two good ways to do it. The Docker-way and the following one</p>
-<p>You need to download the latest release. Don&rsquo;t build this app from sources, it&rsquo;s a wrong way!</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ mkdir drozer
-$ wget https://github.com/FSecureLABS/drozer/releases/download/2.4.4/drozer-2.4.4-py2-none-any.whl
-</code></pre></div><p>Create virtual environment with <code>pipenv</code> and install required dependencies.</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ pipenv --python 2.7
-$ pipenv shell
-<span class="o">(</span>drozer<span class="o">)</span> $ pipenv install protobuf
-<span class="o">(</span>drozer<span class="o">)</span> $ pipenv install pyOpenSSL
-<span class="o">(</span>drozer<span class="o">)</span> $ pipenv install Twisted
-<span class="o">(</span>drozer<span class="o">)</span> $ pipenv install drozer-2.4.4-py2-none-any.whl
-</code></pre></div><p>You can also use this Pipfile to install all these things with one shot</p>
-<div class="highlight"><pre class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[[source]]</span>
-<span class="na">name</span> <span class="o">=</span> <span class="s">&#34;pypi&#34;</span>
-<span class="na">url</span> <span class="o">=</span> <span class="s">&#34;https://pypi.org/simple&#34;</span>
-<span class="na">verify_ssl</span> <span class="o">=</span> <span class="s">true</span>
+        <p>I&rsquo;ve come across an interesting article and want to share you my notes based on it. I made these notes as the mind map.</p>
 
-<span class="k">[dev-packages]</span>
+<link rel="stylesheet" href="https://fi5t.xyz/css/hugo-easy-gallery.css" />
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/context.png" alt="/img/context.png"/>
+    </div>
+    <a href="/img/context.png" itemprop="contentUrl"></a>
+  </figure>
+</div>
 
-<span class="k">[packages]</span>
-<span class="na">protobuf</span> <span class="o">=</span> <span class="s">&#34;*&#34;</span>
-<span class="na">pyopenssl</span> <span class="o">=</span> <span class="s">&#34;*&#34;</span>
-<span class="na">twisted</span> <span class="o">=</span> <span class="s">&#34;*&#34;</span>
-<span class="na">drozer</span> <span class="o">=</span> <span class="s">{path = &#34;./drozer-2.4.4-py2-none-any.whl&#34;}</span>
+<p>Original article: <a href="https://www.freecodecamp.org/news/mastering-android-context-7055c8478a22/">Mastering Android context</a><br>
+XMind file: <a href="https://drive.google.com/file/d/1hih9edUCC_DeHSyrc5Nix-9xzs6QbkmM/view?usp=sharing">Download</a></p>
 
-<span class="k">[requires]</span>
-<span class="na">python_version</span> <span class="o">=</span> <span class="s">&#34;2.7&#34;</span>
-</code></pre></div><p>Let&rsquo;s check if everything works fine</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">(</span>drozer<span class="o">)</span> $ drozer console connect --server &lt;smartphone ip&gt;
-
-
-            ..                    ..:.
-           ..o..                  .r..
-            ..a..  . ....... .  ..nd
-              ro..idsnemesisand..pr
-              .otectorandroidsneme.
-           .,sisandprotectorandroids+.
-         ..nemesisandprotectorandroidsn:.
-        .emesisandprotectorandroidsnemes..
-      ..isandp,..,rotectorandro,..,idsnem.
-      .isisandp..rotectorandroid..snemisis.
-      ,andprotectorandroidsnemisisandprotec.
-     .torandroidsnemesisandprotectorandroid.
-     .snemisisandprotectorandroidsnemesisan:
-     .dprotectorandroidsnemesisandprotector.
-
-drozer Console <span class="o">(</span>v2.4.4<span class="o">)</span>
-dz&gt; run app.package.debuggable 
-Package: com.mwr.dz
-  UID: <span class="m">10095</span>
-  Permissions:
-   - android.permission.INTERNET
-
-dz&gt; 
-</code></pre></div><p>Hooray! We made it work!</p>
 
         
           <div class="blog-tags">
             
-              <a href="https://fi5t.xyz/en/tags/security/">security</a>&nbsp;
-            
               <a href="https://fi5t.xyz/en/tags/android/">android</a>&nbsp;
-            
-              <a href="https://fi5t.xyz/en/tags/drozer/">drozer</a>&nbsp;
             
           </div>
         
@@ -344,42 +303,42 @@ dz&gt;
     <ul class="share">
       
       <li>
-        <a href="//twitter.com/share?url=https%3a%2f%2ffi5t.xyz%2fen%2fposts%2fdrozer-on-mac%2f&amp;text=Installing%20Drozer%20on%20macOS%20Catalina&amp;via=Fi5t" target="_blank" title="Share on Twitter">
+        <a href="//twitter.com/share?url=https%3a%2f%2ffi5t.xyz%2fen%2fposts%2fandroid-context%2f&amp;text=Android%20Context&amp;via=Fi5t" target="_blank" title="Share on Twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ffi5t.xyz%2fen%2fposts%2fdrozer-on-mac%2f" target="_blank" title="Share on Facebook">
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ffi5t.xyz%2fen%2fposts%2fandroid-context%2f" target="_blank" title="Share on Facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//reddit.com/submit?url=https%3a%2f%2ffi5t.xyz%2fen%2fposts%2fdrozer-on-mac%2f&amp;title=Installing%20Drozer%20on%20macOS%20Catalina" target="_blank" title="Share on Reddit">
+        <a href="//reddit.com/submit?url=https%3a%2f%2ffi5t.xyz%2fen%2fposts%2fandroid-context%2f&amp;title=Android%20Context" target="_blank" title="Share on Reddit">
           <i class="fab fa-reddit"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2ffi5t.xyz%2fen%2fposts%2fdrozer-on-mac%2f&amp;title=Installing%20Drozer%20on%20macOS%20Catalina" target="_blank" title="Share on LinkedIn">
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2ffi5t.xyz%2fen%2fposts%2fandroid-context%2f&amp;title=Android%20Context" target="_blank" title="Share on LinkedIn">
           <i class="fab fa-linkedin"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2ffi5t.xyz%2fen%2fposts%2fdrozer-on-mac%2f&amp;title=Installing%20Drozer%20on%20macOS%20Catalina" target="_blank" title="Share on StumbleUpon">
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2ffi5t.xyz%2fen%2fposts%2fandroid-context%2f&amp;title=Android%20Context" target="_blank" title="Share on StumbleUpon">
           <i class="fab fa-stumbleupon"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2ffi5t.xyz%2fen%2fposts%2fdrozer-on-mac%2f&amp;description=Installing%20Drozer%20on%20macOS%20Catalina" target="_blank" title="Share on Pinterest">
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2ffi5t.xyz%2fen%2fposts%2fandroid-context%2f&amp;description=Android%20Context" target="_blank" title="Share on Pinterest">
           <i class="fab fa-pinterest"></i>
         </a>
       </li>
@@ -401,7 +360,7 @@ dz&gt;
                   <ul>
                 
                 
-                    <li><a href="/en/posts/android-context/">Android Context</a></li>
+                    <li><a href="/en/posts/drozer-on-mac/">Installing Drozer on macOS Catalina</a></li>
                 
               </ul>
 
@@ -412,10 +371,10 @@ dz&gt;
       
         <ul class="pager blog-pager">
           
-            <li class="previous">
-              <a href="https://fi5t.xyz/en/posts/android-context/" data-toggle="tooltip" data-placement="top" title="Android Context">&larr; Previous Post</a>
-            </li>
           
+            <li class="next">
+              <a href="https://fi5t.xyz/en/posts/drozer-on-mac/" data-toggle="tooltip" data-placement="top" title="Installing Drozer on macOS Catalina">Next Post &rarr;</a>
+            </li>
           
         </ul>
       
