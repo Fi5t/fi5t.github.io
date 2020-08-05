@@ -20,16 +20,46 @@
   <url>
     <loc>https://fi5t.xyz/tags/android/</loc>
     <lastmod>2020-08-04T14:13:10+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://fi5t.xyz/en/tags/android/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://fi5t.xyz/tags/android/"
+                />
   </url>
   
   <url>
     <loc>https://fi5t.xyz/tags/drozer/</loc>
     <lastmod>2020-08-04T14:13:10+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://fi5t.xyz/en/tags/drozer/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://fi5t.xyz/tags/drozer/"
+                />
   </url>
   
   <url>
     <loc>https://fi5t.xyz/posts/</loc>
     <lastmod>2020-08-04T14:13:10+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://fi5t.xyz/en/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://fi5t.xyz/posts/"
+                />
   </url>
   
   <url>
@@ -50,6 +80,16 @@
   <url>
     <loc>https://fi5t.xyz/posts/drozer-on-mac/</loc>
     <lastmod>2020-08-04T14:13:10+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://fi5t.xyz/en/posts/drozer-on-mac/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://fi5t.xyz/posts/drozer-on-mac/"
+                />
   </url>
   
   <url>
