@@ -4,7 +4,7 @@
   
   <url>
     <loc>https://fi5t.xyz/</loc>
-    <lastmod>2020-08-04T14:13:10+03:00</lastmod>
+    <lastmod>2020-10-22T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -15,6 +15,46 @@
                 hreflang="ru"
                 href="https://fi5t.xyz/"
                 />
+  </url>
+  
+  <url>
+    <loc>https://fi5t.xyz/tags/conferences/</loc>
+    <lastmod>2020-10-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://fi5t.xyz/posts/</loc>
+    <lastmod>2020-10-22T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://fi5t.xyz/en/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://fi5t.xyz/posts/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://fi5t.xyz/tags/</loc>
+    <lastmod>2020-10-22T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://fi5t.xyz/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://fi5t.xyz/tags/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://fi5t.xyz/posts/jug-conferences-review/</loc>
+    <lastmod>2020-10-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -44,36 +84,6 @@
                 rel="alternate"
                 hreflang="ru"
                 href="https://fi5t.xyz/tags/drozer/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://fi5t.xyz/posts/</loc>
-    <lastmod>2020-08-04T14:13:10+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://fi5t.xyz/en/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://fi5t.xyz/posts/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://fi5t.xyz/tags/</loc>
-    <lastmod>2020-08-04T14:13:10+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://fi5t.xyz/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://fi5t.xyz/tags/"
                 />
   </url>
   
