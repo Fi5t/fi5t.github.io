@@ -6,11 +6,7 @@
     <description>Recent content in tink on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-ru</language>
-    <lastBuildDate>Wed, 15 Jul 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://fi5t.xyz/tags/tink/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 15 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/tags/tink/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Шифрование данных в Python без херни</title>
       <link>https://fi5t.xyz/posts/python-eats-tink/</link>

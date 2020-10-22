@@ -5,10 +5,6 @@
     <link>https://fi5t.xyz/categories/</link>
     <description>Recent content in Categories on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ru-ru</language>
-    
-	<atom:link href="https://fi5t.xyz/categories/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>ru-ru</language><atom:link href="https://fi5t.xyz/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

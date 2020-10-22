@@ -72,7 +72,7 @@
   "headline": "Секретные технологии документирования API",
   "description" : "Темные времена, когда спецификации API создавались в файлах .txt и .docx прошли и теперь все используют нормальные форматы написания спецификаций. Да-да, моей наивности нет предела. В ходе очередного обсуждения с менеджером выяснилось, что есть заказчик с сервером которого нужно проинтегрироваться.",
   "inLanguage" : "ru",
-  "wordCount":  434 ,
+  "wordCount":  441 ,
   "datePublished" : "2020-05-21T20:44:03",
   "dateModified" : "2020-05-21T20:44:03",
   "image" : "https:\/\/fi5t.xyz\/img\/avatar-icon.jpg",
@@ -105,7 +105,7 @@
   <meta name="twitter:site" content="@Fi5t" />
   <meta name="twitter:creator" content="@Fi5t" />
   <link href='https://fi5t.xyz/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.74.3" />
+  <meta name="generator" content="Hugo 0.76.5" />
   <link rel="alternate" href="https://fi5t.xyz/index.xml" type="application/rss+xml" title="(не)Уникальный опыт"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fi5t.xyz/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -267,43 +267,43 @@ if (!doNotTrack) {
 <p>Темные времена, когда спецификации API создавались в файлах .txt и .docx прошли и теперь все используют нормальные форматы написания спецификаций. Да-да, моей наивности нет предела. В ходе очередного обсуждения с менеджером выяснилось, что есть заказчик с сервером которого нужно проинтегрироваться.</p>
 <p>Есть даже какое-то REST-оподобное API и оно даже умеет возвращать ответы в формате JSON. Документация к API традиционно отсутствует, но заказчик готов ее сделать если мы предоставим шаблон на который можно ориентироваться. Ок, выбор очевиден. Нужно использовать формат <a href="https://swagger.io/specification/">OpenAPI</a>, который отлично документирован и позволяет создавать спецификации любой сложности. А разухабистый тулинг вокруг него позволяет генерировать уже готовую и +- рабочую реализацию, что сильно сокращает время на разработку. Это и было озвучено менеджеру, который через некоторое время вернулся (а я надеюсь, что он хотябы попытался спросить) с ответом: <em>я боюсь, что такими технологиями заказчик не владеет</em>. &ldquo;такими ТЕХНОЛОГИЯМИ&rdquo;, серьезно? Это же почти как на ассемблере под STM32 писать да? Спецификацию в формате OpenAPI способен написать джуниор бизнес-аналитик, не говоря уже о разработчике. Тем более речь не идет о каком-то дополнительном проектировании. Нужно было всего лишь описать то, что уже работает. Далее я был готов подключится и помочь в перепроектировании текущей реализации если бы это вообще потребовалось. Но нет. Такие сложнейшие технологии видимо оказались недосягаемы для заказчика.</p>
 <p>Хорошо, может быть я гоню и там все правда сложно? Давайте разбираться. Для начала приведу минимальный рабочий шаблон спецификации в формате OpenAPI:</p>
-<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">openapi</span><span class="p">:</span><span class="w"> </span><span class="m">3.0.3</span><span class="w">
-</span><span class="w"></span><span class="k">info</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">title</span><span class="p">:</span><span class="w"> </span>BaseTemplate<span class="w">
-</span><span class="w">  </span><span class="k">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;1.0&#39;</span><span class="w">
-</span><span class="w">  </span><span class="k">description</span><span class="p">:</span><span class="w"> </span>Base<span class="w"> </span>API<span class="w"> </span>template<span class="w">
-</span><span class="w">  </span><span class="k">contact</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>API<span class="w"> </span>Creator<span class="w">
-</span><span class="w"></span><span class="k">servers</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="k">url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;http://localhost:3000&#39;</span><span class="w">
-</span><span class="w"></span><span class="k">tags</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Main<span class="w">
-</span><span class="w">    </span><span class="k">description</span><span class="p">:</span><span class="w"> </span>Main<span class="w"> </span>operations<span class="w">
-</span><span class="w"></span><span class="k">paths</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">/method_example</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">get</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">summary</span><span class="p">:</span><span class="w"> </span>Your<span class="w"> </span>GET<span class="w"> </span>endpoint<span class="w">
-</span><span class="w">      </span><span class="k">tags</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- Main<span class="w">
-</span><span class="w">      </span><span class="k">responses</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="k">&#39;200&#39;</span><span class="p">:</span><span class="w">
-</span><span class="w">          </span><span class="k">description</span><span class="p">:</span><span class="w"> </span>OK<span class="w">
-</span><span class="w">          </span><span class="k">content</span><span class="p">:</span><span class="w">
-</span><span class="w">            </span><span class="k">application/json</span><span class="p">:</span><span class="w">
-</span><span class="w">              </span><span class="k">schema</span><span class="p">:</span><span class="w">
-</span><span class="w">                </span><span class="k">$ref</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;#/components/schemas/ModelExample&#39;</span><span class="w">
-</span><span class="w">      </span><span class="k">operationId</span><span class="p">:</span><span class="w"> </span>get-method_example<span class="w">
-</span><span class="w">      </span><span class="k">description</span><span class="p">:</span><span class="w"> </span>Method<span class="w"> </span>example<span class="w">
-</span><span class="w"></span><span class="k">components</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">schemas</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">ModelExample</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">title</span><span class="p">:</span><span class="w"> </span>ModelExample<span class="w">
-</span><span class="w">      </span><span class="k">type</span><span class="p">:</span><span class="w"> </span>object<span class="w">
-</span><span class="w">      </span><span class="k">properties</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="k">id</span><span class="p">:</span><span class="w">
-</span><span class="w">          </span><span class="k">type</span><span class="p">:</span><span class="w"> </span>string<span class="w">
-</span><span class="w">      </span><span class="k">x-tags</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- Main<span class="w">
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">openapi</span><span class="p">:</span><span class="w"> </span><span class="m">3.0.3</span><span class="w">
+</span><span class="w"></span><span class="nt">info</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">BaseTemplate</span><span class="w">
+</span><span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;1.0&#39;</span><span class="w">
+</span><span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">Base API template</span><span class="w">
+</span><span class="w">  </span><span class="nt">contact</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">API Creator</span><span class="w">
+</span><span class="w"></span><span class="nt">servers</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;http://localhost:3000&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">tags</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Main</span><span class="w">
+</span><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">Main operations</span><span class="w">
+</span><span class="w"></span><span class="nt">paths</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">/method_example</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">get</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l">Your GET endpoint</span><span class="w">
+</span><span class="w">      </span><span class="nt">tags</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- <span class="l">Main</span><span class="w">
+</span><span class="w">      </span><span class="nt">responses</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">&#39;200&#39;</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">OK</span><span class="w">
+</span><span class="w">          </span><span class="nt">content</span><span class="p">:</span><span class="w">
+</span><span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w">
+</span><span class="w">              </span><span class="nt">schema</span><span class="p">:</span><span class="w">
+</span><span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;#/components/schemas/ModelExample&#39;</span><span class="w">
+</span><span class="w">      </span><span class="nt">operationId</span><span class="p">:</span><span class="w"> </span><span class="l">get-method_example</span><span class="w">
+</span><span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">Method example</span><span class="w">
+</span><span class="w"></span><span class="nt">components</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">schemas</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">ModelExample</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">ModelExample</span><span class="w">
+</span><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">object</span><span class="w">
+</span><span class="w">      </span><span class="nt">properties</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">string</span><span class="w">
+</span><span class="w">      </span><span class="nt">x-tags</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- <span class="l">Main</span><span class="w">
 </span></code></pre></div><p>Выглядит страшно? Если да, то можно взять какую-нибудь утилиту, которая позволит красиво это все отображать. Я пользуюсь бесплатной версией <a href="https://stoplight.io/studio/">Stoplight Studio</a>, и она покрывает все мои нужды. В ней даже можно создавать такие спеки с нуля вообще не погружаясь в сам формат OpenAPI. Т.е. это настолько просто, что даже стыдно называть это словом &ldquo;технологии&rdquo;. Вы когда пишите в простигосподи ворде каком-нибудь тестовый документ, вы же не считаете это какими-то запредельными технологиями? Ну я надеюсь&hellip;</p>
 <p>Даже очень крупные компании грешат применением всяких вордов при написании спецификаций. При этом всем накласть на то, что это не версионируется нормально, отследить изменения практически невозможно, навигации из коробки нет и она в лучшем случае сделана в виде блока &ldquo;Содержание&rdquo;, которое опять же нужно поддерживать при внесении изменений. Зачем вам этот ад? У вас так много свободного времени? Перейдите уже на что-то более благообразное вроде OpenAPI или чего-то подобного (а альтернативы есть). Сэкономьте время людям которые будут с вами интегрироваться и свои деньги за эту интеграцию.</p>
 <p>Полезные ссылки:</p>
@@ -507,7 +507,7 @@ if (!doNotTrack) {
         </p>
         
         <p class="credits theme-by text-muted">
-          На базе <a href="https://gohugo.io">Hugo v0.74.3</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          На базе <a href="https://gohugo.io">Hugo v0.76.5</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>
