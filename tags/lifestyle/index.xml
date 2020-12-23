@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>lifestyle on (не)Уникальный опыт</title>
+    <link>https://fi5t.xyz/tags/lifestyle/</link>
+    <description>Recent content in lifestyle on (не)Уникальный опыт</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru-ru</language>
+    <lastBuildDate>Tue, 22 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/tags/lifestyle/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ретроспектива 2020</title>
+      <link>https://fi5t.xyz/posts/retrospective/</link>
+      <pubDate>Tue, 22 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fi5t.xyz/posts/retrospective/</guid>
+      <description>&lt;p&gt;Лучше всего для меня этот год описан в этом коротком видео:&lt;/p&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/q9OYNyzP4dI&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
