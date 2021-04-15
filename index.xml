@@ -6,7 +6,16 @@
     <description>Recent content on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-ru</language>
-    <lastBuildDate>Sat, 26 Dec 2020 13:32:56 +0300</lastBuildDate><atom:link href="https://fi5t.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kotlin ❤️ Backend</title>
+      <link>https://fi5t.xyz/posts/ktor-on-backend/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fi5t.xyz/posts/ktor-on-backend/</guid>
+      <description>&lt;p&gt;Какое-то время назад я проводил сравнение JVM фреймворков для разработки backend-сервисов. Задача оказалась довольно амбициозной и затратной по времени, поэтому я ее так и не доделал до конца. Но часть вещей все же удалось сравнить из описать. Я решил, что не пропадать же тексту зря и публикую здесь кусок который касается набирающего сейчас популярного фреймворка - &lt;a href=&#34;https://ktor.io/&#34;&gt;&lt;strong&gt;Ktor&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Вздулся аккумулятор на IQAir AirVisual Pro</title>
       <link>https://fi5t.xyz/posts/airvisual-pro-acc/</link>

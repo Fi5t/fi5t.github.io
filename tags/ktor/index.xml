@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ktor on (не)Уникальный опыт</title>
+    <link>https://fi5t.xyz/tags/ktor/</link>
+    <description>Recent content in ktor on (не)Уникальный опыт</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru-ru</language>
+    <lastBuildDate>Thu, 15 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/tags/ktor/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kotlin ❤️ Backend</title>
+      <link>https://fi5t.xyz/posts/ktor-on-backend/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fi5t.xyz/posts/ktor-on-backend/</guid>
+      <description>&lt;p&gt;Какое-то время назад я проводил сравнение JVM фреймворков для разработки backend-сервисов. Задача оказалась довольно амбициозной и затратной по времени, поэтому я ее так и не доделал до конца. Но часть вещей все же удалось сравнить из описать. Я решил, что не пропадать же тексту зря и публикую здесь кусок который касается набирающего сейчас популярного фреймворка - &lt;a href=&#34;https://ktor.io/&#34;&gt;&lt;strong&gt;Ktor&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
