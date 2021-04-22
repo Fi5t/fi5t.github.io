@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://fi5t.xyz/</loc>
     <lastmod>2021-04-15T00:00:00+00:00</lastmod>
@@ -15,24 +14,16 @@
                 hreflang="ru"
                 href="https://fi5t.xyz/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/tags/backend/</loc>
     <lastmod>2021-04-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/posts/ktor-on-backend/</loc>
     <lastmod>2021-04-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/tags/ktor/</loc>
     <lastmod>2021-04-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/posts/</loc>
     <lastmod>2021-04-15T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -45,9 +36,7 @@
                 hreflang="ru"
                 href="https://fi5t.xyz/posts/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/tags/</loc>
     <lastmod>2021-04-15T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -60,39 +49,25 @@
                 hreflang="ru"
                 href="https://fi5t.xyz/tags/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/tags/ifixit/</loc>
     <lastmod>2020-12-26T13:32:56+03:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/posts/airvisual-pro-acc/</loc>
     <lastmod>2020-12-26T13:32:56+03:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/tags/lifestyle/</loc>
     <lastmod>2020-12-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/posts/retrospective/</loc>
     <lastmod>2020-12-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/tags/conferences/</loc>
     <lastmod>2020-10-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/posts/jug-conferences-review/</loc>
     <lastmod>2020-10-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/tags/android/</loc>
     <lastmod>2020-08-04T14:13:10+03:00</lastmod>
     <xhtml:link
@@ -105,9 +80,7 @@
                 hreflang="ru"
                 href="https://fi5t.xyz/tags/android/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/tags/drozer/</loc>
     <lastmod>2020-08-04T14:13:10+03:00</lastmod>
     <xhtml:link
@@ -120,9 +93,7 @@
                 hreflang="ru"
                 href="https://fi5t.xyz/tags/drozer/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/posts/drozer-on-mac/</loc>
     <lastmod>2020-08-04T14:13:10+03:00</lastmod>
     <xhtml:link
@@ -135,64 +106,40 @@
                 hreflang="ru"
                 href="https://fi5t.xyz/posts/drozer-on-mac/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/tags/%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C/</loc>
     <lastmod>2020-08-04T14:13:10+03:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/tags/python/</loc>
     <lastmod>2020-07-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/tags/tink/</loc>
     <lastmod>2020-07-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/posts/python-eats-tink/</loc>
     <lastmod>2020-07-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/tags/%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D0%BE%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D1%8F/</loc>
     <lastmod>2020-07-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/posts/programmers-way/</loc>
     <lastmod>2020-06-03T11:28:37+03:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/tags/%D1%84%D0%B8%D0%BB%D0%BE%D1%81%D0%BE%D1%84%D0%B8%D1%8F/</loc>
     <lastmod>2020-06-03T11:28:37+03:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/tags/openapi/</loc>
     <lastmod>2020-05-21T20:44:03+03:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/posts/secret-technologies/</loc>
     <lastmod>2020-05-21T20:44:03+03:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/tags/%D0%B0%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0/</loc>
     <lastmod>2020-05-21T20:44:03+03:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/posts/choose-hardware-configuration/</loc>
     <lastmod>2020-05-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/categories/</loc>
     <xhtml:link
                 rel="alternate"
@@ -205,5 +152,4 @@
                 href="https://fi5t.xyz/categories/"
                 />
   </url>
-  
 </urlset>

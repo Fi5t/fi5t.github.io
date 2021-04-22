@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://fi5t.xyz/en/</loc>
     <lastmod>2020-08-05T12:17:39+03:00</lastmod>
@@ -15,9 +14,7 @@
                 hreflang="en"
                 href="https://fi5t.xyz/en/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/en/tags/android/</loc>
     <lastmod>2020-08-05T12:17:39+03:00</lastmod>
     <xhtml:link
@@ -30,9 +27,7 @@
                 hreflang="en"
                 href="https://fi5t.xyz/en/tags/android/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/en/tags/drozer/</loc>
     <lastmod>2020-08-05T12:17:39+03:00</lastmod>
     <xhtml:link
@@ -45,9 +40,7 @@
                 hreflang="en"
                 href="https://fi5t.xyz/en/tags/drozer/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/en/posts/drozer-on-mac/</loc>
     <lastmod>2020-08-05T12:17:39+03:00</lastmod>
     <xhtml:link
@@ -60,9 +53,7 @@
                 hreflang="en"
                 href="https://fi5t.xyz/en/posts/drozer-on-mac/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/en/posts/</loc>
     <lastmod>2020-08-05T12:17:39+03:00</lastmod>
     <xhtml:link
@@ -75,14 +66,10 @@
                 hreflang="en"
                 href="https://fi5t.xyz/en/posts/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/en/tags/security/</loc>
     <lastmod>2020-08-05T12:17:39+03:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/en/tags/</loc>
     <lastmod>2020-08-05T12:17:39+03:00</lastmod>
     <xhtml:link
@@ -95,24 +82,16 @@
                 hreflang="en"
                 href="https://fi5t.xyz/en/tags/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/en/posts/android-context/</loc>
     <lastmod>2018-07-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/en/posts/elemental-design-patterns-review/</loc>
     <lastmod>2017-08-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/en/tags/software-engineering/</loc>
     <lastmod>2017-08-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://fi5t.xyz/en/categories/</loc>
     <xhtml:link
                 rel="alternate"
@@ -125,5 +104,4 @@
                 href="https://fi5t.xyz/en/categories/"
                 />
   </url>
-  
 </urlset>
