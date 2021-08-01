@@ -114,7 +114,7 @@ Drozer - The Leading Security Assessment Framework for Android.
   <meta name="twitter:site" content="@Fi5t" />
   <meta name="twitter:creator" content="@Fi5t" />
   <link href='https://fi5t.xyz/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name="generator" content="Hugo 0.86.1" />
   <link rel="alternate" href="https://fi5t.xyz/index.xml" type="application/rss+xml" title="(не)Уникальный опыт"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fi5t.xyz/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -274,23 +274,23 @@ Drozer - The Leading Security Assessment Framework for Android.
 <p>Качаем крайний из доступных релизов. Из исходников не собирайте, там все плохо.
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ mkdir drozer
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ mkdir drozer
 $ wget https://github.com/FSecureLABS/drozer/releases/download/2.4.4/drozer-2.4.4-py2-none-any.whl</code></pre></td></tr></table>
 </div>
 </div></p>
 <p>Разворачиваем виртуальное окнужение, ставим туда зависимости и сам Drozer.</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ pipenv --python 2.7
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ pipenv --python 2.7
 $ pipenv shell
 <span class="o">(</span>drozer<span class="o">)</span> $ pipenv install protobuf
 <span class="o">(</span>drozer<span class="o">)</span> $ pipenv install pyOpenSSL
 <span class="o">(</span>drozer<span class="o">)</span> $ pipenv install Twisted 
 <span class="o">(</span>drozer<span class="o">)</span> $ pipenv install drozer-2.4.4-py2-none-any.whl
 </code></pre></div><p>Для тех кому лениво это все копипастить или топтать кнопки, вот <code>Pipfile</code>. Теперь все можно поставить одной командой <code>pipenv install</code></p>
-<div class="highlight"><pre class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[[source]]</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[[source]]</span>
 <span class="na">name</span> <span class="o">=</span> <span class="s">&#34;pypi&#34;</span>
 <span class="na">url</span> <span class="o">=</span> <span class="s">&#34;https://pypi.org/simple&#34;</span>
 <span class="na">verify_ssl</span> <span class="o">=</span> <span class="s">true</span>
@@ -306,7 +306,7 @@ $ pipenv shell
 <span class="k">[requires]</span>
 <span class="na">python_version</span> <span class="o">=</span> <span class="s">&#34;2.7&#34;</span>
 </code></pre></div><p>Убеждаемся, что все работает</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">(</span>drozer<span class="o">)</span> $ drozer console connect --server &lt;smartphone ip&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">(</span>drozer<span class="o">)</span> $ drozer console connect --server &lt;smartphone ip&gt;
 
 
             ..                    ..:.
@@ -529,7 +529,7 @@ dz&gt;
         </p>
         
         <p class="credits theme-by text-muted">
-          На базе <a href="https://gohugo.io">Hugo v0.82.0</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          На базе <a href="https://gohugo.io">Hugo v0.86.1</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>

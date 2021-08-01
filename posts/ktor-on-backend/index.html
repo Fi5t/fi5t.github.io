@@ -105,7 +105,7 @@
   <meta name="twitter:site" content="@Fi5t" />
   <meta name="twitter:creator" content="@Fi5t" />
   <link href='https://fi5t.xyz/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name="generator" content="Hugo 0.86.1" />
   <link rel="alternate" href="https://fi5t.xyz/index.xml" type="application/rss+xml" title="(не)Уникальный опыт"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fi5t.xyz/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -261,7 +261,7 @@
         <p>Какое-то время назад я проводил сравнение JVM фреймворков для разработки backend-сервисов. Задача оказалась довольно амбициозной и затратной по времени, поэтому я ее так и не доделал до конца. Но часть вещей все же удалось сравнить из описать. Я решил, что не пропадать же тексту зря и публикую здесь кусок который касается набирающего сейчас популярного фреймворка - <a href="https://ktor.io/"><strong>Ktor</strong></a>.</p>
 <p>Довольно молодой игрок в команде <del>старых и замшелых</del> зрелых JVM фреймворков. Начать писать на нем web-приложения очень просто и для быстрого старта даже есть неплохая документация. Я бы сказал, что она покрывает все нужды начинающих и продолжающих, но из-за молодости самого фреймворка порой очень тяжело находить какие-то правильные практики его использования. Даже существующие на github-е примеры весьма неоднородны и используют ряд экспериментальных API. Туториалы найденные в гугле тоже не отличаются единством подходов, из-за чего мне пришлось несколько раз переписывать приложение при открытии новых граней этого фреймворка. Это неплохо в качестве развлечения, но когда я хочу построить большое приложение, то наличие какого-то референсного шаблонного проекта отвечающего на вопрос &ldquo;сейчас принято делать так&rdquo; очень бы помогло. В противном случае можно получить набор разных подходов в разных частях приложения, которые открывались разработчикам в ходе эволюции проекта.</p>
 <p>В целом фреймворк выполнен в DSL стиле. Хорошо это или плохо я так и не смог однозначно для себя решить, но необходимость использовать вложенные блоки для добавления какой-нибудь функциональности показалась спорной. Вот так например выглядит добавление аутентификации к нескольким методам:</p>
-<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="n">routing</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="n">routing</span> <span class="p">{</span>
     <span class="n">authenticate</span><span class="p">(</span><span class="s2">&#34;myauth1&#34;</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">get</span><span class="p">(</span><span class="s2">&#34;/authenticated/route1&#34;</span><span class="p">)</span> <span class="p">{</span>
             <span class="c1">// ...
@@ -276,7 +276,7 @@
 <span class="p">}</span>
 </code></pre></div><p>Понравился функционал <code>StatusPages</code>, который позволяет задать стандартные ответы на исключения. Очень удобно потом где-то в коде выкидывать исключение и быть уверенным, что пользователь получить адекватный ответ. Также эта штука может реагировать на HTTP коды.</p>
 <p>Ну и самое важное наверное то, что Ktor можно назвать микрофреймворком. Со всеми плюсами и минусами отсюда вытекающими. В нем вы не увидите ORM или DI из коробки. Все это придется откуда-то брать, но при этом не все такие топики покрываются официальной документацией и примерами из официального репозитория. Поэтому в качестве DI было решено использовать <a href="https://github.com/Kodein-Framework/Kodein-DI/">Kodein</a>. При чем скорее от безысходности, т.к. примера с Dagger 2, который по моему мнению лучше подходит для больших проектов в официальном репозитории не было, а то что удалось найти на github - выглядело странно и разбираться в этом было откровенно лень.</p>
-<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">Application</span><span class="p">.</span><span class="n">libraryApp</span><span class="p">()</span> <span class="p">=</span> <span class="n">mainModule</span><span class="p">(</span><span class="n">Kodein</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">Application</span><span class="p">.</span><span class="n">libraryApp</span><span class="p">()</span> <span class="p">=</span> <span class="n">mainModule</span><span class="p">(</span><span class="n">Kodein</span> <span class="p">{</span>
     <span class="n">bind</span><span class="p">&lt;</span><span class="n">JwtService</span><span class="p">&gt;()</span> <span class="n">with</span> <span class="n">singleton</span> <span class="p">{</span> <span class="n">JwtService</span><span class="p">()</span> <span class="p">}</span>
     <span class="n">bind</span><span class="p">&lt;</span><span class="n">PasswordHasher</span><span class="p">&gt;()</span> <span class="n">with</span> <span class="n">singleton</span> <span class="p">{</span> <span class="n">PasswordHasher</span><span class="p">()</span> <span class="p">}</span>
 <span class="p">})</span>
@@ -288,14 +288,14 @@
 <span class="p">}</span>
 </code></pre></div><p>Та же история с ORM. Официальных примеров, да и вообще каких-либо упоминаний в документации я не нашел, поэтому пришлось &ldquo;выйти с этим вопросом в Интернет&rdquo;. Там обнаружился полуподпольный ORM <a href="https://github.com/JetBrains/Exposed">Exposed</a> от JetBrains, документация к которому была еще более скудная чем к Ktor. Но с гуглом пополам удалось это втащить и завести. Надо сказать, что до выразительности <a href="https://docs.djangoproject.com/en/3.0/topics/db/">Django ORM</a> ему очень далеко. Для сравнения приведу пример с созданием связи многие ко многим (все примеры из официальной документации):</p>
 <p><strong>Django ORM</strong></p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Publication</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Publication</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">30</span>
 
 <span class="k">class</span> <span class="nc">Article</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">headline</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
     <span class="n">publications</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ManyToManyField</span><span class="p">(</span><span class="n">Publication</span><span class="p">)</span>
 </code></pre></div><p><strong>Exposed</strong></p>
-<div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">object</span> <span class="nc">Actors</span><span class="p">:</span> <span class="n">IntIdTable</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">object</span> <span class="nc">Actors</span><span class="p">:</span> <span class="n">IntIdTable</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">val</span> <span class="py">firstname</span> <span class="p">=</span> <span class="n">varchar</span><span class="p">(</span><span class="s2">&#34;firstname&#34;</span><span class="p">,</span> <span class="m">50</span><span class="p">)</span>
     <span class="k">val</span> <span class="py">lastname</span> <span class="p">=</span> <span class="n">varchar</span><span class="p">(</span><span class="s2">&#34;lastname&#34;</span><span class="p">,</span> <span class="m">50</span><span class="p">)</span>
 <span class="p">}</span>
@@ -522,7 +522,7 @@
         </p>
         
         <p class="credits theme-by text-muted">
-          На базе <a href="https://gohugo.io">Hugo v0.82.0</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          На базе <a href="https://gohugo.io">Hugo v0.86.1</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>

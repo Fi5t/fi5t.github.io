@@ -105,7 +105,7 @@
   <meta name="twitter:site" content="@Fi5t" />
   <meta name="twitter:creator" content="@Fi5t" />
   <link href='https://fi5t.xyz/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name="generator" content="Hugo 0.86.1" />
   <link rel="alternate" href="https://fi5t.xyz/index.xml" type="application/rss+xml" title="(не)Уникальный опыт"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fi5t.xyz/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -262,7 +262,7 @@
 <p>Темные времена, когда спецификации API создавались в файлах .txt и .docx прошли и теперь все используют нормальные форматы написания спецификаций. Да-да, моей наивности нет предела. В ходе очередного обсуждения с менеджером выяснилось, что есть заказчик с сервером которого нужно проинтегрироваться.</p>
 <p>Есть даже какое-то REST-оподобное API и оно даже умеет возвращать ответы в формате JSON. Документация к API традиционно отсутствует, но заказчик готов ее сделать если мы предоставим шаблон на который можно ориентироваться. Ок, выбор очевиден. Нужно использовать формат <a href="https://swagger.io/specification/">OpenAPI</a>, который отлично документирован и позволяет создавать спецификации любой сложности. А разухабистый тулинг вокруг него позволяет генерировать уже готовую и +- рабочую реализацию, что сильно сокращает время на разработку. Это и было озвучено менеджеру, который через некоторое время вернулся (а я надеюсь, что он хотябы попытался спросить) с ответом: <em>я боюсь, что такими технологиями заказчик не владеет</em>. &ldquo;такими ТЕХНОЛОГИЯМИ&rdquo;, серьезно? Это же почти как на ассемблере под STM32 писать да? Спецификацию в формате OpenAPI способен написать джуниор бизнес-аналитик, не говоря уже о разработчике. Тем более речь не идет о каком-то дополнительном проектировании. Нужно было всего лишь описать то, что уже работает. Далее я был готов подключится и помочь в перепроектировании текущей реализации если бы это вообще потребовалось. Но нет. Такие сложнейшие технологии видимо оказались недосягаемы для заказчика.</p>
 <p>Хорошо, может быть я гоню и там все правда сложно? Давайте разбираться. Для начала приведу минимальный рабочий шаблон спецификации в формате OpenAPI:</p>
-<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">openapi</span><span class="p">:</span><span class="w"> </span><span class="m">3.0.3</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">openapi</span><span class="p">:</span><span class="w"> </span><span class="m">3.0.3</span><span class="w">
 </span><span class="w"></span><span class="nt">info</span><span class="p">:</span><span class="w">
 </span><span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">BaseTemplate</span><span class="w">
 </span><span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;1.0&#39;</span><span class="w">
@@ -502,7 +502,7 @@
         </p>
         
         <p class="credits theme-by text-muted">
-          На базе <a href="https://gohugo.io">Hugo v0.82.0</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          На базе <a href="https://gohugo.io">Hugo v0.86.1</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>
