@@ -6,22 +6,49 @@
     <description>Recent content in Tags on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-ru</language>
-    <lastBuildDate>Thu, 15 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 01 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>backend</title>
       <link>https://fi5t.xyz/tags/backend/</link>
-      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://fi5t.xyz/tags/backend/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>kotlin</title>
+      <link>https://fi5t.xyz/tags/kotlin/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fi5t.xyz/tags/kotlin/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>ktor</title>
       <link>https://fi5t.xyz/tags/ktor/</link>
-      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://fi5t.xyz/tags/ktor/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tutorial</title>
+      <link>https://fi5t.xyz/tags/tutorial/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fi5t.xyz/tags/tutorial/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>безопасность</title>
+      <link>https://fi5t.xyz/tags/%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fi5t.xyz/tags/%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C/</guid>
       <description></description>
     </item>
     
@@ -67,15 +94,6 @@
       <pubDate>Tue, 04 Aug 2020 14:13:10 +0300</pubDate>
       
       <guid>https://fi5t.xyz/tags/drozer/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>безопасность</title>
-      <link>https://fi5t.xyz/tags/%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C/</link>
-      <pubDate>Tue, 04 Aug 2020 14:13:10 +0300</pubDate>
-      
-      <guid>https://fi5t.xyz/tags/%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C/</guid>
       <description></description>
     </item>
     

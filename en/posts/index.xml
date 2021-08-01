@@ -6,7 +6,30 @@
     <description>Recent content in Posts on (not)Unique experience</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-ru</language>
-    <lastBuildDate>Wed, 05 Aug 2020 12:17:39 +0300</lastBuildDate><atom:link href="https://fi5t.xyz/en/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 01 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/en/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Creating mTLS reverse proxy with Ktor</title>
+      <link>https://fi5t.xyz/en/posts/reverse-proxy-with-mtls-and-ktor/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fi5t.xyz/en/posts/reverse-proxy-with-mtls-and-ktor/</guid>
+      <description>&lt;p&gt;If you like to integrate with external security systems, then you have probably come across such a thing
+as &lt;a href=&#34;https://en.wikipedia.org/wiki/Mutual_authentication#mTLS&#34;&gt;Mutual TLS&lt;/a&gt; (also known as TLS mutual authentication or
+mTLS). There is nothing particularly difficult in such integration. Except for two nuances:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Integration will have to be done in each service&lt;/li&gt;
+&lt;li&gt;In each service you need to put client certificates for passing the mTLS handshake&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;And if you can somehow live and put up with the first nuance, then the second already causes much more problems and
+leads to sad faces of your security team. To make them happy again, and at the same time eliminate the need to write the
+same code in each service, can be made by a smart &lt;a href=&#34;https://en.wikipedia.org/wiki/Reverse_proxy&#34;&gt;reverse proxy&lt;/a&gt;, which
+will take all the hardships and hardships handshake related and possibly some other additional logic. We will do this
+farm on &lt;a href=&#34;https://ktor.io/&#34;&gt;Ktor&lt;/a&gt;, because why not;)&lt;/p&gt;
+&lt;p&gt;To make them happy again, and at the same time get rid of the need to write the same code in each service, we will write
+a smart &lt;a href=&#34;https://en.wikipedia.org/wiki/Reverse_proxy&#34;&gt;reverse proxy&lt;/a&gt; which will take care of all hardships associated
+with an mTLS handshake and other security logic. I will implement all these things with Ktor, because why not ;)&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Installing Drozer on macOS Catalina</title>
       <link>https://fi5t.xyz/en/posts/drozer-on-mac/</link>
