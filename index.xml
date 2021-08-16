@@ -6,7 +6,19 @@
     <description>Recent content on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-ru</language>
-    <lastBuildDate>Sun, 01 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Повелители DOOM</title>
+      <link>https://fi5t.xyz/posts/masters-of-doom/</link>
+      <pubDate>Mon, 16 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fi5t.xyz/posts/masters-of-doom/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Однажды Джей решил проверить, насколько Кармак сосредоточен, вставив кассету с порно в &lt;a href=&#34;https://ru.wikipedia.org/wiki/%D0%92%D0%B8%D0%B4%D0%B5%D0%BE%D0%BC%D0%B0%D0%B3%D0%BD%D0%B8%D1%82%D0%BE%D1%84%D0%BE%D0%BD&#34;&gt;видеомагнитофон&lt;/a&gt; и включив фильм на полную громкость&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Давненько я не читал таких хороших историй, как в этой книге. Зарождение и трансформация целой индустрии это вам не хрен собачий и путь компании &lt;strong&gt;id Software&lt;/strong&gt; однозначно стоит внимания любого программиста, даже если он никогда не собирается работать в игровой индустрии. Не знаю был ли как-то специально идеализирован образ Джона Кармака в этой книге, но его подходы к работе впечатляют. В моем понимании так должен действовать каждый инженер-программист, который хочет делать что-то действительно стоящее внимания.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Создаем reverse proxy с mTLS на Ktor</title>
       <link>https://fi5t.xyz/posts/reverse-proxy-with-mtls-and-ktor/</link>
