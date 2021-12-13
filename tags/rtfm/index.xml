@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rtfm on (не)Уникальный опыт</title>
+    <link>https://fi5t.xyz/tags/rtfm/</link>
+    <description>Recent content in rtfm on (не)Уникальный опыт</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru-ru</language>
+    <lastBuildDate>Sun, 12 Dec 2021 00:00:03 +0300</lastBuildDate><atom:link href="https://fi5t.xyz/tags/rtfm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Часть 3: Атаки на биометрические системы</title>
+      <link>https://fi5t.xyz/posts/biometrics-attacks/</link>
+      <pubDate>Sun, 12 Dec 2021 00:00:03 +0300</pubDate>
+      
+      <guid>https://fi5t.xyz/posts/biometrics-attacks/</guid>
+      <description>&lt;p&gt;До Android 6.0 не было единого стандартизованного API для работы со сканером отпечатков и четких требований к реализации, поэтому производители прикручивали эту функцию как попало.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Часть 2: Как устроена биометрия в Android</title>
+      <link>https://fi5t.xyz/posts/biometrics-in-android/</link>
+      <pubDate>Sun, 12 Dec 2021 00:00:02 +0300</pubDate>
+      
+      <guid>https://fi5t.xyz/posts/biometrics-in-android/</guid>
+      <description>&lt;p&gt;Начиная с версии 6.0, Google выпустил &lt;a href=&#34;https://source.android.com/compatibility/6.0/android-6.0-cdd.pdf&#34;&gt;документ&lt;/a&gt; в котором предъявил требования к устройствам на базе Android оборудованных датчиком отпечатков пальцев:&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Часть 1: Как работают системы биометрической аутентификации</title>
+      <link>https://fi5t.xyz/posts/biometrics-how-it-works/</link>
+      <pubDate>Sun, 12 Dec 2021 00:00:01 +0300</pubDate>
+      
+      <guid>https://fi5t.xyz/posts/biometrics-how-it-works/</guid>
+      <description>&lt;h1 id=&#34;типы-сканеров&#34;&gt;Типы сканеров&lt;/h1&gt;
+&lt;h2 id=&#34;оптический&#34;&gt;Оптический&lt;/h2&gt;
+&lt;p&gt;Этот вид сенсора работает по простому принципу: есть фоточувствительная матрица (в большинстве случаев это ПЗС, которая используется во многих современных камерах) и несколько небольших светоизлучателей, которые подсвечивают поверхность пальца.&lt;/p&gt;
+&lt;p&gt;Свет отражается от папиллярного узора, и в зависимости от того, попал луч света на гребень или на впадину, интенсивность его варьируется.&lt;/p&gt;
+&lt;p&gt;Внешнее стекло такого сканера тонкое, чтобы вызвать эффект полного нарушенного внутреннего отражения. Из-за этого эффекта свет в местах контакта кожи со стеклом — на гребнях — полностью отражается в фотосенсор
+&lt;img src=&#34;https://fi5t.xyz/img/biometrics/opt-sensor.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

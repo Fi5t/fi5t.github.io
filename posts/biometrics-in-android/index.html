@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="ru" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+<script type="text/javascript" >
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+ 
+    ym(64685116, "init", {
+         clickmap:true,
+         trackLinks:true,
+         accurateTrackBounce:true
+    });
+ </script>
+ <noscript><div><img src="https://mc.yandex.ru/watch/64685116" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+ 
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Часть 2: Как устроена биометрия в Android - (не)Уникальный опыт</title>
+  <meta name="description" content="Начиная с версии 6.0, Google выпустил документ в котором предъявил требования к устройствам на базе Android оборудованных датчиком отпечатков пальцев:">
+  <meta name="author" content="Fi5t"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "(не)Уникальный опыт",
+    
+    "url": "https:\/\/fi5t.xyz"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/fi5t.xyz"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/fi5t.xyz",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/fi5t.xyz\/posts\/biometrics-in-android\/",
+          "name": "Часть 2 как устроена биометрия в android"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Fi5t"
+  },
+  "headline": "Часть 2: Как устроена биометрия в Android",
+  "description" : "Начиная с версии 6.0, Google выпустил документ в котором предъявил требования к устройствам на базе Android оборудованных датчиком отпечатков пальцев:\n",
+  "inLanguage" : "ru",
+  "wordCount":  1276 ,
+  "datePublished" : "2021-12-12T00:00:02",
+  "dateModified" : "2021-12-12T00:00:02",
+  "image" : "https:\/\/fi5t.xyz\/img\/avatar-icon.jpg",
+  "keywords" : [ "biometrics, rtfm, mobile" ],
+  "mainEntityOfPage" : "https:\/\/fi5t.xyz\/posts\/biometrics-in-android\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/fi5t.xyz",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/fi5t.xyz\/img\/avatar-icon.jpg",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Часть 2: Как устроена биометрия в Android" />
+<meta property="og:description" content="Начиная с версии 6.0, Google выпустил документ в котором предъявил требования к устройствам на базе Android оборудованных датчиком отпечатков пальцев:">
+<meta property="og:image" content="https://fi5t.xyz/img/avatar-icon.jpg" />
+<meta property="og:url" content="https://fi5t.xyz/posts/biometrics-in-android/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="(не)Уникальный опыт" />
+
+  <meta name="twitter:title" content="Часть 2: Как устроена биометрия в Android" />
+  <meta name="twitter:description" content="Начиная с версии 6.0, Google выпустил документ в котором предъявил требования к устройствам на базе Android оборудованных датчиком отпечатков пальцев:">
+  <meta name="twitter:image" content="https://fi5t.xyz/img/avatar-icon.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@Fi5t" />
+  <meta name="twitter:creator" content="@Fi5t" />
+  <link href='https://fi5t.xyz/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.89.4" />
+  <link rel="alternate" href="https://fi5t.xyz/index.xml" type="application/rss+xml" title="(не)Уникальный опыт"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fi5t.xyz/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://fi5t.xyz/css/syntax.css" /><link rel="stylesheet" href="https://fi5t.xyz/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Навигация</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://fi5t.xyz">(не)Уникальный опыт</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Поддержать" href="https://ko-fi.com/androidguards">Поддержать</a>
+            </li>
+          
+        
+
+        
+          
+            <li>
+              
+                
+                  <a href="/en" lang="en">en</a>
+                
+              
+                
+              
+            </li>
+          
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="(не)Уникальный опыт" href="https://fi5t.xyz">
+            <img class="avatar-img" src="https://fi5t.xyz/img/avatar-icon.jpg" alt="(не)Уникальный опыт" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header-section ">
+  
+  <div class="intro-header no-img">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <div class="posts-heading">
+            
+            <h1>Часть 2: Как устроена биометрия в Android</h1>
+            
+            
+            <hr class="small">
+            
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>Начиная с версии 6.0, Google выпустил <a href="https://source.android.com/compatibility/6.0/android-6.0-cdd.pdf">документ</a> в котором предъявил требования к устройствам на базе Android оборудованных датчиком отпечатков пальцев:</p>
+<p><strong>Обязательно</strong></p>
+<ul>
+<li>декларировать поддержку <code>android.hardware.fingerprint</code>.</li>
+<li>полная реализация fingerprint API из документации к Android SDK</li>
+<li>иметь уровень ложноположительных срабатываний менее 0,002%</li>
+<li>ограничивать скорость попыток 30-секундной задержкой после 5 неудачных попыток</li>
+<li>иметь аппаратное безопасное хранилище, а верификацию отпечатков проводить исключительно в доверенной зоне Trusted Execution Environment (TEE) или на выделенном процессоре с безопасным каналом связи с TEE (<em>На этом погорел Samsung S5, в котором с безопасным каналом связи была проблема</em>)</li>
+<li>шифровать данные отпечатков таким образом, чтобы доступ к ним невозможно было получить за пределами Trusted Execution Environment (TEE)</li>
+<li>не разрешать добавлять отпечатки без установления доверенной цепочки (пользователь должен добавить или верифицировать PIN/паттерн/пароль через TEE</li>
+<li>корректно обрабатывать флаг <code>DevicePolicyManager.KEYGUARD_DISABLE_FINGERPRINT</code></li>
+</ul>
+<p><strong>Рекомендации</strong></p>
+<ul>
+<li>уровень ложноотрицательных срабатываний менее 10%, задержка срабатывания менее 1 секунды (для 1 сохраненного отпечатка)</li>
+<li>не позволять сторонним приложениям различать отдельные отпечатки</li>
+<li>использовать иконку Android Fingerprint из Android Open Source Project</li>
+</ul>
+<h2 id="общая-архитектура">Общая архитектура</h2>
+<p>Основным компонентом отвечающим за биометрические сценарии является <a href="https://android.googlesource.com/platform/packages/apps/Settings/+/refs/heads/master/src/com/android/settings/biometrics/BiometricEnrollActivity.java">BiometricEnrollActivity</a>, которую производителям рекомендуется адаптировать под свои нужды.
+<img src="/img/biometrics/common-architecture.png" alt=""></p>
+<p>На текущий момент Android фреймворк поддерживает аутентификацию по отпечатку пальца и по лицу. Производитель конечного устройства может добавить поддержку других методов биометрической аутентификации (например по сетчатке глаза). Однако такая интеграция все равно будет зависеть от параметров биометрической безопасности, а не от типа аутентификации.</p>
+<h3 id="аппаратная-реализация">Аппаратная реализация</h3>
+<p>Аппаратная реализация должна гарантировать, что биометрические данные недоступны основной операционной системе и удаляются вместе с удалением пользователя.</p>
+<p>Для изоляции необходимо применять <a href="https://source.android.com/security/trusty/">TEE</a> или SecureElement<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. Все данные должны сохраняться в зашифрованном и подписанном виде с ключами привязанными к конкретному устройству и известными только TEE, коммуникация с которым должны осуществляться по выделенному физическому каналу (SPI, I2C) доступному только в изолированной с помощью правил SELinux среде.</p>
+<p>Эти требования относятся только к сенсорам класса 2 и 3.</p>
+<h2 id="архитектура-системы-аутентификации-по-отпечатку-пальца">Архитектура системы аутентификации по отпечатку пальца</h2>
+<p>Сенсор отпечатков пальцев в основном находится в неактивном состоянии и активируется когда пользователь прикасается к нему. Для работы со сканерами отпечатков пальцев - Android использует специальный язык определения аппаратных интерфейсов (Hardware Interface Definition Language - HIDL). Производителям устройств необходимо реализовать <a href="https://android.googlesource.com/platform/hardware/interfaces/+/refs/heads/master/biometrics/fingerprint/2.1/IBiometricsFingerprint.hal"><code>IBiometricsFingerprint.hal</code></a> в своей библиотеке отвечающей за сопоставление отпечатков.</p>
+<p>Типичный сценарий аутентификации выглядит так:</p>
+<ol>
+<li>Пользователь помещает палец на сенсор</li>
+<li>Библиотека от производителя устройства определяет правильность отпечатка</li>
+<li>Результаты передаются в FingerprintService</li>
+</ol>
+<p>Система аутентификации по отпечатку пальца включает в себя следующие компоненты:</p>
+<ul>
+<li><code>BiometricManager</code> - взаимодействует напрямую с приложением находясь в его процессе. Каждое приложение содержит экземпляр <code>IBiometricsFingerprint.hal</code></li>
+<li><code>FingerprintService</code> - работает в системном процессе и обеспечивает связь с аппаратной абстракцией над сенсором (Fingerprint HAL)</li>
+<li><code>Fingerprint HAL</code> - реализация интерфейса <code>IBiometricsFingerprint</code> на языках C/C++. Содержит библиотеку от производителя устройства, которая общается с сенсором отпечатков пальцев</li>
+<li><code>Keystore API</code> и <code>Keymaster</code> - компоненты, которые обеспечивают безопасное хранение криптографических ключей в защищенной среде, такой как Trusted Execution Environment (TEE).
+<img src="/img/biometrics/fingerprint-architecture.png" alt=""></li>
+</ul>
+<p><code>FingerprintService</code> и <code>fingerprintd</code> должны выполнять все операции c отпечатками через <code>Fingerprint HAL</code>
+<img src="/img/biometrics/fingerprint-hal-communication.png" alt=""></p>
+<h2 id="архитектура-системы-аутентификации-по-лицу">Архитектура системы аутентификации по лицу</h2>
+<blockquote>
+<p>Поддержка безопасной обработки кадров с камеры устройства <a href="https://source.android.com/security/enhancements/enhancements10#face-authentication">появилась</a> только в Android 10. Все реализации до этой версии нельзя считать безопасными.</p>
+</blockquote>
+<p>Как и в случае с аутентификацией по отпечатку пальцев, производителям устройств нужно реализовать следующие интерфейсы в своей библиотеке:</p>
+<ul>
+<li><a href="https://android.googlesource.com/platform/hardware/interfaces/+/refs/heads/master/biometrics/face/1.0/IBiometricsFace.hal"><code>IBiometricsFace.hal</code></a></li>
+<li><a href="https://android.googlesource.com/platform/hardware/interfaces/+/refs/heads/master/biometrics/face/1.0/IBiometricsFaceClientCallback.hal"><code>IBiometricsFaceClientCallback.hal</code></a></li>
+<li><a href="https://android.googlesource.com/platform/hardware/interfaces/+/refs/heads/master/biometrics/face/1.0/types.hal"><code>types.hal</code></a></li>
+</ul>
+<p>Система аутентификации по лицу включает следующие компоненты:</p>
+<ul>
+<li><code>FaceManager</code> - приватный интерфейс, который поддерживает соединение с <code>FaceService</code>. Он используется <strong>Keyguard</strong>-ом для доступа к аутентификации по лицу с нестандартным UI. Обычные приложения не имеют доступа к этому интерфейсу и должны использовать <code>BiometricPrompt</code> вместо него.</li>
+<li><code>FaceService</code> - управляет доступом к аппаратным средствам аутентификации по лицу. Содержит базовые сценарии регистрации и аутентификации, а также дополнительные вспомогательные утилиты. Из соображений стабильности и безопасности - никакой код конечных производителей устройств не должен запускаться в этом процессе.</li>
+<li><code>faced</code> - linux демон, который реализует интерфейс <a href="https://android.googlesource.com/platform/hardware/interfaces/+/refs/heads/master/biometrics/face/1.0/IBiometricsFace.hal">Face 1.0 HIDL</a> и используется сервисом <code>FaceService</code>. Он регистрирует сам себя как <code>IBiometricsFace@1.0</code> чтобы <code>FaceService</code> мог его обнаружить.</li>
+</ul>
+<p>Ожидается, что <code>faced</code> работает в соответствии с этой диаграммой состояний:
+<img src="/img/biometrics/common-architecture.png" alt=""></p>
+<h2 id="оценка-биометрической-безопасности">Оценка биометрической безопасности</h2>
+<p>Для оценки безопасности биометрических систем, Google вводит такие понятия:</p>
+<ul>
+<li><strong>Архитектурная безопасность</strong> - устойчивость биометрической аутентификации к компрометации ядра или платформы. Сценарий считается безопасным, если ни ядро ни платформа, даже будучи скомпрометированными не могут прочитать сырые биометрические данные или внедриться в сценарий биометрической аутентификаци с целью подмены результата.</li>
+<li><strong>Характеристики биометрическая безопасности</strong>
+<ul>
+<li><strong>Spoof Acceptance Rate (SAR)</strong> - метрика вероятности того, что биометрическая модель пример предварительно записанный ранее, хорошо известный пример. Например, для голосовой разблокировки можно использовать записанный голос пользователя произносящий &ldquo;Ok, Google&rdquo;. Такие атаки относятся к спуфингу и также известны как с <a href="https://www.nist.gov/system/files/documents/2020/09/15/12_buschthieme-ibpc-pad-160504.pdf">Impostor Attack Presentation Match Rate (IAPMR)</a></li>
+<li><strong>Imposter Acceptance Rate (IAR)</strong> - определяет вероятность того, что биометрическая модель примет ввод, который <strong>мимикрирует</strong> под известный модели. Например, в системе <a href="https://support.google.com/nexus/answer/6093922">Smart Lock</a> может использоваться разблокировка доверенным голосом. В этом случае метрика будет определять шанс того, что smart lock разблокирует устройство услышав голос другого человека, пытающегося подделать голос доверенного пользователя. Такие атаки принято называть <a href="http://www.ijsrd.com/articles/IJSRDV3I2691.pdf">Imposter Attacks</a>. Эта характеристика не является универсально полезной для всех биометрических систем.</li>
+<li><strong>False Acceptance Rate (FAR)</strong> - определяет как часто биометрическая модель может принять некорректный, сгенерированный случайным образом ввод. В целом это полезная метрика, но она не дает достаточно информации о том, насколько хорошо модель выдерживает целевые атаки.</li>
+</ul>
+</li>
+</ul>
+<p>В своих требованиях к производителям устройств, Google выделяет три класса надежности биометрических систем:</p>
+<table>
+<thead>
+<tr>
+<th>Класс</th>
+<th>Характеристики</th>
+<th>Ограничения</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Class 3 (BIOMETRIC_STRONG)</td>
+<td>SAR: 0-7% FAR: 1/50k</td>
+<td>можно использовать на экране блокировки, в приложениях и для работы с ключами шифрования из Keystore</td>
+</tr>
+<tr>
+<td>Class 2 (BIOMETRIC_WEAK)</td>
+<td>SAR: 7-20% FAR: 1/50k</td>
+<td>можно использовать на экране блокировки и в приложениях</td>
+</tr>
+<tr>
+<td>Class 1 (BIOMETRIC_CONVENIENCE)</td>
+<td>SAR: &gt;20% FAR: 1/50k</td>
+<td>можно использовать только на экране блокировки</td>
+</tr>
+</tbody>
+</table>
+<h3 id="инструменты-и-материалы-для-атаки-на-распознавание-отпечатков-пальцев">Инструменты и материалы для атаки на распознавание отпечатков пальцев</h3>
+<p><strong>Применяемые для изготовления PAI материалы</strong>:</p>
+<ul>
+<li>Для оптических сенсоров
+<ul>
+<li>Копировальная бумага или прозрачная пленка с непроводящими чернилами</li>
+<li>Желатин (Knox Gelatin)</li>
+<li>Латексная краска</li>
+<li>Клей Элмера (<a href="https://vslime.ru/samodelnyj-klej-jelmera/">как сварить самому</a>)</li>
+</ul>
+</li>
+<li>Для полупроводниковых (емкостных)
+<ul>
+<li>Желатин (Knox Gelatin)</li>
+<li>Клей Элмера</li>
+<li>Клей Элмера для деревянных поверхностей (Elmer&rsquo;s E7010 Carpenter&rsquo;s Wood Glue)</li>
+<li>Латексная краска</li>
+</ul>
+</li>
+<li>Для ультразвуковых
+<ul>
+<li>Желатин (Knox Gelatin)</li>
+<li>Клей Элмера</li>
+<li>Клей Элмера для деревянных поверхностей (Elmer&rsquo;s E7010 Carpenter&rsquo;s Wood Glue)</li>
+<li>Латексная краска</li>
+</ul>
+</li>
+</ul>
+<p>Перед изготовлением поддельного отпечатка, изображение можно ретушировать или редактировать с высоким разрешением, чтобы повысить шансы на обман сенсора.</p>
+<p>Качество распознавания отпечатков принадлежащих людям разного пола, возраста и этнической принадлежности порой может быть хуже и это нужно учитывать.</p>
+<h2 id="аутентификация-по-лицу-и-радужной-оболочке-глаза">Аутентификация по лицу и радужной оболочке глаза</h2>
+<blockquote>
+<p>Процесс аутентификации по лицу и радужной оболочке использует одни и те же подходы. Разница заключается лишь в инструментах атаки (presentation attack instrument - PAI) используемых для тестов. При аутентификации по лицу используются фотографии и маски, а при аутентификации по радужной оболочке - фотографии или глазные протезы.</p>
+</blockquote>
+<h3 id="инструменты-и-сценарии-атаки-на-распознавание-лиц">Инструменты и сценарии атаки на распознавание лиц</h3>
+<p><strong>Применяемые PAI</strong>:</p>
+<ul>
+<li>2D
+<ul>
+<li>Распечатанные фото</li>
+<li>Фото на мониторе или экране мобильного устройства</li>
+<li>Видео на мониторе или экране мобильного устройства</li>
+</ul>
+</li>
+<li>3D
+<ul>
+<li>Маски распечатанные на 3D принтере</li>
+<li>Силиконовые и керамические маски (не используются в тестах Google)</li>
+</ul>
+</li>
+</ul>
+<p><strong>Примеры сценариев тестирования</strong>:
+- Распечатанные фотографии можно слегка изогнуть, чтобы получить изгибы на щеках (имитация глубины). Этот подход может помочь обойти решения работающие только в 2D
+- Изменение окружающего освещения для имитации окружающей среды
+- Легкое загрязнение линзы на сканирующем устройстве
+- Изменение портретной и ландшафтной ориентации сканирующего устройства, чтобы понять влияет ли это как-то на качество распознавания</p>
+<p>Отдельным важным пунктом является оценка качества распознавания в зависимости от пола, возраста и/или этнической принадлежности, т.к. алгоритмы машинного обучения могут не учитывать или <a href="https://www.theverge.com/2018/1/12/16882408/google-racist-gorillas-photo-recognition-algorithm-ai">учитывать неправильно </a>эти особенности.</p>
+<h3 id="инструменты-и-сценарии-атаки-на-распознавание-радужной-оболочки">Инструменты и сценарии атаки на распознавание радужной оболочки</h3>
+<p><strong>Применяемые PAI</strong>:</p>
+<ul>
+<li>Распечатанные фото лиц, на которых четко видна радужная оболочка глаза</li>
+<li>Фото/видео лиц на мониторе или экране мобильного устройства на которых четко видна радужная оболочка глаза</li>
+<li>Глазные протезы</li>
+</ul>
+<p><strong>Пример сценария тестирования</strong>: на распечатанную фотографию или экран мобильного устройства можно наклеить контактные линзы, что может помочь обойти некоторые алгоритмы распознавания.</p>
+<p>Важно понимать, что разные цвета радужной оболочки могут иметь разные спектральные характеристики, что в свою очередь может повлиять на качество распознавания и процент ошибок.</p>
+<h2 id="ссылки">Ссылки</h2>
+<ul>
+<li><a href="https://source.android.com/compatibility/cdd">Android Compatibility Definition Documents</a></li>
+</ul>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>Некоторые устройства имеют отдельное физическое хранилище для хранения криптографических данных. <a href="https://developers.google.com/android/security/android-ready-se">Подробнее</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+        
+          <div class="blog-tags">
+            
+              <a href="https://fi5t.xyz/tags/biometrics/">biometrics</a>&nbsp;
+            
+              <a href="https://fi5t.xyz/tags/rtfm/">rtfm</a>&nbsp;
+            
+              <a href="https://fi5t.xyz/tags/mobile/">mobile</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=https%3a%2f%2ffi5t.xyz%2fposts%2fbiometrics-in-android%2f&amp;text=%d0%a7%d0%b0%d1%81%d1%82%d1%8c%202%3a%20%d0%9a%d0%b0%d0%ba%20%d1%83%d1%81%d1%82%d1%80%d0%be%d0%b5%d0%bd%d0%b0%20%d0%b1%d0%b8%d0%be%d0%bc%d0%b5%d1%82%d1%80%d0%b8%d1%8f%20%d0%b2%20Android&amp;via=Fi5t" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ffi5t.xyz%2fposts%2fbiometrics-in-android%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=https%3a%2f%2ffi5t.xyz%2fposts%2fbiometrics-in-android%2f&amp;title=%d0%a7%d0%b0%d1%81%d1%82%d1%8c%202%3a%20%d0%9a%d0%b0%d0%ba%20%d1%83%d1%81%d1%82%d1%80%d0%be%d0%b5%d0%bd%d0%b0%20%d0%b1%d0%b8%d0%be%d0%bc%d0%b5%d1%82%d1%80%d0%b8%d1%8f%20%d0%b2%20Android" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2ffi5t.xyz%2fposts%2fbiometrics-in-android%2f&amp;title=%d0%a7%d0%b0%d1%81%d1%82%d1%8c%202%3a%20%d0%9a%d0%b0%d0%ba%20%d1%83%d1%81%d1%82%d1%80%d0%be%d0%b5%d0%bd%d0%b0%20%d0%b1%d0%b8%d0%be%d0%bc%d0%b5%d1%82%d1%80%d0%b8%d1%8f%20%d0%b2%20Android" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2ffi5t.xyz%2fposts%2fbiometrics-in-android%2f&amp;title=%d0%a7%d0%b0%d1%81%d1%82%d1%8c%202%3a%20%d0%9a%d0%b0%d0%ba%20%d1%83%d1%81%d1%82%d1%80%d0%be%d0%b5%d0%bd%d0%b0%20%d0%b1%d0%b8%d0%be%d0%bc%d0%b5%d1%82%d1%80%d0%b8%d1%8f%20%d0%b2%20Android" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2ffi5t.xyz%2fposts%2fbiometrics-in-android%2f&amp;description=%d0%a7%d0%b0%d1%81%d1%82%d1%8c%202%3a%20%d0%9a%d0%b0%d0%ba%20%d1%83%d1%81%d1%82%d1%80%d0%be%d0%b5%d0%bd%d0%b0%20%d0%b1%d0%b8%d0%be%d0%bc%d0%b5%d1%82%d1%80%d0%b8%d1%8f%20%d0%b2%20Android" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+
+              </div>
+            </section>
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">Смотрите также</h4>
+                  <ul>
+                
+                
+                    <li><a href="/posts/biometrics-attacks/">Часть 3: Атаки на биометрические системы</a></li>
+                
+                    <li><a href="/posts/biometrics-how-it-works/">Часть 1: Как работают системы биометрической аутентификации</a></li>
+                
+              </ul>
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://fi5t.xyz/posts/biometrics-how-it-works/" data-toggle="tooltip" data-placement="top" title="Часть 1: Как работают системы биометрической аутентификации">&larr; Предыдущий</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://fi5t.xyz/posts/biometrics-attacks/" data-toggle="tooltip" data-placement="top" title="Часть 3: Атаки на биометрические системы">Следующий &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+        
+          
+          <div class="disqus-comments">
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "not-unique-x" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+          </div>
+          
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="https://github.com/Fi5t" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/Fi5t" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/channel/UC2VONdPZLg_TisPi9thxLYA" title="Youtube">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-youtube fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://soundcloud.com/dry-rmr" title="SoundCloud">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-soundcloud fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              Fi5t
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2021
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://fi5t.xyz">(не)Уникальный опыт</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          На базе <a href="https://gohugo.io">Hugo v0.89.4</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://fi5t.xyz/js/main.js"></script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://fi5t.xyz/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+
