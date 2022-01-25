@@ -6,7 +6,32 @@
     <description>Recent content on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-ru</language>
-    <lastBuildDate>Sun, 12 Dec 2021 00:00:03 +0300</lastBuildDate><atom:link href="https://fi5t.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 25 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Перехват трафика в Android. Большой гайд.</title>
+      <link>https://fi5t.xyz/posts/intercept-android-traffic/</link>
+      <pubDate>Tue, 25 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fi5t.xyz/posts/intercept-android-traffic/</guid>
+      <description>&lt;h2 id=&#34;зачем-еще-одна-статья&#34;&gt;Зачем еще одна статья?&lt;/h2&gt;
+&lt;p&gt;Задача перехвата трафика android приложений довольно хорошо описана на куче языков и даже не нужно уметь гуглить чтобы найти информацию о том, как настроить прокси и посмотреть заветные запросы. Даже набившая уже всем оскомину тема &amp;ldquo;как отломать ssl pinning&amp;rdquo; была &lt;a href=&#34;https://www.youtube.com/watch?v=Xn6CSqJpf6I&#34;&gt;множество&lt;/a&gt; &lt;a href=&#34;https://www.youtube.com/watch?v=zeU2wlcj_Bw&amp;amp;t=189s&#34;&gt;раз&lt;/a&gt; &lt;a href=&#34;https://github.com/Android-Guards/faq#%D0%BF%D1%8B%D1%82%D0%B0%D1%8E%D1%81%D1%8C-%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%B2%D0%B0%D1%82%D0%B8%D1%82%D1%8C-%D1%82%D1%80%D0%B0%D1%84%D0%B8%D0%BA-%D1%82%D0%B0%D0%BA-%D0%BA%D0%B0%D0%BA-%D0%BD%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%BE-%D0%B2%D1%8B%D1%88%D0%B5-%D0%BD%D0%B8%D1%87%D0%B5%D0%B3%D0%BE-%D0%BD%D0%B5-%D0%B2%D1%8B%D1%85%D0%BE%D0%B4%D0%B8%D1%82-%D1%87%D1%82%D0%BE-%D0%B4%D0%B5%D0%BB%D0%B0%D1%82%D1%8C&#34;&gt;разжевана&lt;/a&gt; и надо быть по пояс странным чтобы в этом не разобраться.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;hellip;когда ты слишком долго в пути, когда тебя обуревает жадность, приходит черный пес чтобы отобрать у тебя все.&lt;br&gt;
+Черный пес (1998)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Да&amp;hellip; потом появляется то самое приложение, которое вопреки всем настройкам не хочет работать через прокси. Или через прокси проходит только часть трафика. В такой ситуации лучше не начинать нажимать все подряд, чтобы не увеличивать энтропию происходящего, а подойти к вопросу системно и последовательно попробовать разные методы для решения этой проблемы.&lt;/p&gt;
+
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;
+&lt;div class=&#34;box&#34; &gt;
+  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+    &lt;div class=&#34;img&#34;&gt;
+      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/intercept-traffic-android/mitm-logo.gif&#34; alt=&#34;/img/intercept-traffic-android/mitm-logo.gif&#34;/&gt;
+    &lt;/div&gt;
+    &lt;a href=&#34;https://fi5t.xyz/img/intercept-traffic-android/mitm-logo.gif&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;</description>
+    </item>
+    
     <item>
       <title>Часть 3: Атаки на биометрические системы</title>
       <link>https://fi5t.xyz/posts/biometrics-attacks/</link>
