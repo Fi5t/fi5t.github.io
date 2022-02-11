@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="ru" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+<script type="text/javascript" >
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+ 
+    ym(64685116, "init", {
+         clickmap:true,
+         trackLinks:true,
+         accurateTrackBounce:true
+    });
+ </script>
+ <noscript><div><img src="https://mc.yandex.ru/watch/64685116" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+ 
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Android 13 Developer Preview 1: Что там по безопасности? - (не)Уникальный опыт</title>
+  <meta name="description" content="Вышла первая версия нового Android 13, и Google обещает, что этот билд продолжит делать нам всем хорошо в плане приватности, безопасности и вообще котики никогда не умрут. Давайте посмотрим, что нового там завезли и стоит ли оно внимания.
+
+
+
+  
+    
+      
+    
+    
+  
+">
+  <meta name="author" content="Fi5t"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "(не)Уникальный опыт",
+    
+    "url": "https:\/\/fi5t.xyz"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/fi5t.xyz"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/fi5t.xyz",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/fi5t.xyz\/posts\/android-13-preview-security\/",
+          "name": "Android 13 developer preview 1 что там по безопасности?"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Fi5t"
+  },
+  "headline": "Android 13 Developer Preview 1: Что там по безопасности?",
+  "description" : "Вышла первая версия нового Android 13, и Google обещает, что этот билд продолжит делать нам всем хорошо в плане приватности, безопасности и вообще котики никогда не умрут. Давайте посмотрим, что нового там завезли и стоит ли оно внимания.\n   ",
+  "inLanguage" : "ru",
+  "wordCount":  1055 ,
+  "datePublished" : "2022-02-11T00:00:00",
+  "dateModified" : "2022-02-11T00:00:00",
+  "image" : "https:\/\/fi5t.xyz\/img\/avatar-icon.jpg",
+  "keywords" : [ "android, mobile, безопасность" ],
+  "mainEntityOfPage" : "https:\/\/fi5t.xyz\/posts\/android-13-preview-security\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/fi5t.xyz",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/fi5t.xyz\/img\/avatar-icon.jpg",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Android 13 Developer Preview 1: Что там по безопасности?" />
+<meta property="og:description" content="Вышла первая версия нового Android 13, и Google обещает, что этот билд продолжит делать нам всем хорошо в плане приватности, безопасности и вообще котики никогда не умрут. Давайте посмотрим, что нового там завезли и стоит ли оно внимания.
+
+
+
+  
+    
+      
+    
+    
+  
+">
+<meta property="og:image" content="https://fi5t.xyz/img/avatar-icon.jpg" />
+<meta property="og:url" content="https://fi5t.xyz/posts/android-13-preview-security/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="(не)Уникальный опыт" />
+
+  <meta name="twitter:title" content="Android 13 Developer Preview 1: Что там по безопасности?" />
+  <meta name="twitter:description" content="Вышла первая версия нового Android 13, и Google обещает, что этот билд продолжит делать нам всем хорошо в плане приватности, безопасности и вообще котики никогда не умрут. Давайте посмотрим, что …">
+  <meta name="twitter:image" content="https://fi5t.xyz/img/avatar-icon.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@Fi5t" />
+  <meta name="twitter:creator" content="@Fi5t" />
+  <link href='https://fi5t.xyz/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.92.1" />
+  <link rel="alternate" href="https://fi5t.xyz/index.xml" type="application/rss+xml" title="(не)Уникальный опыт"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fi5t.xyz/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://fi5t.xyz/css/syntax.css" /><link rel="stylesheet" href="https://fi5t.xyz/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Навигация</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://fi5t.xyz">(не)Уникальный опыт</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+          
+            <li>
+              
+                
+                  <a href="/en" lang="en">en</a>
+                
+              
+                
+              
+            </li>
+          
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="(не)Уникальный опыт" href="https://fi5t.xyz">
+            <img class="avatar-img" src="https://fi5t.xyz/img/avatar-icon.jpg" alt="(не)Уникальный опыт" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header-section ">
+  
+  <div class="intro-header no-img">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <div class="posts-heading">
+            
+            <h1>Android 13 Developer Preview 1: Что там по безопасности?</h1>
+            
+            
+            <hr class="small">
+            
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>Вышла первая версия нового <strong>Android 13</strong>, и Google обещает, что этот билд продолжит делать нам всем хорошо в плане приватности, безопасности и вообще котики никогда не умрут. Давайте посмотрим, что нового там завезли и стоит ли оно внимания.</p>
+
+<link rel="stylesheet" href="https://fi5t.xyz/css/hugo-easy-gallery.css" />
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/android-13-preview-security/logo.png" alt="/img/android-13-preview-security/logo.png"/>
+    </div>
+    <a href="/img/android-13-preview-security/logo.png" itemprop="contentUrl"></a>
+  </figure>
+</div>
+
+<h1 id="photo-picker">Photo picker</h1>
+<p>В Android уже давно есть системный пикер для файлов, который позволяет получать доступ к конкретным файлам без необходимости давать приложению какие-либо разрешения. В Android 11 это приложение <strong>Documents</strong> (<code>com.google.android.documentsui</code>). Для работы с ним нужно просто послать интент или использовать <a href="https://developer.android.com/training/basics/intents/result">Result API</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="c1">// Устаревший, не рекомендованный способ
+</span><span class="c1"></span>
+<span class="k">val</span> <span class="py">documents</span> <span class="p">=</span> <span class="n">Intent</span><span class="p">(</span><span class="n">Intent</span><span class="p">.</span><span class="n">ACTION_GET_CONTENT</span><span class="p">).</span><span class="n">apply</span> <span class="p">{</span>
+    <span class="n">addCategory</span><span class="p">(</span><span class="n">Intent</span><span class="p">.</span><span class="n">CATEGORY_OPENABLE</span><span class="p">)</span>
+    <span class="n">type</span> <span class="p">=</span> <span class="s2">&#34;*/*&#34;</span>
+<span class="p">}</span>
+
+<span class="n">startActivityForResult</span><span class="p">(</span><span class="n">documents</span><span class="p">,</span> <span class="m">1337</span><span class="p">)</span>
+<span class="o">..</span><span class="p">.</span>
+
+<span class="k">override</span> <span class="k">fun</span> <span class="nf">onActivityResult</span><span class="p">(</span><span class="n">requestCode</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">resultCode</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="k">data</span><span class="p">:</span> <span class="n">Intent</span><span class="p">?)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">.</span><span class="n">onActivityResult</span><span class="p">(</span><span class="n">requestCode</span><span class="p">,</span> <span class="n">resultCode</span><span class="p">,</span> <span class="k">data</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">requestCode</span> <span class="o">==</span> <span class="m">1337</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Упадет если нет URI в data ;)
+</span><span class="c1"></span>        <span class="n">image</span><span class="p">.</span><span class="n">setImageURI</span><span class="p">(</span><span class="k">data</span><span class="o">!!</span><span class="p">.</span><span class="k">data</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="c1">// Новый, блестящий способ. Всегда так делайте.
+</span><span class="c1"></span>
+<span class="k">val</span> <span class="py">getContent</span> <span class="p">=</span> <span class="n">registerForActivityResult</span><span class="p">(</span>
+    <span class="n">ActivityResultContracts</span><span class="p">.</span><span class="n">GetContent</span><span class="p">())</span> <span class="p">{</span> <span class="n">uri</span><span class="p">:</span> <span class="n">Uri</span><span class="p">?</span> <span class="o">-&gt;</span>
+        <span class="n">uri</span><span class="o">?.</span><span class="n">let</span> <span class="p">{</span>
+            <span class="n">image</span><span class="p">.</span><span class="n">setImageURI</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="n">getContent</span><span class="p">.</span><span class="n">launch</span><span class="p">(</span><span class="s2">&#34;*/*&#34;</span><span class="p">)</span>
+</code></pre></div><p>Эта штука понимает MIME-типы и вместо <code>*/*</code> туда можно передать <code>image/png</code> и оно позволит выбирать только png картинки. Чувствуете, как ваше приложение становится &ldquo;privacy friendly&rdquo;? То-то же!</p>
+<p>Недостаток у этого пикера ровно один - он слишком &ldquo;общий&rdquo;. Т.е. даже с примененным фильтром по изображениям он будет выглядеть как-то вот так:</p>
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/android-13-preview-security/docsui.png" alt="/img/android-13-preview-security/docsui.png"/>
+    </div>
+    <a href="/img/android-13-preview-security/docsui.png" itemprop="contentUrl"></a>
+  </figure>
+</div>
+
+<p>И тут новый <strong>Photo Picker™</strong> спешит на помощь неся красоту, удобство и безопасность (о ней чуть позже). Он продолжает идею старого пикера в отношении пермишенов и дает новый UI и чуть больше контроля над параметрами выбора изображений и видео.</p>
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/android-13-preview-security/photo-picker-multiselect.gif" alt="/img/android-13-preview-security/photo-picker-multiselect.gif"/>
+    </div>
+    <a href="/img/android-13-preview-security/photo-picker-multiselect.gif" itemprop="contentUrl"></a>
+  </figure>
+</div>
+
+<p>Google пока не показал как вызвать этот пикер через Result API, вероятно это вообще невозможно на данный момент, но старый добрый <code>startActivityForResult</code> все еще тут и будет радовать разработчиков долгие годы. Как <code>AsyncTask</code>&hellip;</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">val</span> <span class="py">maxNumPhotosAndVideos</span> <span class="p">=</span> <span class="m">10</span>
+<span class="k">val</span> <span class="py">intent</span> <span class="p">=</span> <span class="n">Intent</span><span class="p">(</span><span class="n">MediaStore</span><span class="p">.</span><span class="n">ACTION_PICK_IMAGES</span><span class="p">)</span>
+<span class="n">intent</span><span class="p">.</span><span class="n">putExtra</span><span class="p">(</span><span class="n">MediaStore</span><span class="p">.</span><span class="n">EXTRA_PICK_IMAGES_MAX</span><span class="p">,</span> <span class="n">maxNumPhotosAndVideos</span><span class="p">)</span>
+<span class="n">startActivityForResult</span><span class="p">(</span><span class="n">intent</span><span class="p">,</span> <span class="n">PHOTO_PICKER_MULTI_SELECT_REQUEST_CODE</span><span class="p">)</span>
+
+<span class="o">..</span><span class="p">.</span>
+
+<span class="k">override</span> <span class="k">fun</span> <span class="nf">onActivityResult</span><span class="p">(</span><span class="n">requestCode</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">resultCode</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="k">data</span><span class="p">:</span> <span class="n">Intent</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">.</span><span class="n">onActivityResult</span><span class="p">(</span><span class="n">requestCode</span><span class="p">,</span> <span class="n">resultCode</span><span class="p">,</span> <span class="k">data</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">resultCode</span> <span class="o">!=</span> <span class="n">Activity</span><span class="p">.</span><span class="n">RESULT_OK</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Обработать ошибку
+</span><span class="c1"></span>        <span class="k">return</span>
+    <span class="p">}</span>
+    <span class="k">when</span> <span class="p">(</span><span class="n">requestCode</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">REQUEST_PHOTO_PICKER_SINGLE_SELECT</span> <span class="o">-&gt;</span> <span class="p">{</span>
+            <span class="c1">// Обработать выбор одной фотографии
+</span><span class="c1"></span>            <span class="k">val</span> <span class="py">currentUri</span><span class="p">:</span> <span class="n">Uri</span> <span class="p">=</span> <span class="k">data</span><span class="p">.</span><span class="k">data</span>
+
+            <span class="c1">// Do stuff with the photo/video URI.
+</span><span class="c1"></span>            <span class="k">return</span>
+        <span class="p">}</span>
+        
+        <span class="n">REQUEST_PHOTO_PICKER_MULTI_SELECT</span> <span class="o">-&gt;</span> <span class="p">{</span>
+            <span class="c1">// Обработать выбор нескольких фотографий
+</span><span class="c1"></span>            <span class="k">var</span> <span class="py">i</span> <span class="p">=</span> <span class="m">0</span>
+            <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="p">&lt;</span> <span class="k">data</span><span class="p">.</span><span class="n">clipData</span><span class="o">!!</span><span class="p">.</span><span class="n">itemCount</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// Отправить все, что смогли украсть на C&amp;C
+</span><span class="c1"></span>            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div><p>Код выше, запустит пикер в режиме выбора нескольких фотографий и можно даже указать максимальное количество больше которого он выбрать не даст. Количество, при этом, далеко не бесконечное и регламентируется методом <a href="https://developer.android.com/reference/android/provider/MediaStore#getPickImagesMaxLimit()">MediaStore#getPickImagesMaxLimit</a></p>
+<p>А теперь самое главное - <strong>почему это все безопасно</strong>? Покажу на примере старого пикера, потому что мне сейчас лень накатывать Preview версию студии чтобы скачать образ на эмулятор :D</p>
+<p>Я специально показал два спосба запуска пикера, потому что так нагляднее. Давайте еще раз:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">val</span> <span class="py">documents</span> <span class="p">=</span> <span class="n">Intent</span><span class="p">(</span><span class="n">Intent</span><span class="p">.</span><span class="n">ACTION_GET_CONTENT</span><span class="p">).</span><span class="n">apply</span> <span class="p">{</span>
+    <span class="n">addCategory</span><span class="p">(</span><span class="n">Intent</span><span class="p">.</span><span class="n">CATEGORY_OPENABLE</span><span class="p">)</span>
+    <span class="n">type</span> <span class="p">=</span> <span class="s2">&#34;*/*&#34;</span>
+<span class="p">}</span>
+
+<span class="n">startActivityForResult</span><span class="p">(</span><span class="n">documents</span><span class="p">,</span> <span class="m">1337</span><span class="p">)</span>
+</code></pre></div><p>Мы здесь видим неявный <strong>intent</strong>, а это значит, что можно создать вредоносное приложение, в <strong>activity</strong> которого будет <strong>intent-filter</strong> c таким же <strong>action</strong> и <strong>category</strong>. В этом случае, при старте такого неявного intent-а система пойдет искать все activity, которые могут его обработать и если их больше одной, то отобразится <strong>Intent chooser</strong>. Это дает нам примерно 50% шанс увести юзера в нашу вредоносную галлерею и все украсть, а то и чего похуже&hellip;</p>
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/android-13-preview-security/huy-tam-plaval_52853848_orig_.jpeg" alt="/img/android-13-preview-security/huy-tam-plaval_52853848_orig_.jpeg"/>
+    </div>
+    <a href="/img/android-13-preview-security/huy-tam-plaval_52853848_orig_.jpeg" itemprop="contentUrl"></a>
+  </figure>
+</div>
+
+<p>как любил говаривать <a href="https://ru.wikipedia.org/wiki/%D0%A3%D1%8D%D1%81%D0%B8%D0%B1%D0%B0%2C_%D0%9C%D0%BE%D1%80%D0%B8%D1%85%D1%8D%D0%B9">Морихэй Уэсиба</a>.</p>
+<p>При выполнении этого кода будет запущено приложение <strong>Documents</strong>. Без вариантов. Даже на Android 6.0.1. Но как же так? Хитрость кроется в том, как определена целевая activity в этом приложении:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;activity</span>
+    <span class="na">android:theme=</span><span class="s">&#34;@ref/0x7f1200f5&#34;</span>
+    <span class="na">android:name=</span><span class="s">&#34;com.android.documentsui.picker.PickActivity&#34;</span>
+    <span class="na">android:exported=</span><span class="s">&#34;true&#34;</span>
+    <span class="na">android:visibleToInstantApps=</span><span class="s">&#34;true&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;intent-filter</span> <span class="na">android:priority=</span><span class="s">&#34;100&#34;</span><span class="nt">&gt;</span> <span class="c">&lt;!-- эта строчка все портит --&gt;</span>
+        <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">&#34;android.intent.action.GET_CONTENT&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;category</span> <span class="na">android:name=</span><span class="s">&#34;android.intent.category.DEFAULT&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;category</span> <span class="na">android:name=</span><span class="s">&#34;android.intent.category.OPENABLE&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;data</span> <span class="na">android:mimeType=</span><span class="s">&#34;*/*&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/intent-filter&gt;</span>
+<span class="nt">&lt;/activity&gt;</span>
+</code></pre></div><p>Ну приоритет это старая история. Сейчас поставим <code>999</code> и все будет хорошо. Но Морихэй Уэсиба и в этой ситуации дает нам правильный ответ ;) Давайте разбираться почему так происходит. Начнем с метода <a href="https://cs.android.com/android/platform/superproject/+/master:frameworks/base/services/core/java/com/android/server/pm/ComponentResolver.java;l=929;drc=master">ComponentResolver#adjustPriority</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">String</span> <span class="n">packageName</span> <span class="o">=</span> <span class="n">activity</span><span class="o">.</span><span class="na">getPackageName</span><span class="o">();</span>
+<span class="n">AndroidPackage</span> <span class="n">pkg</span> <span class="o">=</span> <span class="n">sPackageManagerInternal</span><span class="o">.</span><span class="na">getPackage</span><span class="o">(</span><span class="n">packageName</span><span class="o">);</span>
+<span class="kd">final</span> <span class="kt">boolean</span> <span class="n">privilegedApp</span> <span class="o">=</span> <span class="n">pkg</span><span class="o">.</span><span class="na">isPrivileged</span><span class="o">();</span>
+<span class="n">String</span> <span class="n">className</span> <span class="o">=</span> <span class="n">activity</span><span class="o">.</span><span class="na">getClassName</span><span class="o">();</span>
+<span class="k">if</span> <span class="o">(!</span><span class="n">privilegedApp</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// non-privileged applications can never define a priority &gt;0
+</span><span class="c1"></span>    <span class="k">if</span> <span class="o">(</span><span class="n">DEBUG_FILTERS</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Slog</span><span class="o">.</span><span class="na">i</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&#34;Non-privileged app; cap priority to 0;&#34;</span>
+                <span class="o">+</span> <span class="s">&#34; package: &#34;</span> <span class="o">+</span> <span class="n">packageName</span>
+                <span class="o">+</span> <span class="s">&#34; activity: &#34;</span> <span class="o">+</span> <span class="n">className</span>
+                <span class="o">+</span> <span class="s">&#34; origPrio: &#34;</span> <span class="o">+</span> <span class="n">intent</span><span class="o">.</span><span class="na">getPriority</span><span class="o">());</span>
+    <span class="o">}</span>
+    <span class="n">intent</span><span class="o">.</span><span class="na">setPriority</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+    <span class="k">return</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div><p>Он и не дает нам перебить установленный в <code>com.android.documentsui.picker.PickActivity</code> приоритет. Согласно <a href="https://source.android.com/devices/tech/config/perms-allowlist">документации</a>, привелигерованные приложения живут в <code>/system/priv-app</code> и некоторых других директориях. Проверяем:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sunfish:/ $ ls -la /system/priv-app
+total <span class="m">156</span>
+drwxr-xr-x <span class="m">39</span> root root <span class="m">4096</span> 2009-01-01 03:00 .
+drwxr-xr-x <span class="m">12</span> root root <span class="m">4096</span> 2009-01-01 03:00 ..
+...
+drwxr-xr-x  <span class="m">2</span> root root <span class="m">4096</span> 2009-01-01 03:00 ContactsProvider
+drwxr-xr-x  <span class="m">2</span> root root <span class="m">4096</span> 2009-01-01 03:00 DocumentsUIGoogle &lt;-- а вот и оно
+drwxr-xr-x  <span class="m">2</span> root root <span class="m">4096</span> 2009-01-01 03:00 DownloadProvider
+...
+</code></pre></div><p>И с грустью осознаем, что тягаться с привелигерованным приложением с выставленным явно приоритетом нам не по силам. Еще немного инфы про приоритеты можно найти <a href="https://developer.android.com/guide/topics/manifest/intent-filter-element.html#priority">тут</a>.</p>
+<p>Согласно законам здравого смысла, новый пикер должен работать схожим образом. Это нужно обязательно проверить.</p>
+<h1 id="новое-разрешение-для-wi-fi">Новое разрешение для Wi-Fi</h1>
+<p>Google продолжает радовать нас новыми пермишенами. Феерический выход из-за печечки <a href="https://developer.android.com/guide/topics/connectivity/bluetooth/permissions">пермишенов на bluethooth</a> в 12-й версии продолжается столь же эпохальным выходом пермешенов на Wi-Fi. Эпохальность в том, что и те и другие перестали требовать геолокацию для своей работы. Так что теперь ваши приложения смогут брать новые вершины privacy friendly-евости.</p>
+<p>Называется новый пермишен <a href="https://developer.android.com/reference/android/Manifest.permission#NEARBY_WIFI_DEVICES">NEARBY_WIFI_DEVICES</a>. Для всех приложений с таргетом на Android 13 и выше, он является обязательным, если используются следующие API:</p>
+<ul>
+<li>WifiManager
+<ul>
+<li><a href="https://developer.android.com/reference/android/net/wifi/WifiManager#startLocalOnlyHotspot(android.net.wifi.WifiManager.LocalOnlyHotspotCallback,%20android.os.Handler)">startLocalOnlyHotspot()</a></li>
+</ul>
+</li>
+<li>WifiAwareManager
+<ul>
+<li><a href="https://developer.android.com/reference/android/net/wifi/aware/WifiAwareManager#attach(android.net.wifi.aware.AttachCallback,%20android.os.Handler)">attach()</a></li>
+</ul>
+</li>
+<li>WifiAwareSession
+<ul>
+<li><a href="https://developer.android.com/reference/android/net/wifi/aware/WifiAwareSession#publish(android.net.wifi.aware.PublishConfig,%20android.net.wifi.aware.DiscoverySessionCallback,%20android.os.Handler)">publish()</a></li>
+<li><a href="https://developer.android.com/reference/android/net/wifi/aware/WifiAwareSession#subscribe(android.net.wifi.aware.SubscribeConfig,%20android.net.wifi.aware.DiscoverySessionCallback,%20android.os.Handler)">subscribe()</a></li>
+</ul>
+</li>
+<li>WifiP2pManager
+<ul>
+<li><a href="https://developer.android.com/reference/android/net/wifi/p2p/WifiP2pManager#addLocalService(android.net.wifi.p2p.WifiP2pManager.Channel,%20android.net.wifi.p2p.nsd.WifiP2pServiceInfo,%20android.net.wifi.p2p.WifiP2pManager.ActionListener)">addLocalService()</a></li>
+<li><a href="https://developer.android.com/reference/android/net/wifi/p2p/WifiP2pManager#connect(android.net.wifi.p2p.WifiP2pManager.Channel,%20android.net.wifi.p2p.WifiP2pConfig,%20android.net.wifi.p2p.WifiP2pManager.ActionListener)">connect()</a></li>
+<li><a href="https://developer.android.com/reference/android/net/wifi/p2p/WifiP2pManager#createGroup(android.net.wifi.p2p.WifiP2pManager.Channel,%20android.net.wifi.p2p.WifiP2pConfig,%20android.net.wifi.p2p.WifiP2pManager.ActionListener)">createGroup()</a></li>
+<li><a href="https://developer.android.com/reference/android/net/wifi/p2p/WifiP2pManager#discoverPeers(android.net.wifi.p2p.WifiP2pManager.Channel,%20android.net.wifi.p2p.WifiP2pManager.ActionListener)">discoverPeers()</a></li>
+<li><a href="https://developer.android.com/reference/android/net/wifi/p2p/WifiP2pManager#discoverServices(android.net.wifi.p2p.WifiP2pManager.Channel,%20android.net.wifi.p2p.WifiP2pManager.ActionListener)">discoverServices()</a></li>
+<li><a href="https://developer.android.com/reference/android/net/wifi/p2p/WifiP2pManager#requestDeviceInfo(android.net.wifi.p2p.WifiP2pManager.Channel,%20android.net.wifi.p2p.WifiP2pManager.DeviceInfoListener)">requestDeviceInfo()</a></li>
+<li><a href="https://developer.android.com/reference/android/net/wifi/p2p/WifiP2pManager#requestGroupInfo(android.net.wifi.p2p.WifiP2pManager.Channel,%20android.net.wifi.p2p.WifiP2pManager.GroupInfoListener)">requestGroupInfo()</a></li>
+<li><a href="https://developer.android.com/reference/android/net/wifi/p2p/WifiP2pManager#requestPeers(android.net.wifi.p2p.WifiP2pManager.Channel,%20android.net.wifi.p2p.WifiP2pManager.PeerListListener)">requestPeers()</a></li>
+</ul>
+</li>
+<li>WifiRttManager
+<ul>
+<li><a href="https://developer.android.com/reference/android/net/wifi/rtt/WifiRttManager#startRanging(android.net.wifi.rtt.RangingRequest,%20java.util.concurrent.Executor,%20android.net.wifi.rtt.RangingResultCallback)">startRanging()</a></li>
+</ul>
+</li>
+</ul>
+<p>Естественно не все так хорошо и есть методы, которые все еще требуют <code>ACCESS_FINE_LOCATION</code> для своей работы:</p>
+<ul>
+<li>WifiManager
+<ul>
+<li><a href="https://developer.android.com/reference/android/net/wifi/WifiManager#getScanResults()">getScanResults()</a></li>
+<li><a href="https://developer.android.com/reference/android/net/wifi/WifiManager#startScan()">startScan()</a></li>
+</ul>
+</li>
+</ul>
+<p>Так что будь бдителен любитель начать сканирование и получить его результаты ;) Ну и как обычно, если будете дергать API без соотвествующих пермишенов, то получите <code>SecurityException</code>.</p>
+<p>Новый пермишен относится к группе <code>NEARBY_DEVICES</code>, которая появилась в прошлой версии и также включает в себя пермишены на bluethooth. Почему это важно? При запросе пермишенов юзер получит универсальный диалог запроса разрешений на группу <code>NEARBY_DEVICES</code>. И отключить в настройках можно только всю группу сразу. Г - <del>говно</del> гранулярность!</p>
+<p>Еще один важный момент - если ваше приложение имеет таргет на Android 13 и вы точно знаете, что не используете никакое Wi-Fi API связанное с геолокаций, то для того чтобы <del>не спалиться</del> задекларировать это явно, нужно использовать специальный флаг <code>neverForLocation</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;manifest&gt;</span>
+    <span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&#34;android.permission.NEARBY_WIFI_DEVICES&#34;</span>
+                     <span class="na">android:usesPermissionFlags=</span><span class="s">&#34;neverForLocation&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;application&gt;</span>
+        ...
+    <span class="nt">&lt;/application&gt;</span>
+<span class="nt">&lt;/manifest&gt;</span>
+</code></pre></div><p>Завершить пост хочу красивой картинкой, которая показывает как будет выглядеть новый воркфлоу</p>
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/android-13-preview-security/nearby-wifi-permission-flow-t.svg" alt="/img/android-13-preview-security/nearby-wifi-permission-flow-t.svg"/>
+    </div>
+    <a href="/img/android-13-preview-security/nearby-wifi-permission-flow-t.svg" itemprop="contentUrl"></a>
+  </figure>
+</div>
+
+<p>Увидимся в следующих обновлениях.</p>
+<h1 id="ссылки">Ссылки</h1>
+<ul>
+<li><a href="https://developer.android.com/about/versions/13/features/photopicker">Photo picker</a></li>
+<li><a href="https://developer.android.com/about/versions/13/features/nearby-wifi-devices-permission">New runtime permission for nearby Wi-Fi devices</a></li>
+<li><a href="https://android-developers.googleblog.com/2022/02/first-preview-android-13.html">The first developer preview of Android 13</a></li>
+<li><a href="https://android-developers.googleblog.com/2011/01/processing-ordered-broadcasts.html">Processing Ordered Broadcasts</a></li>
+</ul>
+
+        
+          <div class="blog-tags">
+            
+              <a href="https://fi5t.xyz/tags/android/">android</a>&nbsp;
+            
+              <a href="https://fi5t.xyz/tags/mobile/">mobile</a>&nbsp;
+            
+              <a href="https://fi5t.xyz/tags/%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C/">безопасность</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=https%3a%2f%2ffi5t.xyz%2fposts%2fandroid-13-preview-security%2f&amp;text=Android%2013%20Developer%20Preview%201%3a%20%d0%a7%d1%82%d0%be%20%d1%82%d0%b0%d0%bc%20%d0%bf%d0%be%20%d0%b1%d0%b5%d0%b7%d0%be%d0%bf%d0%b0%d1%81%d0%bd%d0%be%d1%81%d1%82%d0%b8%3f&amp;via=Fi5t" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ffi5t.xyz%2fposts%2fandroid-13-preview-security%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=https%3a%2f%2ffi5t.xyz%2fposts%2fandroid-13-preview-security%2f&amp;title=Android%2013%20Developer%20Preview%201%3a%20%d0%a7%d1%82%d0%be%20%d1%82%d0%b0%d0%bc%20%d0%bf%d0%be%20%d0%b1%d0%b5%d0%b7%d0%be%d0%bf%d0%b0%d1%81%d0%bd%d0%be%d1%81%d1%82%d0%b8%3f" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2ffi5t.xyz%2fposts%2fandroid-13-preview-security%2f&amp;title=Android%2013%20Developer%20Preview%201%3a%20%d0%a7%d1%82%d0%be%20%d1%82%d0%b0%d0%bc%20%d0%bf%d0%be%20%d0%b1%d0%b5%d0%b7%d0%be%d0%bf%d0%b0%d1%81%d0%bd%d0%be%d1%81%d1%82%d0%b8%3f" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2ffi5t.xyz%2fposts%2fandroid-13-preview-security%2f&amp;title=Android%2013%20Developer%20Preview%201%3a%20%d0%a7%d1%82%d0%be%20%d1%82%d0%b0%d0%bc%20%d0%bf%d0%be%20%d0%b1%d0%b5%d0%b7%d0%be%d0%bf%d0%b0%d1%81%d0%bd%d0%be%d1%81%d1%82%d0%b8%3f" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2ffi5t.xyz%2fposts%2fandroid-13-preview-security%2f&amp;description=Android%2013%20Developer%20Preview%201%3a%20%d0%a7%d1%82%d0%be%20%d1%82%d0%b0%d0%bc%20%d0%bf%d0%be%20%d0%b1%d0%b5%d0%b7%d0%be%d0%bf%d0%b0%d1%81%d0%bd%d0%be%d1%81%d1%82%d0%b8%3f" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+
+              </div>
+            </section>
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">Смотрите также</h4>
+                  <ul>
+                
+                
+                    <li><a href="/posts/intercept-android-traffic/">Перехват трафика в Android. Большой гайд.</a></li>
+                
+                    <li><a href="/posts/biometrics-attacks/">Часть 3: Атаки на биометрические системы</a></li>
+                
+                    <li><a href="/posts/biometrics-in-android/">Часть 2: Как устроена биометрия в Android</a></li>
+                
+                    <li><a href="/posts/biometrics-how-it-works/">Часть 1: Как работают системы биометрической аутентификации</a></li>
+                
+                    <li><a href="/posts/reverse-proxy-with-mtls-and-ktor/">Создаем reverse proxy с mTLS на Ktor</a></li>
+                
+              </ul>
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://fi5t.xyz/posts/intercept-android-traffic/" data-toggle="tooltip" data-placement="top" title="Перехват трафика в Android. Большой гайд.">&larr; Предыдущий</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
+        
+          
+          <div class="disqus-comments">
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "not-unique-x" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+          </div>
+          
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="https://github.com/Fi5t" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/Fi5t" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/channel/UC2VONdPZLg_TisPi9thxLYA" title="Youtube">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-youtube fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://soundcloud.com/dry-rmr" title="SoundCloud">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-soundcloud fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              Fi5t
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2022
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://fi5t.xyz">(не)Уникальный опыт</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          На базе <a href="https://gohugo.io">Hugo v0.92.1</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://fi5t.xyz/js/main.js"></script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://fi5t.xyz/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

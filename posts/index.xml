@@ -6,7 +6,26 @@
     <description>Recent content in Posts on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-ru</language>
-    <lastBuildDate>Tue, 25 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 11 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Android 13 Developer Preview 1: Что там по безопасности?</title>
+      <link>https://fi5t.xyz/posts/android-13-preview-security/</link>
+      <pubDate>Fri, 11 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fi5t.xyz/posts/android-13-preview-security/</guid>
+      <description>&lt;p&gt;Вышла первая версия нового &lt;strong&gt;Android 13&lt;/strong&gt;, и Google обещает, что этот билд продолжит делать нам всем хорошо в плане приватности, безопасности и вообще котики никогда не умрут. Давайте посмотрим, что нового там завезли и стоит ли оно внимания.&lt;/p&gt;
+
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;
+&lt;div class=&#34;box&#34; &gt;
+  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+    &lt;div class=&#34;img&#34;&gt;
+      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/android-13-preview-security/logo.png&#34; alt=&#34;/img/android-13-preview-security/logo.png&#34;/&gt;
+    &lt;/div&gt;
+    &lt;a href=&#34;https://fi5t.xyz/img/android-13-preview-security/logo.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;</description>
+    </item>
+    
     <item>
       <title>Перехват трафика в Android. Большой гайд.</title>
       <link>https://fi5t.xyz/posts/intercept-android-traffic/</link>
