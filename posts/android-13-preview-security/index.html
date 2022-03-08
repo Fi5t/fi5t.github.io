@@ -125,7 +125,7 @@
   <meta name="twitter:site" content="@Fi5t" />
   <meta name="twitter:creator" content="@Fi5t" />
   <link href='https://fi5t.xyz/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.92.2" />
+  <meta name="generator" content="Hugo 0.93.2" />
   <link rel="alternate" href="https://fi5t.xyz/index.xml" type="application/rss+xml" title="(не)Уникальный опыт"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fi5t.xyz/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -286,34 +286,34 @@
 
 <h1 id="photo-picker">Photo picker</h1>
 <p>В Android уже давно есть системный пикер для файлов, который позволяет получать доступ к конкретным файлам без необходимости давать приложению какие-либо разрешения. В Android 11 это приложение <strong>Documents</strong> (<code>com.google.android.documentsui</code>). Для работы с ним нужно просто послать интент или использовать <a href="https://developer.android.com/training/basics/intents/result">Result API</a></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="c1">// Устаревший, не рекомендованный способ
-</span><span class="c1"></span>
-<span class="k">val</span> <span class="py">documents</span> <span class="p">=</span> <span class="n">Intent</span><span class="p">(</span><span class="n">Intent</span><span class="p">.</span><span class="n">ACTION_GET_CONTENT</span><span class="p">).</span><span class="n">apply</span> <span class="p">{</span>
-    <span class="n">addCategory</span><span class="p">(</span><span class="n">Intent</span><span class="p">.</span><span class="n">CATEGORY_OPENABLE</span><span class="p">)</span>
-    <span class="n">type</span> <span class="p">=</span> <span class="s2">&#34;*/*&#34;</span>
-<span class="p">}</span>
-
-<span class="n">startActivityForResult</span><span class="p">(</span><span class="n">documents</span><span class="p">,</span> <span class="m">1337</span><span class="p">)</span>
-<span class="o">..</span><span class="p">.</span>
-
-<span class="k">override</span> <span class="k">fun</span> <span class="nf">onActivityResult</span><span class="p">(</span><span class="n">requestCode</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">resultCode</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="k">data</span><span class="p">:</span> <span class="n">Intent</span><span class="p">?)</span> <span class="p">{</span>
-    <span class="k">super</span><span class="p">.</span><span class="n">onActivityResult</span><span class="p">(</span><span class="n">requestCode</span><span class="p">,</span> <span class="n">resultCode</span><span class="p">,</span> <span class="k">data</span><span class="p">)</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">requestCode</span> <span class="o">==</span> <span class="m">1337</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// Упадет если нет URI в data ;)
-</span><span class="c1"></span>        <span class="n">image</span><span class="p">.</span><span class="n">setImageURI</span><span class="p">(</span><span class="k">data</span><span class="o">!!</span><span class="p">.</span><span class="k">data</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="c1">// Новый, блестящий способ. Всегда так делайте.
-</span><span class="c1"></span>
-<span class="k">val</span> <span class="py">getContent</span> <span class="p">=</span> <span class="n">registerForActivityResult</span><span class="p">(</span>
-    <span class="n">ActivityResultContracts</span><span class="p">.</span><span class="n">GetContent</span><span class="p">())</span> <span class="p">{</span> <span class="n">uri</span><span class="p">:</span> <span class="n">Uri</span><span class="p">?</span> <span class="o">-&gt;</span>
-        <span class="n">uri</span><span class="o">?.</span><span class="n">let</span> <span class="p">{</span>
-            <span class="n">image</span><span class="p">.</span><span class="n">setImageURI</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-
-<span class="n">getContent</span><span class="p">.</span><span class="n">launch</span><span class="p">(</span><span class="s2">&#34;*/*&#34;</span><span class="p">)</span>
-</code></pre></div><p>Эта штука понимает MIME-типы и вместо <code>*/*</code> туда можно передать <code>image/png</code> и оно позволит выбирать только png картинки. Чувствуете, как ваше приложение становится &ldquo;privacy friendly&rdquo;? То-то же!</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Устаревший, не рекомендованный способ
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="py">documents</span> <span class="p">=</span> <span class="n">Intent</span><span class="p">(</span><span class="n">Intent</span><span class="p">.</span><span class="n">ACTION_GET_CONTENT</span><span class="p">).</span><span class="n">apply</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">addCategory</span><span class="p">(</span><span class="n">Intent</span><span class="p">.</span><span class="n">CATEGORY_OPENABLE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">type</span> <span class="p">=</span> <span class="s2">&#34;*/*&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">startActivityForResult</span><span class="p">(</span><span class="n">documents</span><span class="p">,</span> <span class="m">1337</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">..</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">override</span> <span class="k">fun</span> <span class="nf">onActivityResult</span><span class="p">(</span><span class="n">requestCode</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">resultCode</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="k">data</span><span class="p">:</span> <span class="n">Intent</span><span class="p">?)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">super</span><span class="p">.</span><span class="n">onActivityResult</span><span class="p">(</span><span class="n">requestCode</span><span class="p">,</span> <span class="n">resultCode</span><span class="p">,</span> <span class="k">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">requestCode</span> <span class="o">==</span> <span class="m">1337</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Упадет если нет URI в data ;)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">image</span><span class="p">.</span><span class="n">setImageURI</span><span class="p">(</span><span class="k">data</span><span class="o">!!</span><span class="p">.</span><span class="k">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Новый, блестящий способ. Всегда так делайте.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="py">getContent</span> <span class="p">=</span> <span class="n">registerForActivityResult</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ActivityResultContracts</span><span class="p">.</span><span class="n">GetContent</span><span class="p">())</span> <span class="p">{</span> <span class="n">uri</span><span class="p">:</span> <span class="n">Uri</span><span class="p">?</span> <span class="o">-&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">uri</span><span class="o">?.</span><span class="n">let</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">image</span><span class="p">.</span><span class="n">setImageURI</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">getContent</span><span class="p">.</span><span class="n">launch</span><span class="p">(</span><span class="s2">&#34;*/*&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>Эта штука понимает MIME-типы и вместо <code>*/*</code> туда можно передать <code>image/png</code> и оно позволит выбирать только png картинки. Чувствуете, как ваше приложение становится &ldquo;privacy friendly&rdquo;? То-то же!</p>
 <p>Недостаток у этого пикера ровно один - он слишком &ldquo;общий&rdquo;. Т.е. даже с примененным фильтром по изображениям он будет выглядеть как-то вот так:</p>
 
 
@@ -339,48 +339,47 @@
 </div>
 
 <p>Google пока не показал как вызвать этот пикер через Result API, вероятно это вообще невозможно на данный момент, но старый добрый <code>startActivityForResult</code> все еще тут и будет радовать разработчиков долгие годы. Как <code>AsyncTask</code>&hellip;</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">val</span> <span class="py">maxNumPhotosAndVideos</span> <span class="p">=</span> <span class="m">10</span>
-<span class="k">val</span> <span class="py">intent</span> <span class="p">=</span> <span class="n">Intent</span><span class="p">(</span><span class="n">MediaStore</span><span class="p">.</span><span class="n">ACTION_PICK_IMAGES</span><span class="p">)</span>
-<span class="n">intent</span><span class="p">.</span><span class="n">putExtra</span><span class="p">(</span><span class="n">MediaStore</span><span class="p">.</span><span class="n">EXTRA_PICK_IMAGES_MAX</span><span class="p">,</span> <span class="n">maxNumPhotosAndVideos</span><span class="p">)</span>
-<span class="n">startActivityForResult</span><span class="p">(</span><span class="n">intent</span><span class="p">,</span> <span class="n">PHOTO_PICKER_MULTI_SELECT_REQUEST_CODE</span><span class="p">)</span>
-
-<span class="o">..</span><span class="p">.</span>
-
-<span class="k">override</span> <span class="k">fun</span> <span class="nf">onActivityResult</span><span class="p">(</span><span class="n">requestCode</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">resultCode</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="k">data</span><span class="p">:</span> <span class="n">Intent</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">super</span><span class="p">.</span><span class="n">onActivityResult</span><span class="p">(</span><span class="n">requestCode</span><span class="p">,</span> <span class="n">resultCode</span><span class="p">,</span> <span class="k">data</span><span class="p">)</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">resultCode</span> <span class="o">!=</span> <span class="n">Activity</span><span class="p">.</span><span class="n">RESULT_OK</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// Обработать ошибку
-</span><span class="c1"></span>        <span class="k">return</span>
-    <span class="p">}</span>
-    <span class="k">when</span> <span class="p">(</span><span class="n">requestCode</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">REQUEST_PHOTO_PICKER_SINGLE_SELECT</span> <span class="o">-&gt;</span> <span class="p">{</span>
-            <span class="c1">// Обработать выбор одной фотографии
-</span><span class="c1"></span>            <span class="k">val</span> <span class="py">currentUri</span><span class="p">:</span> <span class="n">Uri</span> <span class="p">=</span> <span class="k">data</span><span class="p">.</span><span class="k">data</span>
-
-            <span class="c1">// Do stuff with the photo/video URI.
-</span><span class="c1"></span>            <span class="k">return</span>
-        <span class="p">}</span>
-        
-        <span class="n">REQUEST_PHOTO_PICKER_MULTI_SELECT</span> <span class="o">-&gt;</span> <span class="p">{</span>
-            <span class="c1">// Обработать выбор нескольких фотографий
-</span><span class="c1"></span>            <span class="k">var</span> <span class="py">i</span> <span class="p">=</span> <span class="m">0</span>
-            <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="p">&lt;</span> <span class="k">data</span><span class="p">.</span><span class="n">clipData</span><span class="o">!!</span><span class="p">.</span><span class="n">itemCount</span><span class="p">)</span> <span class="p">{</span>
-                <span class="c1">// Отправить все, что смогли украсть на C&amp;C
-</span><span class="c1"></span>            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-</code></pre></div><p>Код выше, запустит пикер в режиме выбора нескольких фотографий и можно даже указать максимальное количество больше которого он выбрать не даст. Количество, при этом, далеко не бесконечное и регламентируется методом <a href="https://developer.android.com/reference/android/provider/MediaStore#getPickImagesMaxLimit()">MediaStore#getPickImagesMaxLimit</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">val</span> <span class="py">maxNumPhotosAndVideos</span> <span class="p">=</span> <span class="m">10</span>
+</span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="py">intent</span> <span class="p">=</span> <span class="n">Intent</span><span class="p">(</span><span class="n">MediaStore</span><span class="p">.</span><span class="n">ACTION_PICK_IMAGES</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">intent</span><span class="p">.</span><span class="n">putExtra</span><span class="p">(</span><span class="n">MediaStore</span><span class="p">.</span><span class="n">EXTRA_PICK_IMAGES_MAX</span><span class="p">,</span> <span class="n">maxNumPhotosAndVideos</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">startActivityForResult</span><span class="p">(</span><span class="n">intent</span><span class="p">,</span> <span class="n">PHOTO_PICKER_MULTI_SELECT_REQUEST_CODE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">..</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">override</span> <span class="k">fun</span> <span class="nf">onActivityResult</span><span class="p">(</span><span class="n">requestCode</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">resultCode</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="k">data</span><span class="p">:</span> <span class="n">Intent</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">super</span><span class="p">.</span><span class="n">onActivityResult</span><span class="p">(</span><span class="n">requestCode</span><span class="p">,</span> <span class="n">resultCode</span><span class="p">,</span> <span class="k">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">resultCode</span> <span class="o">!=</span> <span class="n">Activity</span><span class="p">.</span><span class="n">RESULT_OK</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Обработать ошибку
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">when</span> <span class="p">(</span><span class="n">requestCode</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">REQUEST_PHOTO_PICKER_SINGLE_SELECT</span> <span class="o">-&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// Обработать выбор одной фотографии
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">val</span> <span class="py">currentUri</span><span class="p">:</span> <span class="n">Uri</span> <span class="p">=</span> <span class="k">data</span><span class="p">.</span><span class="k">data</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1">// Do stuff with the photo/video URI.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">return</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">REQUEST_PHOTO_PICKER_MULTI_SELECT</span> <span class="o">-&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// Обработать выбор нескольких фотографий
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">var</span> <span class="py">i</span> <span class="p">=</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">            <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="p">&lt;</span> <span class="k">data</span><span class="p">.</span><span class="n">clipData</span><span class="o">!!</span><span class="p">.</span><span class="n">itemCount</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">// Отправить все, что смогли украсть на C&amp;C
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Код выше, запустит пикер в режиме выбора нескольких фотографий и можно даже указать максимальное количество больше которого он выбрать не даст. Количество, при этом, далеко не бесконечное и регламентируется методом <a href="https://developer.android.com/reference/android/provider/MediaStore#getPickImagesMaxLimit()">MediaStore#getPickImagesMaxLimit</a></p>
 <p>А теперь самое главное - <strong>почему это все безопасно</strong>? Покажу на примере старого пикера, потому что мне сейчас лень накатывать Preview версию студии чтобы скачать образ на эмулятор :D</p>
 <p>Я специально показал два спосба запуска пикера, потому что так нагляднее. Давайте еще раз:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">val</span> <span class="py">documents</span> <span class="p">=</span> <span class="n">Intent</span><span class="p">(</span><span class="n">Intent</span><span class="p">.</span><span class="n">ACTION_GET_CONTENT</span><span class="p">).</span><span class="n">apply</span> <span class="p">{</span>
-    <span class="n">addCategory</span><span class="p">(</span><span class="n">Intent</span><span class="p">.</span><span class="n">CATEGORY_OPENABLE</span><span class="p">)</span>
-    <span class="n">type</span> <span class="p">=</span> <span class="s2">&#34;*/*&#34;</span>
-<span class="p">}</span>
-
-<span class="n">startActivityForResult</span><span class="p">(</span><span class="n">documents</span><span class="p">,</span> <span class="m">1337</span><span class="p">)</span>
-</code></pre></div><p>Мы здесь видим неявный <strong>intent</strong>, а это значит, что можно создать вредоносное приложение, в <strong>activity</strong> которого будет <strong>intent-filter</strong> c таким же <strong>action</strong> и <strong>category</strong>. В этом случае, при старте такого неявного intent-а система пойдет искать все activity, которые могут его обработать и если их больше одной, то отобразится <strong>Intent chooser</strong>. Это дает нам примерно 50% шанс увести юзера в нашу вредоносную галлерею и все украсть, а то и чего похуже&hellip;</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">val</span> <span class="py">documents</span> <span class="p">=</span> <span class="n">Intent</span><span class="p">(</span><span class="n">Intent</span><span class="p">.</span><span class="n">ACTION_GET_CONTENT</span><span class="p">).</span><span class="n">apply</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">addCategory</span><span class="p">(</span><span class="n">Intent</span><span class="p">.</span><span class="n">CATEGORY_OPENABLE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">type</span> <span class="p">=</span> <span class="s2">&#34;*/*&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">startActivityForResult</span><span class="p">(</span><span class="n">documents</span><span class="p">,</span> <span class="m">1337</span><span class="p">)</span>
+</span></span></code></pre></div><p>Мы здесь видим неявный <strong>intent</strong>, а это значит, что можно создать вредоносное приложение, в <strong>activity</strong> которого будет <strong>intent-filter</strong> c таким же <strong>action</strong> и <strong>category</strong>. В этом случае, при старте такого неявного intent-а система пойдет искать все activity, которые могут его обработать и если их больше одной, то отобразится <strong>Intent chooser</strong>. Это дает нам примерно 50% шанс увести юзера в нашу вредоносную галлерею и все украсть, а то и чего похуже&hellip;</p>
 
 
 <div class="box" >
@@ -394,45 +393,45 @@
 
 <p>как любил говаривать <a href="https://ru.wikipedia.org/wiki/%D0%A3%D1%8D%D1%81%D0%B8%D0%B1%D0%B0%2C_%D0%9C%D0%BE%D1%80%D0%B8%D1%85%D1%8D%D0%B9">Морихэй Уэсиба</a>.</p>
 <p>При выполнении этого кода будет запущено приложение <strong>Documents</strong>. Без вариантов. Даже на Android 6.0.1. Но как же так? Хитрость кроется в том, как определена целевая activity в этом приложении:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;activity</span>
-    <span class="na">android:theme=</span><span class="s">&#34;@ref/0x7f1200f5&#34;</span>
-    <span class="na">android:name=</span><span class="s">&#34;com.android.documentsui.picker.PickActivity&#34;</span>
-    <span class="na">android:exported=</span><span class="s">&#34;true&#34;</span>
-    <span class="na">android:visibleToInstantApps=</span><span class="s">&#34;true&#34;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;intent-filter</span> <span class="na">android:priority=</span><span class="s">&#34;100&#34;</span><span class="nt">&gt;</span> <span class="c">&lt;!-- эта строчка все портит --&gt;</span>
-        <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">&#34;android.intent.action.GET_CONTENT&#34;</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;category</span> <span class="na">android:name=</span><span class="s">&#34;android.intent.category.DEFAULT&#34;</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;category</span> <span class="na">android:name=</span><span class="s">&#34;android.intent.category.OPENABLE&#34;</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;data</span> <span class="na">android:mimeType=</span><span class="s">&#34;*/*&#34;</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;/intent-filter&gt;</span>
-<span class="nt">&lt;/activity&gt;</span>
-</code></pre></div><p>Ну приоритет это старая история. Сейчас поставим <code>999</code> и все будет хорошо. Но Морихэй Уэсиба и в этой ситуации дает нам правильный ответ ;) Давайте разбираться почему так происходит. Начнем с метода <a href="https://cs.android.com/android/platform/superproject/+/master:frameworks/base/services/core/java/com/android/server/pm/ComponentResolver.java;l=929;drc=master">ComponentResolver#adjustPriority</a></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">String</span> <span class="n">packageName</span> <span class="o">=</span> <span class="n">activity</span><span class="o">.</span><span class="na">getPackageName</span><span class="o">();</span>
-<span class="n">AndroidPackage</span> <span class="n">pkg</span> <span class="o">=</span> <span class="n">sPackageManagerInternal</span><span class="o">.</span><span class="na">getPackage</span><span class="o">(</span><span class="n">packageName</span><span class="o">);</span>
-<span class="kd">final</span> <span class="kt">boolean</span> <span class="n">privilegedApp</span> <span class="o">=</span> <span class="n">pkg</span><span class="o">.</span><span class="na">isPrivileged</span><span class="o">();</span>
-<span class="n">String</span> <span class="n">className</span> <span class="o">=</span> <span class="n">activity</span><span class="o">.</span><span class="na">getClassName</span><span class="o">();</span>
-<span class="k">if</span> <span class="o">(!</span><span class="n">privilegedApp</span><span class="o">)</span> <span class="o">{</span>
-    <span class="c1">// non-privileged applications can never define a priority &gt;0
-</span><span class="c1"></span>    <span class="k">if</span> <span class="o">(</span><span class="n">DEBUG_FILTERS</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">Slog</span><span class="o">.</span><span class="na">i</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&#34;Non-privileged app; cap priority to 0;&#34;</span>
-                <span class="o">+</span> <span class="s">&#34; package: &#34;</span> <span class="o">+</span> <span class="n">packageName</span>
-                <span class="o">+</span> <span class="s">&#34; activity: &#34;</span> <span class="o">+</span> <span class="n">className</span>
-                <span class="o">+</span> <span class="s">&#34; origPrio: &#34;</span> <span class="o">+</span> <span class="n">intent</span><span class="o">.</span><span class="na">getPriority</span><span class="o">());</span>
-    <span class="o">}</span>
-    <span class="n">intent</span><span class="o">.</span><span class="na">setPriority</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
-    <span class="k">return</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></div><p>Он и не дает нам перебить установленный в <code>com.android.documentsui.picker.PickActivity</code> приоритет. Согласно <a href="https://source.android.com/devices/tech/config/perms-allowlist">документации</a>, привелигерованные приложения живут в <code>/system/priv-app</code> и некоторых других директориях. Проверяем:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sunfish:/ $ ls -la /system/priv-app
-total <span class="m">156</span>
-drwxr-xr-x <span class="m">39</span> root root <span class="m">4096</span> 2009-01-01 03:00 .
-drwxr-xr-x <span class="m">12</span> root root <span class="m">4096</span> 2009-01-01 03:00 ..
-...
-drwxr-xr-x  <span class="m">2</span> root root <span class="m">4096</span> 2009-01-01 03:00 ContactsProvider
-drwxr-xr-x  <span class="m">2</span> root root <span class="m">4096</span> 2009-01-01 03:00 DocumentsUIGoogle &lt;-- а вот и оно
-drwxr-xr-x  <span class="m">2</span> root root <span class="m">4096</span> 2009-01-01 03:00 DownloadProvider
-...
-</code></pre></div><p>И с грустью осознаем, что тягаться с привелигерованным приложением с выставленным явно приоритетом нам не по силам. Еще немного инфы про приоритеты можно найти <a href="https://developer.android.com/guide/topics/manifest/intent-filter-element.html#priority">тут</a>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;activity</span>
+</span></span><span class="line"><span class="cl">    <span class="na">android:theme=</span><span class="s">&#34;@ref/0x7f1200f5&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">android:name=</span><span class="s">&#34;com.android.documentsui.picker.PickActivity&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">android:exported=</span><span class="s">&#34;true&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">android:visibleToInstantApps=</span><span class="s">&#34;true&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;intent-filter</span> <span class="na">android:priority=</span><span class="s">&#34;100&#34;</span><span class="nt">&gt;</span> <span class="c">&lt;!-- эта строчка все портит --&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">&#34;android.intent.action.GET_CONTENT&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;category</span> <span class="na">android:name=</span><span class="s">&#34;android.intent.category.DEFAULT&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;category</span> <span class="na">android:name=</span><span class="s">&#34;android.intent.category.OPENABLE&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;data</span> <span class="na">android:mimeType=</span><span class="s">&#34;*/*&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/intent-filter&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/activity&gt;</span>
+</span></span></code></pre></div><p>Ну приоритет это старая история. Сейчас поставим <code>999</code> и все будет хорошо. Но Морихэй Уэсиба и в этой ситуации дает нам правильный ответ ;) Давайте разбираться почему так происходит. Начнем с метода <a href="https://cs.android.com/android/platform/superproject/+/master:frameworks/base/services/core/java/com/android/server/pm/ComponentResolver.java;l=929;drc=master">ComponentResolver#adjustPriority</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">String</span> <span class="n">packageName</span> <span class="o">=</span> <span class="n">activity</span><span class="o">.</span><span class="na">getPackageName</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">AndroidPackage</span> <span class="n">pkg</span> <span class="o">=</span> <span class="n">sPackageManagerInternal</span><span class="o">.</span><span class="na">getPackage</span><span class="o">(</span><span class="n">packageName</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="kd">final</span> <span class="kt">boolean</span> <span class="n">privilegedApp</span> <span class="o">=</span> <span class="n">pkg</span><span class="o">.</span><span class="na">isPrivileged</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">String</span> <span class="n">className</span> <span class="o">=</span> <span class="n">activity</span><span class="o">.</span><span class="na">getClassName</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(!</span><span class="n">privilegedApp</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// non-privileged applications can never define a priority &gt;0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="o">(</span><span class="n">DEBUG_FILTERS</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Slog</span><span class="o">.</span><span class="na">i</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&#34;Non-privileged app; cap priority to 0;&#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="o">+</span> <span class="s">&#34; package: &#34;</span> <span class="o">+</span> <span class="n">packageName</span>
+</span></span><span class="line"><span class="cl">                <span class="o">+</span> <span class="s">&#34; activity: &#34;</span> <span class="o">+</span> <span class="n">className</span>
+</span></span><span class="line"><span class="cl">                <span class="o">+</span> <span class="s">&#34; origPrio: &#34;</span> <span class="o">+</span> <span class="n">intent</span><span class="o">.</span><span class="na">getPriority</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">intent</span><span class="o">.</span><span class="na">setPriority</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>Он и не дает нам перебить установленный в <code>com.android.documentsui.picker.PickActivity</code> приоритет. Согласно <a href="https://source.android.com/devices/tech/config/perms-allowlist">документации</a>, привелигерованные приложения живут в <code>/system/priv-app</code> и некоторых других директориях. Проверяем:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sunfish:/ $ ls -la /system/priv-app
+</span></span><span class="line"><span class="cl">total <span class="m">156</span>
+</span></span><span class="line"><span class="cl">drwxr-xr-x <span class="m">39</span> root root <span class="m">4096</span> 2009-01-01 03:00 .
+</span></span><span class="line"><span class="cl">drwxr-xr-x <span class="m">12</span> root root <span class="m">4096</span> 2009-01-01 03:00 ..
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">drwxr-xr-x  <span class="m">2</span> root root <span class="m">4096</span> 2009-01-01 03:00 ContactsProvider
+</span></span><span class="line"><span class="cl">drwxr-xr-x  <span class="m">2</span> root root <span class="m">4096</span> 2009-01-01 03:00 DocumentsUIGoogle &lt;-- а вот и оно
+</span></span><span class="line"><span class="cl">drwxr-xr-x  <span class="m">2</span> root root <span class="m">4096</span> 2009-01-01 03:00 DownloadProvider
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></div><p>И с грустью осознаем, что тягаться с привелигерованным приложением с выставленным явно приоритетом нам не по силам. Еще немного инфы про приоритеты можно найти <a href="https://developer.android.com/guide/topics/manifest/intent-filter-element.html#priority">тут</a>.</p>
 <p>Согласно законам здравого смысла, новый пикер должен работать схожим образом. Это нужно обязательно проверить.</p>
 <h1 id="новое-разрешение-для-wi-fi">Новое разрешение для Wi-Fi</h1>
 <p>Google продолжает радовать нас новыми пермишенами. Феерический выход из-за печечки <a href="https://developer.android.com/guide/topics/connectivity/bluetooth/permissions">пермишенов на bluethooth</a> в 12-й версии продолжается столь же эпохальным выходом пермешенов на Wi-Fi. Эпохальность в том, что и те и другие перестали требовать геолокацию для своей работы. Так что теперь ваши приложения смогут брать новые вершины privacy friendly-евости.</p>
@@ -484,14 +483,14 @@ drwxr-xr-x  <span class="m">2</span> root root <span class="m">4096</span> 2009-
 <p>Так что будь бдителен любитель начать сканирование и получить его результаты ;) Ну и как обычно, если будете дергать API без соотвествующих пермишенов, то получите <code>SecurityException</code>.</p>
 <p>Новый пермишен относится к группе <code>NEARBY_DEVICES</code>, которая появилась в прошлой версии и также включает в себя пермишены на bluethooth. Почему это важно? При запросе пермишенов юзер получит универсальный диалог запроса разрешений на группу <code>NEARBY_DEVICES</code>. И отключить в настройках можно только всю группу сразу. Г - <del>говно</del> гранулярность!</p>
 <p>Еще один важный момент - если ваше приложение имеет таргет на Android 13 и вы точно знаете, что не используете никакое Wi-Fi API связанное с геолокаций, то для того чтобы <del>не спалиться</del> задекларировать это явно, нужно использовать специальный флаг <code>neverForLocation</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;manifest&gt;</span>
-    <span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&#34;android.permission.NEARBY_WIFI_DEVICES&#34;</span>
-                     <span class="na">android:usesPermissionFlags=</span><span class="s">&#34;neverForLocation&#34;</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;application&gt;</span>
-        ...
-    <span class="nt">&lt;/application&gt;</span>
-<span class="nt">&lt;/manifest&gt;</span>
-</code></pre></div><p>Завершить пост хочу красивой картинкой, которая показывает как будет выглядеть новый воркфлоу</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;manifest&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&#34;android.permission.NEARBY_WIFI_DEVICES&#34;</span>
+</span></span><span class="line"><span class="cl">                     <span class="na">android:usesPermissionFlags=</span><span class="s">&#34;neverForLocation&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;application&gt;</span>
+</span></span><span class="line"><span class="cl">        ...
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/application&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/manifest&gt;</span>
+</span></span></code></pre></div><p>Завершить пост хочу красивой картинкой, которая показывает как будет выглядеть новый воркфлоу</p>
 
 
 <div class="box" >
@@ -630,7 +629,7 @@ drwxr-xr-x  <span class="m">2</span> root root <span class="m">4096</span> 2009-
           <div class="disqus-comments">
             <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -727,7 +726,7 @@ drwxr-xr-x  <span class="m">2</span> root root <span class="m">4096</span> 2009-
         </p>
         
         <p class="credits theme-by text-muted">
-          На базе <a href="https://gohugo.io">Hugo v0.92.2</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          На базе <a href="https://gohugo.io">Hugo v0.93.2</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>

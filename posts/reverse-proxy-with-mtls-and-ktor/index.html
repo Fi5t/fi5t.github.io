@@ -105,7 +105,7 @@
   <meta name="twitter:site" content="@Fi5t" />
   <meta name="twitter:creator" content="@Fi5t" />
   <link href='https://fi5t.xyz/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.92.2" />
+  <meta name="generator" content="Hugo 0.93.2" />
   <link rel="alternate" href="https://fi5t.xyz/index.xml" type="application/rss+xml" title="(не)Уникальный опыт"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fi5t.xyz/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -301,27 +301,27 @@
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ openssl req -newkey rsa:4096 -nodes -keyout client-cert.key -x509 -days <span class="m">1337</span> -out client-cert.crt
-Generating a <span class="m">4096</span> bit RSA private key
-.........................................................................................................................................................................................................................................................................................................................++
-......................................++
-writing new private key to <span class="s1">&#39;client-cert.key&#39;</span>
------
-You are about to be asked to enter information that will be incorporated
-into your certificate request.
-What you are about to enter is what is called a Distinguished Name or a DN.
-There are quite a few fields but you can leave some blank
-For some fields there will be a default value,
-If you enter <span class="s1">&#39;.&#39;</span>, the field will be left blank.
------
-Country Name <span class="o">(</span><span class="m">2</span> letter code<span class="o">)</span> <span class="o">[]</span>:RU
-State or Province Name <span class="o">(</span>full name<span class="o">)</span> <span class="o">[]</span>:Moscow
-Locality Name <span class="o">(</span>eg, city<span class="o">)</span> <span class="o">[]</span>:Moscow
-Organization Name <span class="o">(</span>eg, company<span class="o">)</span> <span class="o">[]</span>:Secret
-Organizational Unit Name <span class="o">(</span>eg, section<span class="o">)</span> <span class="o">[]</span>:Dev
-Common Name <span class="o">(</span>eg, fully qualified host name<span class="o">)</span> <span class="o">[]</span>:localhost
-Email Address <span class="o">[]</span>:admin@localhost
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ openssl req -newkey rsa:4096 -nodes -keyout client-cert.key -x509 -days <span class="m">1337</span> -out client-cert.crt
+</span></span><span class="line"><span class="cl">Generating a <span class="m">4096</span> bit RSA private key
+</span></span><span class="line"><span class="cl">.........................................................................................................................................................................................................................................................................................................................++
+</span></span><span class="line"><span class="cl">......................................++
+</span></span><span class="line"><span class="cl">writing new private key to <span class="s1">&#39;client-cert.key&#39;</span>
+</span></span><span class="line"><span class="cl">-----
+</span></span><span class="line"><span class="cl">You are about to be asked to enter information that will be incorporated
+</span></span><span class="line"><span class="cl">into your certificate request.
+</span></span><span class="line"><span class="cl">What you are about to enter is what is called a Distinguished Name or a DN.
+</span></span><span class="line"><span class="cl">There are quite a few fields but you can leave some blank
+</span></span><span class="line"><span class="cl">For some fields there will be a default value,
+</span></span><span class="line"><span class="cl">If you enter <span class="s1">&#39;.&#39;</span>, the field will be left blank.
+</span></span><span class="line"><span class="cl">-----
+</span></span><span class="line"><span class="cl">Country Name <span class="o">(</span><span class="m">2</span> letter code<span class="o">)</span> <span class="o">[]</span>:RU
+</span></span><span class="line"><span class="cl">State or Province Name <span class="o">(</span>full name<span class="o">)</span> <span class="o">[]</span>:Moscow
+</span></span><span class="line"><span class="cl">Locality Name <span class="o">(</span>eg, city<span class="o">)</span> <span class="o">[]</span>:Moscow
+</span></span><span class="line"><span class="cl">Organization Name <span class="o">(</span>eg, company<span class="o">)</span> <span class="o">[]</span>:Secret
+</span></span><span class="line"><span class="cl">Organizational Unit Name <span class="o">(</span>eg, section<span class="o">)</span> <span class="o">[]</span>:Dev
+</span></span><span class="line"><span class="cl">Common Name <span class="o">(</span>eg, fully qualified host name<span class="o">)</span> <span class="o">[]</span>:localhost
+</span></span><span class="line"><span class="cl">Email Address <span class="o">[]</span>:admin@localhost
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Если все прошло успешно, то должно появиться два файла:</p>
 <ul>
@@ -330,13 +330,13 @@ Email Address <span class="o">[]</span>:admin@localhost
 </ul>
 <p>Теперь все готово к запуску MockServer с поддержкой mTLS аутентификации. Будьте внимательны с указанием путей к
 клиентским сертификатам на <strong>вашей</strong> машине.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ docker pull mockserver/mockserver
-$ docker run -d --rm <span class="se">\
-</span><span class="se"></span>    -e <span class="nv">MOCKSERVER_TLS_MUTUAL_AUTHENTICATION_REQUIRED</span><span class="o">=</span><span class="nb">true</span> <span class="se">\
-</span><span class="se"></span>    -e <span class="nv">MOCKSERVER_TLS_MUTUAL_AUTHENTICATION_CERTIFICATE_CHAIN</span><span class="o">=</span>/opt/client-cert.crt <span class="se">\
-</span><span class="se"></span>    -v <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/client-cert.crt:/opt/client-cert.crt <span class="se">\
-</span><span class="se"></span>    -P mockserver/mockserver
-</code></pre></div><p>Если сейчас просто дернуть <code>GET /</code>, то ничего хорошего из этого не выйдет, т.к. наш сервер будет ожидать хэндшейка с
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ docker pull mockserver/mockserver
+</span></span><span class="line"><span class="cl">$ docker run -d --rm <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -e <span class="nv">MOCKSERVER_TLS_MUTUAL_AUTHENTICATION_REQUIRED</span><span class="o">=</span><span class="nb">true</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -e <span class="nv">MOCKSERVER_TLS_MUTUAL_AUTHENTICATION_CERTIFICATE_CHAIN</span><span class="o">=</span>/opt/client-cert.crt <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -v <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/client-cert.crt:/opt/client-cert.crt <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -P mockserver/mockserver
+</span></span></code></pre></div><p>Если сейчас просто дернуть <code>GET /</code>, то ничего хорошего из этого не выйдет, т.к. наш сервер будет ожидать хэндшейка с
 клиентскими сертификатами.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -345,10 +345,10 @@ $ docker run -d --rm <span class="se">\
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ curl -GET https://localhost:55000/
-curl: <span class="o">(</span>58<span class="o">)</span> could not load PEM client certificate, LibreSSL error error:02FFF002:system library:func<span class="o">(</span>4095<span class="o">)</span>:
-No such file or directory, <span class="o">(</span>no key found, wrong pass phrase, or wrong file format?<span class="o">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ curl -GET https://localhost:55000/
+</span></span><span class="line"><span class="cl">curl: <span class="o">(</span>58<span class="o">)</span> could not load PEM client certificate, LibreSSL error error:02FFF002:system library:func<span class="o">(</span>4095<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">No such file or directory, <span class="o">(</span>no key found, wrong pass phrase, or wrong file format?<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Но просто так передать сертификат и ключ не выйдет. Нужен
 еще <a href="https://en.wikipedia.org/wiki/Certificate_authority">CA сертификат</a>, который нужно встроить в &ldquo;цепочку доверия&rdquo; при
@@ -400,50 +400,50 @@ No such file or directory, <span class="o">(</span>no key found, wrong pass phra
 </span><span class="lnt">43
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ wget https://raw.githubusercontent.com/mock-server/mockserver/master/mockserver-core/src/main/resources/org/mockserver/socket/CertificateAuthorityCertificate.pem
-$ curl -v -GET --cacert CertificateAuthorityCertificate.pem --cert client-cert.crt --key client-cert.key https://localhost:55000/
-*   Trying 127.0.0.1...
-* TCP_NODELAY <span class="nb">set</span>
-* Connected to localhost <span class="o">(</span>127.0.0.1<span class="o">)</span> port <span class="m">55000</span> <span class="o">(</span><span class="c1">#0)</span>
-* ALPN, offering h2
-* ALPN, offering http/1.1
-* successfully <span class="nb">set</span> certificate verify locations:
-*   CAfile: CertificateAuthorityCertificate.pem
-  CApath: none
-* TLSv1.2 <span class="o">(</span>OUT<span class="o">)</span>, TLS handshake, Client hello <span class="o">(</span>1<span class="o">)</span>:
-* TLSv1.2 <span class="o">(</span>IN<span class="o">)</span>, TLS handshake, Server hello <span class="o">(</span>2<span class="o">)</span>:
-* TLSv1.2 <span class="o">(</span>IN<span class="o">)</span>, TLS handshake, Certificate <span class="o">(</span>11<span class="o">)</span>:
-* TLSv1.2 <span class="o">(</span>IN<span class="o">)</span>, TLS handshake, Server key exchange <span class="o">(</span>12<span class="o">)</span>:
-* TLSv1.2 <span class="o">(</span>IN<span class="o">)</span>, TLS handshake, Request CERT <span class="o">(</span>13<span class="o">)</span>:
-* TLSv1.2 <span class="o">(</span>IN<span class="o">)</span>, TLS handshake, Server finished <span class="o">(</span>14<span class="o">)</span>:
-* TLSv1.2 <span class="o">(</span>OUT<span class="o">)</span>, TLS handshake, Certificate <span class="o">(</span>11<span class="o">)</span>:
-* TLSv1.2 <span class="o">(</span>OUT<span class="o">)</span>, TLS handshake, Client key exchange <span class="o">(</span>16<span class="o">)</span>:
-* TLSv1.2 <span class="o">(</span>OUT<span class="o">)</span>, TLS handshake, CERT verify <span class="o">(</span>15<span class="o">)</span>:
-* TLSv1.2 <span class="o">(</span>OUT<span class="o">)</span>, TLS change cipher, Change cipher spec <span class="o">(</span>1<span class="o">)</span>:
-* TLSv1.2 <span class="o">(</span>OUT<span class="o">)</span>, TLS handshake, Finished <span class="o">(</span>20<span class="o">)</span>:
-* TLSv1.2 <span class="o">(</span>IN<span class="o">)</span>, TLS change cipher, Change cipher spec <span class="o">(</span>1<span class="o">)</span>:
-* TLSv1.2 <span class="o">(</span>IN<span class="o">)</span>, TLS handshake, Finished <span class="o">(</span>20<span class="o">)</span>:
-* SSL connection using TLSv1.2 / ECDHE-RSA-AES256-GCM-SHA384
-* ALPN, server did not agree to a protocol
-* Server certificate:
-*  subject: <span class="nv">CN</span><span class="o">=</span>localhost<span class="p">;</span> <span class="nv">O</span><span class="o">=</span>MockServer<span class="p">;</span> <span class="nv">L</span><span class="o">=</span>London<span class="p">;</span> <span class="nv">ST</span><span class="o">=</span>England<span class="p">;</span> <span class="nv">C</span><span class="o">=</span>UK
-*  start date: Jul <span class="m">26</span> 12:43:37 <span class="m">2021</span> GMT
-*  expire date: Jul <span class="m">31</span> 12:43:37 <span class="m">2022</span> GMT
-*  subjectAltName: host <span class="s2">&#34;localhost&#34;</span> matched cert<span class="err">&#39;</span>s <span class="s2">&#34;localhost&#34;</span>
-*  issuer: <span class="nv">CN</span><span class="o">=</span>www.mockserver.com<span class="p">;</span> <span class="nv">O</span><span class="o">=</span>MockServer<span class="p">;</span> <span class="nv">L</span><span class="o">=</span>London<span class="p">;</span> <span class="nv">ST</span><span class="o">=</span>England<span class="p">;</span> <span class="nv">C</span><span class="o">=</span>UK
-*  SSL certificate verify ok.
-&gt; GET / HTTP/1.1
-&gt; Host: localhost:55000
-&gt; User-Agent: curl/7.64.1
-&gt; Accept: */*
-&gt;
-&lt; HTTP/1.1 <span class="m">404</span> Not Found
-&lt; connection: keep-alive
-&lt; content-length: <span class="m">0</span>
-&lt;
-* Connection <span class="c1">#0 to host localhost left intact</span>
-* Closing connection <span class="m">0</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ wget https://raw.githubusercontent.com/mock-server/mockserver/master/mockserver-core/src/main/resources/org/mockserver/socket/CertificateAuthorityCertificate.pem
+</span></span><span class="line"><span class="cl">$ curl -v -GET --cacert CertificateAuthorityCertificate.pem --cert client-cert.crt --key client-cert.key https://localhost:55000/
+</span></span><span class="line"><span class="cl">*   Trying 127.0.0.1...
+</span></span><span class="line"><span class="cl">* TCP_NODELAY <span class="nb">set</span>
+</span></span><span class="line"><span class="cl">* Connected to localhost <span class="o">(</span>127.0.0.1<span class="o">)</span> port <span class="m">55000</span> <span class="o">(</span><span class="c1">#0)</span>
+</span></span><span class="line"><span class="cl">* ALPN, offering h2
+</span></span><span class="line"><span class="cl">* ALPN, offering http/1.1
+</span></span><span class="line"><span class="cl">* successfully <span class="nb">set</span> certificate verify locations:
+</span></span><span class="line"><span class="cl">*   CAfile: CertificateAuthorityCertificate.pem
+</span></span><span class="line"><span class="cl">  CApath: none
+</span></span><span class="line"><span class="cl">* TLSv1.2 <span class="o">(</span>OUT<span class="o">)</span>, TLS handshake, Client hello <span class="o">(</span>1<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">* TLSv1.2 <span class="o">(</span>IN<span class="o">)</span>, TLS handshake, Server hello <span class="o">(</span>2<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">* TLSv1.2 <span class="o">(</span>IN<span class="o">)</span>, TLS handshake, Certificate <span class="o">(</span>11<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">* TLSv1.2 <span class="o">(</span>IN<span class="o">)</span>, TLS handshake, Server key exchange <span class="o">(</span>12<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">* TLSv1.2 <span class="o">(</span>IN<span class="o">)</span>, TLS handshake, Request CERT <span class="o">(</span>13<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">* TLSv1.2 <span class="o">(</span>IN<span class="o">)</span>, TLS handshake, Server finished <span class="o">(</span>14<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">* TLSv1.2 <span class="o">(</span>OUT<span class="o">)</span>, TLS handshake, Certificate <span class="o">(</span>11<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">* TLSv1.2 <span class="o">(</span>OUT<span class="o">)</span>, TLS handshake, Client key exchange <span class="o">(</span>16<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">* TLSv1.2 <span class="o">(</span>OUT<span class="o">)</span>, TLS handshake, CERT verify <span class="o">(</span>15<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">* TLSv1.2 <span class="o">(</span>OUT<span class="o">)</span>, TLS change cipher, Change cipher spec <span class="o">(</span>1<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">* TLSv1.2 <span class="o">(</span>OUT<span class="o">)</span>, TLS handshake, Finished <span class="o">(</span>20<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">* TLSv1.2 <span class="o">(</span>IN<span class="o">)</span>, TLS change cipher, Change cipher spec <span class="o">(</span>1<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">* TLSv1.2 <span class="o">(</span>IN<span class="o">)</span>, TLS handshake, Finished <span class="o">(</span>20<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">* SSL connection using TLSv1.2 / ECDHE-RSA-AES256-GCM-SHA384
+</span></span><span class="line"><span class="cl">* ALPN, server did not agree to a protocol
+</span></span><span class="line"><span class="cl">* Server certificate:
+</span></span><span class="line"><span class="cl">*  subject: <span class="nv">CN</span><span class="o">=</span>localhost<span class="p">;</span> <span class="nv">O</span><span class="o">=</span>MockServer<span class="p">;</span> <span class="nv">L</span><span class="o">=</span>London<span class="p">;</span> <span class="nv">ST</span><span class="o">=</span>England<span class="p">;</span> <span class="nv">C</span><span class="o">=</span>UK
+</span></span><span class="line"><span class="cl">*  start date: Jul <span class="m">26</span> 12:43:37 <span class="m">2021</span> GMT
+</span></span><span class="line"><span class="cl">*  expire date: Jul <span class="m">31</span> 12:43:37 <span class="m">2022</span> GMT
+</span></span><span class="line"><span class="cl">*  subjectAltName: host <span class="s2">&#34;localhost&#34;</span> matched cert<span class="err">&#39;</span>s <span class="s2">&#34;localhost&#34;</span>
+</span></span><span class="line"><span class="cl">*  issuer: <span class="nv">CN</span><span class="o">=</span>www.mockserver.com<span class="p">;</span> <span class="nv">O</span><span class="o">=</span>MockServer<span class="p">;</span> <span class="nv">L</span><span class="o">=</span>London<span class="p">;</span> <span class="nv">ST</span><span class="o">=</span>England<span class="p">;</span> <span class="nv">C</span><span class="o">=</span>UK
+</span></span><span class="line"><span class="cl">*  SSL certificate verify ok.
+</span></span><span class="line"><span class="cl">&gt; GET / HTTP/1.1
+</span></span><span class="line"><span class="cl">&gt; Host: localhost:55000
+</span></span><span class="line"><span class="cl">&gt; User-Agent: curl/7.64.1
+</span></span><span class="line"><span class="cl">&gt; Accept: */*
+</span></span><span class="line"><span class="cl">&gt;
+</span></span><span class="line"><span class="cl">&lt; HTTP/1.1 <span class="m">404</span> Not Found
+</span></span><span class="line"><span class="cl">&lt; connection: keep-alive
+</span></span><span class="line"><span class="cl">&lt; content-length: <span class="m">0</span>
+</span></span><span class="line"><span class="cl">&lt;
+</span></span><span class="line"><span class="cl">* Connection <span class="c1">#0 to host localhost left intact</span>
+</span></span><span class="line"><span class="cl">* Closing connection <span class="m">0</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Отлично, хэндшейк прошел успешно. Осталось заставить сервер возвращать что-то более осознанное чем <code>404 Not Found</code>.</p>
 <div class="highlight"><div class="chroma">
@@ -459,113 +459,113 @@ $ curl -v -GET --cacert CertificateAuthorityCertificate.pem --cert client-cert.c
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ curl -X PUT --cacert CertificateAuthorityCertificate.pem --cert client-cert.crt --key client-cert.key <span class="s2">&#34;https://localhost:55000/mockserver/openapi&#34;</span> -d <span class="s1">&#39;{
-</span><span class="s1">    &#34;specUrlOrPayload&#34;: &#34;https://raw.githubusercontent.com/mock-server/mockserver/master/mockserver-integration-testing/src/main/resources/org/mockserver/mock/openapi_petstore_example.json&#34;
-</span><span class="s1">}&#39;</span>
-$ curl -GET --cacert CertificateAuthorityCertificate.pem --cert client-cert.crt --key client-cert.key https://localhost:55000/pets
-<span class="o">[</span> <span class="o">{</span>
-  <span class="s2">&#34;id&#34;</span> : 0,
-  <span class="s2">&#34;name&#34;</span> : <span class="s2">&#34;some_string_value&#34;</span>,
-  <span class="s2">&#34;tag&#34;</span> : <span class="s2">&#34;some_string_value&#34;</span>
-<span class="o">}</span> <span class="o">]</span>%
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ curl -X PUT --cacert CertificateAuthorityCertificate.pem --cert client-cert.crt --key client-cert.key <span class="s2">&#34;https://localhost:55000/mockserver/openapi&#34;</span> -d <span class="s1">&#39;{
+</span></span></span><span class="line"><span class="cl"><span class="s1">    &#34;specUrlOrPayload&#34;: &#34;https://raw.githubusercontent.com/mock-server/mockserver/master/mockserver-integration-testing/src/main/resources/org/mockserver/mock/openapi_petstore_example.json&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s1">}&#39;</span>
+</span></span><span class="line"><span class="cl">$ curl -GET --cacert CertificateAuthorityCertificate.pem --cert client-cert.crt --key client-cert.key https://localhost:55000/pets
+</span></span><span class="line"><span class="cl"><span class="o">[</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;id&#34;</span> : 0,
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;name&#34;</span> : <span class="s2">&#34;some_string_value&#34;</span>,
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;tag&#34;</span> : <span class="s2">&#34;some_string_value&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> <span class="o">]</span>%
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Подробности о произошедшем выше можно взять
 в <a href="https://mock-server.com/mock_server/using_openapi.html">официальной документации</a> к MockServer.</p>
 <h1 id="настройка-проекта">Настройка проекта</h1>
 <p>После создания свежего Ktor-проекта в него нужно добавить http клиент и okhttp.</p>
 <p><strong>gradle.properties</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ktor_version=1.6.2
-okhttp_version=4.9.1
-</code></pre></div><p><strong>build.gradle.kts</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">val</span> <span class="py">ktor</span><span class="n">_version</span><span class="p">:</span> <span class="n">String</span> <span class="k">by</span> <span class="n">project</span>
-<span class="k">val</span> <span class="py">okhttp</span><span class="n">_version</span><span class="p">:</span> <span class="n">String</span> <span class="k">by</span> <span class="n">project</span>
-
-<span class="n">dependencies</span> <span class="p">{</span>
-    <span class="n">implementation</span><span class="p">(</span><span class="s2">&#34;io.ktor:ktor-client-core:</span><span class="si">$ktor</span><span class="s2">_version&#34;</span><span class="p">)</span>
-    <span class="n">implementation</span><span class="p">(</span><span class="s2">&#34;io.ktor:ktor-client-okhttp:</span><span class="si">$ktor</span><span class="s2">_version&#34;</span><span class="p">)</span>
-
-    <span class="n">implementation</span><span class="p">(</span><span class="s2">&#34;com.squareup.okhttp3:okhttp-tls:</span><span class="si">$okhttp</span><span class="s2">_version&#34;</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div><p>И набросать каркас проекта в файле <code>Application.kt</code>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">=</span> <span class="n">EngineMain</span><span class="p">.</span><span class="n">main</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
-
-<span class="nd">@Suppress</span><span class="p">(</span><span class="s2">&#34;unused&#34;</span><span class="p">)</span>
-<span class="k">fun</span> <span class="nf">Application</span><span class="p">.</span><span class="n">module</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">//TODO: Преобразовать сертификаты
-</span><span class="c1"></span>
-    <span class="c1">//TODO: Подготовить сертификаты для хэндшейка
-</span><span class="c1"></span>
-    <span class="c1">//TODO: Настроить http клиент на работу с клиентскими сертификатами
-</span><span class="c1"></span>
-    <span class="c1">//TODO: Реализовать проксирование запросов во внешнюю систему
-</span><span class="c1"></span><span class="p">}</span>
-</code></pre></div><h1 id="подготовка-сертификатов">Подготовка сертификатов</h1>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ktor_version=1.6.2
+</span></span><span class="line"><span class="cl">okhttp_version=4.9.1
+</span></span></code></pre></div><p><strong>build.gradle.kts</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">val</span> <span class="py">ktor</span><span class="n">_version</span><span class="p">:</span> <span class="n">String</span> <span class="k">by</span> <span class="n">project</span>
+</span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="py">okhttp</span><span class="n">_version</span><span class="p">:</span> <span class="n">String</span> <span class="k">by</span> <span class="n">project</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">dependencies</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">implementation</span><span class="p">(</span><span class="s2">&#34;io.ktor:ktor-client-core:</span><span class="si">$ktor</span><span class="s2">_version&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">implementation</span><span class="p">(</span><span class="s2">&#34;io.ktor:ktor-client-okhttp:</span><span class="si">$ktor</span><span class="s2">_version&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">implementation</span><span class="p">(</span><span class="s2">&#34;com.squareup.okhttp3:okhttp-tls:</span><span class="si">$okhttp</span><span class="s2">_version&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>И набросать каркас проекта в файле <code>Application.kt</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">=</span> <span class="n">EngineMain</span><span class="p">.</span><span class="n">main</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@Suppress</span><span class="p">(</span><span class="s2">&#34;unused&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">Application</span><span class="p">.</span><span class="n">module</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//TODO: Преобразовать сертификаты
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//TODO: Подготовить сертификаты для хэндшейка
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//TODO: Настроить http клиент на работу с клиентскими сертификатами
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//TODO: Реализовать проксирование запросов во внешнюю систему
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div><h1 id="подготовка-сертификатов">Подготовка сертификатов</h1>
 <p>Теперь начинается самое интересное. Нам нужно преобразовать сертификаты в java-объекты, которые понимает http клиент.</p>
 <blockquote>
 <p>В настоящих системах передавать сертификаты сервису необходимо из переменных окружений. Во-первых это более правильно с точки зрения <a href="https://en.wikipedia.org/wiki/Maintainability">Maintainability</a>, а во-вторых уменьшает шанс утечки сертификатов через код. В идеале разработчики такого proxy вообще не должны иметь доступа к клиентским production-сертификатам.</p>
 </blockquote>
 <p>Начнем с преобразования CA сертификата. В нашем случае он один, но часто их бывает несколько и они расположены друг за
 другом в одном файле:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">-----BEGIN CERTIFICATE-----
-&lt;содержимое сертификата&gt;
------END CERTIFICATE-----
------BEGIN CERTIFICATE-----
-&lt;содержимое сертификата&gt;
------END CERTIFICATE-----
------BEGIN CERTIFICATE-----
-&lt;содержимое сертификата&gt;
------END CERTIFICATE-----
-</code></pre></div><p>Поэтому лучше сразу сделать метод, который распарсит такой файл и преобразует его в массив
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">-----BEGIN CERTIFICATE-----
+</span></span><span class="line"><span class="cl">&lt;содержимое сертификата&gt;
+</span></span><span class="line"><span class="cl">-----END CERTIFICATE-----
+</span></span><span class="line"><span class="cl">-----BEGIN CERTIFICATE-----
+</span></span><span class="line"><span class="cl">&lt;содержимое сертификата&gt;
+</span></span><span class="line"><span class="cl">-----END CERTIFICATE-----
+</span></span><span class="line"><span class="cl">-----BEGIN CERTIFICATE-----
+</span></span><span class="line"><span class="cl">&lt;содержимое сертификата&gt;
+</span></span><span class="line"><span class="cl">-----END CERTIFICATE-----
+</span></span></code></pre></div><p>Поэтому лучше сразу сделать метод, который распарсит такой файл и преобразует его в массив
 объектов <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/security/cert/X509Certificate.html">X509Certificate</a>
 .</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">private</span> <span class="k">val</span> <span class="py">PEM</span><span class="n">_REGEX</span> <span class="p">=</span> <span class="n">Regex</span><span class="p">(</span><span class="s">&#34;&#34;&#34;-----BEGIN ([!-,.-~ ]*)-----([^-]*)-----END \1-----&#34;&#34;&#34;</span><span class="p">)</span>
-
-<span class="k">fun</span> <span class="nf">String</span><span class="p">.</span><span class="n">splitCertificatesPem</span><span class="p">():</span> <span class="n">Sequence</span><span class="p">&lt;</span><span class="n">X509Certificate</span><span class="p">&gt;</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">PEM_REGEX</span><span class="p">.</span><span class="n">findAll</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="n">map</span> <span class="p">{</span> <span class="n">match</span> <span class="o">-&gt;</span>
-        <span class="n">match</span><span class="p">.</span><span class="n">groups</span><span class="p">[</span><span class="m">0</span><span class="p">]</span><span class="o">!!</span><span class="p">.</span><span class="n">value</span><span class="p">.</span><span class="n">decodeCertificatePem</span><span class="p">()</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><p>С утилитами разобрались. Теперь сделаем три константы, которые будут хранить наши сертификаты в текстовом виде. <strong>Это
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">private</span> <span class="k">val</span> <span class="py">PEM</span><span class="n">_REGEX</span> <span class="p">=</span> <span class="n">Regex</span><span class="p">(</span><span class="s">&#34;&#34;&#34;-----BEGIN ([!-,.-~ ]*)-----([^-]*)-----END \1-----&#34;&#34;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">String</span><span class="p">.</span><span class="n">splitCertificatesPem</span><span class="p">():</span> <span class="n">Sequence</span><span class="p">&lt;</span><span class="n">X509Certificate</span><span class="p">&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">PEM_REGEX</span><span class="p">.</span><span class="n">findAll</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="n">map</span> <span class="p">{</span> <span class="n">match</span> <span class="o">-&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">match</span><span class="p">.</span><span class="n">groups</span><span class="p">[</span><span class="m">0</span><span class="p">]</span><span class="o">!!</span><span class="p">.</span><span class="n">value</span><span class="p">.</span><span class="n">decodeCertificatePem</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>С утилитами разобрались. Теперь сделаем три константы, которые будут хранить наши сертификаты в текстовом виде. <strong>Это
 сделано для простоты учебного примера и в реальных системах так делать нельзя</strong>. Потом преобразуем эти константы в
 сертификаты и создадим специальный объект для хэндшейка.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">private</span> <span class="k">const</span> <span class="k">val</span> <span class="py">CACERT</span> <span class="p">=</span> <span class="s2">&#34;-----BEGIN CERTIFICATE-----</span><span class="se">\n</span><span class="s2">&#34;</span> <span class="p">+</span>
-        <span class="s2">&#34;MIIDqDCCApCgAwIBAgIEPhwe6TANBgkqhkiG9w0BAQsFADBiMRswGQYDVQQDDBJ3</span><span class="se">\n</span><span class="s2">&#34;</span> <span class="p">+</span>
-<span class="o">..</span><span class="p">.</span>
-<span class="s2">&#34;Gm5MBedhPkXrLWmwuoMJd7tzARRHHT6PBH/ZGw==</span><span class="se">\n</span><span class="s2">&#34;</span> <span class="p">+</span>
-        <span class="s2">&#34;-----END CERTIFICATE-----</span><span class="se">\n</span><span class="s2">&#34;</span>
-
-<span class="k">private</span> <span class="k">const</span> <span class="k">val</span> <span class="py">CLIENT</span><span class="n">_CERT</span> <span class="p">=</span> <span class="s2">&#34;-----BEGIN CERTIFICATE-----</span><span class="se">\n</span><span class="s2">&#34;</span> <span class="p">+</span>
-        <span class="s2">&#34;MIIFgjCCA2oCCQCeHxaTaEwG6TANBgkqhkiG9w0BAQsFADCBgjELMAkGA1UEBhMC</span><span class="se">\n</span><span class="s2">&#34;</span> <span class="p">+</span>
-<span class="o">..</span><span class="p">.</span>
-<span class="s2">&#34;HGh6/2TZ+8X8OeUlJ7DGIATIb8smzQ==</span><span class="se">\n</span><span class="s2">&#34;</span> <span class="p">+</span>
-        <span class="s2">&#34;-----END CERTIFICATE-----</span><span class="se">\n</span><span class="s2">&#34;</span>
-
-<span class="k">private</span> <span class="k">const</span> <span class="k">val</span> <span class="py">CLIENT</span><span class="n">_KEY</span> <span class="p">=</span> <span class="s2">&#34;-----BEGIN PRIVATE KEY-----</span><span class="se">\n</span><span class="s2">&#34;</span> <span class="p">+</span>
-        <span class="s2">&#34;MIIJQgIBADANBgkqhkiG9w0BAQEFAASCCSwwggkoAgEAAoICAQC4lUH0MAdJkfUI</span><span class="se">\n</span><span class="s2">&#34;</span> <span class="p">+</span>
-<span class="o">..</span><span class="p">.</span>
-<span class="s2">&#34;7jrTiwcEtANdV45Zd4mAS6ctvNIJvg==</span><span class="se">\n</span><span class="s2">&#34;</span> <span class="p">+</span>
-        <span class="s2">&#34;-----END PRIVATE KEY-----</span><span class="se">\n</span><span class="s2">&#34;</span>
-
-<span class="k">val</span> <span class="py">caBundle</span> <span class="p">=</span> <span class="n">CACERT</span><span class="p">.</span><span class="n">splitCertificatesPem</span><span class="p">()</span>
-<span class="k">val</span> <span class="py">heldCertificate</span> <span class="p">=</span> <span class="n">HeldCertificate</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">CLIENT_CERT</span> <span class="p">+</span> <span class="n">CLIENT_KEY</span><span class="p">)</span>
-
-<span class="k">val</span> <span class="py">handshakeCerts</span> <span class="p">=</span> <span class="n">HandshakeCertificates</span><span class="p">.</span><span class="n">Builder</span><span class="p">().</span><span class="n">apply</span> <span class="p">{</span>
-    <span class="n">caBundle</span><span class="p">.</span><span class="n">forEach</span> <span class="p">{</span> <span class="n">addTrustedCertificate</span><span class="p">(</span><span class="k">it</span><span class="p">)</span> <span class="p">}</span>
-    <span class="n">heldCertificate</span><span class="p">(</span><span class="n">heldCertificate</span><span class="p">)</span>
-<span class="p">}.</span><span class="n">build</span><span class="p">()</span>
-</code></pre></div><h1 id="настройка-http-клиента">Настройка http клиента</h1>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">private</span> <span class="k">const</span> <span class="k">val</span> <span class="py">CACERT</span> <span class="p">=</span> <span class="s2">&#34;-----BEGIN CERTIFICATE-----</span><span class="se">\n</span><span class="s2">&#34;</span> <span class="p">+</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;MIIDqDCCApCgAwIBAgIEPhwe6TANBgkqhkiG9w0BAQsFADBiMRswGQYDVQQDDBJ3</span><span class="se">\n</span><span class="s2">&#34;</span> <span class="p">+</span>
+</span></span><span class="line"><span class="cl"><span class="o">..</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;Gm5MBedhPkXrLWmwuoMJd7tzARRHHT6PBH/ZGw==</span><span class="se">\n</span><span class="s2">&#34;</span> <span class="p">+</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;-----END CERTIFICATE-----</span><span class="se">\n</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">const</span> <span class="k">val</span> <span class="py">CLIENT</span><span class="n">_CERT</span> <span class="p">=</span> <span class="s2">&#34;-----BEGIN CERTIFICATE-----</span><span class="se">\n</span><span class="s2">&#34;</span> <span class="p">+</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;MIIFgjCCA2oCCQCeHxaTaEwG6TANBgkqhkiG9w0BAQsFADCBgjELMAkGA1UEBhMC</span><span class="se">\n</span><span class="s2">&#34;</span> <span class="p">+</span>
+</span></span><span class="line"><span class="cl"><span class="o">..</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;HGh6/2TZ+8X8OeUlJ7DGIATIb8smzQ==</span><span class="se">\n</span><span class="s2">&#34;</span> <span class="p">+</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;-----END CERTIFICATE-----</span><span class="se">\n</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">const</span> <span class="k">val</span> <span class="py">CLIENT</span><span class="n">_KEY</span> <span class="p">=</span> <span class="s2">&#34;-----BEGIN PRIVATE KEY-----</span><span class="se">\n</span><span class="s2">&#34;</span> <span class="p">+</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;MIIJQgIBADANBgkqhkiG9w0BAQEFAASCCSwwggkoAgEAAoICAQC4lUH0MAdJkfUI</span><span class="se">\n</span><span class="s2">&#34;</span> <span class="p">+</span>
+</span></span><span class="line"><span class="cl"><span class="o">..</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;7jrTiwcEtANdV45Zd4mAS6ctvNIJvg==</span><span class="se">\n</span><span class="s2">&#34;</span> <span class="p">+</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;-----END PRIVATE KEY-----</span><span class="se">\n</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="py">caBundle</span> <span class="p">=</span> <span class="n">CACERT</span><span class="p">.</span><span class="n">splitCertificatesPem</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="py">heldCertificate</span> <span class="p">=</span> <span class="n">HeldCertificate</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">CLIENT_CERT</span> <span class="p">+</span> <span class="n">CLIENT_KEY</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="py">handshakeCerts</span> <span class="p">=</span> <span class="n">HandshakeCertificates</span><span class="p">.</span><span class="n">Builder</span><span class="p">().</span><span class="n">apply</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">caBundle</span><span class="p">.</span><span class="n">forEach</span> <span class="p">{</span> <span class="n">addTrustedCertificate</span><span class="p">(</span><span class="k">it</span><span class="p">)</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">heldCertificate</span><span class="p">(</span><span class="n">heldCertificate</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}.</span><span class="n">build</span><span class="p">()</span>
+</span></span></code></pre></div><h1 id="настройка-http-клиента">Настройка http клиента</h1>
 <p>Чтобы http клиент мог использовать наши сертификаты нужно настроить <code>sslSocketFactory</code>, которая будет цеплять нужные
 сертификаты ко всем запросам во внешнюю систему обеспечивая тем самым взаимную аутентификацию по TLS.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">val</span> <span class="py">ktorClient</span> <span class="p">=</span> <span class="n">HttpClient</span><span class="p">(</span><span class="n">OkHttp</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">expectSuccess</span> <span class="p">=</span> <span class="k">false</span>
-    <span class="n">engine</span> <span class="p">{</span>
-        <span class="n">config</span> <span class="p">{</span>
-            <span class="n">sslSocketFactory</span><span class="p">(</span><span class="n">handshakeCerts</span><span class="p">.</span><span class="n">sslSocketFactory</span><span class="p">(),</span> <span class="n">handshakeCerts</span><span class="p">.</span><span class="n">trustManager</span><span class="p">)</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><p>По умолчанию Ktor клиент будет <a href="https://ktor.io/docs/response-validation.html">кидать исключение</a>, если получил в ответ
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">val</span> <span class="py">ktorClient</span> <span class="p">=</span> <span class="n">HttpClient</span><span class="p">(</span><span class="n">OkHttp</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">expectSuccess</span> <span class="p">=</span> <span class="k">false</span>
+</span></span><span class="line"><span class="cl">    <span class="n">engine</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">config</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">sslSocketFactory</span><span class="p">(</span><span class="n">handshakeCerts</span><span class="p">.</span><span class="n">sslSocketFactory</span><span class="p">(),</span> <span class="n">handshakeCerts</span><span class="p">.</span><span class="n">trustManager</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>По умолчанию Ktor клиент будет <a href="https://ktor.io/docs/response-validation.html">кидать исключение</a>, если получил в ответ
 что-то отличное от <code>2xx</code>. В нашем случае это поведение крайне нежелательно, поэтому нужно выключить эту штуку
 установив <code>expectSuccess = false</code>. При желании можно еще добавить логирование запросов. Пусть это будет вашим домашним
 заданием.</p>
@@ -573,28 +573,28 @@ okhttp_version=4.9.1
 <p>Осталось сделать самую малость: перенаправить запрос пришедший от клиента во внешнюю систему. Чтобы все было еще
 интереснее, предположим, что эта система помимо mTLS аутентификации также требует ключ для доступа к своему API. А мы,
 поскольку пишем умный прокси, возьмем на себя добавление этого ключа к запросам.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="n">intercept</span><span class="p">(</span><span class="n">ApplicationCallPipeline</span><span class="p">.</span><span class="n">Call</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">val</span> <span class="py">response</span> <span class="p">=</span> <span class="n">ktorClient</span><span class="p">.</span><span class="n">request</span><span class="p">&lt;</span><span class="n">HttpResponse</span><span class="p">&gt;(</span><span class="s2">&#34;https://localhost:55000</span><span class="si">${call.request.uri}</span><span class="s2">&#34;</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">method</span> <span class="p">=</span> <span class="n">call</span><span class="p">.</span><span class="n">request</span><span class="p">.</span><span class="n">httpMethod</span>
-
-        <span class="n">headers</span> <span class="p">{</span>
-            <span class="n">append</span><span class="p">(</span><span class="s2">&#34;X-API-KEY&#34;</span><span class="p">,</span> <span class="s2">&#34;102CAE97-17F9-4B08-82C0-AB7653F2EC1B&#34;</span><span class="p">)</span>
-        <span class="p">}</span>
-
-        <span class="k">if</span> <span class="p">(</span><span class="n">call</span><span class="p">.</span><span class="n">request</span><span class="p">.</span><span class="n">httpMethod</span> <span class="o">!=</span> <span class="n">HttpMethod</span><span class="p">.</span><span class="n">Get</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">body</span> <span class="p">=</span> <span class="n">call</span><span class="p">.</span><span class="n">receiveText</span><span class="p">()</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-
-    <span class="n">call</span><span class="p">.</span><span class="n">respond</span><span class="p">(</span><span class="k">object</span> <span class="err">: </span><span class="nc">OutgoingContent</span><span class="p">.</span><span class="n">WriteChannelContent</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">override</span> <span class="k">val</span> <span class="py">status</span><span class="p">:</span> <span class="n">HttpStatusCode</span> <span class="p">=</span> <span class="n">response</span><span class="p">.</span><span class="n">status</span>
-
-        <span class="k">override</span> <span class="k">suspend</span> <span class="k">fun</span> <span class="nf">writeTo</span><span class="p">(</span><span class="n">channel</span><span class="p">:</span> <span class="n">ByteWriteChannel</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">response</span><span class="p">.</span><span class="n">content</span><span class="p">.</span><span class="n">copyAndClose</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
-        <span class="p">}</span>
-    <span class="p">})</span>
-<span class="p">}</span>
-</code></pre></div><p>Показанный вариант довольно простой и его точно придется доработать под ваши нужды, но суть останется той же самой.
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="n">intercept</span><span class="p">(</span><span class="n">ApplicationCallPipeline</span><span class="p">.</span><span class="n">Call</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">response</span> <span class="p">=</span> <span class="n">ktorClient</span><span class="p">.</span><span class="n">request</span><span class="p">&lt;</span><span class="n">HttpResponse</span><span class="p">&gt;(</span><span class="s2">&#34;https://localhost:55000</span><span class="si">${call.request.uri}</span><span class="s2">&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">method</span> <span class="p">=</span> <span class="n">call</span><span class="p">.</span><span class="n">request</span><span class="p">.</span><span class="n">httpMethod</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">headers</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">append</span><span class="p">(</span><span class="s2">&#34;X-API-KEY&#34;</span><span class="p">,</span> <span class="s2">&#34;102CAE97-17F9-4B08-82C0-AB7653F2EC1B&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">call</span><span class="p">.</span><span class="n">request</span><span class="p">.</span><span class="n">httpMethod</span> <span class="o">!=</span> <span class="n">HttpMethod</span><span class="p">.</span><span class="n">Get</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">body</span> <span class="p">=</span> <span class="n">call</span><span class="p">.</span><span class="n">receiveText</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">call</span><span class="p">.</span><span class="n">respond</span><span class="p">(</span><span class="k">object</span> <span class="err">: </span><span class="nc">OutgoingContent</span><span class="p">.</span><span class="n">WriteChannelContent</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">override</span> <span class="k">val</span> <span class="py">status</span><span class="p">:</span> <span class="n">HttpStatusCode</span> <span class="p">=</span> <span class="n">response</span><span class="p">.</span><span class="n">status</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">override</span> <span class="k">suspend</span> <span class="k">fun</span> <span class="nf">writeTo</span><span class="p">(</span><span class="n">channel</span><span class="p">:</span> <span class="n">ByteWriteChannel</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">response</span><span class="p">.</span><span class="n">content</span><span class="p">.</span><span class="n">copyAndClose</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Показанный вариант довольно простой и его точно придется доработать под ваши нужды, но суть останется той же самой.
 Нужно перехватить вызов, который пришел от клиента, добавить туда все недостающие компоненты, послать запрос во внешнюю
 систему и вернуть клиенту полученный ответ. Важным здесь является установка такого же кода ответа, каким ответила
 внешняя система. Если этого не сделать, то даже при получении ошибок <code>4xx</code> и <code>5xx</code> наш прокси будет радостно возвращать
@@ -604,33 +604,33 @@ okhttp_version=4.9.1
 <p>На текущий момент, если вы все сделали правильно и у вас ничего не упало при запуске, то можно начинать стрелять запросы
 в наш прокси чтобы убедиться, что все работает. Теперь к запросом можно не добавлять никакие сертификаты, прокси все
 будет делать за нас.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ curl -GET http://localhost:8080/pets
-<span class="o">[</span> <span class="o">{</span>
-  <span class="s2">&#34;id&#34;</span> : 0,
-  <span class="s2">&#34;name&#34;</span> : <span class="s2">&#34;some_string_value&#34;</span>,
-  <span class="s2">&#34;tag&#34;</span> : <span class="s2">&#34;some_string_value&#34;</span>
-<span class="o">}</span> <span class="o">]</span>%
-
-$ curl -v -POST -H <span class="s2">&#34;Content-Type: application/json&#34;</span> <span class="se">\
-</span><span class="se"></span>    -d <span class="s1">&#39;{&#34;id&#34;: 1, &#34;name&#34;: &#34;test&#34;, &#34;tag&#34;: &#34;test-tag&#34;}&#39;</span> <span class="se">\
-</span><span class="se"></span>    http://localhost:8080/pets
-*   Trying 127.0.0.1...
-* TCP_NODELAY <span class="nb">set</span>
-* Connected to localhost <span class="o">(</span>127.0.0.1<span class="o">)</span> port <span class="m">8080</span> <span class="o">(</span><span class="c1">#0)</span>
-&gt; POST /pets HTTP/1.1
-&gt; Host: localhost:8080
-&gt; User-Agent: curl/7.64.1
-&gt; Accept: */*
-&gt; Content-Type: application/json
-&gt; Content-Length: <span class="m">44</span>
-&gt;
-* upload completely sent off: <span class="m">44</span> out of <span class="m">44</span> bytes
-&lt; HTTP/1.1 <span class="m">201</span> Created
-&lt; transfer-encoding: chunked
-&lt;
-* Connection <span class="c1">#0 to host localhost left intact</span>
-* Closing connection <span class="m">0</span>
-</code></pre></div><p>Исходники можно взять <a href="https://github.com/Fi5t/mtls-reverse-proxy-ktor">здесь</a>. Удачи!</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ curl -GET http://localhost:8080/pets
+</span></span><span class="line"><span class="cl"><span class="o">[</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;id&#34;</span> : 0,
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;name&#34;</span> : <span class="s2">&#34;some_string_value&#34;</span>,
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;tag&#34;</span> : <span class="s2">&#34;some_string_value&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> <span class="o">]</span>%
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ curl -v -POST -H <span class="s2">&#34;Content-Type: application/json&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -d <span class="s1">&#39;{&#34;id&#34;: 1, &#34;name&#34;: &#34;test&#34;, &#34;tag&#34;: &#34;test-tag&#34;}&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    http://localhost:8080/pets
+</span></span><span class="line"><span class="cl">*   Trying 127.0.0.1...
+</span></span><span class="line"><span class="cl">* TCP_NODELAY <span class="nb">set</span>
+</span></span><span class="line"><span class="cl">* Connected to localhost <span class="o">(</span>127.0.0.1<span class="o">)</span> port <span class="m">8080</span> <span class="o">(</span><span class="c1">#0)</span>
+</span></span><span class="line"><span class="cl">&gt; POST /pets HTTP/1.1
+</span></span><span class="line"><span class="cl">&gt; Host: localhost:8080
+</span></span><span class="line"><span class="cl">&gt; User-Agent: curl/7.64.1
+</span></span><span class="line"><span class="cl">&gt; Accept: */*
+</span></span><span class="line"><span class="cl">&gt; Content-Type: application/json
+</span></span><span class="line"><span class="cl">&gt; Content-Length: <span class="m">44</span>
+</span></span><span class="line"><span class="cl">&gt;
+</span></span><span class="line"><span class="cl">* upload completely sent off: <span class="m">44</span> out of <span class="m">44</span> bytes
+</span></span><span class="line"><span class="cl">&lt; HTTP/1.1 <span class="m">201</span> Created
+</span></span><span class="line"><span class="cl">&lt; transfer-encoding: chunked
+</span></span><span class="line"><span class="cl">&lt;
+</span></span><span class="line"><span class="cl">* Connection <span class="c1">#0 to host localhost left intact</span>
+</span></span><span class="line"><span class="cl">* Closing connection <span class="m">0</span>
+</span></span></code></pre></div><p>Исходники можно взять <a href="https://github.com/Fi5t/mtls-reverse-proxy-ktor">здесь</a>. Удачи!</p>
 
         
           <div class="blog-tags">
@@ -753,7 +753,7 @@ $ curl -v -POST -H <span class="s2">&#34;Content-Type: application/json&#34;</sp
           <div class="disqus-comments">
             <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -850,7 +850,7 @@ $ curl -v -POST -H <span class="s2">&#34;Content-Type: application/json&#34;</sp
         </p>
         
         <p class="credits theme-by text-muted">
-          На базе <a href="https://gohugo.io">Hugo v0.92.2</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          На базе <a href="https://gohugo.io">Hugo v0.93.2</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>

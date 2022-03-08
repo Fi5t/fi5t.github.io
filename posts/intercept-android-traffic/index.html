@@ -138,7 +138,7 @@
   <meta name="twitter:site" content="@Fi5t" />
   <meta name="twitter:creator" content="@Fi5t" />
   <link href='https://fi5t.xyz/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.92.2" />
+  <meta name="generator" content="Hugo 0.93.2" />
   <link rel="alternate" href="https://fi5t.xyz/index.xml" type="application/rss+xml" title="(не)Уникальный опыт"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fi5t.xyz/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -338,9 +338,9 @@
 <strong>Предусловия:</strong> вы умеете настраивать прокси на устройстве и у вас установлен <a href="https://magisk.me/">Magisk</a>.</p>
 <p>Начнем с добавления системного сертификата на устройство. Зачем вообще переносит<strong>cert.cer</strong> сертификат из пользовательских в системные? Ну во-первых это удобно. В этом случае если в приложении нет пиннинга, то перехват трафика будет работать сразу из коробки и без проблем, т.к. приложения по умолчанию доверяют системному хранилищу. А во-вторых вы избавитесь от дурацкой плашки, говорящей о том, что ваш трафик может быть перехвачен системным администратором.</p>
 <p>Для начала включаем глобальный прокси на всю систему, чтобы не ковыряться с настройками Wi-Fi. Это делается простой <code>adb</code> командой:
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ adb shell settings put global http_proxy &lt;you-host-ip&gt;:&lt;you-proxy-port&gt;</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ adb shell settings put global http_proxy &lt;you-host-ip&gt;:&lt;you-proxy-port&gt;</span></span></code></pre></div>
 Отключить можно так:
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ adb shell settings put global http_proxy :0</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ adb shell settings put global http_proxy :0</span></span></code></pre></div>
 <em>За этот дивный способ отправляем вагоны благодарности <a href="https://www.youtube.com/watch?v=1wECev_726Y">Алексею Писаренко</a>.</em></p>
 <p>Если вам способ не зашел, то все еще легально настраивать прокси на уровне Wi-Fi сети.
 
@@ -603,23 +603,23 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml">           <span class="nt">&lt;meta-data</span>
-                <span class="na">android:name=</span><span class="s">&#34;android.app.use_local_qt_libs&#34;</span>
-                <span class="na">android:value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
-            <span class="nt">&lt;meta-data</span>
-                <span class="na">android:name=</span><span class="s">&#34;android.app.libs_prefix&#34;</span>
-                <span class="na">android:value=</span><span class="s">&#34;/data/local/tmp/qt/&#34;</span> <span class="nt">/&gt;</span>
-            <span class="nt">&lt;meta-data</span>
-                <span class="na">android:name=</span><span class="s">&#34;android.app.load_local_libs&#34;</span>
-                <span class="na">android:value=</span><span class="s">&#34;&#34;</span> <span class="nt">/&gt;</span>
-            <span class="nt">&lt;meta-data</span>
-                <span class="na">android:name=</span><span class="s">&#34;android.app.load_local_jars&#34;</span>
-                <span class="na">android:value=</span><span class="s">&#34;jar/QtAndroid.jar:jar/QtAndroidBearer.jar:jar/QtPositioning.jar:jar/QtMultimedia.jar:jar/QtAndroidExtras.jar:jar/QtAndroidWebView.jar&#34;</span> <span class="nt">/&gt;</span>
-            <span class="nt">&lt;meta-data</span>
-                <span class="na">android:name=</span><span class="s">&#34;android.app.static_init_classes&#34;</span>
-                <span class="na">android:value=</span><span class="s">&#34;org.qtproject.qt5.android.positioning.QtPositioning:org.qtproject.qt5.android.multimedia.QtMultimediaUtils&#34;</span> <span class="nt">/&gt;</span>
-            <span class="nt">&lt;meta-data</span>
-    </code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">           <span class="nt">&lt;meta-data</span>
+</span></span><span class="line"><span class="cl">                <span class="na">android:name=</span><span class="s">&#34;android.app.use_local_qt_libs&#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="na">android:value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;meta-data</span>
+</span></span><span class="line"><span class="cl">                <span class="na">android:name=</span><span class="s">&#34;android.app.libs_prefix&#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="na">android:value=</span><span class="s">&#34;/data/local/tmp/qt/&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;meta-data</span>
+</span></span><span class="line"><span class="cl">                <span class="na">android:name=</span><span class="s">&#34;android.app.load_local_libs&#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="na">android:value=</span><span class="s">&#34;&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;meta-data</span>
+</span></span><span class="line"><span class="cl">                <span class="na">android:name=</span><span class="s">&#34;android.app.load_local_jars&#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="na">android:value=</span><span class="s">&#34;jar/QtAndroid.jar:jar/QtAndroidBearer.jar:jar/QtPositioning.jar:jar/QtMultimedia.jar:jar/QtAndroidExtras.jar:jar/QtAndroidWebView.jar&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;meta-data</span>
+</span></span><span class="line"><span class="cl">                <span class="na">android:name=</span><span class="s">&#34;android.app.static_init_classes&#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="na">android:value=</span><span class="s">&#34;org.qtproject.qt5.android.positioning.QtPositioning:org.qtproject.qt5.android.multimedia.QtMultimediaUtils&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;meta-data</span>
+</span></span><span class="line"><span class="cl">    </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -645,28 +645,28 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">iptables -t nat -F
-iptables -t nat -A OUTPUT -p tcp --dport <span class="m">80</span> -j DNAT --to-destination &lt;you-host-ip&gt;:&lt;your-proxy-port&gt;
-iptables -t nat -A OUTPUT -p tcp --dport <span class="m">443</span> -j DNAT --to-destination &lt;you-host-ip&gt;:&lt;your-proxy-port&gt;
-iptables -t nat -A POSTROUTING -p tcp --dport <span class="m">80</span> -j MASQUERADE
-iptables -t nat -A POSTROUTING -p tcp --dport <span class="m">443</span> -j MASQUERADE</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">iptables -t nat -F
+</span></span><span class="line"><span class="cl">iptables -t nat -A OUTPUT -p tcp --dport <span class="m">80</span> -j DNAT --to-destination &lt;you-host-ip&gt;:&lt;your-proxy-port&gt;
+</span></span><span class="line"><span class="cl">iptables -t nat -A OUTPUT -p tcp --dport <span class="m">443</span> -j DNAT --to-destination &lt;you-host-ip&gt;:&lt;your-proxy-port&gt;
+</span></span><span class="line"><span class="cl">iptables -t nat -A POSTROUTING -p tcp --dport <span class="m">80</span> -j MASQUERADE
+</span></span><span class="line"><span class="cl">iptables -t nat -A POSTROUTING -p tcp --dport <span class="m">443</span> -j MASQUERADE</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>Если приложение на Flutter, то использовать <a href="https://github.com/ptswarm/reFlutter">reFlutter</a>:
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ pip3 install reflutter
-$ reflutter &lt;your-app&gt;.apk
-
-Please enter your Burp Suite IP: &lt;input_ip&gt;
-
-SnapshotHash: 8ee4ef7a67df9845fba331734198a953
-The resulting apk file: ./release.RE.apk
-Please sign the apk file
-
-Configure Burp Suite proxy server to listen on *:8083
-Proxy Tab -&gt; Options -&gt; Proxy Listeners -&gt; Edit -&gt; Binding Tab
-
-Then <span class="nb">enable</span> invisible proxying in Request Handling Tab
-Support Invisible Proxying -&gt; true</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ pip3 install reflutter
+</span></span><span class="line"><span class="cl">$ reflutter &lt;your-app&gt;.apk
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Please enter your Burp Suite IP: &lt;input_ip&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SnapshotHash: 8ee4ef7a67df9845fba331734198a953
+</span></span><span class="line"><span class="cl">The resulting apk file: ./release.RE.apk
+</span></span><span class="line"><span class="cl">Please sign the apk file
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Configure Burp Suite proxy server to listen on *:8083
+</span></span><span class="line"><span class="cl">Proxy Tab -&gt; Options -&gt; Proxy Listeners -&gt; Edit -&gt; Binding Tab
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Then <span class="nb">enable</span> invisible proxying in Request Handling Tab
+</span></span><span class="line"><span class="cl">Support Invisible Proxying -&gt; true</span></span></code></pre></div></li>
 </ul>
 <p>Все вышеописанное требует установки флага &ldquo;Support invisible proxying&rdquo;, который предназначен специально для таких случаев. Он находится в <strong>Proxy</strong> -&gt; <strong>Options</strong> -&gt; <em>активная прокся</em> -&gt; <strong>Edit</strong> -&gt; <strong>Request Handling</strong> -&gt; <strong>Support invisible proxying</strong>
 
@@ -683,11 +683,11 @@ Support Invisible Proxying -&gt; true</code></pre></div></li>
 <h3 id="проверить-не-использует-ли-приложение-нестандартный-порт">Проверить не использует ли приложение нестандартный порт</h3>
 <p>Приложение вполне может использовать какие-то нестандартные порты для общения с сервером. Там может быть все, что угодно, особенно если это обращение к каким-то тестовым стендам или приватному API. Эта информация пригодится для ручной настройки <code>iptables</code>, которая была в предыдущем разделе. Узнать про нестандартные порты можно путем статического анализа, покопавшись в декомпилированном и/или дизассемблированном коде приложения или путем динамического анализа с помощью <code>tcpdump</code>.</p>
 <p>Его можно запустить прямо на смартфоне (нужен root) командой</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">tcpdump -i wlan0 -n -s0 -v
-</code></pre></div><p>после чего открыть приложение и как-то с ним повзаимодействовать чтобы пошел трафик. Соединений может быть довольно много, поэтому лучше предварительно закрыть все приложения и убедиться что с сетью ничего в данный момент не работает.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">tcpdump -i wlan0 -n -s0 -v
+</span></span></code></pre></div><p>после чего открыть приложение и как-то с ним повзаимодействовать чтобы пошел трафик. Соединений может быть довольно много, поэтому лучше предварительно закрыть все приложения и убедиться что с сетью ничего в данный момент не работает.</p>
 <p>Для удобства, можно записать весь трафик в <strong>pcap</strong> файл командой</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">tcpdump -i wlan0 -n -s0 -w /sdcard/output.pcap
-</code></pre></div><p>и открыть этот файл на хостовой машине в <a href="https://www.wireshark.org/download.html">WireShark</a>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">tcpdump -i wlan0 -n -s0 -w /sdcard/output.pcap
+</span></span></code></pre></div><p>и открыть этот файл на хостовой машине в <a href="https://www.wireshark.org/download.html">WireShark</a>
 
 
 <div class="box" >
@@ -941,7 +941,7 @@ Support Invisible Proxying -&gt; true</code></pre></div></li>
           <div class="disqus-comments">
             <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -1038,7 +1038,7 @@ Support Invisible Proxying -&gt; true</code></pre></div></li>
         </p>
         
         <p class="credits theme-by text-muted">
-          На базе <a href="https://gohugo.io">Hugo v0.92.2</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          На базе <a href="https://gohugo.io">Hugo v0.93.2</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>
