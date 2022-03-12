@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="ru" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+<script type="text/javascript" >
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+ 
+    ym(64685116, "init", {
+         clickmap:true,
+         trackLinks:true,
+         accurateTrackBounce:true
+    });
+ </script>
+ <noscript><div><img src="https://mc.yandex.ru/watch/64685116" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+ 
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Проблемы с безопасностью в Python - (не)Уникальный опыт</title>
+  <meta name="description" content="Среди Python-боярей принято ругать язык PHP и программистов, которые на нем пишут. Дескать, дизайн языка ужасный, разработчики формошлепы, уязвимости лезут из каждого $_GET[&#39;id&#39;] и как на таком говне вообще можно что-то разрабатывать в 202х году.
+
+
+
+  
+    
+      
+    
+    
+  
+
+
+А что сам Python? Как там с безопасностью? Очевидно, что как и везде - плохо. При чем это &ldquo;плохо&rdquo; часто приобретает довольно неявные формы. О них и поговорим.">
+  <meta name="author" content="Fi5t"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "(не)Уникальный опыт",
+    
+    "url": "https:\/\/fi5t.xyz"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/fi5t.xyz"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/fi5t.xyz",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/fi5t.xyz\/posts\/python-security-pitfalls\/",
+          "name": "Проблемы с безопасностью в python"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Fi5t"
+  },
+  "headline": "Проблемы с безопасностью в Python",
+  "description" : "Среди Python-боярей принято ругать язык PHP и программистов, которые на нем пишут. Дескать, дизайн языка ужасный, разработчики формошлепы, уязвимости лезут из каждого $_GET[\u0027id\u0027] и как на таком говне вообще можно что-то разрабатывать в 202х году.\n    А что сам Python? Как там с безопасностью? Очевидно, что как и везде - плохо. При чем это \u0026ldquo;плохо\u0026rdquo; часто приобретает довольно неявные формы. О них и поговорим.\n",
+  "inLanguage" : "ru",
+  "wordCount":  1426 ,
+  "datePublished" : "2022-03-12T00:00:00",
+  "dateModified" : "2022-03-12T00:00:00",
+  "image" : "https:\/\/fi5t.xyz\/img\/avatar-icon.jpg",
+  "keywords" : [ "python, безопасность" ],
+  "mainEntityOfPage" : "https:\/\/fi5t.xyz\/posts\/python-security-pitfalls\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/fi5t.xyz",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/fi5t.xyz\/img\/avatar-icon.jpg",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Проблемы с безопасностью в Python" />
+<meta property="og:description" content="Среди Python-боярей принято ругать язык PHP и программистов, которые на нем пишут. Дескать, дизайн языка ужасный, разработчики формошлепы, уязвимости лезут из каждого $_GET[&#39;id&#39;] и как на таком говне вообще можно что-то разрабатывать в 202х году.
+
+
+
+  
+    
+      
+    
+    
+  
+
+
+А что сам Python? Как там с безопасностью? Очевидно, что как и везде - плохо. При чем это &ldquo;плохо&rdquo; часто приобретает довольно неявные формы. О них и поговорим.">
+<meta property="og:image" content="https://fi5t.xyz/img/avatar-icon.jpg" />
+<meta property="og:url" content="https://fi5t.xyz/posts/python-security-pitfalls/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="(не)Уникальный опыт" />
+
+  <meta name="twitter:title" content="Проблемы с безопасностью в Python" />
+  <meta name="twitter:description" content="Среди Python-боярей принято ругать язык PHP и программистов, которые на нем пишут. Дескать, дизайн языка ужасный, разработчики формошлепы, уязвимости лезут из каждого $_GET[&#39;id&#39;] и как на таком говне …">
+  <meta name="twitter:image" content="https://fi5t.xyz/img/avatar-icon.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@Fi5t" />
+  <meta name="twitter:creator" content="@Fi5t" />
+  <link href='https://fi5t.xyz/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.93.2" />
+  <link rel="alternate" href="https://fi5t.xyz/index.xml" type="application/rss+xml" title="(не)Уникальный опыт"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fi5t.xyz/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://fi5t.xyz/css/syntax.css" /><link rel="stylesheet" href="https://fi5t.xyz/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Навигация</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://fi5t.xyz">(не)Уникальный опыт</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+          
+            <li>
+              
+                
+                  <a href="/en" lang="en">en</a>
+                
+              
+                
+              
+            </li>
+          
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="(не)Уникальный опыт" href="https://fi5t.xyz">
+            <img class="avatar-img" src="https://fi5t.xyz/img/avatar-icon.jpg" alt="(не)Уникальный опыт" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header-section ">
+  
+  <div class="intro-header no-img">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <div class="posts-heading">
+            
+            <h1>Проблемы с безопасностью в Python</h1>
+            
+            
+            <hr class="small">
+            
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>Среди Python-боярей принято ругать язык PHP и программистов, которые на нем пишут. Дескать, дизайн языка ужасный, разработчики формошлепы, уязвимости лезут из каждого <code>$_GET['id']</code> и как на таком говне вообще можно что-то разрабатывать в 202х году.</p>
+
+<link rel="stylesheet" href="https://fi5t.xyz/css/hugo-easy-gallery.css" />
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/python-security-pitfalls/php-creator.png" alt="/img/python-security-pitfalls/php-creator.png"/>
+    </div>
+    <a href="/img/python-security-pitfalls/php-creator.png" itemprop="contentUrl"></a>
+  </figure>
+</div>
+
+<p>А что сам Python? Как там с безопасностью? Очевидно, что как и везде - <strong>плохо</strong>. При чем это &ldquo;плохо&rdquo; часто приобретает довольно неявные формы. О них и поговорим.</p>
+<blockquote>
+<p>Вся эта статья, представляет из себя мои заметки и мысли основанные на другой статье - <a href="https://blog.sonarsource.com/10-unknown-security-pitfalls-for-python">10 Unknown Security Pitfalls for Python</a>. Сама по себе она отличная, но местами мне не хватило примеров, ссылок и глубины повествования. Эти пробелы я и попробую закрыть.</p>
+</blockquote>
+<h2 id="оптимизация-утверждений">Оптимизация утверждений</h2>
+<p>Код на питоне может быть отимизирован во время выполнения и в этом режиме игнорируется инструкция <code>assert</code>. Следовательно, все проверки предусловий, которые выполняются этой инструкцией будут проигнорированы поэтому их не рекомендуется использовать из соображений безопасности. Для оптимизации кода, достаточно передать интерпритатору флаг <code>-O</code>. Возьмем очень синтетический пример:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">superuser_action</span><span class="p">(</span><span class="n">user</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="n">user</span> <span class="o">==</span> <span class="s2">&#34;admin&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Excecute admin actions...&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl"><span class="n">superuser_action</span><span class="p">(</span><span class="s2">&#34;user&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>И запустим его без оптимизации</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ python asserts.py
+</span></span><span class="line"><span class="cl">Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;/home/user/asserts.py&#34;</span>, line 7, in &lt;module&gt;
+</span></span><span class="line"><span class="cl">    superuser_action<span class="o">(</span><span class="s2">&#34;user&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;/home/user/asserts.py&#34;</span>, line 4, in superuser_action
+</span></span><span class="line"><span class="cl">    assert <span class="nv">user</span> <span class="o">==</span> <span class="s2">&#34;admin&#34;</span>
+</span></span><span class="line"><span class="cl">AssertionError
+</span></span></code></pre></div><p>Отлично, питон стоит на страже наших интересов. А потом господин разработчик решил, что все работает как-то медленно (GIL, ну вы знаете&hellip;) и применил оптимизацию.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ python -O asserts.py
+</span></span><span class="line"><span class="cl">Excecute admin actions...
+</span></span></code></pre></div><p>Теперь немного изменим пример, чтобы понять, что там происходит под капотом в <a href="https://opensource.com/article/18/4/introduction-python-bytecode">байткоде</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">dis</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">superuser_action</span><span class="p">(</span><span class="n">user</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="n">user</span> <span class="o">==</span> <span class="s2">&#34;admin&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Excecute admin actions...&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl"><span class="n">dis</span><span class="o">.</span><span class="n">dis</span><span class="p">(</span><span class="n">superuser_action</span><span class="p">)</span>
+</span></span></code></pre></div><p>Результат выполнения скрипта без оптимизаций (assert-блок выделен цветом):</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="hl"><span class="lnt"> 1
+</span></span><span class="hl"><span class="lnt"> 2
+</span></span><span class="hl"><span class="lnt"> 3
+</span></span><span class="hl"><span class="lnt"> 4
+</span></span><span class="hl"><span class="lnt"> 5
+</span></span><span class="hl"><span class="lnt"> 6
+</span></span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line hl"><span class="cl"><span class="mi">6</span>           <span class="mi">0</span> <span class="n">LOAD_FAST</span>                <span class="mi">0</span> <span class="p">(</span><span class="n">user</span><span class="p">)</span>
+</span></span><span class="line hl"><span class="cl">            <span class="mi">2</span> <span class="n">LOAD_CONST</span>               <span class="mi">1</span> <span class="p">(</span><span class="s1">&#39;admin&#39;</span><span class="p">)</span>
+</span></span><span class="line hl"><span class="cl">            <span class="mi">4</span> <span class="n">COMPARE_OP</span>               <span class="mi">2</span> <span class="p">(</span><span class="o">==</span><span class="p">)</span>
+</span></span><span class="line hl"><span class="cl">            <span class="mi">6</span> <span class="n">POP_JUMP_IF_TRUE</span>         <span class="mi">6</span> <span class="p">(</span><span class="n">to</span> <span class="mi">12</span><span class="p">)</span>
+</span></span><span class="line hl"><span class="cl">            <span class="mi">8</span> <span class="n">LOAD_ASSERTION_ERROR</span>
+</span></span><span class="line hl"><span class="cl">           <span class="mi">10</span> <span class="n">RAISE_VARARGS</span>            <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="mi">7</span>     <span class="o">&gt;&gt;</span>   <span class="mi">12</span> <span class="n">LOAD_GLOBAL</span>              <span class="mi">0</span> <span class="p">(</span><span class="nb">print</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">           <span class="mi">14</span> <span class="n">LOAD_CONST</span>               <span class="mi">2</span> <span class="p">(</span><span class="s1">&#39;Excecute admin actions...&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">           <span class="mi">16</span> <span class="n">CALL_FUNCTION</span>            <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">           <span class="mi">18</span> <span class="n">POP_TOP</span>
+</span></span><span class="line"><span class="cl">           <span class="mi">20</span> <span class="n">LOAD_CONST</span>               <span class="mi">0</span> <span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">           <span class="mi">22</span> <span class="n">RETURN_VALUE</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>А теперь тоже самое, но с оптимизацией:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="mi">7</span>           <span class="mi">0</span> <span class="n">LOAD_GLOBAL</span>              <span class="mi">0</span> <span class="p">(</span><span class="nb">print</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="mi">2</span> <span class="n">LOAD_CONST</span>               <span class="mi">1</span> <span class="p">(</span><span class="s1">&#39;Excecute admin actions...&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="mi">4</span> <span class="n">CALL_FUNCTION</span>            <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">            <span class="mi">6</span> <span class="n">POP_TOP</span>
+</span></span><span class="line"><span class="cl">            <span class="mi">8</span> <span class="n">LOAD_CONST</span>               <span class="mi">0</span> <span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">           <span class="mi">10</span> <span class="n">RETURN_VALUE</span>
+</span></span></code></pre></div><p>Assert-блок был просто вырезан. Так работает добрая магия оптимизаций. Но кто в здравом уме будет проверять права доступа к методу <code>DELETE /user/{id}</code> через <code>assert</code>? ;)</p>
+<h2 id="разрешения-по-умолчанию-для-osmakedirs">Разрешения по умолчанию для <code>os.makedirs</code></h2>
+<p>С помощью функции <code>os.makedirs</code> можно создать одну или несколько папок:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">init_directories</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s2">&#34;A/B/C&#34;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="mo">0o700</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s2">&#34;Done!&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>В примере выше будет создано три папки, но в зависимости от версии питона права на них будут разные. До версии <strong>3.6</strong> все папки будут созданы с одинаковыми правами - <strong>700</strong> (<code>rwx------</code>), что дает право чтения, записи и выполнения только создателю папок. А вот после версии <strong>3.6</strong>, разрешение <strong>700</strong> получит только папка <code>C</code>, а две предыдущие будут созданы с разрешением по умолчанию - <strong>755</strong> (<code>rwxr-xr-x</code>).</p>
+<p>Существующие уязвимости на эту тему:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2020-24583">CVE-2020-24583</a></li>
+<li><a href="https://blog.sonarsource.com/wordpress-hardening-bypass">WordPress &lt;= 5.2.3: Hardening Bypass</a></li>
+</ul>
+<h2 id="особенность-при-объединении-абсолютных-путей">Особенность при объединении абсолютных путей</h2>
+<p>У функции <code>os.path.join</code>, есть интересная особенность, которая может привести к проблемам с безопасностью. Если к одному или нескольким существующим базовым параметрам добавить еще один содержащий <code>/</code> в начале, то все базовые параметры будут проигнорированы:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">read_file</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">filename</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&#34;var&#34;</span><span class="p">,</span> <span class="s2">&#34;lib&#34;</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">file_path</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&#34;.&#34;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s2">&#34;Failed!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">content_type</span><span class="o">=</span><span class="s1">&#39;text/plain&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><p>В примере выше есть примитивная защита от обхода директории, но ее можно легко обойти если в качестве имени файла передать <code>/etc/passwd</code>. Переменная <code>file_path</code> в этом случае, вместо ожидаемого значения <code>var/lib/etc/passwd</code> примет значение <code>/etc/passwd</code>. Это не является ошибкой и описано в документации. Но документацию никто не читает и поэтому существуют известные уязвимости вызванные этой особенностью:</p>
+<ul>
+<li><a href="https://www.gdatasoftware.com/blog/2014/10/23943-cuckoo-sandbox-evasion-poc-available">Cuckoo Sandbox Evasion</a></li>
+<li><a href="https://www.cvedetails.com/cve/CVE-2020-35736/">CVE-2020-35736</a></li>
+</ul>
+<h2 id="обходи-директории-при-создании-временных-файлов">Обходи директории при создании временных файлов</h2>
+<p>Параметры <code>prefix</code> и <code>suffix</code> у функции <code>tempfile.NamedTemporaryFile</code> <a href="https://bugs.python.org/issue35278">уязвимы</a> к обходу директории.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">touch_tmp_file</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tmp_file</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="nb">id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;tmp file: </span><span class="si">{</span><span class="n">tmp_file</span><span class="si">}</span><span class="s2"> created!&#34;</span><span class="p">,</span> <span class="n">content_type</span><span class="o">=</span><span class="s1">&#39;text/plain&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><p>Если в качестве id передать <code>/../var/www/test</code>, то будет создан файл с именем <code>/var/www/test_zdllj17</code>. В контексте конкретного сервиса это может дать основу для более сложной атаки.</p>
+<h2 id="обход-директории-при-распаковке-zip-файла">Обход директории при распаковке zip файла</h2>
+<p>Функции <code>tarfile.TarFile.extractall</code> и <code>tarfile.TarFile.extract</code> подвержены уязвимости <a href="https://snyk.io/research/zip-slip-vulnerability">Zip Slip</a>. Аналогичные функции для работы с zip архивами <code>zipfile.ZipFile.extract</code> и <code>zipfile.ZipFile.extractall</code>, в свою очередь, вырезают символы <code>../</code> из пути и предотвращают эту уязвимость. Но она все еще может быть проэксплуатирована в таком коде:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="hl"><span class="lnt"> 6
+</span></span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">extract_html</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">filename</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">zf</span> <span class="o">=</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">filename</span><span class="o">.</span><span class="n">temporary_file_path</span><span class="p">(),</span> <span class="s2">&#34;r&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">zf</span><span class="o">.</span><span class="n">namelist</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">entry</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&#34;.html&#34;</span><span class="p">):</span>
+</span></span><span class="line hl"><span class="cl">            <span class="n">file_content</span> <span class="o">=</span> <span class="n">zf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">           <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="s2">&#34;wb&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">               <span class="n">fp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">file_content</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="n">zf</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">   <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s2">&#34;HTML files extracted!&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Из-за прямого чтения содержимого файла из архива - не проводится никакой предварительной обработки имен файлов, это делают только фукнкции <code>extract/extractall</code>, что позволяет выполнить обход директории и создать произвольный HTML по требуемому пути. Также существуют известные уязвимости из-за этого механизма:</p>
+<ul>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2019-14751">CVE-2019-14751</a></li>
+</ul>
+<h2 id="неполное-соответствие-регулярному-выражению">Неполное соответствие регулярному выражению</h2>
+<p>Существует небольшая разница между функциями <code>re.search</code> и <code>re.match</code>. Функция <code>re.match</code> не ищет совпадения в новых строках, что дает возможность обходить проверки написанные с ее помощью:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">is_sql_injection</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&#34;.*(union)|(select).*&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">name_to_test</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">name_to_test</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kc">False</span>
+</span></span></code></pre></div><p>Для того чтобы обойти проверку и выполнить инъекцию нужно передать строку вида <code>aaaaaa \n union select</code>, которую этот код успешно пропустит.</p>
+<h2 id="обход-экранирования-с-помощью-юникода">Обход экранирования с помощью юникода</h2>
+<p>В стандарте Unicode определены четыре алгоритма нормализации для разных символов. Приложение может использовать эту нормализацию для хранения данных, таких как имя пользователя, унифицированным способом независимым от человеческого языка. Порой это приводит к уязвимостям: <a href="https://nvd.nist.gov/vuln/detail/CVE-2019-9636">CVE-2019-9636</a>.</p>
+<p>Следующий примеруязвим к XSS из-за применения нормализации:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="hl"><span class="lnt">7
+</span></span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">unicodedata</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">django.utils.html</span> <span class="kn">import</span> <span class="n">escape</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">render_input</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">user_input</span> <span class="o">=</span> <span class="n">escape</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="p">[</span><span class="s1">&#39;p&#39;</span><span class="p">])</span>
+</span></span><span class="line hl"><span class="cl">    <span class="n">normalized_user_input</span> <span class="o">=</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="s2">&#34;NFKC&#34;</span><span class="p">,</span> <span class="n">user_input</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;my_input&#39;</span><span class="p">:</span> <span class="n">normalized_user_input</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;test.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Функция экранирования <code>escape</code> не сработает если в параметре передать такой код <code>%EF%B9%A4script%EF%B9%A5alert(1)%EF%B9%A4/script%EF%B9%A5</code>. С ее точки зрения здесь нечего экранировать. А вот функция нормализации преобразует это в <code>﹤script﹥alert(1)﹤/script﹥</code>. Такой код попадет на страницу и будет выполнен.</p>
+<h2 id="коллизия-регистра-символов-юникода">Коллизия регистра символов юникода</h2>
+<p>При сопоставлении символов с их кодами, Unicode пытается объединить эти символы для различных языков. Это приводит к высокой вероятность того, что разные символы будут имеють одинаковое отображение (layout). Например, турецкий символ в нижнем регистре -  <code>ı</code> (без точки) превратится в <code>I</code> в верхнем регистре. В алфавитах на основе латиницы, символ <code>i</code> также превратится в <code>I</code> в верхнем регистре. В терминах юникода это означает, что два разных символа сопоставляются с одним и тем же кодом в верхнем регистре. Такое поведение уже приводило к критическим уязвимостям в Django: <a href="https://nvd.nist.gov/vuln/detail/CVE-2019-19844">CVE-2019-19844</a>. Рассмотрим пример:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="hl"><span class="lnt"> 7
+</span></span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="hl"><span class="lnt">10
+</span></span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">django.core.mail</span> <span class="kn">import</span> <span class="n">send_mail</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">vuln.models</span> <span class="kn">import</span> <span class="n">User</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">reset_pw</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">email</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]</span>
+</span></span><span class="line hl"><span class="cl">    <span class="n">result</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">email__exact</span><span class="o">=</span><span class="n">email</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="ow">not</span> <span class="n">result</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s2">&#34;User not found!&#34;</span><span class="p">)</span>
+</span></span><span class="line hl"><span class="cl">   <span class="n">send_mail</span><span class="p">(</span><span class="s1">&#39;Reset Password&#39;</span><span class="p">,</span><span class="s1">&#39;Your new pw: 123456.&#39;</span><span class="p">,</span> <span class="s1">&#39;from@example.com&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">email</span><span class="p">],</span> <span class="n">fail_silently</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s2">&#34;Password reset email send!&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Функция восстановления пароля провдит регистронезависимую проверку на существование пользователя и если пользователь найден, то высылает пароль на почту полученную из параметров запроса. Проблема в том, что для существующего пользователя с почтой <code>foo@mix.com</code> , злоумышленник может выполнить восстановление пароля на подконтрольную ему почту <code>foo@mıx.com</code>,  которая после прохождения через функцию <code>upper()</code> будет преобразована к <code>FOO@MIX.COM</code> из-за коллизии. Таким образом будет пройдена проверка на существование пользователя, но пароль будет отправлен на почту злоумышленника.</p>
+<h2 id="нормализация-ip-адресов">Нормализация IP адресов</h2>
+<p>До версии питона <strong>3.8</strong>, IP адреса нормализировались с помощью библиотеки <code>ipaddress</code>, которая удаляла ведущие нули у октетов адреса. Эта особенность уже приводила к серьезным уязвимостям в Django: <a href="https://nvd.nist.gov/vuln/detail/CVE-2021-33571">CVE-2021-33571</a>. По сути, это дает возможность обойти некоторые валидации и при выполнении атаки <a href="https://owasp.org/www-community/attacks/Server_Side_Request_Forgery">SSRF</a>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">ipaddress</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">send_request</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ip</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="p">[</span><span class="s1">&#39;ip&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">ip</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&#34;127.0.0.1&#34;</span><span class="p">,</span> <span class="s2">&#34;0.0.0.0&#34;</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s2">&#34;Not allowed!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">ip</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">ipaddress</span><span class="o">.</span><span class="n">IPv4Address</span><span class="p">(</span><span class="n">ip</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">   <span class="k">except</span> <span class="n">ipaddress</span><span class="o">.</span><span class="n">AddressValueError</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s2">&#34;Error at validation!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://&#39;</span> <span class="o">+</span> <span class="n">ip</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s2">&#34;Request send!&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>В примере выше проводится валидация по списку запрещенных адресов, что уже само по себе является плохой практикой. Если на вход такого валидатора передать адрес <code>127.0.00.1</code>, то он успешно пройдет валидацию и попадет в функцию <code>ipaddress.IPv4Address</code>, где будет нормализован до <code>127.0.0.1</code> и передан в GET запрос в качестве адреса хоста.</p>
+<h2 id="разбор-url-параметров">Разбор URL параметров</h2>
+<p>До версии питона <strong>3.7</strong>, функция <code>urllib.parse.parse_qsl</code> позволяла использовать символы <code>;</code> и <code>&amp;</code> в качестве разделителей для параметров URL. При этом другие языки не рассматривают символ <code>;</code> в качестве разделителя, что может привести к уязвимостям в микросервисной системе. Для примера возьмем сервис на PHP, который взаимодействует с сервисом на Python. Если передать в эту цепочку передать URL вида <code>http://victim.com/?a=1;b=2</code>, то PHP сервис увидит только один параметр <code>a</code> со значением <code>1;b=2</code>. Далее это улетит в сервис на Python, который увидит уже два параметра <code>a=1</code> и <code>b=2</code>. Такое поведение приводило например к отравлению кэша в Django: <a href="https://nvd.nist.gov/vuln/detail/CVE-2021-23336">CVE-2021-23336</a></p>
+<h2 id="ссылки">Ссылки</h2>
+<ul>
+<li><a href="https://realpython.com/python-encodings-guide/#python-string-literals-ways-to-skin-a-cat">Unicode &amp; Character Encodings in Python: A Painless Guide</a> (есть <a href="https://tproger.ru/translations/unicode-and-encoding-python-guide/">перевод</a>)</li>
+<li><a href="https://blog.sonarsource.com/clean_coding-quality_profile_quality_gate_guidance">Clean As You Code essentials - What are Quality Profiles and Quality Gates?</a></li>
+<li><a href="https://blog.sonarsource.com/hack-the-stack-with-localstack">Hack the Stack with LocalStack: Code Vulnerabilities Explained</a></li>
+<li><a href="https://blog.sonarsource.com/code-security-now-theres-a-tool-for-developers">Code security: now there&rsquo;s a tool for developers</a></li>
+</ul>
+
+        
+          <div class="blog-tags">
+            
+              <a href="https://fi5t.xyz/tags/python/">python</a>&nbsp;
+            
+              <a href="https://fi5t.xyz/tags/%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C/">безопасность</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=https%3a%2f%2ffi5t.xyz%2fposts%2fpython-security-pitfalls%2f&amp;text=%d0%9f%d1%80%d0%be%d0%b1%d0%bb%d0%b5%d0%bc%d1%8b%20%d1%81%20%d0%b1%d0%b5%d0%b7%d0%be%d0%bf%d0%b0%d1%81%d0%bd%d0%be%d1%81%d1%82%d1%8c%d1%8e%20%d0%b2%20Python&amp;via=Fi5t" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ffi5t.xyz%2fposts%2fpython-security-pitfalls%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=https%3a%2f%2ffi5t.xyz%2fposts%2fpython-security-pitfalls%2f&amp;title=%d0%9f%d1%80%d0%be%d0%b1%d0%bb%d0%b5%d0%bc%d1%8b%20%d1%81%20%d0%b1%d0%b5%d0%b7%d0%be%d0%bf%d0%b0%d1%81%d0%bd%d0%be%d1%81%d1%82%d1%8c%d1%8e%20%d0%b2%20Python" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2ffi5t.xyz%2fposts%2fpython-security-pitfalls%2f&amp;title=%d0%9f%d1%80%d0%be%d0%b1%d0%bb%d0%b5%d0%bc%d1%8b%20%d1%81%20%d0%b1%d0%b5%d0%b7%d0%be%d0%bf%d0%b0%d1%81%d0%bd%d0%be%d1%81%d1%82%d1%8c%d1%8e%20%d0%b2%20Python" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2ffi5t.xyz%2fposts%2fpython-security-pitfalls%2f&amp;title=%d0%9f%d1%80%d0%be%d0%b1%d0%bb%d0%b5%d0%bc%d1%8b%20%d1%81%20%d0%b1%d0%b5%d0%b7%d0%be%d0%bf%d0%b0%d1%81%d0%bd%d0%be%d1%81%d1%82%d1%8c%d1%8e%20%d0%b2%20Python" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2ffi5t.xyz%2fposts%2fpython-security-pitfalls%2f&amp;description=%d0%9f%d1%80%d0%be%d0%b1%d0%bb%d0%b5%d0%bc%d1%8b%20%d1%81%20%d0%b1%d0%b5%d0%b7%d0%be%d0%bf%d0%b0%d1%81%d0%bd%d0%be%d1%81%d1%82%d1%8c%d1%8e%20%d0%b2%20Python" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+
+              </div>
+            </section>
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">Смотрите также</h4>
+                  <ul>
+                
+                
+                    <li><a href="/posts/android-13-preview-security/">Android 13 Developer Preview 1: Что там по безопасности?</a></li>
+                
+                    <li><a href="/posts/intercept-android-traffic/">Перехват трафика в Android. Большой гайд.</a></li>
+                
+                    <li><a href="/posts/reverse-proxy-with-mtls-and-ktor/">Создаем reverse proxy с mTLS на Ktor</a></li>
+                
+                    <li><a href="/posts/drozer-on-mac/">Старый Drozer MacOS не испортит</a></li>
+                
+                    <li><a href="/posts/python-eats-tink/">Шифрование данных в Python без херни</a></li>
+                
+              </ul>
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://fi5t.xyz/posts/hard-times/" data-toggle="tooltip" data-placement="top" title="Школа выживания в природных условиях">&larr; Предыдущий</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
+        
+          
+          <div class="disqus-comments">
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "not-unique-x" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+          </div>
+          
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="https://github.com/Fi5t" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/Fi5t" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/channel/UC2VONdPZLg_TisPi9thxLYA" title="Youtube">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-youtube fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://soundcloud.com/dry-rmr" title="SoundCloud">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-soundcloud fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              Fi5t
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2022
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://fi5t.xyz">(не)Уникальный опыт</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          На базе <a href="https://gohugo.io">Hugo v0.93.2</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://fi5t.xyz/js/main.js"></script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://fi5t.xyz/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

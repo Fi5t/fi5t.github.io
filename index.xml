@@ -6,7 +6,28 @@
     <description>Recent content on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-ru</language>
-    <lastBuildDate>Sun, 06 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 12 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Проблемы с безопасностью в Python</title>
+      <link>https://fi5t.xyz/posts/python-security-pitfalls/</link>
+      <pubDate>Sat, 12 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fi5t.xyz/posts/python-security-pitfalls/</guid>
+      <description>&lt;p&gt;Среди Python-боярей принято ругать язык PHP и программистов, которые на нем пишут. Дескать, дизайн языка ужасный, разработчики формошлепы, уязвимости лезут из каждого &lt;code&gt;$_GET[&#39;id&#39;]&lt;/code&gt; и как на таком говне вообще можно что-то разрабатывать в 202х году.&lt;/p&gt;
+
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;
+&lt;div class=&#34;box&#34; &gt;
+  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+    &lt;div class=&#34;img&#34;&gt;
+      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/python-security-pitfalls/php-creator.png&#34; alt=&#34;/img/python-security-pitfalls/php-creator.png&#34;/&gt;
+    &lt;/div&gt;
+    &lt;a href=&#34;https://fi5t.xyz/img/python-security-pitfalls/php-creator.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;p&gt;А что сам Python? Как там с безопасностью? Очевидно, что как и везде - &lt;strong&gt;плохо&lt;/strong&gt;. При чем это &amp;ldquo;плохо&amp;rdquo; часто приобретает довольно неявные формы. О них и поговорим.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Школа выживания в природных условиях</title>
       <link>https://fi5t.xyz/posts/hard-times/</link>

@@ -6,7 +6,25 @@
     <description>Recent content in Tags on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-ru</language>
-    <lastBuildDate>Sun, 06 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 12 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>python</title>
+      <link>https://fi5t.xyz/tags/python/</link>
+      <pubDate>Sat, 12 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fi5t.xyz/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>безопасность</title>
+      <link>https://fi5t.xyz/tags/%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C/</link>
+      <pubDate>Sat, 12 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fi5t.xyz/tags/%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>философия</title>
       <link>https://fi5t.xyz/tags/%D1%84%D0%B8%D0%BB%D0%BE%D1%81%D0%BE%D1%84%D0%B8%D1%8F/</link>
@@ -31,15 +49,6 @@
       <pubDate>Fri, 11 Feb 2022 00:00:00 +0000</pubDate>
       
       <guid>https://fi5t.xyz/tags/mobile/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>безопасность</title>
-      <link>https://fi5t.xyz/tags/%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C/</link>
-      <pubDate>Fri, 11 Feb 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://fi5t.xyz/tags/%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C/</guid>
       <description></description>
     </item>
     
@@ -148,15 +157,6 @@
       <pubDate>Tue, 04 Aug 2020 14:13:10 +0300</pubDate>
       
       <guid>https://fi5t.xyz/tags/drozer/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>python</title>
-      <link>https://fi5t.xyz/tags/python/</link>
-      <pubDate>Wed, 15 Jul 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://fi5t.xyz/tags/python/</guid>
       <description></description>
     </item>
     
