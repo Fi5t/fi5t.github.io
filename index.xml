@@ -6,7 +6,26 @@
     <description>Recent content on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-ru</language>
-    <lastBuildDate>Sat, 12 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 29 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NeoQUEST 2022: Задание 7</title>
+      <link>https://fi5t.xyz/posts/neoquest2022-writeup-task7/</link>
+      <pubDate>Tue, 29 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fi5t.xyz/posts/neoquest2022-writeup-task7/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Выкрасть телефон – было малым делом, а вот взломать его сложнее. Но тут в дело вступает Том, который умеет взламывать такие приложения, словно это орешки!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Тома под рукой у меня не оказалось, поэтому как всегда пришлось делать все самому.&lt;/p&gt;
+&lt;h1 id=&#34;tldr&#34;&gt;tl;dr&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Вызвать метод AIDL интерфейса чтобы стригерить получение картинки из нативной библиотеки&lt;/li&gt;
+&lt;li&gt;открыть activity &lt;code&gt;DraftPerArtistActivity_90vbsf45&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;посмотреть имя художника&lt;/li&gt;
+&lt;li&gt;взять от него sha256 и отправить в качестве ключа.&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
     <item>
       <title>Проблемы с безопасностью в Python</title>
       <link>https://fi5t.xyz/posts/python-security-pitfalls/</link>

@@ -54,7 +54,7 @@
   <meta name="twitter:site" content="@Fi5t" />
   <meta name="twitter:creator" content="@Fi5t" />
   <link href='https://fi5t.xyz/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.94.2" />
+  <meta name="generator" content="Hugo 0.95.0" />
   <link rel="alternate" href="https://fi5t.xyz/index.xml" type="application/rss+xml" title="(не)Уникальный опыт"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fi5t.xyz/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -202,6 +202,69 @@
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         
         <div class="posts-list">
+          
+            <article class="post-preview">
+    <a href="https://fi5t.xyz/posts/neoquest2022-writeup-task7/">
+        <h2 class="post-title">NeoQUEST 2022: Задание 7</h2>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Опубликовано March 29, 2022
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;13&nbsp;минут
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2596&nbsp;слова
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Fi5t
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <blockquote>
+<p>Выкрасть телефон – было малым делом, а вот взломать его сложнее. Но тут в дело вступает Том, который умеет взламывать такие приложения, словно это орешки!</p>
+</blockquote>
+<p>Тома под рукой у меня не оказалось, поэтому как всегда пришлось делать все самому.</p>
+<h1 id="tldr">tl;dr</h1>
+<ul>
+<li>Вызвать метод AIDL интерфейса чтобы стригерить получение картинки из нативной библиотеки</li>
+<li>открыть activity <code>DraftPerArtistActivity_90vbsf45</code></li>
+<li>посмотреть имя художника</li>
+<li>взять от него sha256 и отправить в качестве ключа.</li>
+</ul>
+        <a href="https://fi5t.xyz/posts/neoquest2022-writeup-task7/" class="post-read-more">[Далее]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://fi5t.xyz/tags/android/">android</a>&nbsp;
+        
+        <a href="https://fi5t.xyz/tags/%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C/">безопасность</a>&nbsp;
+        
+        <a href="https://fi5t.xyz/tags/ctf/">ctf</a>&nbsp;
+        
+        <a href="https://fi5t.xyz/tags/frida/">frida</a>&nbsp;
+        
+    </div>
+    
+
+</article>
           
             <article class="post-preview">
     <a href="https://fi5t.xyz/posts/python-security-pitfalls/">
@@ -720,55 +783,6 @@
 
 </article>
           
-            <article class="post-preview">
-    <a href="https://fi5t.xyz/posts/ktor-on-backend/">
-        <h2 class="post-title">Kotlin ❤️ Backend</h2>
-        
-        
-        
-    </a>
-
-    <p class="post-meta">
-        <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;Опубликовано April 15, 2021
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;минут
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;727&nbsp;слова
-  
-  
-    
-      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Fi5t
-    
-  
-  
-</span>
-
-
-    </p>
-    <div class="post-entry">
-        
-        <p>Какое-то время назад я проводил сравнение JVM фреймворков для разработки backend-сервисов. Задача оказалась довольно амбициозной и затратной по времени, поэтому я ее так и не доделал до конца. Но часть вещей все же удалось сравнить из описать. Я решил, что не пропадать же тексту зря и публикую здесь кусок который касается набирающего сейчас популярного фреймворка - <a href="https://ktor.io/"><strong>Ktor</strong></a>.</p>
-        <a href="https://fi5t.xyz/posts/ktor-on-backend/" class="post-read-more">[Далее]</a>
-        
-    </div>
-
-    
-    <div class="blog-tags">
-        
-        <a href="https://fi5t.xyz/tags/backend/">backend</a>&nbsp;
-        
-        <a href="https://fi5t.xyz/tags/ktor/">ktor</a>&nbsp;
-        
-    </div>
-    
-
-</article>
-          
         </div>
         
           <ul class="pager main-pager">
@@ -853,7 +867,7 @@
         </p>
         
         <p class="credits theme-by text-muted">
-          На базе <a href="https://gohugo.io">Hugo v0.94.2</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          На базе <a href="https://gohugo.io">Hugo v0.95.0</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>

@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="ru" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+<script type="text/javascript" >
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+ 
+    ym(64685116, "init", {
+         clickmap:true,
+         trackLinks:true,
+         accurateTrackBounce:true
+    });
+ </script>
+ <noscript><div><img src="https://mc.yandex.ru/watch/64685116" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+ 
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>NeoQUEST 2022: Задание 7 - (не)Уникальный опыт</title>
+  <meta name="description" content="
+Выкрасть телефон – было малым делом, а вот взломать его сложнее. Но тут в дело вступает Том, который умеет взламывать такие приложения, словно это орешки!
+
+Тома под рукой у меня не оказалось, поэтому как всегда пришлось делать все самому.
+tl;dr
+
+Вызвать метод AIDL интерфейса чтобы стригерить получение картинки из нативной библиотеки
+открыть activity DraftPerArtistActivity_90vbsf45
+посмотреть имя художника
+взять от него sha256 и отправить в качестве ключа.
+">
+  <meta name="author" content="Fi5t"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "(не)Уникальный опыт",
+    
+    "url": "https:\/\/fi5t.xyz"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/fi5t.xyz"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/fi5t.xyz",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/fi5t.xyz\/posts\/neoquest2022-writeup-task7\/",
+          "name": "Neo quest 2022 задание 7"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Fi5t"
+  },
+  "headline": "NeoQUEST 2022: Задание 7",
+  "description" : " Выкрасть телефон – было малым делом, а вот взломать его сложнее. Но тут в дело вступает Том, который умеет взламывать такие приложения, словно это орешки!\n Тома под рукой у меня не оказалось, поэтому как всегда пришлось делать все самому.\ntl;dr  Вызвать метод AIDL интерфейса чтобы стригерить получение картинки из нативной библиотеки открыть activity DraftPerArtistActivity_90vbsf45 посмотреть имя художника взять от него sha256 и отправить в качестве ключа. ",
+  "inLanguage" : "ru",
+  "wordCount":  2596 ,
+  "datePublished" : "2022-03-29T00:00:00",
+  "dateModified" : "2022-03-29T00:00:00",
+  "image" : "https:\/\/fi5t.xyz\/img\/avatar-icon.jpg",
+  "keywords" : [ "android, безопасность, ctf, frida" ],
+  "mainEntityOfPage" : "https:\/\/fi5t.xyz\/posts\/neoquest2022-writeup-task7\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/fi5t.xyz",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/fi5t.xyz\/img\/avatar-icon.jpg",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="NeoQUEST 2022: Задание 7" />
+<meta property="og:description" content="
+Выкрасть телефон – было малым делом, а вот взломать его сложнее. Но тут в дело вступает Том, который умеет взламывать такие приложения, словно это орешки!
+
+Тома под рукой у меня не оказалось, поэтому как всегда пришлось делать все самому.
+tl;dr
+
+Вызвать метод AIDL интерфейса чтобы стригерить получение картинки из нативной библиотеки
+открыть activity DraftPerArtistActivity_90vbsf45
+посмотреть имя художника
+взять от него sha256 и отправить в качестве ключа.
+">
+<meta property="og:image" content="https://fi5t.xyz/img/avatar-icon.jpg" />
+<meta property="og:url" content="https://fi5t.xyz/posts/neoquest2022-writeup-task7/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="(не)Уникальный опыт" />
+
+  <meta name="twitter:title" content="NeoQUEST 2022: Задание 7" />
+  <meta name="twitter:description" content="
+Выкрасть телефон – было малым делом, а вот взломать его сложнее. Но тут в дело вступает Том, который умеет взламывать такие приложения, словно это орешки!
+
+Тома под рукой у меня не оказалось, поэтому …">
+  <meta name="twitter:image" content="https://fi5t.xyz/img/avatar-icon.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@Fi5t" />
+  <meta name="twitter:creator" content="@Fi5t" />
+  <link href='https://fi5t.xyz/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.95.0" />
+  <link rel="alternate" href="https://fi5t.xyz/index.xml" type="application/rss+xml" title="(не)Уникальный опыт"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fi5t.xyz/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://fi5t.xyz/css/syntax.css" /><link rel="stylesheet" href="https://fi5t.xyz/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Навигация</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://fi5t.xyz">(не)Уникальный опыт</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+          
+            <li>
+              
+                
+                  <a href="/en" lang="en">en</a>
+                
+              
+                
+              
+            </li>
+          
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="(не)Уникальный опыт" href="https://fi5t.xyz">
+            <img class="avatar-img" src="https://fi5t.xyz/img/avatar-icon.jpg" alt="(не)Уникальный опыт" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header-section ">
+  
+  <div class="intro-header no-img">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <div class="posts-heading">
+            
+            <h1>NeoQUEST 2022: Задание 7</h1>
+            
+            
+            <hr class="small">
+            
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <blockquote>
+<p>Выкрасть телефон – было малым делом, а вот взломать его сложнее. Но тут в дело вступает Том, который умеет взламывать такие приложения, словно это орешки!</p>
+</blockquote>
+<p>Тома под рукой у меня не оказалось, поэтому как всегда пришлось делать все самому.</p>
+<h1 id="tldr">tl;dr</h1>
+<ul>
+<li>Вызвать метод AIDL интерфейса чтобы стригерить получение картинки из нативной библиотеки</li>
+<li>открыть activity <code>DraftPerArtistActivity_90vbsf45</code></li>
+<li>посмотреть имя художника</li>
+<li>взять от него sha256 и отправить в качестве ключа.</li>
+</ul>
+<p>Как завещали деды - начинать нужно с манифеста. Поэтому набиваем в консоли <code>jadx-gui NBI_ART_DEMO_ARM64.apk</code> и смотрим, что там нафантазировали организаторы:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="hl"><span class="lnt">35
+</span></span><span class="hl"><span class="lnt">36
+</span></span><span class="hl"><span class="lnt">37
+</span></span><span class="hl"><span class="lnt">38
+</span></span><span class="hl"><span class="lnt">39
+</span></span><span class="lnt">40
+</span><span class="lnt">41
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;manifest</span> <span class="na">xmlns:android=</span><span class="s">&#34;http://schemas.android.com/apk/res/android&#34;</span> <span class="na">android:versionCode=</span><span class="s">&#34;1&#34;</span> <span class="na">android:versionName=</span><span class="s">&#34;1.0&#34;</span> <span class="na">android:compileSdkVersion=</span><span class="s">&#34;31&#34;</span> <span class="na">android:compileSdkVersionCodename=</span><span class="s">&#34;12&#34;</span> <span class="na">package=</span><span class="s">&#34;com.newbrainindustrial.galery&#34;</span> <span class="na">platformBuildVersionCode=</span><span class="s">&#34;31&#34;</span> <span class="na">platformBuildVersionName=</span><span class="s">&#34;12&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;uses-sdk</span> <span class="na">android:minSdkVersion=</span><span class="s">&#34;26&#34;</span> <span class="na">android:targetSdkVersion=</span><span class="s">&#34;31&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&#34;android.permission.WRITE_EXTERNAL_STORAGE&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;application</span> <span class="na">android:theme=</span><span class="s">&#34;@style/Theme.NBIGalery&#34;</span> <span class="na">android:label=</span><span class="s">&#34;@string/app_name&#34;</span> <span class="na">android:icon=</span><span class="s">&#34;@drawable/square&#34;</span> <span class="na">android:exported=</span><span class="s">&#34;true&#34;</span> <span class="na">android:testOnly=</span><span class="s">&#34;false&#34;</span> <span class="na">android:allowBackup=</span><span class="s">&#34;false&#34;</span> <span class="na">android:supportsRtl=</span><span class="s">&#34;true&#34;</span> <span class="na">android:extractNativeLibs=</span><span class="s">&#34;false&#34;</span> <span class="na">android:roundIcon=</span><span class="s">&#34;@drawable/square&#34;</span> <span class="na">android:appComponentFactory=</span><span class="s">&#34;androidx.core.app.CoreComponentFactory&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&#34;com.newbrainindustrial.galery.DraftPerArtistActivity_1q1f2fc3&#34;</span> <span class="na">android:exported=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&#34;com.newbrainindustrial.galery.DraftPerArtistActivity_90vbsf45&#34;</span> <span class="na">android:exported=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&#34;com.newbrainindustrial.galery.DraftPerArtistActivity_ovf8qtu3&#34;</span> <span class="na">android:exported=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&#34;com.newbrainindustrial.galery.DraftPerArtistActivity_paul043w&#34;</span> <span class="na">android:exported=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&#34;com.newbrainindustrial.galery.DraftPerArtistActivity_jqylfwvw&#34;</span> <span class="na">android:exported=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&#34;com.newbrainindustrial.galery.DraftPerArtistActivity_bcwahrju&#34;</span> <span class="na">android:exported=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&#34;com.newbrainindustrial.galery.DraftPerArtistActivity_0wa0qkg0&#34;</span> <span class="na">android:exported=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&#34;com.newbrainindustrial.galery.DraftPerArtistActivity_49l44gn8&#34;</span> <span class="na">android:exported=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&#34;com.newbrainindustrial.galery.DraftPerArtistActivity_g5fl9nmp&#34;</span> <span class="na">android:exported=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&#34;com.newbrainindustrial.galery.DraftPerArtistActivity_wh7ylkeu&#34;</span> <span class="na">android:exported=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&#34;com.newbrainindustrial.galery.DraftPerArtistActivity_hkxwmoby&#34;</span> <span class="na">android:exported=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&#34;com.newbrainindustrial.galery.DraftPerArtistActivity_84nt5kok&#34;</span> <span class="na">android:exported=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&#34;com.newbrainindustrial.galery.DraftPerArtistActivity_qnmib5kr&#34;</span> <span class="na">android:exported=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&#34;com.newbrainindustrial.galery.DraftPerArtistActivity_31wdeb2a&#34;</span> <span class="na">android:exported=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&#34;com.newbrainindustrial.galery.DraftPerArtistActivity_usdgetpi&#34;</span> <span class="na">android:exported=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&#34;com.newbrainindustrial.galery.DraftPerArtistActivity_lqbxrhlc&#34;</span> <span class="na">android:exported=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&#34;com.newbrainindustrial.galery.DraftPerArtistActivity_y083njcu&#34;</span> <span class="na">android:exported=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&#34;com.newbrainindustrial.galery.DraftPerArtistActivity_8xv29el1&#34;</span> <span class="na">android:exported=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&#34;com.newbrainindustrial.galery.DraftPerArtistActivity_rasrwsms&#34;</span> <span class="na">android:exported=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&#34;com.newbrainindustrial.galery.DraftPerArtistActivity_dtn5b304&#34;</span> <span class="na">android:exported=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&#34;com.newbrainindustrial.galery.DraftPerArtistActivity_5bkym4u2&#34;</span> <span class="na">android:exported=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&#34;com.newbrainindustrial.galery.DraftPerArtistActivity_67gm6w8s&#34;</span> <span class="na">android:exported=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;activity</span> <span class="na">android:theme=</span><span class="s">&#34;@style/Theme.NBIGalery.NoActionBar&#34;</span> <span class="na">android:label=</span><span class="s">&#34;@string/menu_name&#34;</span> <span class="na">android:name=</span><span class="s">&#34;com.newbrainindustrial.galery.ScrollingActivity&#34;</span> <span class="na">android:exported=</span><span class="s">&#34;true&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;intent-filter&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">&#34;android.intent.action.MAIN&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;category</span> <span class="na">android:name=</span><span class="s">&#34;android.intent.category.LAUNCHER&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;/intent-filter&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/activity&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;activity</span> <span class="na">android:label=</span><span class="s">&#34;ZoomedPhoto&#34;</span> <span class="na">android:name=</span><span class="s">&#34;com.newbrainindustrial.galery.FullScreenImage&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line hl"><span class="cl">        <span class="nt">&lt;service</span> <span class="na">android:name=</span><span class="s">&#34;com.newbrainindustrial.galery.LogoDecoderAIDL&#34;</span> <span class="na">android:exported=</span><span class="s">&#34;true&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line hl"><span class="cl">            <span class="nt">&lt;intent-filter&gt;</span>
+</span></span><span class="line hl"><span class="cl">                <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">&#34;com.newbrainindustrial.galery.REMOTE_COMMAND&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line hl"><span class="cl">            <span class="nt">&lt;/intent-filter&gt;</span>
+</span></span><span class="line hl"><span class="cl">        <span class="nt">&lt;/service&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/application&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/manifest&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Куча экспортированных activity с хитрыми именами и непонятным назначением, пара с более-менее понятным назначением и очень интересный экспортированный сервис, который так и говорит нам - <em>напихай в меня чего-нибудь запрещенного</em>. С него и начнем.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="hl"><span class="lnt"> 8
+</span></span><span class="hl"><span class="lnt"> 9
+</span></span><span class="hl"><span class="lnt">10
+</span></span><span class="lnt">11
+</span><span class="hl"><span class="lnt">12
+</span></span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LogoDecoderAIDL</span> <span class="kd">extends</span> <span class="n">Service</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">BinderC0595a</span> <span class="kd">extends</span> <span class="n">AbstractBinderC0641a</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="nf">BinderC0595a</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line hl"><span class="cl">    <span class="kd">static</span> <span class="o">{</span>
+</span></span><span class="line hl"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">loadLibrary</span><span class="o">(</span><span class="s">&#34;galery&#34;</span><span class="o">);</span>
+</span></span><span class="line hl"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line hl"><span class="cl">    <span class="kd">public</span> <span class="kd">native</span> <span class="kt">byte</span><span class="o">[]</span> <span class="nf">getData</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span> <span class="c1">// android.app.Service
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">public</span> <span class="n">IBinder</span> <span class="nf">onBind</span><span class="o">(</span><span class="n">Intent</span> <span class="n">intent</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">BinderC0595a</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Говорят, что однажды автор таски для android CTF не сделал нативную либу и у него отвалилась Android Studio&hellip; Ладно, с библиотекой разберемся потом. Судя по говорящему названию класса - где-то здесь должна быть реализация AIDL интерфейса.</p>
+<blockquote>
+<p>The Android Interface Definition Language (AIDL) is similar to other IDLs you might have worked with. It allows you to define the programming interface that both the client and service agree upon in order to communicate with each other using interprocess communication (IPC). On Android, one process cannot normally access the memory of another process. So to talk, they need to decompose their objects into primitives that the operating system can understand, and marshall the objects across that boundary for you. The code to do that marshalling is tedious to write, so Android handles it for you with AIDL.
+<a href="https://developer.android.com/guide/components/aidl">https://developer.android.com/guide/components/aidl</a></p>
+</blockquote>
+<p>Лежит она в абстрактном классе <code>AbstractBinderC0641a</code>, от которого наследуется <code>BinderC0595a</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="hl"><span class="lnt">18
+</span></span><span class="hl"><span class="lnt">19
+</span></span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">AbstractBinderC0641a</span> <span class="kd">extends</span> <span class="n">Binder</span> <span class="kd">implements</span> <span class="n">IInterface</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="nf">AbstractBinderC0641a</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">attachInterface</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">&#34;com.newbrainindustrial.aidl.ILogoDecoderAIDL&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span> <span class="c1">// android.os.IInterface
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">public</span> <span class="n">IBinder</span> <span class="nf">asBinder</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span> <span class="c1">// android.os.Binder
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onTransact</span><span class="o">(</span><span class="kt">int</span> <span class="n">code</span><span class="o">,</span> <span class="n">Parcel</span> <span class="n">parcel</span><span class="o">,</span> <span class="n">Parcel</span> <span class="n">parcel2</span><span class="o">,</span> <span class="kt">int</span> <span class="n">flags</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">code</span> <span class="o">==</span> <span class="n">1</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">parcel</span><span class="o">.</span><span class="na">enforceInterface</span><span class="o">(</span><span class="s">&#34;com.newbrainindustrial.aidl.ILogoDecoderAIDL&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">readInt</span> <span class="o">=</span> <span class="n">parcel</span><span class="o">.</span><span class="na">readInt</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">readInt2</span> <span class="o">=</span> <span class="n">parcel</span><span class="o">.</span><span class="na">readInt</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">readInt3</span> <span class="o">=</span> <span class="n">parcel</span><span class="o">.</span><span class="na">readInt</span><span class="o">();</span>
+</span></span><span class="line hl"><span class="cl">            <span class="n">Log</span><span class="o">.</span><span class="na">i</span><span class="o">(</span><span class="s">&#34;LogoDecoderAIDL&#34;</span><span class="o">,</span> <span class="s">&#34;com.newbrainindustrial.aidl.ILogoDecoderAIDL.ShowTheLogoOfTruth(args): called by some app!&#34;</span><span class="o">);</span>
+</span></span><span class="line hl"><span class="cl">            <span class="n">C0642a</span><span class="o">.</span><span class="na">f2694a</span> <span class="o">=</span> <span class="n">LogoDecoderAIDL</span><span class="o">.</span><span class="na">this</span><span class="o">.</span><span class="na">getData</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">parcel2</span><span class="o">.</span><span class="na">writeNoException</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">parcel2</span><span class="o">.</span><span class="na">writeInt</span><span class="o">(</span><span class="n">readInt</span> <span class="o">+</span> <span class="n">readInt2</span> <span class="o">+</span> <span class="n">readInt3</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">code</span> <span class="o">!=</span> <span class="n">Binder</span><span class="o">.</span><span class="na">INTERFACE_TRANSACTION</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">onTransact</span><span class="o">(</span><span class="n">code</span><span class="o">,</span> <span class="n">parcel</span><span class="o">,</span> <span class="n">parcel2</span><span class="o">,</span> <span class="n">flags</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">parcel2</span><span class="o">.</span><span class="na">writeString</span><span class="o">(</span><span class="s">&#34;com.newbrainindustrial.aidl.ILogoDecoderAIDL&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Интерес для нас представляют две строчки - <strong>18</strong> и <strong>19</strong>. Первая любезно раскрывает нам название метода, который нужно дернуть, а вторая запускает получение данных из нативной библиотеки. Судя по остальному коду, метод можно вызывать с любыми  параметрами, т.к. они нигде не используются и ни на что не влияют. Отлично. Записываем этот факт в блокнотик и смотрим, как полученный из метода <code>getData()</code> байтовый массив используется дальше. Для этого ищем все ссылки на поле <code>f2694a</code>.</p>
+<h2 id="hahahugoshortcode-s0-hbhb">
+<link rel="stylesheet" href="https://fi5t.xyz/css/hugo-easy-gallery.css" />
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/neoquest2022-writeup-task7/find-usages-menu.png" alt="/img/neoquest2022-writeup-task7/find-usages-menu.png"/>
+    </div>
+    <a href="/img/neoquest2022-writeup-task7/find-usages-menu.png" itemprop="contentUrl"></a>
+  </figure>
+</div>
+</h2>
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/neoquest2022-writeup-task7/find-usages-list.png" alt="/img/neoquest2022-writeup-task7/find-usages-list.png"/>
+    </div>
+    <a href="/img/neoquest2022-writeup-task7/find-usages-list.png" itemprop="contentUrl"></a>
+  </figure>
+</div>
+
+<p>А вот и одна из тех activity с хитрыми именами, которые мы видели в манифесте. Посмотрим, что там есть.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="hl"><span class="lnt">17
+</span></span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="hl"><span class="lnt">20
+</span></span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DraftPerArtistActivity_90vbsf45</span> <span class="kd">extends</span> <span class="n">ActivityC0680e</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span> <span class="c1">// r0.ActivityC0995f, androidx.activity.ComponentActivity, p025z.ActivityC1237d, android.app.Activity
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">bundle</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">bundle</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_copyright</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">m1081s</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span> <span class="c1">// r0.ActivityC0995f, android.app.Activity
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onResume</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">super</span><span class="o">.</span><span class="na">onResume</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">m1081s</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/* renamed from: s */</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">final</span> <span class="kt">void</span> <span class="nf">m1081s</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line hl"><span class="cl">        <span class="kt">byte</span><span class="o">[]</span> <span class="n">bArr</span> <span class="o">=</span> <span class="n">C0642a</span><span class="o">.</span><span class="na">f2694a</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">bArr</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line hl"><span class="cl">                <span class="o">((</span><span class="n">ImageView</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">imageViewLogo</span><span class="o">)).</span><span class="na">setImageBitmap</span><span class="o">(</span><span class="n">Bitmap</span><span class="o">.</span><span class="na">createBitmap</span><span class="o">(</span><span class="n">BitmapFactory</span><span class="o">.</span><span class="na">decodeByteArray</span><span class="o">(</span><span class="n">bArr</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">bArr</span><span class="o">.</span><span class="na">length</span><span class="o">)));</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Судя по всему байтовый массив содержит какую-то картинку. Поиск ссылок на эту activity ничего не дает, поэтому придется вызывать руками. Итого, на текущем этапе можно составить такой алгоритм атаки на это приложение:</p>
+<ol>
+<li>Создать свое приложение с AIDL интерфейсом</li>
+<li>Вызвать метод <code>ShowTheLogoOfTruth</code> чтобы библиотека отдала<del>сь</del> нам байтовый массив с картинкой</li>
+<li>Запустить activity c помощью adb и посмотреть на результат</li>
+</ol>
+<p>С приложением все просто. Создаем AIDL интерфейс c именем <code>ILogoDecoderAIDL</code> через меню <code>File-&gt;New-&gt;AIDL-&gt;AIDL File</code></p>
+<h2 id="hahahugoshortcode-s2-hbhb">
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/neoquest2022-writeup-task7/aidl-menu.png" alt="/img/neoquest2022-writeup-task7/aidl-menu.png"/>
+    </div>
+    <a href="/img/neoquest2022-writeup-task7/aidl-menu.png" itemprop="contentUrl"></a>
+  </figure>
+</div>
+</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// ILogoDecoderAIDL.aidl
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kn">package</span> <span class="nn">com.newbrainindustrial.aidl</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">interface</span> <span class="nc">ILogoDecoderAIDL</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">ShowTheLogoOfTruth</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>И пишем обвязки для его вызова:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="hl"><span class="lnt"> 6
+</span></span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="hl"><span class="lnt">16
+</span></span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="hl"><span class="lnt">27
+</span></span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">var</span> <span class="py">logoDecoder</span><span class="p">:</span> <span class="n">ILogoDecoderAIDL</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="py">serviceConnection</span> <span class="p">=</span> <span class="k">object</span> <span class="err">: </span><span class="nc">ServiceConnection</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onServiceConnected</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="n">ComponentName</span><span class="p">?,</span> <span class="n">service</span><span class="p">:</span> <span class="n">IBinder</span><span class="p">?)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">logoDecoder</span> <span class="p">=</span> <span class="n">ILogoDecoderAIDL</span><span class="p">.</span><span class="n">Stub</span><span class="p">.</span><span class="n">asInterface</span><span class="p">(</span><span class="n">service</span><span class="p">)</span>
+</span></span><span class="line hl"><span class="cl">        <span class="n">logoDecoder</span><span class="o">?.</span><span class="n">ShowTheLogoOfTruth</span><span class="p">(</span><span class="s2">&#34;zahek!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onServiceDisconnected</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="n">ComponentName</span><span class="p">?)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">logoDecoder</span> <span class="p">=</span> <span class="k">null</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">..</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">binding</span><span class="p">.</span><span class="n">sendIntentButton</span><span class="p">.</span><span class="n">setOnClickListener</span> <span class="p">{</span>
+</span></span><span class="line hl"><span class="cl">    <span class="k">val</span> <span class="py">cmdIntent</span> <span class="p">=</span> <span class="n">Intent</span><span class="p">(</span><span class="s2">&#34;com.newbrainindustrial.galery.REMOTE_COMMAND&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">services</span> <span class="p">=</span> <span class="n">activity</span><span class="o">?.</span><span class="n">packageManager</span><span class="o">?.</span><span class="n">queryIntentServices</span><span class="p">(</span><span class="n">intent</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span> <span class="o">?:</span> <span class="n">listOf</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">services</span><span class="p">.</span><span class="n">isEmpty</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">throw</span> <span class="n">IllegalStateException</span><span class="p">(</span><span class="s2">&#34;Not found&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">payload</span> <span class="p">=</span> <span class="n">Intent</span><span class="p">(</span><span class="n">cmdIntent</span><span class="p">).</span><span class="n">apply</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">resolveInfo</span> <span class="p">=</span> <span class="n">services</span><span class="p">.</span><span class="n">first</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">packageName</span> <span class="p">=</span> <span class="n">resolveInfo</span><span class="p">.</span><span class="n">serviceInfo</span><span class="p">.</span><span class="n">packageName</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">className</span> <span class="p">=</span> <span class="n">resolveInfo</span><span class="p">.</span><span class="n">serviceInfo</span><span class="p">.</span><span class="n">name</span>
+</span></span><span class="line"><span class="cl">        <span class="n">component</span> <span class="p">=</span> <span class="n">ComponentName</span><span class="p">(</span><span class="n">packageName</span><span class="p">,</span> <span class="n">className</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line hl"><span class="cl">    <span class="n">requireActivity</span><span class="p">().</span><span class="n">bindService</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="n">serviceConnection</span><span class="p">,</span> <span class="n">Context</span><span class="p">.</span><span class="n">BIND_AUTO_CREATE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Суть эксплойта в том, чтобы забиндить удаленный сервис с нужной командой, что приведет к срабатыванию метода <code>onServiceConnected</code>, в котором вызывается метод <code>ShowTheLogoOfTruth()</code>. При вызове этого метода, также будет вызван метод <code>onTransact()</code>, который описан выше, и будет заполнен байтовый массив.</p>
+<p>Чтобы убедиться в успешности операции, включим сбор логов приложения и запустим код на выполнение.</p>
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/neoquest2022-writeup-task7/logs.png" alt="/img/neoquest2022-writeup-task7/logs.png"/>
+    </div>
+    <a href="/img/neoquest2022-writeup-task7/logs.png" itemprop="contentUrl"></a>
+  </figure>
+</div>
+
+<p>Судя по логам - эксплойт сработал. Теперь можно запустить activity чтобы посмотреть изображение:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">adb shell am start -W -n com.newbrainindustrial.galery/com.newbrainindustrial.galery.DraftPerArtistActivity_90vbsf45
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>А вот и флаг!
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/neoquest2022-writeup-task7/flag.png" alt="/img/neoquest2022-writeup-task7/flag.png"/>
+    </div>
+    <a href="/img/neoquest2022-writeup-task7/flag.png" itemprop="contentUrl"></a>
+  </figure>
+</div>
+</p>
+<p>Нас интересует надпись на картинке: <code>Joey Welch</code>. Для получения ключа нужно взять от этого имени sha256 хэш и соединить его с префиксом <code>NQ2022</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ <span class="nb">echo</span> -n <span class="s2">&#34;JoeyWelch&#34;</span> <span class="p">|</span> shasum -a <span class="m">256</span> <span class="p">|</span> awk <span class="s1">&#39;{print &#34;NQ2022&#34; $1}&#39;</span>
+</span></span><span class="line"><span class="cl">NQ20228209e04eb110c19a5752bfe801fac0fd7ffbbcf6d419a60fbfe3ff5e1f9529bb
+</span></span></code></pre></div><h2 id="бонус-1">Бонус №1</h2>
+<p>Все описанное выше мне показалось явно недостаточным, и ружье в виде нативной библиотеки повешенное в самом начале акта должно же было когда-то выстрелить&hellip; Поэтому недолго думая, я загрузил библиотеку в гидру и решил посмотреть, что там еще напрятано.</p>
+<p>В секции экспорта сразу была найдена функция <code>Java_com_newbrainindustrial_galery_LogoDecoderAIDL_getData</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="hl"><span class="lnt">46
+</span></span><span class="hl"><span class="lnt">47
+</span></span><span class="hl"><span class="lnt">48
+</span></span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">undefined8</span> <span class="o">*</span> <span class="nf">Java_com_newbrainindustrial_galery_LogoDecoderAIDL_getData</span><span class="p">(</span><span class="kt">long</span> <span class="o">*</span><span class="n">param_1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">long</span> <span class="n">lVar1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="o">*</span><span class="n">__ptr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">undefined8</span> <span class="o">*</span><span class="n">puVar2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ulong</span> <span class="n">uVar3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">long</span> <span class="n">lVar4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ulong</span> <span class="n">uVar5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">undefined8</span> <span class="n">uVar6</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">void</span> <span class="o">*</span><span class="n">local_88</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">void</span> <span class="o">*</span><span class="n">local_80</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">void</span> <span class="o">*</span><span class="n">local_70</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">void</span> <span class="o">*</span><span class="n">local_68</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">undefined8</span> <span class="o">*</span><span class="n">local_58</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">undefined8</span> <span class="o">*</span><span class="n">local_50</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">undefined8</span> <span class="o">*</span><span class="n">local_48</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ulong</span> <span class="n">local_40</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">long</span> <span class="n">local_38</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="n">lVar1</span> <span class="o">=</span> <span class="n">cRead_8</span><span class="p">(</span><span class="n">tpidr_el0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">local_38</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="kt">long</span> <span class="o">*</span><span class="p">)(</span><span class="n">lVar1</span> <span class="o">+</span> <span class="mh">0x28</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">__ptr</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">pathHelperGetPath</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">__ptr</span> <span class="o">==</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">puVar2</span> <span class="o">=</span> <span class="p">(</span><span class="n">undefined8</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">local_40</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">puVar2</span> <span class="o">=</span> <span class="p">(</span><span class="n">undefined8</span> <span class="o">*</span><span class="p">)</span><span class="n">unzipHelperGetEntryHash</span><span class="p">(</span><span class="n">__ptr</span><span class="p">,</span><span class="o">&amp;</span><span class="n">local_40</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">puVar2</span> <span class="o">==</span> <span class="p">(</span><span class="n">undefined8</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">free</span><span class="p">(</span><span class="n">__ptr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">local_50</span> <span class="o">=</span> <span class="p">(</span><span class="n">undefined8</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">local_48</span> <span class="o">=</span> <span class="p">(</span><span class="n">undefined8</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">local_58</span> <span class="o">=</span> <span class="p">(</span><span class="n">undefined8</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">local_58</span> <span class="o">=</span> <span class="p">(</span><span class="n">undefined8</span> <span class="o">*</span><span class="p">)</span><span class="n">operator</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mh">0x10</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="n">local_50</span> <span class="o">=</span> <span class="n">local_58</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">uVar6</span> <span class="o">=</span> <span class="o">*</span><span class="n">puVar2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">local_58</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">puVar2</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">      <span class="o">*</span><span class="n">local_58</span> <span class="o">=</span> <span class="n">uVar6</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">local_48</span> <span class="o">=</span> <span class="n">local_50</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">std</span><span class="o">::</span><span class="n">__ndk1</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">unsigned_char</span><span class="p">,</span><span class="n">std</span><span class="o">::</span><span class="n">__ndk1</span><span class="o">::</span><span class="n">allocator</span><span class="o">&lt;</span><span class="n">unsigned_char</span><span class="o">&gt;&gt;::</span><span class="n">vector</span>
+</span></span><span class="line"><span class="cl">                <span class="p">((</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">unsigned_char</span><span class="p">,</span><span class="n">std</span><span class="o">::</span><span class="n">__ndk1</span><span class="o">::</span><span class="n">allocator</span><span class="o">&lt;</span><span class="n">unsigned_char</span><span class="o">&gt;&gt;</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">local_70</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                 <span class="p">(</span><span class="n">vector</span> <span class="o">*</span><span class="p">)</span><span class="n">g_dirty</span><span class="p">);</span>
+</span></span><span class="line hl"><span class="cl">      <span class="n">uVar3</span> <span class="o">=</span> <span class="n">is_under_frida</span><span class="p">();</span>
+</span></span><span class="line hl"><span class="cl">      <span class="k">if</span> <span class="p">((</span><span class="n">uVar3</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line hl"><span class="cl">        <span class="n">restore_png</span><span class="p">((</span><span class="n">vector</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">local_58</span><span class="p">,(</span><span class="n">vector</span> <span class="o">*</span><span class="p">)</span><span class="n">g_dirty</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">local_70</span> <span class="o">!=</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="n">local_68</span> <span class="o">=</span> <span class="n">local_70</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">          <span class="n">operator</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="n">local_70</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">local_70</span> <span class="o">=</span> <span class="n">local_88</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">local_68</span> <span class="o">=</span> <span class="n">local_80</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="n">puVar2</span> <span class="o">=</span> <span class="p">(</span><span class="n">undefined8</span> <span class="o">*</span><span class="p">)(</span><span class="o">**</span><span class="p">(</span><span class="n">code</span> <span class="o">**</span><span class="p">)(</span><span class="o">*</span><span class="n">param_1</span> <span class="o">+</span> <span class="mh">0x580</span><span class="p">))(</span><span class="n">param_1</span><span class="p">,(</span><span class="kt">int</span><span class="p">)</span><span class="n">local_68</span> <span class="o">-</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">local_70</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="n">lVar4</span> <span class="o">=</span> <span class="p">(</span><span class="o">**</span><span class="p">(</span><span class="n">code</span> <span class="o">**</span><span class="p">)(</span><span class="o">*</span><span class="n">param_1</span> <span class="o">+</span> <span class="mh">0x5c0</span><span class="p">))(</span><span class="n">param_1</span><span class="p">,</span><span class="n">puVar2</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="n">local_68</span> <span class="o">==</span> <span class="n">local_70</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">uVar5</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">uVar3</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">do</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="o">*</span><span class="p">(</span><span class="n">undefined</span> <span class="o">*</span><span class="p">)(</span><span class="n">lVar4</span> <span class="o">+</span> <span class="n">uVar3</span><span class="p">)</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="n">undefined</span> <span class="o">*</span><span class="p">)((</span><span class="kt">long</span><span class="p">)</span><span class="n">local_70</span> <span class="o">+</span> <span class="n">uVar3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">          <span class="n">uVar3</span> <span class="o">=</span> <span class="n">uVar3</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">          <span class="n">uVar5</span> <span class="o">=</span> <span class="p">(</span><span class="kt">long</span><span class="p">)</span><span class="n">local_68</span> <span class="o">-</span> <span class="p">(</span><span class="kt">long</span><span class="p">)</span><span class="n">local_70</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">uVar3</span> <span class="o">&lt;</span> <span class="n">uVar5</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="o">**</span><span class="p">(</span><span class="n">code</span> <span class="o">**</span><span class="p">)(</span><span class="o">*</span><span class="n">param_1</span> <span class="o">+</span> <span class="mh">0x680</span><span class="p">))(</span><span class="n">param_1</span><span class="p">,</span><span class="n">puVar2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">uVar5</span><span class="p">,</span><span class="n">lVar4</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="o">**</span><span class="p">(</span><span class="n">code</span> <span class="o">**</span><span class="p">)(</span><span class="o">*</span><span class="n">param_1</span> <span class="o">+</span> <span class="mh">0x600</span><span class="p">))(</span><span class="n">param_1</span><span class="p">,</span><span class="n">puVar2</span><span class="p">,</span><span class="n">lVar4</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="n">local_70</span> <span class="o">!=</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">local_68</span> <span class="o">=</span> <span class="n">local_70</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">operator</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="n">local_70</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="n">local_58</span> <span class="o">!=</span> <span class="p">(</span><span class="n">undefined8</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">local_50</span> <span class="o">=</span> <span class="n">local_58</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">operator</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="n">local_58</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="kt">long</span> <span class="o">*</span><span class="p">)(</span><span class="n">lVar1</span> <span class="o">+</span> <span class="mh">0x28</span><span class="p">)</span> <span class="o">!=</span> <span class="n">local_38</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="cm">/* WARNING: Subroutine does not return */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">__stack_chk_fail</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">puVar2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Ну вот! Начинается интересное! Оказывается в приложении была защита от фриды, которую я благополучно не заметил ;) Не будем расстраивать организаторов и героически наступим на эти грабли! Для простоты проведения эксперимента заведем приложение под <code>objection</code> и посмотрим что будет при получении флага.</p>
+<h2 id="hahahugoshortcode-s5-hbhb">
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/neoquest2022-writeup-task7/objection.png" alt="/img/neoquest2022-writeup-task7/objection.png"/>
+    </div>
+    <a href="/img/neoquest2022-writeup-task7/objection.png" itemprop="contentUrl"></a>
+  </figure>
+</div>
+</h2>
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/neoquest2022-writeup-task7/image-with-frida.png" alt="/img/neoquest2022-writeup-task7/image-with-frida.png"/>
+    </div>
+    <a href="/img/neoquest2022-writeup-task7/image-with-frida.png" itemprop="contentUrl"></a>
+  </figure>
+</div>
+
+<p>Так-так-так =) Решили испортить картинку значит. Давайте посмотрим поближе как реализованы проверки на фриду.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="hl"><span class="lnt">11
+</span></span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="hl"><span class="lnt">38
+</span></span><span class="lnt">39
+</span><span class="hl"><span class="lnt">40
+</span></span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="hl"><span class="lnt">55
+</span></span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="hl"><span class="lnt">70
+</span></span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">undefined4</span> <span class="nf">is_under_frida</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">long</span> <span class="n">lVar1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">bool</span> <span class="n">bVar2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">long</span> <span class="n">local_70</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="n">lVar1</span> <span class="o">=</span> <span class="n">cRead_8</span><span class="p">(</span><span class="n">tpidr_el0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">local_70</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="kt">long</span> <span class="o">*</span><span class="p">)(</span><span class="n">lVar1</span> <span class="o">+</span> <span class="mh">0x28</span><span class="p">);</span>
+</span></span><span class="line hl"><span class="cl">  <span class="n">pDVar4</span> <span class="o">=</span> <span class="n">opendir</span><span class="p">(</span><span class="s">&#34;/proc/self/task&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">pDVar4</span> <span class="o">!=</span> <span class="p">(</span><span class="n">DIR</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pdVar5</span> <span class="o">=</span> <span class="n">readdir</span><span class="p">(</span><span class="n">pDVar4</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">pdVar5</span> <span class="o">==</span> <span class="p">(</span><span class="n">dirent</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">closedir</span><span class="p">(</span><span class="n">pDVar4</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">bVar2</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="k">do</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">uStack136</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">...</span>
+</span></span><span class="line"><span class="cl">        <span class="n">uStack352</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">iVar3</span> <span class="o">=</span> <span class="n">strcmp</span><span class="p">(</span><span class="n">pdVar5</span><span class="o">-&gt;</span><span class="n">d_name</span><span class="p">,</span><span class="s">&#34;.&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">((</span><span class="n">iVar3</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">iVar3</span> <span class="o">=</span> <span class="n">strcmp</span><span class="p">(</span><span class="n">pdVar5</span><span class="o">-&gt;</span><span class="n">d_name</span><span class="p">,</span><span class="s">&#34;..&#34;</span><span class="p">),</span> <span class="n">iVar3</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="n">FUN_00161350</span><span class="p">(</span><span class="o">&amp;</span><span class="n">local_170</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">          <span class="n">iVar3</span> <span class="o">=</span> <span class="n">openat</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">local_170</span><span class="p">,</span><span class="mh">0x80000</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">          <span class="k">if</span> <span class="p">(</span><span class="n">iVar3</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">lVar9</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">lStack616</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">...</span>
+</span></span><span class="line"><span class="cl">            <span class="n">uStack384</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">do</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">              <span class="n">sVar6</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">iVar3</span><span class="p">,</span><span class="n">local_2f0</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">              <span class="k">if</span> <span class="p">((</span><span class="n">sVar6</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">local_2f0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;\n&#39;</span><span class="p">))</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">              <span class="o">*</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)((</span><span class="kt">long</span><span class="p">)</span><span class="o">&amp;</span><span class="n">local_270</span> <span class="o">+</span> <span class="n">lVar9</span><span class="p">)</span> <span class="o">=</span> <span class="n">local_2f0</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">              <span class="n">lVar9</span> <span class="o">=</span> <span class="n">lVar9</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">lVar9</span> <span class="o">!=</span> <span class="mh">0xff</span><span class="p">);</span>
+</span></span><span class="line hl"><span class="cl">            <span class="n">pcVar7</span> <span class="o">=</span> <span class="n">strstr</span><span class="p">((</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">local_270</span><span class="p">,</span><span class="s">&#34;gum-js-loop&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">((</span><span class="n">pcVar7</span> <span class="o">!=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x0</span><span class="p">)</span> <span class="o">||</span>
+</span></span><span class="line hl"><span class="cl">               <span class="p">(</span><span class="n">pcVar7</span> <span class="o">=</span> <span class="n">strstr</span><span class="p">((</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">local_270</span><span class="p">,</span><span class="s">&#34;gmain&#34;</span><span class="p">),</span> <span class="n">pcVar7</span> <span class="o">!=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x0</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">              <span class="n">bVar2</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="n">close</span><span class="p">(</span><span class="n">iVar3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">pdVar5</span> <span class="o">=</span> <span class="n">readdir</span><span class="p">(</span><span class="n">pDVar4</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">pdVar5</span> <span class="o">!=</span> <span class="p">(</span><span class="n">dirent</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="n">iVar3</span> <span class="o">=</span> <span class="n">closedir</span><span class="p">(</span><span class="n">pDVar4</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="n">bVar2</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">uVar8</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">goto</span> <span class="n">LAB_00161318</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line hl"><span class="cl">  <span class="n">pDVar4</span> <span class="o">=</span> <span class="n">opendir</span><span class="p">(</span><span class="s">&#34;/proc/self/fd&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">pDVar4</span> <span class="o">==</span> <span class="p">(</span><span class="n">DIR</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">uVar8</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pdVar5</span> <span class="o">=</span> <span class="n">readdir</span><span class="p">(</span><span class="n">pDVar4</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">uVar8</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="n">pdVar5</span> <span class="o">!=</span> <span class="p">(</span><span class="n">dirent</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">_Stack648</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">...</span>
+</span></span><span class="line"><span class="cl">      <span class="n">uStack608</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">FUN_00161350</span><span class="p">(</span><span class="o">&amp;</span><span class="n">local_270</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="n">lstat</span><span class="p">((</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">local_270</span><span class="p">,(</span><span class="n">stat</span> <span class="o">*</span><span class="p">)</span><span class="n">local_2f0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(((</span><span class="n">uint</span><span class="p">)</span><span class="n">local_2e0</span> <span class="o">&amp;</span> <span class="mh">0xf000</span><span class="p">)</span> <span class="o">==</span> <span class="mh">0xa000</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">readlinkat</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">local_270</span><span class="p">,(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">local_170</span><span class="p">,</span><span class="mh">0x100</span><span class="p">);</span>
+</span></span><span class="line hl"><span class="cl">        <span class="n">pcVar7</span> <span class="o">=</span> <span class="n">strstr</span><span class="p">((</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">local_170</span><span class="p">,</span><span class="s">&#34;linjector&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">pcVar7</span> <span class="o">!=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="n">uVar8</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="n">pdVar5</span> <span class="o">=</span> <span class="n">readdir</span><span class="p">(</span><span class="n">pDVar4</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">iVar3</span> <span class="o">=</span> <span class="n">closedir</span><span class="p">(</span><span class="n">pDVar4</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nl">LAB_00161318</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="kt">long</span> <span class="o">*</span><span class="p">)(</span><span class="n">lVar1</span> <span class="o">+</span> <span class="mh">0x28</span><span class="p">)</span> <span class="o">==</span> <span class="n">local_70</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">uVar8</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                    <span class="cm">/* WARNING: Subroutine does not return */</span>
+</span></span><span class="line"><span class="cl">  <span class="n">__stack_chk_fail</span><span class="p">(</span><span class="n">iVar3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Нуууууу&hellip; ничего такого, с чем бы мы не встречались ранее. Тут должен сработать самый простой и топорный хак с подменой возвращаемого значения функции <code>strstr</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">Interceptor</span><span class="p">.</span><span class="nx">attach</span><span class="p">(</span><span class="nx">Module</span><span class="p">.</span><span class="nx">findExportByName</span><span class="p">(</span><span class="s2">&#34;libc.so&#34;</span><span class="p">,</span> <span class="s2">&#34;strstr&#34;</span><span class="p">),</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">onEnter</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="nx">haystack</span> <span class="o">=</span> <span class="nx">Memory</span><span class="p">.</span><span class="nx">readUtf8String</span><span class="p">(</span><span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="nx">isFrida</span> <span class="o">=</span> <span class="nb">Boolean</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">haystack</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&#34;gmain&#34;</span><span class="p">)</span> <span class="o">!==</span> <span class="o">-</span><span class="mi">1</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">haystack</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&#34;gum-js-loop&#34;</span><span class="p">)</span> <span class="o">!==</span> <span class="o">-</span><span class="mi">1</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">haystack</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&#34;linjector&#34;</span><span class="p">)</span> <span class="o">!==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">this</span><span class="p">.</span><span class="nx">frida</span> <span class="o">=</span> <span class="nb">Boolean</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">onLeave</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">retval</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">frida</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">retval</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">retval</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Запускаем приложение с этим скриптом и убеждаемся, что детектор фриды пал смертью храбрых, а при запуске activity отображается актуальная картинка.</p>
+<h1 id="бонус-2">Бонус №2</h1>
+<p>Стоит сказать, что изначальная формулировка задания была довольно неоднозначной и догадаться о том, что от текста на этой картинке нужно было взять хэш, да еще и в определенном формате написания - было решительно невозможно. После добавления уточнения от организаторов, все встало на свои места:</p>
+<blockquote>
+<p>ПРИМЕЧАНИЕ: некая компания NewBrainIndustrial-E выпустила приложение, представляющее собой галерею цифровых произведений искусства, которые сгенерировал разработанный в этой компании искусственный интеллект. Приложение используется для рекламы компании и содержит также коммерческие предложения по приобретению подписки на ИИ для решения собственных задач. Есть подозрение, что у NewBrainIndustrial-E нет никакой ИИ-разработки, а картины принадлежат настоящему художнику. Необходимо найти доказательства и сообщить имя художника.
+<strong>Ключ – это NQ2022+SHA256(ИмяФамилия)</strong></p>
+</blockquote>
+<p>Спасибо ребята =) Без этого примечания вы меня заставили вспомнить еще и стеганографию. Но обовсем по порядку.</p>
+<p>Получив картинку на экране я предположил, что вся самая ценная информация зашита в самой картинке. Нужно было как-то ее извлечь и препарировать. Собственно в этот момент и возникла необходимость сделать обход фриды, о котором я писал выше. Для того чтобы достать картинку нам нужно перехватить вызов функции <code>Java_com_newbrainindustrial_galery_LogoDecoderAIDL_getData</code> и сохранить полученный массив как картинку. Для этого напишем немного замороченный скрипт на python:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="hl"><span class="lnt">11
+</span></span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="hl"><span class="lnt">14
+</span></span><span class="hl"><span class="lnt">15
+</span></span><span class="hl"><span class="lnt">16
+</span></span><span class="hl"><span class="lnt">17
+</span></span><span class="hl"><span class="lnt">18
+</span></span><span class="hl"><span class="lnt">19
+</span></span><span class="hl"><span class="lnt">20
+</span></span><span class="hl"><span class="lnt">21
+</span></span><span class="lnt">22
+</span><span class="hl"><span class="lnt">23
+</span></span><span class="hl"><span class="lnt">24
+</span></span><span class="hl"><span class="lnt">25
+</span></span><span class="hl"><span class="lnt">26
+</span></span><span class="hl"><span class="lnt">27
+</span></span><span class="hl"><span class="lnt">28
+</span></span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="hl"><span class="lnt">56
+</span></span><span class="hl"><span class="lnt">57
+</span></span><span class="hl"><span class="lnt">58
+</span></span><span class="hl"><span class="lnt">59
+</span></span><span class="hl"><span class="lnt">60
+</span></span><span class="hl"><span class="lnt">61
+</span></span><span class="hl"><span class="lnt">62
+</span></span><span class="hl"><span class="lnt">63
+</span></span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="hl"><span class="lnt">74
+</span></span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="hl"><span class="lnt">79
+</span></span><span class="lnt">80
+</span><span class="hl"><span class="lnt">81
+</span></span><span class="hl"><span class="lnt">82
+</span></span><span class="lnt">83
+</span><span class="lnt">84
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">frida</span><span class="o">,</span> <span class="nn">sys</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">message</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;send&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;[*] </span><span class="si">{0}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">message</span><span class="p">[</span><span class="s1">&#39;payload&#39;</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">jscode</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#39;use strict&#39;;
+</span></span></span><span class="line hl"><span class="cl"><span class="s2">let imageBuffer = new Uint8Array(1024);
+</span></span></span><span class="line"><span class="cl"><span class="s2">let wastetime = true
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line hl"><span class="cl"><span class="s2">rpc.exports = {
+</span></span></span><span class="line hl"><span class="cl"><span class="s2">    getimagebuffer: function() {
+</span></span></span><span class="line hl"><span class="cl"><span class="s2">        return imageBuffer;
+</span></span></span><span class="line hl"><span class="cl"><span class="s2">    },
+</span></span></span><span class="line hl"><span class="cl"><span class="s2">    wastingtime: function() {
+</span></span></span><span class="line hl"><span class="cl"><span class="s2">        return wastetime;
+</span></span></span><span class="line hl"><span class="cl"><span class="s2">    }
+</span></span></span><span class="line hl"><span class="cl"><span class="s2">}
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line hl"><span class="cl"><span class="s2">function bytes2hex(array) {
+</span></span></span><span class="line hl"><span class="cl"><span class="s2">    var result = &#39;&#39;;
+</span></span></span><span class="line hl"><span class="cl"><span class="s2">    for(var i = 0; i &lt; array.length; ++i)
+</span></span></span><span class="line hl"><span class="cl"><span class="s2">        result += (&#39;0&#39; + (array[i] &amp; 0xFF).toString(16)).slice(-2);
+</span></span></span><span class="line hl"><span class="cl"><span class="s2">    return result;
+</span></span></span><span class="line hl"><span class="cl"><span class="s2">}
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">Interceptor.attach(Module.findExportByName(&#34;libc.so&#34;, &#34;strstr&#34;), {
+</span></span></span><span class="line"><span class="cl"><span class="s2">    onEnter: function(args) {
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">        this.haystack = Memory.readUtf8String(args[0])
+</span></span></span><span class="line"><span class="cl"><span class="s2">        this.isFrida = Boolean(0)
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">        if (this.haystack.indexOf(&#34;gmain&#34;) !== -1 || this.haystack.indexOf(&#34;gum-js-loop&#34;) !== -1 || this.haystack.indexOf(&#34;linjector&#34;) !== -1) {
+</span></span></span><span class="line"><span class="cl"><span class="s2">            this.frida = Boolean(1);
+</span></span></span><span class="line"><span class="cl"><span class="s2">        }
+</span></span></span><span class="line"><span class="cl"><span class="s2">    },
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    onLeave: function(retval) {
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">        if (this.frida) {
+</span></span></span><span class="line"><span class="cl"><span class="s2">            retval.replace(0);
+</span></span></span><span class="line"><span class="cl"><span class="s2">        }
+</span></span></span><span class="line"><span class="cl"><span class="s2">        return retval;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    }
+</span></span></span><span class="line"><span class="cl"><span class="s2">});
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">Interceptor.attach(Module.findExportByName(&#34;libgalery.so&#34;, &#34;Java_com_newbrainindustrial_galery_LogoDecoderAIDL_getData&#34;), {
+</span></span></span><span class="line"><span class="cl"><span class="s2">    onEnter: function(args) {
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    },
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    onLeave: function(retval) {
+</span></span></span><span class="line hl"><span class="cl"><span class="s2">        var b = Java.use(&#39;[B&#39;)
+</span></span></span><span class="line hl"><span class="cl"><span class="s2">        var buffer = Java.cast(retval, b);
+</span></span></span><span class="line hl"><span class="cl"><span class="s2">        var result = Java.array(&#39;byte&#39;, buffer);
+</span></span></span><span class="line hl"><span class="cl"><span class="s2">        
+</span></span></span><span class="line hl"><span class="cl"><span class="s2">        imageBuffer = bytes2hex(result);
+</span></span></span><span class="line hl"><span class="cl"><span class="s2">        wastetime = false
+</span></span></span><span class="line hl"><span class="cl"><span class="s2">        
+</span></span></span><span class="line hl"><span class="cl"><span class="s2">        return retval;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    }
+</span></span></span><span class="line"><span class="cl"><span class="s2">});
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">process</span> <span class="o">=</span> <span class="n">frida</span><span class="o">.</span><span class="n">get_usb_device</span><span class="p">()</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="s1">&#39;NBI-E Gallery&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">script</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">create_script</span><span class="p">(</span><span class="n">jscode</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">script</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s1">&#39;message&#39;</span><span class="p">,</span> <span class="n">on_message</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;[*] Wasting time...&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">script</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line hl"><span class="cl"><span class="n">jsexports</span> <span class="o">=</span> <span class="n">script</span><span class="o">.</span><span class="n">exports</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="p">(</span><span class="n">jsexports</span><span class="o">.</span><span class="n">wastingtime</span><span class="p">()):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">pass</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line hl"><span class="cl"><span class="n">buff</span> <span class="o">=</span> <span class="n">jsexports</span><span class="o">.</span><span class="n">getimagebuffer</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line hl"><span class="cl"><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&#34;result.png&#34;</span><span class="p">,</span> <span class="s2">&#34;wb&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span></span><span class="line hl"><span class="cl">    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">bytearray</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="n">buff</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Complete&#34;</span><span class="p">)</span> 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Чтобы вся эта добрая магия сработала, нам нужно убедиться, что весь нужный нам код уже находится в памяти. Для этого нужно один раз вызвать метод AIDL интерфейса чтобы &ldquo;прогреть&rdquo; всю машинерию. Потом не закрывая приложение запускаем этот скрипт и тригерим AIDL еще раз. В результате получим желанную картинку:</p>
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/neoquest2022-writeup-task7/result.png" alt="/img/neoquest2022-writeup-task7/result.png"/>
+    </div>
+    <a href="/img/neoquest2022-writeup-task7/result.png" itemprop="contentUrl"></a>
+  </figure>
+</div>
+
+<p>А потом я творил с этой картинкой такое, что я б не позволил печатать на месте цензуры&hellip; Естественно все было бесполезно :D Но один приемчик на будущее я вам все же покажу. В реальной жизни пригодится вряд-ли, а вот на CTF-ах вполне. Называется эта штука <a href="https://github.com/DominicBreuker/stego-toolkit">Steganography Toolkit</a> и работать с ней нужно так:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ docker run -it --rm -v <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/data dominicbreuker/stego-toolkit /bin/bash
+</span></span><span class="line"><span class="cl">root@c03002797574:/data# check_png.sh result.png
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#################################</span>
+</span></span><span class="line"><span class="cl"><span class="c1">########## PNG CHECKER ##########</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#################################</span>
+</span></span><span class="line"><span class="cl">Checking file result.png
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></div><p>Утилита проверит картинку кучей инструментов и покажет довольно подробный отчет. Как правило этого хватает для базовых CTF задач.</p>
+<p>На этом все. Удачи в киберсражениях! 😎</p>
+
+        
+          <div class="blog-tags">
+            
+              <a href="https://fi5t.xyz/tags/android/">android</a>&nbsp;
+            
+              <a href="https://fi5t.xyz/tags/%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C/">безопасность</a>&nbsp;
+            
+              <a href="https://fi5t.xyz/tags/ctf/">ctf</a>&nbsp;
+            
+              <a href="https://fi5t.xyz/tags/frida/">frida</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=https%3a%2f%2ffi5t.xyz%2fposts%2fneoquest2022-writeup-task7%2f&amp;text=NeoQUEST%202022%3a%20%d0%97%d0%b0%d0%b4%d0%b0%d0%bd%d0%b8%d0%b5%207&amp;via=Fi5t" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ffi5t.xyz%2fposts%2fneoquest2022-writeup-task7%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=https%3a%2f%2ffi5t.xyz%2fposts%2fneoquest2022-writeup-task7%2f&amp;title=NeoQUEST%202022%3a%20%d0%97%d0%b0%d0%b4%d0%b0%d0%bd%d0%b8%d0%b5%207" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2ffi5t.xyz%2fposts%2fneoquest2022-writeup-task7%2f&amp;title=NeoQUEST%202022%3a%20%d0%97%d0%b0%d0%b4%d0%b0%d0%bd%d0%b8%d0%b5%207" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2ffi5t.xyz%2fposts%2fneoquest2022-writeup-task7%2f&amp;title=NeoQUEST%202022%3a%20%d0%97%d0%b0%d0%b4%d0%b0%d0%bd%d0%b8%d0%b5%207" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2ffi5t.xyz%2fposts%2fneoquest2022-writeup-task7%2f&amp;description=NeoQUEST%202022%3a%20%d0%97%d0%b0%d0%b4%d0%b0%d0%bd%d0%b8%d0%b5%207" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+
+              </div>
+            </section>
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">Смотрите также</h4>
+                  <ul>
+                
+                
+                    <li><a href="/posts/python-security-pitfalls/">Проблемы с безопасностью в Python</a></li>
+                
+                    <li><a href="/posts/android-13-preview-security/">Android 13 Developer Preview 1: Что там по безопасности?</a></li>
+                
+                    <li><a href="/posts/intercept-android-traffic/">Перехват трафика в Android. Большой гайд.</a></li>
+                
+                    <li><a href="/posts/reverse-proxy-with-mtls-and-ktor/">Создаем reverse proxy с mTLS на Ktor</a></li>
+                
+                    <li><a href="/posts/drozer-on-mac/">Старый Drozer MacOS не испортит</a></li>
+                
+              </ul>
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://fi5t.xyz/posts/python-security-pitfalls/" data-toggle="tooltip" data-placement="top" title="Проблемы с безопасностью в Python">&larr; Предыдущий</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
+        
+          
+          <div class="disqus-comments">
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "not-unique-x" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+          </div>
+          
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="https://github.com/Fi5t" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/Fi5t" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/channel/UC2VONdPZLg_TisPi9thxLYA" title="Youtube">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-youtube fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://soundcloud.com/dry-rmr" title="SoundCloud">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-soundcloud fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              Fi5t
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2022
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://fi5t.xyz">(не)Уникальный опыт</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          На базе <a href="https://gohugo.io">Hugo v0.95.0</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://fi5t.xyz/js/main.js"></script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://fi5t.xyz/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+
