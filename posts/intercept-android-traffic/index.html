@@ -138,7 +138,7 @@
   <meta name="twitter:site" content="@Fi5t" />
   <meta name="twitter:creator" content="@Fi5t" />
   <link href='https://fi5t.xyz/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.95.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <link rel="alternate" href="https://fi5t.xyz/index.xml" type="application/rss+xml" title="(не)Уникальный опыт"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fi5t.xyz/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -486,7 +486,7 @@
 <p>Проблем, из-за которых трафик может не ходить через проксю довольно много. Часть их них относится к самому приложению и тем технологиям на которых оно сделано, другая часть возникает из-за глюков операционной системы смартфона или хостовой машины. А еще бывают космические аномалии, луна в Козероге, шумы в портах и вообще три часа ночи уже спать иди&hellip;</p>
 <p><strong>Важная информация:</strong> Не рекомендую пробовать все приведенные способы сразу без отката к изначальному состоянию. Это может вызвать дополнительные проблемы и можно во-первых сломать то, что уже работало или просто потратить время не придя к решению. Поэтому следуем первому правилу хорошего devops-а - небольшое изменение, проверка, откат, следующее изменение.</p>
 <h3 id="проверить-работает-ли-http-трафик-который-без-tls">Проверить работает ли HTTP трафик (который без TLS)</h3>
-<p>Очень может быть что сертификаты не встали правильно или приложение как-то особенно хитро гоняет трафик по HTTPS, поэтому нужно убедиться, что прокси вообще работает. Для этого нужно открыть любой сайт по HTTP в браузере. Например <code>http://neverssl.com</code> на котором намеренно отключена настройка <a href="https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security">Strict Transport Security (HSTS)</a> и трафик этого сайreFlutterта точно дожен отобразиться в проксе.</p>
+<p>Очень может быть что сертификаты не встали правильно или приложение как-то особенно хитро гоняет трафик по HTTPS, поэтому нужно убедиться, что прокси вообще работает. Для этого нужно открыть любой сайт по HTTP в браузере. Например <code>http://neverssl.com</code> на котором намеренно отключена настройка <a href="https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security">Strict Transport Security (HSTS)</a> и трафик этого сайта точно дожен отобразиться в проксе.</p>
 <p>Если трафика не видно, то в случае с Burp-ом можно проверить, что отключен перехват трафика (Intercept is off)
 
 
@@ -514,7 +514,7 @@
 <li>В Xposed под это есть модули: <a href="https://repo.xposed.info/module/mobi.acpm.sslunpinning">SSLUnpinning</a> и <a href="https://github.com/Fuzion24/JustTrustMe">JustTrustMe</a></li>
 <li>Скрипты для Frida: <a href="https://codeshare.frida.re/@pcipolloni/universal-android-ssl-pinning-bypass-with-frida/">один</a>, <a href="https://github.com/WooyunDota/DroidSSLUnpinning/blob/master/ObjectionUnpinningPlus/hooks.js">два</a>, <a href="https://codeshare.frida.re/@akabe1/frida-multiple-unpinning/">три</a>, <a href="https://codeshare.frida.re/@sowdust/universal-android-ssl-pinning-bypass-2/">четыре</a>, <a href="https://codeshare.frida.re/@masbog/frida-android-unpinning-ssl/">пять</a>, <a href="https://codeshare.frida.re/@segura2010/android-certificate-pinning-bypass/">шесть</a>, <a href="https://codeshare.frida.re/@akabe1/frida-universal-pinning-bypasser/">семь</a>, <a href="https://codeshare.frida.re/@akabe1/frida-universal-pinning-bypasser/">восемь</a> и обязательно напишите свой ;)</li>
 </ul>
-<p>Если досталось приложение на <strong>Xamarin</strong>/<strong>Unity</strong>, то придется разбираться в коде и патчить. Начать этот путь лучше всего с <a href="https://github.com/icsharpcode/ILSpyf">ILSpy</a> и <a href="https://github.com/NorthwaveSecurity/fridax">fridax</a>. А вот с Flutter-ом все несколько проще. Нужно использовать <a href="https://github.com/ptswarm/reFlutter">reFlutter</a>, который патчит <code>ssl_crypto_x509_session_verify_cert_chain</code>, что и позволяет обойти некоторые реализации пиннинга. Чуть больше подробностей <a href="https://thedarksource.com/reflutter-to-bypass-ssl-pinning-flutter-based-apps/">тут</a></p>
+<p>Если досталось приложение на <strong>Xamarin</strong>/<strong>Unity</strong>, то придется разбираться в коде и патчить. Начать этот путь лучше всего с <a href="https://github.com/icsharpcode/ILSpyf">ILSpy</a> и <a href="https://github.com/NorthwaveSecurity/fridax">fridax</a>. А вот с Flutter-ом все несколько проще. Нужно использовать <a href="https://github.com/Impact-I/reFlutter">reFlutter</a>, который патчит <code>ssl_crypto_x509_session_verify_cert_chain</code>, что и позволяет обойти некоторые реализации пиннинга. Чуть больше подробностей <a href="https://thedarksource.com/reflutter-to-bypass-ssl-pinning-flutter-based-apps/">тут</a></p>
 <h3 id="проверить-что-прокси-поднят-на-внешнем-интерфейсе">Проверить, что прокси поднят на внешнем интерфейсе</h3>
 <p>По умолчанию Burp Suite поднимает прокси на <code>127.0.0.1</code>, а значит достучаться до этого адреса со смартфона не выйдет. Нужно поднять его на внешнем интерфейсе, или сразу на всех интерфейсах. Сделать это можно в настройках прокси нажав кнопку <strong>Edit</strong>
 
@@ -652,7 +652,7 @@
 </span></span><span class="line"><span class="cl">iptables -t nat -A POSTROUTING -p tcp --dport <span class="m">443</span> -j MASQUERADE</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
-<li>Если приложение на Flutter, то использовать <a href="https://github.com/ptswarm/reFlutter">reFlutter</a>:
+<li>Если приложение на Flutter, то использовать <a href="https://github.com/Impact-I/reFlutter">reFlutter</a>:
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ pip3 install reflutter
 </span></span><span class="line"><span class="cl">$ reflutter &lt;your-app&gt;.apk
 </span></span><span class="line"><span class="cl">
@@ -1038,7 +1038,7 @@
         </p>
         
         <p class="credits theme-by text-muted">
-          На базе <a href="https://gohugo.io">Hugo v0.95.0</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          На базе <a href="https://gohugo.io">Hugo v0.96.0</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>
