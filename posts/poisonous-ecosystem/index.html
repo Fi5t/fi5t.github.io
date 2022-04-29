@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="ru" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+<script type="text/javascript" >
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+ 
+    ym(64685116, "init", {
+         clickmap:true,
+         trackLinks:true,
+         accurateTrackBounce:true
+    });
+ </script>
+ <noscript><div><img src="https://mc.yandex.ru/watch/64685116" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+ 
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Ядовитая экосистема - (не)Уникальный опыт</title>
+  <meta name="description" content="Несколько лет назад был тренд на постройку экосистем мобильных приложений. Это же так круто, когда приложения одной компании могут общаться друг с другом используя какие-то системные механизмы и дарить радость пользователю. Потом правда маятник качнулся в другую сторону и все начали делать суперапы, но о проблемах связанных с ними мы поговорим в другой раз. Сегодня разберем один интересный баг, который хорошо показывает почему доверие внутри экосистемы должно базироваться на чем-то более надежном чем просто имя пакета.
+
+
+
+  
+    
+      
+    
+    
+  
+
+">
+  <meta name="author" content="Fi5t"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "(не)Уникальный опыт",
+    
+    "url": "https:\/\/fi5t.xyz"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/fi5t.xyz"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/fi5t.xyz",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/fi5t.xyz\/posts\/poisonous-ecosystem\/",
+          "name": "Ядовитая экосистема"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Fi5t"
+  },
+  "headline": "Ядовитая экосистема",
+  "description" : "Несколько лет назад был тренд на постройку экосистем мобильных приложений. Это же так круто, когда приложения одной компании могут общаться друг с другом используя какие-то системные механизмы и дарить радость пользователю. Потом правда маятник качнулся в другую сторону и все начали делать суперапы, но о проблемах связанных с ними мы поговорим в другой раз. Сегодня разберем один интересный баг, который хорошо показывает почему доверие внутри экосистемы должно базироваться на чем-то более надежном чем просто имя пакета.     ",
+  "inLanguage" : "ru",
+  "wordCount":  777 ,
+  "datePublished" : "2022-04-29T00:00:00",
+  "dateModified" : "2022-04-29T00:00:00",
+  "image" : "https:\/\/fi5t.xyz\/img\/avatar-icon.jpg",
+  "keywords" : [ "" ],
+  "mainEntityOfPage" : "https:\/\/fi5t.xyz\/posts\/poisonous-ecosystem\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/fi5t.xyz",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/fi5t.xyz\/img\/avatar-icon.jpg",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Ядовитая экосистема" />
+<meta property="og:description" content="Несколько лет назад был тренд на постройку экосистем мобильных приложений. Это же так круто, когда приложения одной компании могут общаться друг с другом используя какие-то системные механизмы и дарить радость пользователю. Потом правда маятник качнулся в другую сторону и все начали делать суперапы, но о проблемах связанных с ними мы поговорим в другой раз. Сегодня разберем один интересный баг, который хорошо показывает почему доверие внутри экосистемы должно базироваться на чем-то более надежном чем просто имя пакета.
+
+
+
+  
+    
+      
+    
+    
+  
+
+">
+<meta property="og:image" content="https://fi5t.xyz/img/avatar-icon.jpg" />
+<meta property="og:url" content="https://fi5t.xyz/posts/poisonous-ecosystem/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="(не)Уникальный опыт" />
+
+  <meta name="twitter:title" content="Ядовитая экосистема" />
+  <meta name="twitter:description" content="Несколько лет назад был тренд на постройку экосистем мобильных приложений. Это же так круто, когда приложения одной компании могут общаться друг с другом используя какие-то системные механизмы и …">
+  <meta name="twitter:image" content="https://fi5t.xyz/img/avatar-icon.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@Fi5t" />
+  <meta name="twitter:creator" content="@Fi5t" />
+  <link href='https://fi5t.xyz/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.97.3" />
+  <link rel="alternate" href="https://fi5t.xyz/index.xml" type="application/rss+xml" title="(не)Уникальный опыт"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fi5t.xyz/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://fi5t.xyz/css/syntax.css" /><link rel="stylesheet" href="https://fi5t.xyz/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Навигация</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://fi5t.xyz">(не)Уникальный опыт</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+          
+            <li>
+              
+                
+                  <a href="/en" lang="en">en</a>
+                
+              
+                
+              
+            </li>
+          
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="(не)Уникальный опыт" href="https://fi5t.xyz">
+            <img class="avatar-img" src="https://fi5t.xyz/img/avatar-icon.jpg" alt="(не)Уникальный опыт" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header-section ">
+  
+  <div class="intro-header no-img">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <div class="posts-heading">
+            
+            <h1>Ядовитая экосистема</h1>
+            
+            
+            <hr class="small">
+            
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>Несколько лет назад был тренд на постройку экосистем мобильных приложений. Это же так круто, когда приложения одной компании могут общаться друг с другом используя какие-то системные механизмы и дарить радость пользователю. Потом правда маятник качнулся в другую сторону и все начали делать суперапы, но о проблемах связанных с ними мы поговорим в другой раз. Сегодня разберем один интересный баг, который хорошо показывает почему доверие внутри экосистемы должно базироваться на чем-то более надежном чем просто имя пакета.
+
+<link rel="stylesheet" href="https://fi5t.xyz/css/hugo-easy-gallery.css" />
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/poisonous-ecosystem/logo.gif" alt="/img/poisonous-ecosystem/logo.gif"/>
+    </div>
+    <a href="/img/poisonous-ecosystem/logo.gif" itemprop="contentUrl"></a>
+  </figure>
+</div>
+</p>
+<h2 id="разведка">Разведка</h2>
+<p>Для того чтобы задекларировать список приложений с которыми нужно взаимодействовать, разработчик должен добавить блок <a href="https://developer.android.com/guide/topics/manifest/queries-element">&lt;queries&gt;</a> в манифест и описать там необходимый набор взаимодействий:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;queries&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;package</span> <span class="na">android:name=</span><span class="s">&#34;string&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;intent&gt;</span>
+</span></span><span class="line"><span class="cl">        ...
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/intent&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;provider</span> <span class="na">android:authorities=</span><span class="s">&#34;list&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    ...
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/queries&gt;</span>
+</span></span></code></pre></div><p>Самым интересным здесь является ключ <code>package</code>, который раскрывает информацию о тех пакетах, с которыми будет работать приложение. Увидев такие строчки в манифесте, я сразу понял, что имею дело с одним из приложений некой экосистемы:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="hl"><span class="lnt"> 2
+</span></span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="hl"><span class="lnt">10
+</span></span><span class="hl"><span class="lnt">11
+</span></span><span class="hl"><span class="lnt">12
+</span></span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span class="line hl"><span class="cl"><span class="nt">&lt;manifest</span> <span class="na">package=</span><span class="s">&#34;com.well.known.app&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">xmlns:android=</span><span class="s">&#34;http://schemas.android.com/apk/res/android&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">android:compileSdkVersion=</span><span class="s">&#34;30&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    ...
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;queries&gt;</span>
+</span></span><span class="line"><span class="cl">        ...
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;package</span> <span class="na">android:name=</span><span class="s">&#34;com.android.vending&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;package</span> <span class="na">android:name=</span><span class="s">&#34;com.google.android.gms&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line hl"><span class="cl">        <span class="nt">&lt;package</span> <span class="na">android:name=</span><span class="s">&#34;com.well.known.store&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line hl"><span class="cl">        <span class="nt">&lt;package</span> <span class="na">android:name=</span><span class="s">&#34;com.well.known.settings&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line hl"><span class="cl">        <span class="nt">&lt;package</span> <span class="na">android:name=</span><span class="s">&#34;com.well.known.services&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        ...
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/queries&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/manifest&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Лишний раз заглянем в документацию, чтобы убедиться, что эта находка действительно полезна</p>
+<blockquote>
+<p>&lt;package&gt; - Specifies a single app that your app intends to access. This other app might integrate with your app, or your app might use services that the other app provides.</p>
+</blockquote>
+<p>Звучит неплохо!</p>
+<p>Поиск по декомпилированному коду указанных выше пакетов, приводит к такой загадочной конструкции:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">configuration</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;();</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="o">(</span><span class="n">PackageInfo</span> <span class="n">packageInfo</span> <span class="o">:</span> <span class="n">context</span><span class="o">.</span><span class="na">getApplicationContext</span><span class="o">().</span><span class="na">getPackageManager</span><span class="o">().</span><span class="na">getInstalledPackages</span><span class="o">(</span><span class="n">0</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(</span><span class="n">packageInfo</span><span class="o">.</span><span class="na">packageName</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">&#34;com.well.known.settings&#34;</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">loadSettings</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">packageInfo</span><span class="o">.</span><span class="na">packageName</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        <span class="o">...</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">loadSettings</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> <span class="n">String</span> <span class="n">str</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Resources</span> <span class="n">resources</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">getApplicationContext</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">        <span class="o">.</span><span class="na">getPackageManager</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">        <span class="o">.</span><span class="na">getResourcesForApplication</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="na">getIdentifier</span><span class="o">(</span><span class="s">&#34;settings&#34;</span><span class="o">,</span> <span class="s">&#34;string&#34;</span><span class="o">,</span> <span class="n">str</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">String</span> <span class="n">settings</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="na">getString</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">parseSettings</span><span class="o">(</span><span class="n">settings</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Фактически, здесь происходит загрузка каких-то настроек из <strong>стороннего приложения</strong> и дальше они как-то используются в исследуемом приложении. Делаю пометку об этом и иду искать вызовы HashMap-а, в который попадают эти настройки после парсинга. Довольно быстро нахожу такой код:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span><span class="n">configuration</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="s">&#34;debug&#34;</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">enableDebugMode</span><span class="o">();</span> <span class="c1">// Все золото находится здесь, нужно только открыть ящик...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">}</span>
+</span></span></code></pre></div><p>Здесь круг замыкается. Получается, что есть возможность управлять состоянием другого приложениея если каким-то образом получить контроль над приложением с пакетом <code>com.well.known.settings</code>. И тут начинается самое интересное. Объявление пакета в <code>&lt;queries&gt;</code>, просто включает возможность коммуникации между приложениями. Режим &ldquo;видимости&rdquo;, если быть более точным. Никаких дополнительных механизмов безопасности тут не задействуется. А значит реализация безопасной коммуникации полностью ложится на плечи приложения, которое декларирует внешний пакет у себя в манифесте. Ошибка разработчика приложения <code>com.well.known.app</code> состояла в том, что он не озаботился дополнительными проверками, а просто поверил случайному приложению в системе. А может это была исключительно отладочная возможность, которую забыли в релизной версии&hellip; Не важно! Давайте писать эксплойт 😎</p>
+<h2 id="эксплуатация">Эксплуатация</h2>
+<p>Я создал приложение с пакетом <code>com.well.known.settings</code> (потому что, кто мне запретит?) и еще раз внимательно посмотрел на тип и содержимое ресурса, который нужно было создать:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="na">getIdentifier</span><span class="o">(</span><span class="s">&#34;settings&#34;</span><span class="o">,</span> <span class="s">&#34;string&#34;</span><span class="o">,</span> <span class="n">str</span><span class="o">);</span>
+</span></span></code></pre></div><p>Это строковый ресурс с именем <strong>settings</strong> куда нужно поместить значение <strong>debug</strong>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;resources&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&#34;app_name&#34;</span><span class="nt">&gt;</span>Exploit<span class="nt">&lt;/string&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&#34;settings&#34;</span><span class="nt">&gt;</span>debug<span class="nt">&lt;/string&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/resources&gt;</span>
+</span></span></code></pre></div><p>Сборка, установка, profit!<br>
+Целевое приложение прочитало настройку из моего эксплойта и радостно переключилось в отладочный режим, который, среди прочего, позволял читать конфиденциальную информацию из песочницы приложения.<br>
+А ведь в этой экосистеме есть и другие приложения&hellip;. Но это уже совсем другая история.</p>
+<h2 id="что-там-в-дикой-природе">Что там в дикой природе?</h2>
+<p>Да-да, %username%, вижу как ты уже побежал шерстить bug bounty программы чтобы нахаляву купить себе ламборгини. Не торопись. Я уже просмотрел все bug bounty за тебя и хочу немного огорчить. В тех компаниях, которые действительно интересуются безопасностью, уже подумали об этой проблеме. Рассмотрим на примере приложения <strong>Dropbox Paper</strong>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="hl"><span class="lnt"> 9
+</span></span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;queries&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;intent&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">&#34;android.intent.action.VIEW&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;data</span> <span class="na">android:scheme=</span><span class="s">&#34;http&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/intent&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;intent&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">&#34;android.media.action.IMAGE_CAPTURE&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/intent&gt;</span>
+</span></span><span class="line hl"><span class="cl">    <span class="nt">&lt;package</span> <span class="na">android:name=</span><span class="s">&#34;com.dropbox.android&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/queries&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Видим, что оно каким-то образом взаимодействует с основным приложением <strong>Dropbox: Cloud Photo Storage</strong>. Поиск по коду довольно быстро приводит нас сюда:
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/poisonous-ecosystem/auth-intent.svg" alt="/img/poisonous-ecosystem/auth-intent.svg"/>
+    </div>
+    <a href="/img/poisonous-ecosystem/auth-intent.svg" itemprop="contentUrl"></a>
+  </figure>
+</div>
+
+Выглядит так, как будто мы можем прикинуться другим приложением и украсть данные для аутентификации. И это бы сработало, если бы не код метода <code>DbxOfficialAppConnector.getDropboxAppPackage</code>
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/poisonous-ecosystem/signatures.svg" alt="/img/poisonous-ecosystem/signatures.svg"/>
+    </div>
+    <a href="/img/poisonous-ecosystem/signatures.svg" itemprop="contentUrl"></a>
+  </figure>
+</div>
+
+Который и ломает весь флоу атаки. Чтож, в этот раз придется обойтись без ламборгини. Но может на open redirect-ах удасться подняться&hellip;</p>
+<p>Стоит сказать, что в некоторых приложениях, имеющих публичные bug bounty программы эта ошибка встречается. Но импакт ее довольно низкий - просто запуск приложения без каких-либо параметров. Конечно тут можно поиграть в фишинг, но это все уже не так красиво и дорого, как могло бы быть.</p>
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/poisonous-ecosystem/bb.webp" alt="/img/poisonous-ecosystem/bb.webp"/>
+    </div>
+    <a href="/img/poisonous-ecosystem/bb.webp" itemprop="contentUrl"></a>
+  </figure>
+</div>
+
+<h2 id="ссылки">Ссылки</h2>
+<ul>
+<li><a href="https://developer.android.com/training/package-visibility/use-cases">Fulfilling common use cases while having limited package visibility</a></li>
+<li><a href="https://developer.android.com/training/package-visibility">Package visibility filtering on Android</a></li>
+<li><a href="https://developer.android.com/training/package-visibility/declaring">Declaring package visibility needs</a></li>
+<li><a href="https://medium.com/androiddevelopers/package-visibility-in-android-11-cc857f221cd9">Package visibility in Android 11</a></li>
+</ul>
+
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=https%3a%2f%2ffi5t.xyz%2fposts%2fpoisonous-ecosystem%2f&amp;text=%d0%af%d0%b4%d0%be%d0%b2%d0%b8%d1%82%d0%b0%d1%8f%20%d1%8d%d0%ba%d0%be%d1%81%d0%b8%d1%81%d1%82%d0%b5%d0%bc%d0%b0&amp;via=Fi5t" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ffi5t.xyz%2fposts%2fpoisonous-ecosystem%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=https%3a%2f%2ffi5t.xyz%2fposts%2fpoisonous-ecosystem%2f&amp;title=%d0%af%d0%b4%d0%be%d0%b2%d0%b8%d1%82%d0%b0%d1%8f%20%d1%8d%d0%ba%d0%be%d1%81%d0%b8%d1%81%d1%82%d0%b5%d0%bc%d0%b0" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2ffi5t.xyz%2fposts%2fpoisonous-ecosystem%2f&amp;title=%d0%af%d0%b4%d0%be%d0%b2%d0%b8%d1%82%d0%b0%d1%8f%20%d1%8d%d0%ba%d0%be%d1%81%d0%b8%d1%81%d1%82%d0%b5%d0%bc%d0%b0" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2ffi5t.xyz%2fposts%2fpoisonous-ecosystem%2f&amp;title=%d0%af%d0%b4%d0%be%d0%b2%d0%b8%d1%82%d0%b0%d1%8f%20%d1%8d%d0%ba%d0%be%d1%81%d0%b8%d1%81%d1%82%d0%b5%d0%bc%d0%b0" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2ffi5t.xyz%2fposts%2fpoisonous-ecosystem%2f&amp;description=%d0%af%d0%b4%d0%be%d0%b2%d0%b8%d1%82%d0%b0%d1%8f%20%d1%8d%d0%ba%d0%be%d1%81%d0%b8%d1%81%d1%82%d0%b5%d0%bc%d0%b0" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+
+              </div>
+            </section>
+        
+
+        
+          
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://fi5t.xyz/posts/neoquest2022-writeup-task7/" data-toggle="tooltip" data-placement="top" title="NeoQUEST 2022: Задание 7">&larr; Предыдущий</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
+        
+          
+          <div class="disqus-comments">
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "not-unique-x" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+          </div>
+          
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="https://github.com/Fi5t" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/Fi5t" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/channel/UC2VONdPZLg_TisPi9thxLYA" title="Youtube">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-youtube fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://soundcloud.com/dry-rmr" title="SoundCloud">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-soundcloud fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              Fi5t
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2022
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://fi5t.xyz">(не)Уникальный опыт</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          На базе <a href="https://gohugo.io">Hugo v0.97.3</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://fi5t.xyz/js/main.js"></script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://fi5t.xyz/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+
