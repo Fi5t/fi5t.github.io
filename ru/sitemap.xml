@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://fi5t.xyz/</loc>
-    <lastmod>2022-04-29T00:00:00+00:00</lastmod>
+    <lastmod>2022-05-16T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -16,7 +16,7 @@
                 />
   </url><url>
     <loc>https://fi5t.xyz/tags/android/</loc>
-    <lastmod>2022-04-29T00:00:00+00:00</lastmod>
+    <lastmod>2022-05-16T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -28,8 +28,11 @@
                 href="https://fi5t.xyz/tags/android/"
                 />
   </url><url>
+    <loc>https://fi5t.xyz/tags/biometrics/</loc>
+    <lastmod>2022-05-16T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://fi5t.xyz/posts/</loc>
-    <lastmod>2022-04-29T00:00:00+00:00</lastmod>
+    <lastmod>2022-05-16T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -42,7 +45,7 @@
                 />
   </url><url>
     <loc>https://fi5t.xyz/tags/</loc>
-    <lastmod>2022-04-29T00:00:00+00:00</lastmod>
+    <lastmod>2022-05-16T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -55,10 +58,13 @@
                 />
   </url><url>
     <loc>https://fi5t.xyz/tags/writeup/</loc>
-    <lastmod>2022-04-29T00:00:00+00:00</lastmod>
+    <lastmod>2022-05-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://fi5t.xyz/tags/%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C/</loc>
-    <lastmod>2022-04-29T00:00:00+00:00</lastmod>
+    <lastmod>2022-05-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fi5t.xyz/posts/biometric-underauthentication/</loc>
+    <lastmod>2022-05-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://fi5t.xyz/posts/poisonous-ecosystem/</loc>
     <lastmod>2022-04-29T00:00:00+00:00</lastmod>
@@ -95,9 +101,6 @@
   </url><url>
     <loc>https://fi5t.xyz/posts/intercept-android-traffic/</loc>
     <lastmod>2022-01-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://fi5t.xyz/tags/biometrics/</loc>
-    <lastmod>2021-12-12T00:00:03+03:00</lastmod>
   </url><url>
     <loc>https://fi5t.xyz/tags/rtfm/</loc>
     <lastmod>2021-12-12T00:00:03+03:00</lastmod>

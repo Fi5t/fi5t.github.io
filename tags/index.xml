@@ -6,20 +6,29 @@
     <description>Recent content in Tags on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-ru</language>
-    <lastBuildDate>Fri, 29 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>android</title>
       <link>https://fi5t.xyz/tags/android/</link>
-      <pubDate>Fri, 29 Apr 2022 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 16 May 2022 00:00:00 +0000</pubDate>
       
       <guid>https://fi5t.xyz/tags/android/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>biometrics</title>
+      <link>https://fi5t.xyz/tags/biometrics/</link>
+      <pubDate>Mon, 16 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fi5t.xyz/tags/biometrics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>writeup</title>
       <link>https://fi5t.xyz/tags/writeup/</link>
-      <pubDate>Fri, 29 Apr 2022 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 16 May 2022 00:00:00 +0000</pubDate>
       
       <guid>https://fi5t.xyz/tags/writeup/</guid>
       <description></description>
@@ -28,7 +37,7 @@
     <item>
       <title>безопасность</title>
       <link>https://fi5t.xyz/tags/%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C/</link>
-      <pubDate>Fri, 29 Apr 2022 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 16 May 2022 00:00:00 +0000</pubDate>
       
       <guid>https://fi5t.xyz/tags/%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C/</guid>
       <description></description>
@@ -85,15 +94,6 @@
       <pubDate>Tue, 25 Jan 2022 00:00:00 +0000</pubDate>
       
       <guid>https://fi5t.xyz/tags/mitm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>biometrics</title>
-      <link>https://fi5t.xyz/tags/biometrics/</link>
-      <pubDate>Sun, 12 Dec 2021 00:00:03 +0300</pubDate>
-      
-      <guid>https://fi5t.xyz/tags/biometrics/</guid>
       <description></description>
     </item>
     

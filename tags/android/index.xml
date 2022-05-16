@@ -6,7 +6,27 @@
     <description>Recent content in android on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-ru</language>
-    <lastBuildDate>Fri, 29 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Биометрическая недоаутентификация</title>
+      <link>https://fi5t.xyz/posts/biometric-underauthentication/</link>
+      <pubDate>Mon, 16 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fi5t.xyz/posts/biometric-underauthentication/</guid>
+      <description>&lt;p&gt;Много уже &lt;a href=&#34;https://habr.com/ru/company/redmadrobot/blog/475112/&#34;&gt;написано&lt;/a&gt; и &lt;a href=&#34;https://www.youtube.com/watch?v=2DLP2te7gYQ&#34;&gt;сказано&lt;/a&gt; про биометрическую аутентификацию в android приложениях. И это не прошло бесследно. Вижу много приложений где флоу аутентификации биометрия+пин-код сделан по всем канонам безопасности. Но дьявол кроется в деталях. И сегодня я покажу как всего один флаг способен умножить на 0 отлично выстроенную систему аутентификации. Речь пойдет об одном широко известном приложении 🤐
+
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;
+&lt;div class=&#34;box&#34; &gt;
+  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+    &lt;div class=&#34;img&#34;&gt;
+      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/biometric-underauthentication/logo.gif&#34; alt=&#34;/img/biometric-underauthentication/logo.gif&#34;/&gt;
+    &lt;/div&gt;
+    &lt;a href=&#34;https://fi5t.xyz/img/biometric-underauthentication/logo.gif&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;
+&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Ядовитая экосистема</title>
       <link>https://fi5t.xyz/posts/poisonous-ecosystem/</link>
