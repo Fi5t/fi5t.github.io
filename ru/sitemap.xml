@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://fi5t.xyz/</loc>
-    <lastmod>2022-05-16T00:00:00+00:00</lastmod>
+    <lastmod>2022-07-20T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -16,7 +16,7 @@
                 />
   </url><url>
     <loc>https://fi5t.xyz/tags/android/</loc>
-    <lastmod>2022-05-16T00:00:00+00:00</lastmod>
+    <lastmod>2022-07-20T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -28,11 +28,11 @@
                 href="https://fi5t.xyz/tags/android/"
                 />
   </url><url>
-    <loc>https://fi5t.xyz/tags/biometrics/</loc>
-    <lastmod>2022-05-16T00:00:00+00:00</lastmod>
+    <loc>https://fi5t.xyz/tags/firmware/</loc>
+    <lastmod>2022-07-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://fi5t.xyz/posts/</loc>
-    <lastmod>2022-05-16T00:00:00+00:00</lastmod>
+    <lastmod>2022-07-20T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -44,8 +44,11 @@
                 href="https://fi5t.xyz/posts/"
                 />
   </url><url>
+    <loc>https://fi5t.xyz/tags/root/</loc>
+    <lastmod>2022-07-20T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://fi5t.xyz/tags/</loc>
-    <lastmod>2022-05-16T00:00:00+00:00</lastmod>
+    <lastmod>2022-07-20T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -56,6 +59,12 @@
                 hreflang="ru"
                 href="https://fi5t.xyz/tags/"
                 />
+  </url><url>
+    <loc>https://fi5t.xyz/posts/oppo-a16-easy-root/</loc>
+    <lastmod>2022-07-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fi5t.xyz/tags/biometrics/</loc>
+    <lastmod>2022-05-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://fi5t.xyz/tags/writeup/</loc>
     <lastmod>2022-05-16T00:00:00+00:00</lastmod>
