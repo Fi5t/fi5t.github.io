@@ -6,7 +6,26 @@
     <description>Recent content in tutorial on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-ru</language>
-    <lastBuildDate>Sun, 01 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 16 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Непокорный ReactNative</title>
+      <link>https://fi5t.xyz/posts/disobedient-react-native/</link>
+      <pubDate>Wed, 16 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fi5t.xyz/posts/disobedient-react-native/</guid>
+      <description>&lt;p&gt;По моему скромному мнению - ReactNative уже прошел свой пик популярности в разработке мобильных приложений и дальше будет постепенно покидать эту область. Зачем он нужен, если есть божественный Flutter? 🤪 Но такие приложения все еще встречаются и порой доставляют проблемы исследователям безопасности. Впрочем, когда нас это останавливало? 😎&lt;/p&gt;
+
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;
+&lt;div class=&#34;box&#34; &gt;
+  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+    &lt;div class=&#34;img&#34;&gt;
+      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/disobedient-react-native/rnkdpv.jpg&#34; alt=&#34;/img/disobedient-react-native/rnkdpv.jpg&#34;/&gt;
+    &lt;/div&gt;
+    &lt;a href=&#34;https://fi5t.xyz/img/disobedient-react-native/rnkdpv.jpg&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;</description>
+    </item>
+    
     <item>
       <title>Создаем reverse proxy с mTLS на Ktor</title>
       <link>https://fi5t.xyz/posts/reverse-proxy-with-mtls-and-ktor/</link>
