@@ -88,7 +88,7 @@
   "headline": "Перехват трафика в Android. Большой гайд.",
   "description" : "Зачем еще одна статья? Задача перехвата трафика android приложений довольно хорошо описана на куче языков и даже не нужно уметь гуглить чтобы найти информацию о том, как настроить прокси и посмотреть заветные запросы. Даже набившая уже всем оскомину тема \u0026ldquo;как отломать ssl pinning\u0026rdquo; была множество раз разжевана и надо быть по пояс странным чтобы в этом не разобраться.\n\u0026hellip;когда ты слишком долго в пути, когда тебя обуревает жадность, приходит черный пес чтобы отобрать у тебя все.\nЧерный пес (1998)\nДа\u0026hellip; потом появляется то самое приложение, которое вопреки всем настройкам не хочет работать через прокси. Или через прокси проходит только часть трафика. В такой ситуации лучше не начинать нажимать все подряд, чтобы не увеличивать энтропию происходящего, а подойти к вопросу системно и последовательно попробовать разные методы для решения этой проблемы.\n",
   "inLanguage" : "ru",
-  "wordCount":  2380 ,
+  "wordCount":  2386 ,
   "datePublished" : "2022-01-25T00:00:00",
   "dateModified" : "2022-01-25T00:00:00",
   "image" : "https:\/\/fi5t.xyz\/img\/avatar-icon.jpg",
@@ -521,6 +521,12 @@
 <li>Скрипты для Frida: <a href="https://codeshare.frida.re/@pcipolloni/universal-android-ssl-pinning-bypass-with-frida/">один</a>, <a href="https://github.com/WooyunDota/DroidSSLUnpinning/blob/master/ObjectionUnpinningPlus/hooks.js">два</a>, <a href="https://codeshare.frida.re/@akabe1/frida-multiple-unpinning/">три</a>, <a href="https://codeshare.frida.re/@sowdust/universal-android-ssl-pinning-bypass-2/">четыре</a>, <a href="https://codeshare.frida.re/@masbog/frida-android-unpinning-ssl/">пять</a>, <a href="https://codeshare.frida.re/@segura2010/android-certificate-pinning-bypass/">шесть</a>, <a href="https://codeshare.frida.re/@akabe1/frida-universal-pinning-bypasser/">семь</a>, <a href="https://codeshare.frida.re/@akabe1/frida-universal-pinning-bypasser/">восемь</a> и обязательно напишите свой ;)</li>
 </ul>
 <p>Если досталось приложение на <strong>Xamarin</strong>/<strong>Unity</strong>, то придется разбираться в коде и патчить. Начать этот путь лучше всего с <a href="https://github.com/icsharpcode/ILSpyf">ILSpy</a> и <a href="https://github.com/NorthwaveSecurity/fridax">fridax</a>. А вот с Flutter-ом все несколько проще. Нужно использовать <a href="https://github.com/Impact-I/reFlutter">reFlutter</a>, который патчит <code>ssl_crypto_x509_session_verify_cert_chain</code>, что и позволяет обойти некоторые реализации пиннинга. Чуть больше подробностей <a href="https://thedarksource.com/reflutter-to-bypass-ssl-pinning-flutter-based-apps/">тут</a></p>
+<h4 id="подборка-статей-про-обход-ssl-pinning">Подборка статей про обход ssl pinning</h4>
+<ul>
+<li><a href="https://kishorbalan.medium.com/its-all-about-android-ssl-pinning-bypass-and-intercepting-proxy-unaware-applications-91689c0763d8">It&rsquo;s all about Bypassing Android SSL Pinning and Intercepting Proxy Unaware applications</a></li>
+<li><a href="https://habr.com/ru/company/swordfish_security/blog/661093/">Держи свой трафик в тайне. SSL Pinning — ещё раз о том же самом</a></li>
+<li><a href="https://xakep.ru/2019/09/12/ssl-sniffing/">Универсальный перехват. Как обойти SSLPinning раз и навсегда и читать трафик любого приложения</a></li>
+</ul>
 <h3 id="проверить-что-прокси-поднят-на-внешнем-интерфейсе">Проверить, что прокси поднят на внешнем интерфейсе</h3>
 <p>По умолчанию Burp Suite поднимает прокси на <code>127.0.0.1</code>, а значит достучаться до этого адреса со смартфона не выйдет. Нужно поднять его на внешнем интерфейсе, или сразу на всех интерфейсах. Сделать это можно в настройках прокси нажав кнопку <strong>Edit</strong>
 
@@ -819,13 +825,10 @@
 <li><a href="https://raw.githubusercontent.com/hackerscrolls/SecurityTips/master/Mobile/Mitm/MiTM_Android_App_IPTABLES.png">How to MiTM Android app using IPTABLES</a></li>
 <li><a href="https://thedarksource.com/reflutter-to-bypass-ssl-pinning-flutter-based-apps/">Bypass SSL Pinning of Flutter apps to Capture HTTPS traffic in Burp Suite (with reFlutter)</a></li>
 <li><a href="https://medium.com/@meshal_/pentesting-non-proxy-aware-mobile-applications-65161f62a965">Pentesting Non-Proxy Aware Mobile Applications Without Root/Jailbreak</a></li>
-<li><a href="https://kishorbalan.medium.com/its-all-about-android-ssl-pinning-bypass-and-intercepting-proxy-unaware-applications-91689c0763d8">It&rsquo;s all about Bypassing Android SSL Pinning and Intercepting Proxy Unaware applications</a></li>
-<li><a href="https://habr.com/ru/company/swordfish_security/blog/661093/">Держи свой трафик в тайне. SSL Pinning — ещё раз о том же самом</a></li>
 </ul>
 <p>А это дополнительные ссылки, которые прислали благодарные читатели.</p>
 <ul>
 <li><a href="https://blog.nviso.eu/2020/06/12/intercepting-flutter-traffic-on-ios/">Intercepting Flutter traffic on iOS</a></li>
-<li><a href="https://xakep.ru/2019/09/12/ssl-sniffing/">Универсальный перехват. Как обойти SSLPinning раз и навсегда и читать трафик любого приложения</a></li>
 </ul>
 
         
