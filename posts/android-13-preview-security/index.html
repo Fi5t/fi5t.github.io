@@ -125,7 +125,7 @@
   <meta name="twitter:site" content="@Fi5t" />
   <meta name="twitter:creator" content="@Fi5t" />
   <link href='https://fi5t.xyz/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.105.0">
+  <meta name="generator" content="Hugo 0.107.0">
   <link rel="alternate" href="https://fi5t.xyz/index.xml" type="application/rss+xml" title="(не)Уникальный опыт"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fi5t.xyz/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -294,8 +294,8 @@
 <p>В Android уже давно есть системный пикер для файлов, который позволяет получать доступ к конкретным файлам без необходимости давать приложению какие-либо разрешения. В Android 11 это приложение <strong>Documents</strong> (<code>com.google.android.documentsui</code>). Для работы с ним нужно просто послать интент или использовать <a href="https://developer.android.com/training/basics/intents/result">Result API</a></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Устаревший, не рекомендованный способ
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="py">documents</span> <span class="p">=</span> <span class="n">Intent</span><span class="p">(</span><span class="n">Intent</span><span class="p">.</span><span class="n">ACTION_GET_CONTENT</span><span class="p">).</span><span class="n">apply</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">addCategory</span><span class="p">(</span><span class="n">Intent</span><span class="p">.</span><span class="n">CATEGORY_OPENABLE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="py">documents</span> <span class="p">=</span> <span class="n">Intent</span><span class="p">(</span><span class="nc">Intent</span><span class="p">.</span><span class="n">ACTION_GET_CONTENT</span><span class="p">).</span><span class="n">apply</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">addCategory</span><span class="p">(</span><span class="nc">Intent</span><span class="p">.</span><span class="n">CATEGORY_OPENABLE</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="n">type</span> <span class="p">=</span> <span class="s2">&#34;*/*&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
@@ -312,7 +312,7 @@
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Новый, блестящий способ. Всегда так делайте.
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>
 </span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="py">getContent</span> <span class="p">=</span> <span class="n">registerForActivityResult</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">    <span class="n">ActivityResultContracts</span><span class="p">.</span><span class="n">GetContent</span><span class="p">())</span> <span class="p">{</span> <span class="n">uri</span><span class="p">:</span> <span class="n">Uri</span><span class="p">?</span> <span class="o">-&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nc">ActivityResultContracts</span><span class="p">.</span><span class="n">GetContent</span><span class="p">())</span> <span class="p">{</span> <span class="n">uri</span><span class="p">:</span> <span class="n">Uri</span><span class="p">?</span> <span class="o">-&gt;</span>
 </span></span><span class="line"><span class="cl">        <span class="n">uri</span><span class="o">?.</span><span class="n">let</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="n">image</span><span class="p">.</span><span class="n">setImageURI</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
@@ -346,15 +346,15 @@
 
 <p>Google пока не показал как вызвать этот пикер через Result API, вероятно это вообще невозможно на данный момент, но старый добрый <code>startActivityForResult</code> все еще тут и будет радовать разработчиков долгие годы. Как <code>AsyncTask</code>&hellip;</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">val</span> <span class="py">maxNumPhotosAndVideos</span> <span class="p">=</span> <span class="m">10</span>
-</span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="py">intent</span> <span class="p">=</span> <span class="n">Intent</span><span class="p">(</span><span class="n">MediaStore</span><span class="p">.</span><span class="n">ACTION_PICK_IMAGES</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">intent</span><span class="p">.</span><span class="n">putExtra</span><span class="p">(</span><span class="n">MediaStore</span><span class="p">.</span><span class="n">EXTRA_PICK_IMAGES_MAX</span><span class="p">,</span> <span class="n">maxNumPhotosAndVideos</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="py">intent</span> <span class="p">=</span> <span class="n">Intent</span><span class="p">(</span><span class="nc">MediaStore</span><span class="p">.</span><span class="n">ACTION_PICK_IMAGES</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">intent</span><span class="p">.</span><span class="n">putExtra</span><span class="p">(</span><span class="nc">MediaStore</span><span class="p">.</span><span class="n">EXTRA_PICK_IMAGES_MAX</span><span class="p">,</span> <span class="n">maxNumPhotosAndVideos</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">startActivityForResult</span><span class="p">(</span><span class="n">intent</span><span class="p">,</span> <span class="n">PHOTO_PICKER_MULTI_SELECT_REQUEST_CODE</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="o">..</span><span class="p">.</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">override</span> <span class="k">fun</span> <span class="nf">onActivityResult</span><span class="p">(</span><span class="n">requestCode</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">resultCode</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="k">data</span><span class="p">:</span> <span class="n">Intent</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">super</span><span class="p">.</span><span class="n">onActivityResult</span><span class="p">(</span><span class="n">requestCode</span><span class="p">,</span> <span class="n">resultCode</span><span class="p">,</span> <span class="k">data</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">resultCode</span> <span class="o">!=</span> <span class="n">Activity</span><span class="p">.</span><span class="n">RESULT_OK</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">resultCode</span> <span class="o">!=</span> <span class="nc">Activity</span><span class="p">.</span><span class="n">RESULT_OK</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">// Обработать ошибку
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
@@ -379,8 +379,8 @@
 </span></span></code></pre></div><p>Код выше, запустит пикер в режиме выбора нескольких фотографий и можно даже указать максимальное количество больше которого он выбрать не даст. Количество, при этом, далеко не бесконечное и регламентируется методом <a href="https://developer.android.com/reference/android/provider/MediaStore#getPickImagesMaxLimit()">MediaStore#getPickImagesMaxLimit</a></p>
 <p>А теперь самое главное - <strong>почему это все безопасно</strong>? Покажу на примере старого пикера, потому что мне сейчас лень накатывать Preview версию студии чтобы скачать образ на эмулятор :D</p>
 <p>Я специально показал два спосба запуска пикера, потому что так нагляднее. Давайте еще раз:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">val</span> <span class="py">documents</span> <span class="p">=</span> <span class="n">Intent</span><span class="p">(</span><span class="n">Intent</span><span class="p">.</span><span class="n">ACTION_GET_CONTENT</span><span class="p">).</span><span class="n">apply</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">addCategory</span><span class="p">(</span><span class="n">Intent</span><span class="p">.</span><span class="n">CATEGORY_OPENABLE</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">val</span> <span class="py">documents</span> <span class="p">=</span> <span class="n">Intent</span><span class="p">(</span><span class="nc">Intent</span><span class="p">.</span><span class="n">ACTION_GET_CONTENT</span><span class="p">).</span><span class="n">apply</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">addCategory</span><span class="p">(</span><span class="nc">Intent</span><span class="p">.</span><span class="n">CATEGORY_OPENABLE</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="n">type</span> <span class="p">=</span> <span class="s2">&#34;*/*&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
@@ -424,7 +424,7 @@
 </span></span><span class="line"><span class="cl">                <span class="o">+</span> <span class="s">&#34; activity: &#34;</span> <span class="o">+</span> <span class="n">className</span>
 </span></span><span class="line"><span class="cl">                <span class="o">+</span> <span class="s">&#34; origPrio: &#34;</span> <span class="o">+</span> <span class="n">intent</span><span class="o">.</span><span class="na">getPriority</span><span class="o">());</span>
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">    <span class="n">intent</span><span class="o">.</span><span class="na">setPriority</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">intent</span><span class="o">.</span><span class="na">setPriority</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl"><span class="o">}</span>
 </span></span></code></pre></div><p>Он и не дает нам перебить установленный в <code>com.android.documentsui.picker.PickActivity</code> приоритет. Согласно <a href="https://source.android.com/devices/tech/config/perms-allowlist">документации</a>, привелигерованные приложения живут в <code>/system/priv-app</code> и некоторых других директориях. Проверяем:</p>
@@ -724,7 +724,7 @@
         </p>
         
         <p class="credits theme-by text-muted">
-          На базе <a href="https://gohugo.io">Hugo v0.105.0</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          На базе <a href="https://gohugo.io">Hugo v0.107.0</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>

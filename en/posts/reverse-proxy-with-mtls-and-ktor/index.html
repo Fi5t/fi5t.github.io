@@ -105,7 +105,7 @@
   <meta name="twitter:site" content="@Fi5t" />
   <meta name="twitter:creator" content="@Fi5t" />
   <link href='https://fi5t.xyz/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.105.0">
+  <meta name="generator" content="Hugo 0.107.0">
   <link rel="alternate" href="https://fi5t.xyz/en/index.xml" type="application/rss+xml" title="(not)Unique experience"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fi5t.xyz/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -495,7 +495,7 @@ in <a href="https://mock-server.com/mock_server/using_openapi.html">official doc
 </span></span><span class="line"><span class="cl">    <span class="n">implementation</span><span class="p">(</span><span class="s2">&#34;com.squareup.okhttp3:okhttp-tls:</span><span class="si">$okhttp</span><span class="s2">_version&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>When the job is done, outline the wireframe of the project in the <code>Application.kt</code> file:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">=</span> <span class="n">EngineMain</span><span class="p">.</span><span class="n">main</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">=</span> <span class="nc">EngineMain</span><span class="p">.</span><span class="n">main</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nd">@Suppress</span><span class="p">(</span><span class="s2">&#34;unused&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">Application</span><span class="p">.</span><span class="n">module</span><span class="p">()</span> <span class="p">{</span>
@@ -530,7 +530,7 @@ objects</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">private</span> <span class="k">val</span> <span class="py">PEM</span><span class="n">_REGEX</span> <span class="p">=</span> <span class="n">Regex</span><span class="p">(</span><span class="s">&#34;&#34;&#34;-----BEGIN ([!-,.-~ ]*)-----([^-]*)-----END \1-----&#34;&#34;&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">String</span><span class="p">.</span><span class="n">splitCertificatesPem</span><span class="p">():</span> <span class="n">Sequence</span><span class="p">&lt;</span><span class="n">X509Certificate</span><span class="p">&gt;</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">PEM_REGEX</span><span class="p">.</span><span class="n">findAll</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="n">map</span> <span class="p">{</span> <span class="n">match</span> <span class="o">-&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nc">PEM_REGEX</span><span class="p">.</span><span class="n">findAll</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="n">map</span> <span class="p">{</span> <span class="n">match</span> <span class="o">-&gt;</span>
 </span></span><span class="line"><span class="cl">        <span class="n">match</span><span class="p">.</span><span class="n">groups</span><span class="p">[</span><span class="m">0</span><span class="p">]</span><span class="o">!!</span><span class="p">.</span><span class="k">value</span><span class="p">.</span><span class="n">decodeCertificatePem</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
@@ -556,10 +556,10 @@ production systems.**</p>
 </span></span><span class="line"><span class="cl"><span class="s2">&#34;7jrTiwcEtANdV45Zd4mAS6ctvNIJvg==</span><span class="se">\n</span><span class="s2">&#34;</span> <span class="p">+</span>
 </span></span><span class="line"><span class="cl">        <span class="s2">&#34;-----END PRIVATE KEY-----</span><span class="se">\n</span><span class="s2">&#34;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="py">caBundle</span> <span class="p">=</span> <span class="n">CACERT</span><span class="p">.</span><span class="n">splitCertificatesPem</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="py">heldCertificate</span> <span class="p">=</span> <span class="n">HeldCertificate</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">CLIENT_CERT</span> <span class="p">+</span> <span class="n">CLIENT_KEY</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="py">caBundle</span> <span class="p">=</span> <span class="nc">CACERT</span><span class="p">.</span><span class="n">splitCertificatesPem</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="py">heldCertificate</span> <span class="p">=</span> <span class="nc">HeldCertificate</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">CLIENT_CERT</span> <span class="p">+</span> <span class="n">CLIENT_KEY</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="py">handshakeCerts</span> <span class="p">=</span> <span class="n">HandshakeCertificates</span><span class="p">.</span><span class="n">Builder</span><span class="p">().</span><span class="n">apply</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="py">handshakeCerts</span> <span class="p">=</span> <span class="nc">HandshakeCertificates</span><span class="p">.</span><span class="n">Builder</span><span class="p">().</span><span class="n">apply</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">caBundle</span><span class="p">.</span><span class="n">forEach</span> <span class="p">{</span> <span class="n">addTrustedCertificate</span><span class="p">(</span><span class="k">it</span><span class="p">)</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="n">heldCertificate</span><span class="p">(</span><span class="n">heldCertificate</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}.</span><span class="n">build</span><span class="p">()</span>
@@ -580,7 +580,7 @@ behavior for us. Therefore, we need to switch off this thing by setting <code>ex
 <p>The final step consists of redirecting the incoming customer&rsquo;s request to an external system. To make things more
 interesting, let&rsquo;s say that our external system also requires a key to access its API. Of course, our proxy is
 amazingly smart and can take this on itself.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="n">intercept</span><span class="p">(</span><span class="n">ApplicationCallPipeline</span><span class="p">.</span><span class="n">Call</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="n">intercept</span><span class="p">(</span><span class="nc">ApplicationCallPipeline</span><span class="p">.</span><span class="n">Call</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">response</span> <span class="p">=</span> <span class="n">ktorClient</span><span class="p">.</span><span class="n">request</span><span class="p">&lt;</span><span class="n">HttpResponse</span><span class="p">&gt;(</span><span class="s2">&#34;https://localhost:55000</span><span class="si">${call.request.uri}</span><span class="s2">&#34;</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="n">method</span> <span class="p">=</span> <span class="n">call</span><span class="p">.</span><span class="n">request</span><span class="p">.</span><span class="n">httpMethod</span>
 </span></span><span class="line"><span class="cl">
@@ -588,7 +588,7 @@ amazingly smart and can take this on itself.</p>
 </span></span><span class="line"><span class="cl">            <span class="n">append</span><span class="p">(</span><span class="s2">&#34;X-API-KEY&#34;</span><span class="p">,</span> <span class="s2">&#34;102CAE97-17F9-4B08-82C0-AB7653F2EC1B&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">call</span><span class="p">.</span><span class="n">request</span><span class="p">.</span><span class="n">httpMethod</span> <span class="o">!=</span> <span class="n">HttpMethod</span><span class="p">.</span><span class="n">Get</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">call</span><span class="p">.</span><span class="n">request</span><span class="p">.</span><span class="n">httpMethod</span> <span class="o">!=</span> <span class="nc">HttpMethod</span><span class="p">.</span><span class="n">Get</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="n">body</span> <span class="p">=</span> <span class="n">call</span><span class="p">.</span><span class="n">receiveText</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
@@ -835,7 +835,7 @@ certificates to requests anymore.</p>
         </p>
         
         <p class="credits theme-by text-muted">
-          <a href="https://gohugo.io">Hugo v0.105.0</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          <a href="https://gohugo.io">Hugo v0.107.0</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>
