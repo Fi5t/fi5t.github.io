@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://fi5t.xyz/</loc>
-    <lastmod>2022-11-16T00:00:00+00:00</lastmod>
+    <lastmod>2022-12-25T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -15,11 +15,24 @@
                 href="https://fi5t.xyz/"
                 />
   </url><url>
-    <loc>https://fi5t.xyz/tags/mobile/</loc>
-    <lastmod>2022-11-16T00:00:00+00:00</lastmod>
+    <loc>https://fi5t.xyz/tags/android/</loc>
+    <lastmod>2022-12-25T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://fi5t.xyz/en/tags/android/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://fi5t.xyz/tags/android/"
+                />
+  </url><url>
+    <loc>https://fi5t.xyz/tags/jvm/</loc>
+    <lastmod>2022-12-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://fi5t.xyz/posts/</loc>
-    <lastmod>2022-11-16T00:00:00+00:00</lastmod>
+    <lastmod>2022-12-25T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -31,11 +44,21 @@
                 href="https://fi5t.xyz/posts/"
                 />
   </url><url>
-    <loc>https://fi5t.xyz/tags/reactnative/</loc>
-    <lastmod>2022-11-16T00:00:00+00:00</lastmod>
+    <loc>https://fi5t.xyz/tags/security/</loc>
+    <lastmod>2022-12-25T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://fi5t.xyz/en/tags/security/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://fi5t.xyz/tags/security/"
+                />
   </url><url>
     <loc>https://fi5t.xyz/tags/</loc>
-    <lastmod>2022-11-16T00:00:00+00:00</lastmod>
+    <lastmod>2022-12-25T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -46,6 +69,15 @@
                 hreflang="ru"
                 href="https://fi5t.xyz/tags/"
                 />
+  </url><url>
+    <loc>https://fi5t.xyz/posts/string-pool/</loc>
+    <lastmod>2022-12-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fi5t.xyz/tags/mobile/</loc>
+    <lastmod>2022-11-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fi5t.xyz/tags/reactnative/</loc>
+    <lastmod>2022-11-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://fi5t.xyz/tags/tutorial/</loc>
     <lastmod>2022-11-16T00:00:00+00:00</lastmod>
@@ -62,19 +94,6 @@
   </url><url>
     <loc>https://fi5t.xyz/posts/disobedient-react-native/</loc>
     <lastmod>2022-11-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://fi5t.xyz/tags/android/</loc>
-    <lastmod>2022-07-20T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://fi5t.xyz/en/tags/android/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://fi5t.xyz/tags/android/"
-                />
   </url><url>
     <loc>https://fi5t.xyz/tags/firmware/</loc>
     <lastmod>2022-07-20T00:00:00+00:00</lastmod>
