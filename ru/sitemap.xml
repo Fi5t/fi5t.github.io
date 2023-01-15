@@ -161,6 +161,22 @@
     <loc>https://fi5t.xyz/posts/biometrics-how-it-works/</loc>
     <lastmod>2021-12-12T00:00:01+03:00</lastmod>
   </url><url>
+    <loc>https://fi5t.xyz/tags/drozer/</loc>
+    <lastmod>2021-08-20T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://fi5t.xyz/en/tags/drozer/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://fi5t.xyz/tags/drozer/"
+                />
+  </url><url>
+    <loc>https://fi5t.xyz/posts/drozer-emu-workarounds/</loc>
+    <lastmod>2021-08-20T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://fi5t.xyz/tags/books/</loc>
     <lastmod>2021-08-16T00:00:00+00:00</lastmod>
   </url><url>
@@ -239,19 +255,6 @@
   </url><url>
     <loc>https://fi5t.xyz/posts/jug-conferences-review/</loc>
     <lastmod>2020-10-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://fi5t.xyz/tags/drozer/</loc>
-    <lastmod>2020-08-04T14:13:10+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://fi5t.xyz/en/tags/drozer/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://fi5t.xyz/tags/drozer/"
-                />
   </url><url>
     <loc>https://fi5t.xyz/posts/drozer-on-mac/</loc>
     <lastmod>2020-08-04T14:13:10+03:00</lastmod>

@@ -6,7 +6,27 @@
     <description>Recent content in drozer on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-ru</language>
-    <lastBuildDate>Tue, 04 Aug 2020 14:13:10 +0300</lastBuildDate><atom:link href="https://fi5t.xyz/tags/drozer/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/tags/drozer/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Drozer, эмулятор и эльфийские костыли</title>
+      <link>https://fi5t.xyz/posts/drozer-emu-workarounds/</link>
+      <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fi5t.xyz/posts/drozer-emu-workarounds/</guid>
+      <description>&lt;p&gt;Вам когда-нибудь хотелось странного? Например запустить drozer в docker-контейнере и достучаться с него до эмулятора на том же хосте? Казалось бы задача предельно простая и понятная. Запускаем эмулятор, на нем &lt;code&gt;drozer-agent&lt;/code&gt;, пробрасываем порты, заводим контейнер говорим &lt;code&gt;drozer console connect —server &amp;lt;locahost ip&amp;gt;&lt;/code&gt; и&amp;hellip;. &lt;strong&gt;ничего не происходит&lt;/strong&gt;. При этом если попытаться таким образом подключиться на девайс, который висит на другом ip, то все будет хорошо. Давайте разбираться и чинить.
+
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;
+&lt;div class=&#34;box&#34; &gt;
+  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+    &lt;div class=&#34;img&#34;&gt;
+      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/drozer-emu-workaround/kdpv.png&#34; alt=&#34;/img/drozer-emu-workaround/kdpv.png&#34;/&gt;
+    &lt;/div&gt;
+    &lt;a href=&#34;https://fi5t.xyz/img/drozer-emu-workaround/kdpv.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;
+&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Старый Drozer MacOS не испортит</title>
       <link>https://fi5t.xyz/posts/drozer-on-mac/</link>

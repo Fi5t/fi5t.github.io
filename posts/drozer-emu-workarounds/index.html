@@ -20,11 +20,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>Старый Drozer MacOS не испортит - (не)Уникальный опыт</title>
-  <meta name="description" content="
-Drozer - The Leading Security Assessment Framework for Android.
+  <title>Drozer, эмулятор и эльфийские костыли - (не)Уникальный опыт</title>
+  <meta name="description" content="Вам когда-нибудь хотелось странного? Например запустить drozer в docker-контейнере и достучаться с него до эмулятора на том же хосте? Казалось бы задача предельно простая и понятная. Запускаем эмулятор, на нем drozer-agent, пробрасываем порты, заводим контейнер говорим drozer console connect —server &lt;locahost ip&gt; и&hellip;. ничего не происходит. При этом если попытаться таким образом подключиться на девайс, который висит на другом ip, то все будет хорошо. Давайте разбираться и чинить.
 
-Обычно я не использую Drozer, а еще реже (никогда) я использую его на MacOS. Обычно это все уже есть в Kali Linux и устанавливать ничего не нужно. Но необходимость появилась, а вместе с ней пришлось знатно покувыркаться и поправить скрипты самого Drozer-а чтобы все заработало. После чего я все удалил, потому что в системе было знатно насрано после всех этих замечательных туторилов и issue на гитхабе. В итоге стало понятно, что есть два нормальных способа установки. Через Docker, и так как показано ниже. Все остальное - зло, ад и слезы по бездарно потраченным часам жизни.">
+
+
+  
+    
+      
+    
+    
+  
+
+">
   <meta name="author" content="Fi5t"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -60,8 +68,8 @@ Drozer - The Leading Security Assessment Framework for Android.
         "@type": "ListItem",
         "position": 3,
         "item": {
-          "@id": "https:\/\/fi5t.xyz\/posts\/drozer-on-mac\/",
-          "name": "Старый drozer MAC os не испортит"
+          "@id": "https:\/\/fi5t.xyz\/posts\/drozer-emu-workarounds\/",
+          "name": "Drozer, эмулятор и эльфийские костыли"
         }
     }]
 }
@@ -72,15 +80,15 @@ Drozer - The Leading Security Assessment Framework for Android.
   "author": {
     "name" : "Fi5t"
   },
-  "headline": "Старый Drozer MacOS не испортит",
-  "description" : " Drozer - The Leading Security Assessment Framework for Android.\nОбычно я не использую Drozer, а еще реже (никогда) я использую его на MacOS. Обычно это все уже есть в Kali Linux и устанавливать ничего не нужно. Но необходимость появилась, а вместе с ней пришлось знатно покувыркаться и поправить скрипты самого Drozer-а чтобы все заработало. После чего я все удалил, потому что в системе было знатно насрано после всех этих замечательных туторилов и issue на гитхабе. В итоге стало понятно, что есть два нормальных способа установки. Через Docker, и так как показано ниже. Все остальное - зло, ад и слезы по бездарно потраченным часам жизни.\n",
+  "headline": "Drozer, эмулятор и эльфийские костыли",
+  "description" : "Вам когда-нибудь хотелось странного? Например запустить drozer в docker-контейнере и достучаться с него до эмулятора на том же хосте? Казалось бы задача предельно простая и понятная. Запускаем эмулятор, на нем drozer-agent, пробрасываем порты, заводим контейнер говорим drozer console connect —server \u0026lt;locahost ip\u0026gt; и\u0026hellip;. ничего не происходит. При этом если попытаться таким образом подключиться на девайс, который висит на другом ip, то все будет хорошо. Давайте разбираться и чинить. ",
   "inLanguage" : "ru",
-  "wordCount":  264 ,
-  "datePublished" : "2020-08-04T14:13:10",
-  "dateModified" : "2020-08-04T14:13:10",
+  "wordCount":  309 ,
+  "datePublished" : "2021-08-20T00:00:00",
+  "dateModified" : "2021-08-20T00:00:00",
   "image" : "https:\/\/fi5t.xyz\/img\/avatar-icon.jpg",
   "keywords" : [ "безопасность, android, drozer" ],
-  "mainEntityOfPage" : "https:\/\/fi5t.xyz\/posts\/drozer-on-mac\/",
+  "mainEntityOfPage" : "https:\/\/fi5t.xyz\/posts\/drozer-emu-workarounds\/",
   "publisher" : {
     "@type": "Organization",
     "name" : "https:\/\/fi5t.xyz",
@@ -94,21 +102,26 @@ Drozer - The Leading Security Assessment Framework for Android.
 }
 </script>
 
-<meta property="og:title" content="Старый Drozer MacOS не испортит" />
-<meta property="og:description" content="
-Drozer - The Leading Security Assessment Framework for Android.
+<meta property="og:title" content="Drozer, эмулятор и эльфийские костыли" />
+<meta property="og:description" content="Вам когда-нибудь хотелось странного? Например запустить drozer в docker-контейнере и достучаться с него до эмулятора на том же хосте? Казалось бы задача предельно простая и понятная. Запускаем эмулятор, на нем drozer-agent, пробрасываем порты, заводим контейнер говорим drozer console connect —server &lt;locahost ip&gt; и&hellip;. ничего не происходит. При этом если попытаться таким образом подключиться на девайс, который висит на другом ip, то все будет хорошо. Давайте разбираться и чинить.
 
-Обычно я не использую Drozer, а еще реже (никогда) я использую его на MacOS. Обычно это все уже есть в Kali Linux и устанавливать ничего не нужно. Но необходимость появилась, а вместе с ней пришлось знатно покувыркаться и поправить скрипты самого Drozer-а чтобы все заработало. После чего я все удалил, потому что в системе было знатно насрано после всех этих замечательных туторилов и issue на гитхабе. В итоге стало понятно, что есть два нормальных способа установки. Через Docker, и так как показано ниже. Все остальное - зло, ад и слезы по бездарно потраченным часам жизни.">
+
+
+  
+    
+      
+    
+    
+  
+
+">
 <meta property="og:image" content="https://fi5t.xyz/img/avatar-icon.jpg" />
-<meta property="og:url" content="https://fi5t.xyz/posts/drozer-on-mac/" />
+<meta property="og:url" content="https://fi5t.xyz/posts/drozer-emu-workarounds/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="(не)Уникальный опыт" />
 
-  <meta name="twitter:title" content="Старый Drozer MacOS не испортит" />
-  <meta name="twitter:description" content="
-Drozer - The Leading Security Assessment Framework for Android.
-
-Обычно я не использую Drozer, а еще реже (никогда) я использую его на MacOS. Обычно это все уже есть в Kali Linux и устанавливать …">
+  <meta name="twitter:title" content="Drozer, эмулятор и эльфийские костыли" />
+  <meta name="twitter:description" content="Вам когда-нибудь хотелось странного? Например запустить drozer в docker-контейнере и достучаться с него до эмулятора на том же хосте? Казалось бы задача предельно простая и понятная. Запускаем …">
   <meta name="twitter:image" content="https://fi5t.xyz/img/avatar-icon.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <link href='https://fi5t.xyz/img/favicon.ico' rel='icon' type='image/x-icon'/>
@@ -246,7 +259,7 @@ Drozer - The Leading Security Assessment Framework for Android.
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           <div class="posts-heading">
             
-            <h1>Старый Drozer MacOS не испортит</h1>
+            <h1>Drozer, эмулятор и эльфийские костыли</h1>
             
             
             <hr class="small">
@@ -265,72 +278,40 @@ Drozer - The Leading Security Assessment Framework for Android.
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <blockquote>
-<p>Drozer - The Leading Security Assessment Framework for Android.</p>
-</blockquote>
-<p>Обычно я не использую <strong>Drozer</strong>, а еще реже (никогда) я использую его на MacOS. Обычно это все уже есть в Kali Linux и устанавливать ничего не нужно. Но необходимость появилась, а вместе с ней пришлось знатно покувыркаться и поправить скрипты самого Drozer-а чтобы все заработало. После чего я все удалил, потому что в системе было знатно насрано после всех этих замечательных туторилов и issue на гитхабе. В итоге стало понятно, что есть два нормальных способа установки. <a href="https://hub.docker.com/r/kengannonmwr/drozer_docker">Через Docker</a>, и так как показано ниже. Все остальное - зло, ад и слезы по бездарно потраченным часам жизни.</p>
-<p>Качаем крайний из доступных релизов. Из исходников не собирайте, там все плохо.
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ mkdir drozer
-</span></span><span class="line"><span class="cl">$ wget https://github.com/FSecureLABS/drozer/releases/download/2.4.4/drozer-2.4.4-py2-none-any.whl</span></span></code></pre></td></tr></table>
+        <p>Вам когда-нибудь хотелось странного? Например запустить drozer в docker-контейнере и достучаться с него до эмулятора на том же хосте? Казалось бы задача предельно простая и понятная. Запускаем эмулятор, на нем <code>drozer-agent</code>, пробрасываем порты, заводим контейнер говорим <code>drozer console connect —server &lt;locahost ip&gt;</code> и&hellip;. <strong>ничего не происходит</strong>. При этом если попытаться таким образом подключиться на девайс, который висит на другом ip, то все будет хорошо. Давайте разбираться и чинить.
+
+<link rel="stylesheet" href="https://fi5t.xyz/css/hugo-easy-gallery.css" />
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/drozer-emu-workaround/kdpv.png" alt="/img/drozer-emu-workaround/kdpv.png"/>
+    </div>
+    <a href="/img/drozer-emu-workaround/kdpv.png" itemprop="contentUrl"></a>
+  </figure>
 </div>
-</div></p>
-<p>Разворачиваем виртуальное окнужение, ставим туда зависимости и сам Drozer.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ pipenv --python 2.7
-</span></span><span class="line"><span class="cl">$ pipenv shell
-</span></span><span class="line"><span class="cl"><span class="o">(</span>drozer<span class="o">)</span> $ pipenv install protobuf
-</span></span><span class="line"><span class="cl"><span class="o">(</span>drozer<span class="o">)</span> $ pipenv install pyOpenSSL
-</span></span><span class="line"><span class="cl"><span class="o">(</span>drozer<span class="o">)</span> $ pipenv install Twisted 
-</span></span><span class="line"><span class="cl"><span class="o">(</span>drozer<span class="o">)</span> $ pipenv install drozer-2.4.4-py2-none-any.whl
-</span></span></code></pre></div><p>Для тех кому лениво это все копипастить или топтать кнопки, вот <code>Pipfile</code>. Теперь все можно поставить одной командой <code>pipenv install</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="k">[[source]]</span>
-</span></span><span class="line"><span class="cl"><span class="na">name</span> <span class="o">=</span> <span class="s">&#34;pypi&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="na">url</span> <span class="o">=</span> <span class="s">&#34;https://pypi.org/simple&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="na">verify_ssl</span> <span class="o">=</span> <span class="s">true</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">[dev-packages]</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">[packages]</span>
-</span></span><span class="line"><span class="cl"><span class="na">protobuf</span> <span class="o">=</span> <span class="s">&#34;*&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="na">pyopenssl</span> <span class="o">=</span> <span class="s">&#34;*&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="na">twisted</span> <span class="o">=</span> <span class="s">&#34;*&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="na">drozer</span> <span class="o">=</span> <span class="s">{path = &#34;./drozer-2.4.4-py2-none-any.whl&#34;}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">[requires]</span>
-</span></span><span class="line"><span class="cl"><span class="na">python_version</span> <span class="o">=</span> <span class="s">&#34;2.7&#34;</span>
-</span></span></code></pre></div><p>Убеждаемся, что все работает</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>drozer<span class="o">)</span> $ drozer console connect --server &lt;smartphone ip&gt;
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">            ..                    ..:.
-</span></span><span class="line"><span class="cl">           ..o..                  .r..
-</span></span><span class="line"><span class="cl">            ..a..  . ....... .  ..nd
-</span></span><span class="line"><span class="cl">              ro..idsnemesisand..pr
-</span></span><span class="line"><span class="cl">              .otectorandroidsneme.
-</span></span><span class="line"><span class="cl">           .,sisandprotectorandroids+.
-</span></span><span class="line"><span class="cl">         ..nemesisandprotectorandroidsn:.
-</span></span><span class="line"><span class="cl">        .emesisandprotectorandroidsnemes..
-</span></span><span class="line"><span class="cl">      ..isandp,..,rotectorandro,..,idsnem.
-</span></span><span class="line"><span class="cl">      .isisandp..rotectorandroid..snemisis.
-</span></span><span class="line"><span class="cl">      ,andprotectorandroidsnemisisandprotec.
-</span></span><span class="line"><span class="cl">     .torandroidsnemesisandprotectorandroid.
-</span></span><span class="line"><span class="cl">     .snemisisandprotectorandroidsnemesisan:
-</span></span><span class="line"><span class="cl">     .dprotectorandroidsnemesisandprotector.
-</span></span><span class="line"><span class="cl">
+</p>
+<p>Эта проблема возникает потому, что эмулятор <strong>всегда</strong> стартует на <a href="https://en.wikipedia.org/wiki/Localhost">loopback интерфейсе</a> и никакими флагами запуска нельзя заставить его изменить это поведение. По крайней мере я не нашел таких флагов. Таким образом, когда мы пытаемся достучаться из контейнера до эмулятора через айпишник хоста (например 192.168.10.27), то терпим неудачу, потому что на этом интерфейсе нужный нам порт не прослушивается. Этот факт приводит нас к некрасивому, но рабочему решению — <strong>reverse proxy</strong>.</p>
+<p>В качестве прокси я буду использовать <a href="https://github.com/erluko/socat">socat</a>, потому что это <a href="https://github.com/google/android-emulator-container-scripts/blob/master/emu/templates/launch-emulator.sh#L213">официальный гугловый костыль</a> для решения этой задачи. Его можно установить разными способами, например через <code>brew install socat</code>. Но это уже на ваше усмотрение. После установки делаем такие магические пасcы:</p>
+<ol>
+<li>Запустить эмулятор, drozer-agent и не забыть нажать кнопку ON</li>
+<li>Пробросить порты: <code>adb forward tcp:31415 tcp:31415</code></li>
+<li>Включить проксирование: <code>socat -d tcp-listen:31415,reuseaddr,fork tcp:127.0.0.1:31415 &amp;</code></li>
+<li>Поднять контейнер с дрозером: <code>docker run --rm -it fsecurelabs/drozer</code></li>
+<li>Подключиться к агенту: <code>drozer console connect --server 192.168.10.27</code></li>
+</ol>
+<p>В результате должна открыться консоль drozer-а, а что делать дальше вы лучше меня знаете ;)</p>
+<p>А чтобы не набивать это все каждый раз руками, я написал небольшой скрипт, который выполняет это все за меня.</p>
+<script type="application/javascript" src="https://gist.github.com/Fi5t/f2b06ed4738a8ca4b43f6b21d02fce5e.js"></script>
+
+<p>Пример запуска:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ./run-drozer.sh 192.168.10.27
+</span></span><span class="line"><span class="cl">The default port <span class="m">31415</span> will be used
+</span></span><span class="line"><span class="cl"><span class="m">31415</span>
+</span></span><span class="line"><span class="cl">Selecting 8c9128251e6d3bbd <span class="o">(</span>Google Android SDK built <span class="k">for</span> x86 10<span class="o">)</span>
+</span></span><span class="line"><span class="cl">...
 </span></span><span class="line"><span class="cl">drozer Console <span class="o">(</span>v2.4.4<span class="o">)</span>
-</span></span><span class="line"><span class="cl">dz&gt; run app.package.debuggable 
-</span></span><span class="line"><span class="cl">Package: com.mwr.dz
-</span></span><span class="line"><span class="cl">  UID: <span class="m">10095</span>
-</span></span><span class="line"><span class="cl">  Permissions:
-</span></span><span class="line"><span class="cl">   - android.permission.INTERNET
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">dz&gt; 
-</span></span></code></pre></div><p>Здорово. Великолепно. Рад если получилось сэкономить вам время.</p>
+</span></span><span class="line"><span class="cl">dz&gt;
+</span></span></code></pre></div><p>При запуске он полагается на переменную окружения <strong>ANDROID_HOME</strong>, поэтому не забудьте ее <a href="https://developer.android.com/studio/command-line/variables">установить</a> заранее или указать при запуске. Ну или вообще забить гвоздями путь к бинарнику adb. Полный opensource, все как вы любите.</p>
 
         
           <div class="blog-tags">
@@ -354,42 +335,42 @@ Drozer - The Leading Security Assessment Framework for Android.
     <ul class="share">
       
       <li>
-        <a href="//twitter.com/share?url=https%3a%2f%2ffi5t.xyz%2fposts%2fdrozer-on-mac%2f&amp;text=%d0%a1%d1%82%d0%b0%d1%80%d1%8b%d0%b9%20Drozer%20MacOS%20%d0%bd%d0%b5%20%d0%b8%d1%81%d0%bf%d0%be%d1%80%d1%82%d0%b8%d1%82&amp;via=" target="_blank" title="Share on Twitter">
+        <a href="//twitter.com/share?url=https%3a%2f%2ffi5t.xyz%2fposts%2fdrozer-emu-workarounds%2f&amp;text=Drozer%2c%20%d1%8d%d0%bc%d1%83%d0%bb%d1%8f%d1%82%d0%be%d1%80%20%d0%b8%20%d1%8d%d0%bb%d1%8c%d1%84%d0%b8%d0%b9%d1%81%d0%ba%d0%b8%d0%b5%20%d0%ba%d0%be%d1%81%d1%82%d1%8b%d0%bb%d0%b8&amp;via=" target="_blank" title="Share on Twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ffi5t.xyz%2fposts%2fdrozer-on-mac%2f" target="_blank" title="Share on Facebook">
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ffi5t.xyz%2fposts%2fdrozer-emu-workarounds%2f" target="_blank" title="Share on Facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//reddit.com/submit?url=https%3a%2f%2ffi5t.xyz%2fposts%2fdrozer-on-mac%2f&amp;title=%d0%a1%d1%82%d0%b0%d1%80%d1%8b%d0%b9%20Drozer%20MacOS%20%d0%bd%d0%b5%20%d0%b8%d1%81%d0%bf%d0%be%d1%80%d1%82%d0%b8%d1%82" target="_blank" title="Share on Reddit">
+        <a href="//reddit.com/submit?url=https%3a%2f%2ffi5t.xyz%2fposts%2fdrozer-emu-workarounds%2f&amp;title=Drozer%2c%20%d1%8d%d0%bc%d1%83%d0%bb%d1%8f%d1%82%d0%be%d1%80%20%d0%b8%20%d1%8d%d0%bb%d1%8c%d1%84%d0%b8%d0%b9%d1%81%d0%ba%d0%b8%d0%b5%20%d0%ba%d0%be%d1%81%d1%82%d1%8b%d0%bb%d0%b8" target="_blank" title="Share on Reddit">
           <i class="fab fa-reddit"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2ffi5t.xyz%2fposts%2fdrozer-on-mac%2f&amp;title=%d0%a1%d1%82%d0%b0%d1%80%d1%8b%d0%b9%20Drozer%20MacOS%20%d0%bd%d0%b5%20%d0%b8%d1%81%d0%bf%d0%be%d1%80%d1%82%d0%b8%d1%82" target="_blank" title="Share on LinkedIn">
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2ffi5t.xyz%2fposts%2fdrozer-emu-workarounds%2f&amp;title=Drozer%2c%20%d1%8d%d0%bc%d1%83%d0%bb%d1%8f%d1%82%d0%be%d1%80%20%d0%b8%20%d1%8d%d0%bb%d1%8c%d1%84%d0%b8%d0%b9%d1%81%d0%ba%d0%b8%d0%b5%20%d0%ba%d0%be%d1%81%d1%82%d1%8b%d0%bb%d0%b8" target="_blank" title="Share on LinkedIn">
           <i class="fab fa-linkedin"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2ffi5t.xyz%2fposts%2fdrozer-on-mac%2f&amp;title=%d0%a1%d1%82%d0%b0%d1%80%d1%8b%d0%b9%20Drozer%20MacOS%20%d0%bd%d0%b5%20%d0%b8%d1%81%d0%bf%d0%be%d1%80%d1%82%d0%b8%d1%82" target="_blank" title="Share on StumbleUpon">
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2ffi5t.xyz%2fposts%2fdrozer-emu-workarounds%2f&amp;title=Drozer%2c%20%d1%8d%d0%bc%d1%83%d0%bb%d1%8f%d1%82%d0%be%d1%80%20%d0%b8%20%d1%8d%d0%bb%d1%8c%d1%84%d0%b8%d0%b9%d1%81%d0%ba%d0%b8%d0%b5%20%d0%ba%d0%be%d1%81%d1%82%d1%8b%d0%bb%d0%b8" target="_blank" title="Share on StumbleUpon">
           <i class="fab fa-stumbleupon"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2ffi5t.xyz%2fposts%2fdrozer-on-mac%2f&amp;description=%d0%a1%d1%82%d0%b0%d1%80%d1%8b%d0%b9%20Drozer%20MacOS%20%d0%bd%d0%b5%20%d0%b8%d1%81%d0%bf%d0%be%d1%80%d1%82%d0%b8%d1%82" target="_blank" title="Share on Pinterest">
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2ffi5t.xyz%2fposts%2fdrozer-emu-workarounds%2f&amp;description=Drozer%2c%20%d1%8d%d0%bc%d1%83%d0%bb%d1%8f%d1%82%d0%be%d1%80%20%d0%b8%20%d1%8d%d0%bb%d1%8c%d1%84%d0%b8%d0%b9%d1%81%d0%ba%d0%b8%d0%b5%20%d0%ba%d0%be%d1%81%d1%82%d1%8b%d0%bb%d0%b8" target="_blank" title="Share on Pinterest">
           <i class="fab fa-pinterest"></i>
         </a>
       </li>
@@ -431,12 +412,12 @@ Drozer - The Leading Security Assessment Framework for Android.
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="https://fi5t.xyz/posts/python-eats-tink/" data-toggle="tooltip" data-placement="top" title="Шифрование данных в Python без херни">&larr; Предыдущий</a>
+              <a href="https://fi5t.xyz/posts/masters-of-doom/" data-toggle="tooltip" data-placement="top" title="Повелители DOOM">&larr; Предыдущий</a>
             </li>
           
           
             <li class="next">
-              <a href="https://fi5t.xyz/posts/jug-conferences-review/" data-toggle="tooltip" data-placement="top" title="Что нового я узнал на конференциях от JUG.RU">Следующий &rarr;</a>
+              <a href="https://fi5t.xyz/posts/biometrics-how-it-works/" data-toggle="tooltip" data-placement="top" title="Часть 1: Как работают системы биометрической аутентификации">Следующий &rarr;</a>
             </li>
           
         </ul>
