@@ -83,7 +83,7 @@
   "headline": "Drozer, эмулятор и эльфийские костыли",
   "description" : "Вам когда-нибудь хотелось странного? Например запустить drozer в docker-контейнере и достучаться с него до эмулятора на том же хосте? Казалось бы задача предельно простая и понятная. Запускаем эмулятор, на нем drozer-agent, пробрасываем порты, заводим контейнер говорим drozer console connect —server \u0026lt;locahost ip\u0026gt; и\u0026hellip;. ничего не происходит. При этом если попытаться таким образом подключиться на девайс, который висит на другом ip, то все будет хорошо. Давайте разбираться и чинить. ",
   "inLanguage" : "ru",
-  "wordCount":  309 ,
+  "wordCount":  311 ,
   "datePublished" : "2021-08-20T00:00:00",
   "dateModified" : "2021-08-20T00:00:00",
   "image" : "https:\/\/fi5t.xyz\/img\/avatar-icon.jpg",
@@ -125,7 +125,7 @@
   <meta name="twitter:image" content="https://fi5t.xyz/img/avatar-icon.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <link href='https://fi5t.xyz/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.108.0">
+  <meta name="generator" content="Hugo 0.109.0">
   <link rel="alternate" href="https://fi5t.xyz/index.xml" type="application/rss+xml" title="(не)Уникальный опыт"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fi5t.xyz/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -300,10 +300,7 @@
 <li>Подключиться к агенту: <code>drozer console connect --server 192.168.10.27</code></li>
 </ol>
 <p>В результате должна открыться консоль drozer-а, а что делать дальше вы лучше меня знаете ;)</p>
-<p>А чтобы не набивать это все каждый раз руками, я написал небольшой скрипт, который выполняет это все за меня.</p>
-<script type="application/javascript" src="https://gist.github.com/Fi5t/f2b06ed4738a8ca4b43f6b21d02fce5e.js"></script>
-
-<p>Пример запуска:</p>
+<p>А чтобы не набивать это все каждый раз руками, я написал небольшой скрипт, который выполняет это все за меня. Забирайте <a href="https://gist.github.com/Fi5t/f2b06ed4738a8ca4b43f6b21d02fce5e">здесь</a>. Пример запуска:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ./run-drozer.sh 192.168.10.27
 </span></span><span class="line"><span class="cl">The default port <span class="m">31415</span> will be used
 </span></span><span class="line"><span class="cl"><span class="m">31415</span>
@@ -515,7 +512,7 @@
         </p>
         
         <p class="credits theme-by text-muted">
-          На базе <a href="https://gohugo.io">Hugo v0.108.0</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          На базе <a href="https://gohugo.io">Hugo v0.109.0</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>
