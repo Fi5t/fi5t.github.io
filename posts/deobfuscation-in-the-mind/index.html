@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="ru" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+<script type="text/javascript" >
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+ 
+    ym(64685116, "init", {
+         clickmap:true,
+         trackLinks:true,
+         accurateTrackBounce:true
+    });
+ </script>
+ <noscript><div><img src="https://mc.yandex.ru/watch/64685116" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+ 
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Деобфускация в уме: Часть 1 - (не)Уникальный опыт</title>
+  <meta name="description" content="Если вам на секунду показалось, что название статьи вам смутно знакомо, то вам не показалось.
+
+Очень часто под рукой не оказывается ни отладчика, ни дизассемблера, ни даже компилятора, чтобы набросать хотя бы примитивный трассировщик. Разумеется, что говорить о взломе современных защитных механизмов в таких условиях просто смешно, но что делать если жизнь заставляет?
+Касперски Крис
+
+Я задумал этот цикл статей, как попытку составить некий справочник того, как в android приложениях написанных на Kotlin, могут выглядеть разные куски кода обфусцированные с помощью Proguard.
+
+
+
+  
+    
+      
+    
+    
+  
+
+">
+  <meta name="author" content="Fi5t"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "(не)Уникальный опыт",
+    
+    "url": "https:\/\/fi5t.xyz"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/fi5t.xyz"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/fi5t.xyz",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/fi5t.xyz\/posts\/deobfuscation-in-the-mind\/",
+          "name": "Деобфускация в уме часть 1"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Fi5t"
+  },
+  "headline": "Деобфускация в уме: Часть 1",
+  "description" : "Если вам на секунду показалось, что название статьи вам смутно знакомо, то вам не показалось.\nОчень часто под рукой не оказывается ни отладчика, ни дизассемблера, ни даже компилятора, чтобы набросать хотя бы примитивный трассировщик. Разумеется, что говорить о взломе современных защитных механизмов в таких условиях просто смешно, но что делать если жизнь заставляет?\nКасперски Крис\nЯ задумал этот цикл статей, как попытку составить некий справочник того, как в android приложениях написанных на Kotlin, могут выглядеть разные куски кода обфусцированные с помощью Proguard. ",
+  "inLanguage" : "ru",
+  "wordCount":  2928 ,
+  "datePublished" : "2023-02-16T00:00:00",
+  "dateModified" : "2023-02-16T00:00:00",
+  "image" : "https:\/\/fi5t.xyz\/img\/avatar-icon.jpg",
+  "keywords" : [ "security, reverse_engineering, android" ],
+  "mainEntityOfPage" : "https:\/\/fi5t.xyz\/posts\/deobfuscation-in-the-mind\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/fi5t.xyz",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/fi5t.xyz\/img\/avatar-icon.jpg",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Деобфускация в уме: Часть 1" />
+<meta property="og:description" content="Если вам на секунду показалось, что название статьи вам смутно знакомо, то вам не показалось.
+
+Очень часто под рукой не оказывается ни отладчика, ни дизассемблера, ни даже компилятора, чтобы набросать хотя бы примитивный трассировщик. Разумеется, что говорить о взломе современных защитных механизмов в таких условиях просто смешно, но что делать если жизнь заставляет?
+Касперски Крис
+
+Я задумал этот цикл статей, как попытку составить некий справочник того, как в android приложениях написанных на Kotlin, могут выглядеть разные куски кода обфусцированные с помощью Proguard.
+
+
+
+  
+    
+      
+    
+    
+  
+
+">
+<meta property="og:image" content="https://fi5t.xyz/img/avatar-icon.jpg" />
+<meta property="og:url" content="https://fi5t.xyz/posts/deobfuscation-in-the-mind/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="(не)Уникальный опыт" />
+
+  <meta name="twitter:title" content="Деобфускация в уме: Часть 1" />
+  <meta name="twitter:description" content="Если вам на секунду показалось, что название статьи вам смутно знакомо, то вам не показалось.
+
+Очень часто под рукой не оказывается ни отладчика, ни дизассемблера, ни даже компилятора, чтобы набросать …">
+  <meta name="twitter:image" content="https://fi5t.xyz/img/avatar-icon.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href='https://fi5t.xyz/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.110.0">
+  <link rel="alternate" href="https://fi5t.xyz/index.xml" type="application/rss+xml" title="(не)Уникальный опыт"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fi5t.xyz/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://fi5t.xyz/css/syntax.css" /><link rel="stylesheet" href="https://fi5t.xyz/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Навигация</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://fi5t.xyz">(не)Уникальный опыт</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Tags" href="/tags">Tags</a>
+            </li>
+          
+        
+
+        
+          
+            <li>
+              
+                
+                  <a href="/en" lang="en">en</a>
+                
+              
+                
+              
+            </li>
+          
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="(не)Уникальный опыт" href="https://fi5t.xyz">
+            <img class="avatar-img" src="https://fi5t.xyz/img/avatar-icon.jpg" alt="(не)Уникальный опыт" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header-section ">
+  
+  <div class="intro-header no-img">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <div class="posts-heading">
+            
+            <h1>Деобфускация в уме: Часть 1</h1>
+            
+            
+            <hr class="small">
+            
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>Если вам на секунду показалось, что название статьи вам смутно знакомо, то вам не показалось.</p>
+<blockquote>
+<p>Очень часто под рукой не оказывается ни отладчика, ни дизассемблера, ни даже компилятора, чтобы набросать хотя бы примитивный трассировщик. Разумеется, что говорить о взломе современных защитных механизмов в таких условиях просто смешно, но что делать если жизнь заставляет?</p>
+<p>Касперски Крис</p>
+</blockquote>
+<p>Я задумал этот цикл статей, как попытку составить некий справочник того, как в android приложениях написанных на <strong>Kotlin</strong>, могут выглядеть разные куски кода обфусцированные с помощью <strong>Proguard</strong>.
+
+<link rel="stylesheet" href="https://fi5t.xyz/css/hugo-easy-gallery.css" />
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/deobfuscation-in-the-mind/kdpv.png" alt="/img/deobfuscation-in-the-mind/kdpv.png"/>
+    </div>
+    <a href="/img/deobfuscation-in-the-mind/kdpv.png" itemprop="contentUrl"></a>
+  </figure>
+</div>
+</p>
+<div>
+    <br>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#основные-положения">Основные положения</a></li>
+    <li><a href="#самые-базовые-структуры-языка">Самые базовые структуры языка</a>
+      <ul>
+        <li><a href="#условные-выражения-conditional-expressionshttpskotlinlangorgdocsbasic-syntaxhtmlconditional-expressions">Условные выражения (<a href="https://kotlinlang.org/docs/basic-syntax.html#conditional-expressions">Conditional expressions</a>)</a></li>
+        <li><a href="#цикл-for-for-loophttpskotlinlangorgdocsbasic-syntaxhtmlfor-loop">Цикл for (<a href="https://kotlinlang.org/docs/basic-syntax.html#for-loop">for loop</a>)</a></li>
+        <li><a href="#цикл-while-while-loophttpskotlinlangorgdocsbasic-syntaxhtmlwhile-loop">Цикл while (<a href="https://kotlinlang.org/docs/basic-syntax.html#while-loop">while loop</a>)</a></li>
+        <li><a href="#выражение-when-when-expressionhttpskotlinlangorgdocsbasic-syntaxhtmlwhen-expression">Выражение when (<a href="https://kotlinlang.org/docs/basic-syntax.html#when-expression">when expression</a>)</a></li>
+        <li><a href="#диапазоны-rangeshttpskotlinlangorgdocsbasic-syntaxhtmlranges">Диапазоны (<a href="https://kotlinlang.org/docs/basic-syntax.html#ranges">Ranges</a>)</a></li>
+        <li><a href="#коллекции-collectionshttpskotlinlangorgdocsbasic-syntaxhtmlcollections">Коллекции (<a href="https://kotlinlang.org/docs/basic-syntax.html#collections">Collections</a>)</a></li>
+        <li><a href="#проверка-и-автоматическое-приведение-типов-type-checks-and-automatic-castshttpskotlinlangorgdocsbasic-syntaxhtmltype-checks-and-automatic-casts">Проверка и автоматическое приведение типов (<a href="https://kotlinlang.org/docs/basic-syntax.html#type-checks-and-automatic-casts">Type checks and automatic casts</a>)</a></li>
+      </ul>
+    </li>
+    <li><a href="#что-будет-дальше">Что будет дальше</a></li>
+  </ul>
+</nav>
+    <br>
+</div>
+<p>Сейчас, когда код android приложений все чаще пишется на языке Kotlin, очень важно построить этот мостик понимания происходящего чтобы упростить исследование android приложений. Почему именно Kotlin? Да потому что резульаты выхлопа его компилятора в обфусцированном и позже декомпилированном виде могут выглядеть весьма непривычно или вовсе ужасно по сравнению с кодом на Java. Например вот так:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">final</span> <span class="n">z</span> <span class="nf">m0</span><span class="o">(</span><span class="n">o0</span><span class="o">.</span><span class="na">h</span> <span class="n">hVar</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">num</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">o0</span><span class="o">.</span><span class="na">h</span> <span class="n">hVar2</span> <span class="o">=</span> <span class="n">hVar</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">((</span><span class="n">num</span><span class="o">.</span><span class="na">intValue</span><span class="o">()</span> <span class="o">&amp;</span> <span class="mi">11</span><span class="o">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span> <span class="n">hVar2</span><span class="o">.</span><span class="na">x</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">hVar2</span><span class="o">.</span><span class="na">C</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">q2</span> <span class="n">c11</span> <span class="o">=</span> <span class="n">f2</span><span class="o">.</span><span class="na">c</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="kc">true</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">hVar2</span><span class="o">,</span> <span class="mi">10</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">hVar2</span><span class="o">.</span><span class="na">e</span><span class="o">(</span><span class="mi">1157296644</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">boolean</span> <span class="n">Q</span> <span class="o">=</span> <span class="n">hVar2</span><span class="o">.</span><span class="na">Q</span><span class="o">(</span><span class="n">c11</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Object</span> <span class="n">f11</span> <span class="o">=</span> <span class="n">hVar2</span><span class="o">.</span><span class="na">f</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">Q</span> <span class="o">||</span> <span class="n">f11</span> <span class="o">==</span> <span class="n">h</span><span class="o">.</span><span class="na">a</span><span class="o">.</span><span class="na">f22121b</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">f11</span> <span class="o">=</span> <span class="k">new</span> <span class="n">f9</span><span class="o">.</span><span class="na">b</span><span class="o">(</span><span class="n">c11</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">hVar2</span><span class="o">.</span><span class="na">J</span><span class="o">(</span><span class="n">f11</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">hVar2</span><span class="o">.</span><span class="na">N</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">f9</span><span class="o">.</span><span class="na">b</span> <span class="n">bVar</span> <span class="o">=</span> <span class="o">(</span><span class="n">f9</span><span class="o">.</span><span class="na">b</span><span class="o">)</span> <span class="n">f11</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">a0</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="n">t4</span><span class="o">.</span><span class="na">p</span><span class="o">&gt;[]</span> <span class="n">a0VarArr</span> <span class="o">=</span> <span class="o">{</span><span class="n">bVar</span><span class="o">};</span>
+</span></span><span class="line"><span class="cl">        <span class="n">hVar2</span><span class="o">.</span><span class="na">e</span><span class="o">(-</span><span class="mi">312215566</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Context</span> <span class="n">context</span> <span class="o">=</span> <span class="o">(</span><span class="n">Context</span><span class="o">)</span> <span class="n">hVar2</span><span class="o">.</span><span class="na">q</span><span class="o">(</span><span class="n">y</span><span class="o">.</span><span class="na">f2611b</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Object</span><span class="o">[]</span> <span class="n">copyOf</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">copyOf</span><span class="o">(</span><span class="n">a0VarArr</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">n</span> <span class="n">nVar</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="na">E</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">o</span> <span class="n">oVar</span> <span class="o">=</span> <span class="k">new</span> <span class="n">o</span><span class="o">(</span><span class="n">context</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">l</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">lVar</span> <span class="o">=</span> <span class="n">w0</span><span class="o">.</span><span class="na">m</span><span class="o">.</span><span class="na">f29682a</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">t4</span><span class="o">.</span><span class="na">u</span> <span class="n">uVar</span> <span class="o">=</span> <span class="o">(</span><span class="n">t4</span><span class="o">.</span><span class="na">u</span><span class="o">)</span> <span class="n">ip</span><span class="o">.</span><span class="na">c</span><span class="o">.</span><span class="na">g</span><span class="o">(</span><span class="n">copyOf</span><span class="o">,</span> <span class="k">new</span> <span class="n">w0</span><span class="o">.</span><span class="na">n</span><span class="o">(</span><span class="n">nVar</span><span class="o">,</span> <span class="n">oVar</span><span class="o">),</span> <span class="k">new</span> <span class="n">u4</span><span class="o">.</span><span class="na">p</span><span class="o">(</span><span class="n">context</span><span class="o">),</span> <span class="n">hVar2</span><span class="o">,</span> <span class="mi">4</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i11</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i11</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i11</span><span class="o">++)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">uVar</span><span class="o">.</span><span class="na">f26868v</span><span class="o">.</span><span class="na">a</span><span class="o">(</span><span class="n">a0VarArr</span><span class="o">[</span><span class="n">i11</span><span class="o">]);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">hVar2</span><span class="o">.</span><span class="na">N</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">hVar2</span><span class="o">.</span><span class="na">e</span><span class="o">(-</span><span class="mi">492369756</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Object</span> <span class="n">f12</span> <span class="o">=</span> <span class="n">hVar2</span><span class="o">.</span><span class="na">f</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">f12</span> <span class="o">==</span> <span class="n">h</span><span class="o">.</span><span class="na">a</span><span class="o">.</span><span class="na">f22121b</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">f12</span> <span class="o">=</span> <span class="n">oa0</span><span class="o">.</span><span class="na">d</span><span class="o">.</span><span class="na">b</span><span class="o">(</span><span class="n">hVar2</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">hVar2</span><span class="o">.</span><span class="na">N</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">u0</span> <span class="n">u0Var</span> <span class="o">=</span> <span class="o">(</span><span class="n">u0</span><span class="o">)</span> <span class="n">f12</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">View</span> <span class="n">view</span> <span class="o">=</span> <span class="o">(</span><span class="n">View</span><span class="o">)</span> <span class="n">hVar2</span><span class="o">.</span><span class="na">q</span><span class="o">(</span><span class="n">y</span><span class="o">.</span><span class="na">f2615f</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">hj0</span><span class="o">.</span><span class="na">g</span><span class="o">.</span><span class="na">a</span><span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">o</span><span class="o">.</span><span class="na">h</span><span class="o">(</span><span class="n">hVar2</span><span class="o">,</span> <span class="o">-</span><span class="mi">1964315366</span><span class="o">,</span> <span class="k">new</span> <span class="n">ru</span><span class="o">.</span><span class="na">vk</span><span class="o">.</span><span class="na">store</span><span class="o">.</span><span class="na">app</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="n">uVar</span><span class="o">,</span> <span class="n">bVar</span><span class="o">,</span> <span class="n">db0</span><span class="o">.</span><span class="na">i</span><span class="o">.</span><span class="na">i</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">.</span><span class="na">F</span><span class="o">().</span><span class="na">M</span><span class="o">(),</span> <span class="n">hVar2</span><span class="o">),</span> <span class="n">u0Var</span><span class="o">)),</span> <span class="n">hVar2</span><span class="o">,</span> <span class="mi">6</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ck0</span><span class="o">.</span><span class="na">d</span><span class="o">.</span><span class="na">b</span><span class="o">(</span><span class="n">uVar</span><span class="o">,</span> <span class="k">new</span> <span class="n">e</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">F</span><span class="o">,</span> <span class="n">uVar</span><span class="o">,</span> <span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">),</span> <span class="n">hVar2</span><span class="o">,</span> <span class="mi">8</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">eb0</span><span class="o">.</span><span class="na">b</span><span class="o">.</span><span class="na">b</span><span class="o">(</span><span class="k">new</span> <span class="n">f</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">.</span><span class="na">F</span><span class="o">()),</span> <span class="n">hVar2</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">MainActivity</span> <span class="n">mainActivity</span> <span class="o">=</span> <span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ck0</span><span class="o">.</span><span class="na">d</span><span class="o">.</span><span class="na">a</span><span class="o">(</span><span class="n">mainActivity</span><span class="o">,</span> <span class="n">mainActivity</span><span class="o">.</span><span class="na">F</span><span class="o">().</span><span class="na">f25379g</span><span class="o">,</span> <span class="n">c11</span><span class="o">,</span> <span class="n">u0Var</span><span class="o">,</span> <span class="n">uVar</span><span class="o">,</span> <span class="k">new</span> <span class="n">g</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">.</span><span class="na">F</span><span class="o">()),</span> <span class="n">hVar2</span><span class="o">,</span> <span class="mi">35912</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">g0</span><span class="o">.</span><span class="na">c</span><span class="o">(</span><span class="n">uVar</span><span class="o">,</span> <span class="k">new</span> <span class="n">h</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="n">uVar</span><span class="o">),</span> <span class="n">hVar2</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">g0</span><span class="o">.</span><span class="na">c</span><span class="o">(</span><span class="n">z</span><span class="o">.</span><span class="na">f18979a</span><span class="o">,</span> <span class="k">new</span> <span class="n">i</span><span class="o">(</span><span class="n">view</span><span class="o">),</span> <span class="n">hVar2</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">z</span><span class="o">.</span><span class="na">f18979a</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Инструменты вроде Jadx способны немного улучшить результат, но большую часть работы все равно придется проделать руками:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">final</span> <span class="n">C12058z</span> <span class="nf">mo245m0</span><span class="o">(</span><span class="n">InterfaceC14454h</span> <span class="n">interfaceC14454h</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">num</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">InterfaceC14454h</span> <span class="n">interfaceC14454h2</span> <span class="o">=</span> <span class="n">interfaceC14454h</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">((</span><span class="n">num</span><span class="o">.</span><span class="na">intValue</span><span class="o">()</span> <span class="o">&amp;</span> <span class="mi">11</span><span class="o">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span> <span class="n">interfaceC14454h2</span><span class="o">.</span><span class="na">mo8729x</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">interfaceC14454h2</span><span class="o">.</span><span class="na">mo8813C</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">C9610q2</span> <span class="n">m12065c</span> <span class="o">=</span> <span class="n">C9481f2</span><span class="o">.</span><span class="na">m12065c</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="kc">true</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">interfaceC14454h2</span><span class="o">,</span> <span class="mi">10</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">interfaceC14454h2</span><span class="o">.</span><span class="na">mo8767e</span><span class="o">(</span><span class="mi">1157296644</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">boolean</span> <span class="n">mo8785Q</span> <span class="o">=</span> <span class="n">interfaceC14454h2</span><span class="o">.</span><span class="na">mo8785Q</span><span class="o">(</span><span class="n">m12065c</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Object</span> <span class="n">mo8765f</span> <span class="o">=</span> <span class="n">interfaceC14454h2</span><span class="o">.</span><span class="na">mo8765f</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">mo8785Q</span> <span class="o">||</span> <span class="n">mo8765f</span> <span class="o">==</span> <span class="n">InterfaceC14454h</span><span class="o">.</span><span class="na">C14455a</span><span class="o">.</span><span class="na">f41447b</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mo8765f</span> <span class="o">=</span> <span class="k">new</span> <span class="n">C7151b</span><span class="o">(</span><span class="n">m12065c</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">interfaceC14454h2</span><span class="o">.</span><span class="na">mo8799J</span><span class="o">(</span><span class="n">mo8765f</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">interfaceC14454h2</span><span class="o">.</span><span class="na">mo8791N</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">C7151b</span> <span class="n">c7151b</span> <span class="o">=</span> <span class="o">(</span><span class="n">C7151b</span><span class="o">)</span> <span class="n">mo8765f</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">AbstractC18586a0</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="n">C18633p</span><span class="o">&gt;[]</span> <span class="n">abstractC18586a0Arr</span> <span class="o">=</span> <span class="o">{</span><span class="n">c7151b</span><span class="o">};</span>
+</span></span><span class="line"><span class="cl">        <span class="n">interfaceC14454h2</span><span class="o">.</span><span class="na">mo8767e</span><span class="o">(-</span><span class="mi">312215566</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Context</span> <span class="n">context</span> <span class="o">=</span> <span class="o">(</span><span class="n">Context</span><span class="o">)</span> <span class="n">interfaceC14454h2</span><span class="o">.</span><span class="na">mo8743q</span><span class="o">(</span><span class="n">C1627y</span><span class="o">.</span><span class="na">f4476b</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Object</span><span class="o">[]</span> <span class="n">copyOf</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">copyOf</span><span class="o">(</span><span class="n">abstractC18586a0Arr</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">C19471n</span> <span class="n">c19471n</span> <span class="o">=</span> <span class="n">C19471n</span><span class="o">.</span><span class="na">f52526E</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">C19472o</span> <span class="n">c19472o</span> <span class="o">=</span> <span class="k">new</span> <span class="n">C19472o</span><span class="o">(</span><span class="n">context</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">InterfaceC20914l</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">interfaceC20914l</span> <span class="o">=</span> <span class="n">C20915m</span><span class="o">.</span><span class="na">f56887a</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">C18643u</span> <span class="n">c18643u</span> <span class="o">=</span> <span class="o">(</span><span class="n">C18643u</span><span class="o">)</span> <span class="n">C10349c</span><span class="o">.</span><span class="na">m11442g</span><span class="o">(</span><span class="n">copyOf</span><span class="o">,</span> <span class="k">new</span> <span class="n">C20918n</span><span class="o">(</span><span class="n">c19471n</span><span class="o">,</span> <span class="n">c19472o</span><span class="o">),</span> <span class="k">new</span> <span class="n">C19473p</span><span class="o">(</span><span class="n">context</span><span class="o">),</span> <span class="n">interfaceC14454h2</span><span class="o">,</span> <span class="mi">4</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">c18643u</span><span class="o">.</span><span class="na">f50669v</span><span class="o">.</span><span class="na">m5462a</span><span class="o">(</span><span class="n">abstractC18586a0Arr</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">interfaceC14454h2</span><span class="o">.</span><span class="na">mo8791N</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">interfaceC14454h2</span><span class="o">.</span><span class="na">mo8767e</span><span class="o">(-</span><span class="mi">492369756</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Object</span> <span class="n">mo8765f2</span> <span class="o">=</span> <span class="n">interfaceC14454h2</span><span class="o">.</span><span class="na">mo8765f</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">mo8765f2</span> <span class="o">==</span> <span class="n">InterfaceC14454h</span><span class="o">.</span><span class="na">C14455a</span><span class="o">.</span><span class="na">f41447b</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mo8765f2</span> <span class="o">=</span> <span class="n">C14774d</span><span class="o">.</span><span class="na">m8447b</span><span class="o">(</span><span class="n">interfaceC14454h2</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">interfaceC14454h2</span><span class="o">.</span><span class="na">mo8791N</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">C13158u0</span> <span class="n">c13158u0</span> <span class="o">=</span> <span class="o">(</span><span class="n">C13158u0</span><span class="o">)</span> <span class="n">mo8765f2</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">View</span> <span class="n">view</span> <span class="o">=</span> <span class="o">(</span><span class="n">View</span><span class="o">)</span> <span class="n">interfaceC14454h2</span><span class="o">.</span><span class="na">mo8743q</span><span class="o">(</span><span class="n">C1627y</span><span class="o">.</span><span class="na">f4480f</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">C9156g</span><span class="o">.</span><span class="na">m12294a</span><span class="o">(</span><span class="n">C0024o</span><span class="o">.</span><span class="na">m21933h</span><span class="o">(</span><span class="n">interfaceC14454h2</span><span class="o">,</span> <span class="o">-</span><span class="mi">1964315366</span><span class="o">,</span> <span class="k">new</span> <span class="n">C17095d</span><span class="o">(</span><span class="n">c18643u</span><span class="o">,</span> <span class="n">c7151b</span><span class="o">,</span> <span class="n">C5389i</span><span class="o">.</span><span class="na">m15648i</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">.</span><span class="na">m6431F</span><span class="o">().</span><span class="na">m18375M</span><span class="o">(),</span> <span class="n">interfaceC14454h2</span><span class="o">),</span> <span class="n">c13158u0</span><span class="o">)),</span> <span class="n">interfaceC14454h2</span><span class="o">,</span> <span class="mi">6</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">C3779d</span><span class="o">.</span><span class="na">m17842b</span><span class="o">(</span><span class="n">c18643u</span><span class="o">,</span> <span class="k">new</span> <span class="n">C17096e</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">f47312F</span><span class="o">,</span> <span class="n">c18643u</span><span class="o">,</span> <span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">),</span> <span class="n">interfaceC14454h2</span><span class="o">,</span> <span class="mi">8</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">C6402b</span><span class="o">.</span><span class="na">m14527b</span><span class="o">(</span><span class="k">new</span> <span class="n">C17097f</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">.</span><span class="na">m6431F</span><span class="o">()),</span> <span class="n">interfaceC14454h2</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">MainActivity</span> <span class="n">mainActivity</span> <span class="o">=</span> <span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">C3779d</span><span class="o">.</span><span class="na">m17843a</span><span class="o">(</span><span class="n">mainActivity</span><span class="o">,</span> <span class="n">mainActivity</span><span class="o">.</span><span class="na">m6431F</span><span class="o">().</span><span class="na">f47316g</span><span class="o">,</span> <span class="n">m12065c</span><span class="o">,</span> <span class="n">c13158u0</span><span class="o">,</span> <span class="n">c18643u</span><span class="o">,</span> <span class="k">new</span> <span class="n">C17098g</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">.</span><span class="na">m6431F</span><span class="o">()),</span> <span class="n">interfaceC14454h2</span><span class="o">,</span> <span class="mi">35912</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">C5494g0</span><span class="o">.</span><span class="na">m15505c</span><span class="o">(</span><span class="n">c18643u</span><span class="o">,</span> <span class="k">new</span> <span class="n">C17099h</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="n">c18643u</span><span class="o">),</span> <span class="n">interfaceC14454h2</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">C5494g0</span><span class="o">.</span><span class="na">m15505c</span><span class="o">(</span><span class="n">C12058z</span><span class="o">.</span><span class="na">f35214a</span><span class="o">,</span> <span class="k">new</span> <span class="n">C17100i</span><span class="o">(</span><span class="n">view</span><span class="o">),</span> <span class="n">interfaceC14454h2</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">C12058z</span><span class="o">.</span><span class="na">f35214a</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>После деобфускации стало чуть-чуть получше, но выглядит все равно отвратительно. И самое забавное здесь то, что исходного кода на Kotlin было прямо кратно меньше. Но дело конечно не только в Kotlin. Приложения используют различные библиотеки, которые тоже вносят свой вклад в усложнение структуры кода. Вы видели когда-нибудь во что превращается например LiveData?</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// Было
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">private</span> <span class="n">val</span> <span class="n">data</span> <span class="o">=</span> <span class="n">MutableLiveData</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;().</span><span class="na">apply</span> <span class="o">{</span> <span class="n">postValue</span><span class="o">(</span><span class="s">&#34;hello&#34;</span><span class="o">)</span> <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Стало
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">boolean</span> <span class="n">z</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">C0600q</span> <span class="n">c0600q</span> <span class="o">=</span> <span class="k">new</span> <span class="n">C0600q</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="kd">synchronized</span> <span class="o">(</span><span class="n">c0600q</span><span class="o">.</span><span class="na">f2704a</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(</span><span class="n">c0600q</span><span class="o">.</span><span class="na">f2709f</span> <span class="o">==</span> <span class="n">LiveData</span><span class="o">.</span><span class="na">f2703k</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">z</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">z</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">c0600q</span><span class="o">.</span><span class="na">f2709f</span> <span class="o">=</span> <span class="s">&#34;hello&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span><span class="n">z</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">C1391a</span><span class="o">.</span><span class="na">m1124k</span><span class="o">().</span><span class="na">m1123l</span><span class="o">(</span><span class="n">c0600q</span><span class="o">.</span><span class="na">f2713j</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>А ведь это только одна концепция. Корутины, rx-цепочки, внедрение зависимостей и еще сотни вещей, которыми разработчики счастливо обмазываются сходив на очередную конференцию ;) Но во всем можно разобраться. Главное - иметь хороший план.</p>
+<h2 id="основные-положения">Основные положения</h2>
+<p>Общий подход к исследованию декомпилированного кода, по моему скромному мнению, базируется на двух повторяющихся действиях: переход по ссылкам (find usages/go to declaration) и определение тех или иных структур языка на основании имеющихся в голове шаблонов кода. Именно составление каталога таких шаблонов и является целью всего цикла статей. Сколько их будет я не знаю. Дорога возникает под ногами идущего.</p>
+<p>Мой сетап для компиляции и декомпиляции приложений выглядит так:</p>
+<ul>
+<li>AndroidStudio: <code>Build #AI-221.6008.13.2211.9514443 (Runtime version: 11.0.15+0-b2043.56-8887301)</code></li>
+<li>AGP: <code>7.4.1</code></li>
+<li>Kotlin: <code>1.8.20-Beta</code></li>
+<li>Gradle: <code>7.5</code></li>
+<li>Jadx: dev (master:305d4f4f)</li>
+<li>Деобфускация: Отключена для получении более чистого результата</li>
+</ul>
+<p>proguard-rules.pro</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="o">-</span><span class="n">optimizationpasses</span> <span class="mi">5</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">allowaccessmodification</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">dontpreverify</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">renamesourcefileattribute</span> <span class="n">SourceFile</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">keepattributes</span> <span class="n">Exceptions</span><span class="o">,</span><span class="n">InnerClasses</span><span class="o">,</span><span class="n">Signature</span><span class="o">,</span><span class="n">Deprecated</span><span class="o">,</span><span class="n">SourceFile</span><span class="o">,</span><span class="n">LineNumberTable</span><span class="o">,*</span><span class="n">Annotation</span><span class="o">*</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">keepdirectories</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">keepclassmembernames</span> <span class="kd">class</span> <span class="err">* {</span>
+</span></span><span class="line"><span class="cl">    <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">Class</span> <span class="nf">class$</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">String</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">Class</span> <span class="nf">class$</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">String</span><span class="o">,</span> <span class="kt">boolean</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">keepclassmembers</span> <span class="kd">enum</span> <span class="o">*</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="o">**[]</span> <span class="n">values</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="o">**</span> <span class="n">valueOf</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">String</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">keepattributes</span> <span class="n">SourceFile</span><span class="o">,</span><span class="n">LineNumberTable</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">keep</span> <span class="kd">public</span> <span class="kd">class</span> <span class="err">* </span><span class="nc">extends</span> <span class="n">android</span><span class="o">.</span><span class="na">app</span><span class="o">.</span><span class="na">Activity</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">keep</span> <span class="kd">public</span> <span class="kd">class</span> <span class="err">* </span><span class="nc">extends</span> <span class="n">android</span><span class="o">.</span><span class="na">app</span><span class="o">.</span><span class="na">Application</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">keep</span> <span class="kd">public</span> <span class="kd">class</span> <span class="err">* </span><span class="nc">extends</span> <span class="n">android</span><span class="o">.</span><span class="na">app</span><span class="o">.</span><span class="na">Service</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">keep</span> <span class="kd">public</span> <span class="kd">class</span> <span class="err">* </span><span class="nc">extends</span> <span class="n">android</span><span class="o">.</span><span class="na">content</span><span class="o">.</span><span class="na">BroadcastReceiver</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">keep</span> <span class="kd">public</span> <span class="kd">class</span> <span class="err">* </span><span class="nc">extends</span> <span class="n">android</span><span class="o">.</span><span class="na">content</span><span class="o">.</span><span class="na">ContentProvider</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">keep</span> <span class="kd">public</span> <span class="kd">class</span> <span class="err">* </span><span class="nc">extends</span> <span class="n">android</span><span class="o">.</span><span class="na">view</span><span class="o">.</span><span class="na">View</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="o">&lt;</span><span class="n">init</span><span class="o">&gt;(</span><span class="n">android</span><span class="o">.</span><span class="na">content</span><span class="o">.</span><span class="na">Context</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="o">&lt;</span><span class="n">init</span><span class="o">&gt;(</span><span class="n">android</span><span class="o">.</span><span class="na">content</span><span class="o">.</span><span class="na">Context</span><span class="o">,</span> <span class="n">android</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">AttributeSet</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="o">&lt;</span><span class="n">init</span><span class="o">&gt;(</span><span class="n">android</span><span class="o">.</span><span class="na">content</span><span class="o">.</span><span class="na">Context</span><span class="o">,</span> <span class="n">android</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">AttributeSet</span><span class="o">,</span> <span class="kt">int</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="n">set</span><span class="o">*(...);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">keepclasseswithmembers</span> <span class="kd">class</span> <span class="err">* {</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="o">&lt;</span><span class="n">init</span><span class="o">&gt;(</span><span class="n">android</span><span class="o">.</span><span class="na">content</span><span class="o">.</span><span class="na">Context</span><span class="o">,</span> <span class="n">android</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">AttributeSet</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">keepclasseswithmembers</span> <span class="kd">class</span> <span class="err">* {</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="o">&lt;</span><span class="n">init</span><span class="o">&gt;(</span><span class="n">android</span><span class="o">.</span><span class="na">content</span><span class="o">.</span><span class="na">Context</span><span class="o">,</span> <span class="n">android</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">AttributeSet</span><span class="o">,</span> <span class="kt">int</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">keepclassmembers</span> <span class="kd">class</span> <span class="err">* </span><span class="nc">extends</span> <span class="n">android</span><span class="o">.</span><span class="na">app</span><span class="o">.</span><span class="na">Activity</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">   <span class="kd">public</span> <span class="kt">void</span> <span class="o">*(</span><span class="n">android</span><span class="o">.</span><span class="na">view</span><span class="o">.</span><span class="na">View</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">keepclassmembers</span> <span class="kd">enum</span> <span class="o">*</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="o">**[]</span> <span class="n">values</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="o">**</span> <span class="n">valueOf</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">String</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">renamesourcefileattribute</span> <span class="err">&#39;&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">keepattributes</span> <span class="n">SourceFile</span><span class="o">,</span><span class="n">LineNumberTable</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">keepattributes</span> <span class="n">Signature</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">keepattributes</span> <span class="o">*</span><span class="n">Annotation</span><span class="o">*</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">dontnote</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">dontwarn</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">keep</span> <span class="kd">public</span> <span class="kd">class</span> <span class="nc">com</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">app</span><span class="o">.**</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">protected</span> <span class="o">*;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">keep</span> <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">com</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">app</span><span class="o">.**</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">protected</span> <span class="o">*;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">keep</span> <span class="kd">public</span> <span class="kd">enum</span> <span class="n">com</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">app</span><span class="o">.**</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">protected</span> <span class="o">*;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Не стоит воспринимать этот конфиг как некий супер референс или единственно правильную для всех случаев реализацию. Это просто пример, который я накидал из своих соображений и который дает мне достаточный уровень обфускации чтобы это было интересно.</p>
+<h2 id="самые-базовые-структуры-языка">Самые базовые структуры языка</h2>
+<p>Стоит сказать, что некоторые базовые структуры языка Kotlin вообще не имеет смысла разбирать как что-то самостоятельное. Из-за оптимизаций и прочего инлайнинга они попадают в приложение уже во вполне понятном виде и какого-либо влияния специфики языка в них не прослеживается. Яркий пример - шаблонные строки:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// Было
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">&#34;DEBUG&#34;</span><span class="o">,</span> <span class="s">&#34;string: ${Date().time}&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Стало
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">&#34;DEBUG&#34;</span><span class="o">,</span> <span class="s">&#34;string: &#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Date</span><span class="o">().</span><span class="na">getTime</span><span class="o">());</span>
+</span></span></code></pre></div><p>Поэтому подобные вещи я буду сознательно пропускать чтобы не раздувать статьи сверх необходимого. Также, в некоторых искусственных примерах, я буду использовать значения, которые нельзя вычислить на этапе компиляции чтобы избежать их инлайнинга.</p>
+<h3 id="условные-выражения-conditional-expressionshttpskotlinlangorgdocsbasic-syntaxhtmlconditional-expressions">Условные выражения (<a href="https://kotlinlang.org/docs/basic-syntax.html#conditional-expressions">Conditional expressions</a>)</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Было
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">val</span> <span class="py">myvar</span> <span class="p">=</span> <span class="k">if</span> <span class="p">(</span><span class="n">Date</span><span class="p">().</span><span class="n">time</span> <span class="p">&lt;</span> <span class="m">1337</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">d1</span> <span class="p">=</span> <span class="n">Date</span><span class="p">().</span><span class="n">time</span>
+</span></span><span class="line"><span class="cl">    <span class="n">d1</span> <span class="p">+</span> <span class="m">1337</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">d2</span> <span class="p">=</span> <span class="n">Date</span><span class="p">().</span><span class="n">time</span>
+</span></span><span class="line"><span class="cl">    <span class="n">d2</span> <span class="p">-</span> <span class="m">1337</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nc">Log</span><span class="p">.</span><span class="n">d</span><span class="p">(</span><span class="s2">&#34;debug&#34;</span><span class="p">,</span> <span class="n">myvar</span><span class="p">.</span><span class="n">toString</span><span class="p">())</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// Стало
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">long</span> <span class="n">time</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span><span class="k">new</span> <span class="n">Date</span><span class="o">().</span><span class="na">getTime</span><span class="o">()</span> <span class="o">&lt;</span> <span class="mi">1337</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">time</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">().</span><span class="na">getTime</span><span class="o">()</span> <span class="o">+</span> <span class="mi">1337</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">time</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">().</span><span class="na">getTime</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1337</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">&#34;debug&#34;</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">time</span><span class="o">));</span>
+</span></span></code></pre></div><p>Все довольно предсказуемо, а встроенные в компилятор оптимизации делают код даже чуточку понятнее, чем он был написан изначально.</p>
+<h3 id="цикл-for-for-loophttpskotlinlangorgdocsbasic-syntaxhtmlfor-loop">Цикл for (<a href="https://kotlinlang.org/docs/basic-syntax.html#for-loop">for loop</a>)</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Было
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">val</span> <span class="py">items</span> <span class="p">=</span> <span class="n">listOf</span><span class="p">(</span><span class="s2">&#34;apple&#34;</span><span class="p">,</span> <span class="s2">&#34;banana&#34;</span><span class="p">,</span> <span class="s2">&#34;kiwifruit&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="p">(</span><span class="n">item</span> <span class="k">in</span> <span class="n">items</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">println</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// Стало
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">asList</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">&#34;apple&#34;</span><span class="o">,</span> <span class="s">&#34;banana&#34;</span><span class="o">,</span> <span class="s">&#34;kiwifruit&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="o">.</span><span class="na">c</span><span class="o">(</span><span class="n">asList</span><span class="o">,</span> <span class="s">&#34;asList(this)&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">str</span> <span class="o">:</span> <span class="n">asList</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">&#34;debug&#34;</span><span class="o">,</span> <span class="n">str</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Было
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">val</span> <span class="py">items</span> <span class="p">=</span> <span class="n">listOf</span><span class="p">(</span><span class="s2">&#34;apple&#34;</span><span class="p">,</span> <span class="s2">&#34;banana&#34;</span><span class="p">,</span> <span class="s2">&#34;kiwifruit&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="p">(</span><span class="n">item</span> <span class="k">in</span> <span class="n">items</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">println</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// Стало
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">List</span> <span class="n">asList</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">&#34;apple&#34;</span><span class="o">,</span> <span class="s">&#34;banana&#34;</span><span class="o">,</span> <span class="s">&#34;kiwifruit&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="o">.</span><span class="na">c</span><span class="o">(</span><span class="n">asList</span><span class="o">,</span> <span class="s">&#34;asList(this)&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">size</span> <span class="o">=</span> <span class="n">asList</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i4</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i4</span> <span class="o">&lt;</span> <span class="n">size</span><span class="o">;</span> <span class="n">i4</span><span class="o">++)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">&#34;debug&#34;</span><span class="o">,</span> <span class="s">&#34;item at &#34;</span> <span class="o">+</span> <span class="n">i4</span> <span class="o">+</span> <span class="s">&#34; is &#34;</span> <span class="o">+</span> <span class="o">((</span><span class="n">String</span><span class="o">)</span> <span class="n">asList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i4</span><span class="o">)));</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>Тут уже все несколько интереснее. Из непонятного сразу - вызов <code>d.c(asList, &quot;asList(this)&quot;);</code>. Но если заглянуть в сам метод, то картина становится гораздо яснее:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">c</span><span class="o">(</span><span class="n">Object</span> <span class="n">obj</span><span class="o">,</span> <span class="n">String</span> <span class="n">str</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(</span><span class="n">obj</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">NullPointerException</span> <span class="n">nullPointerException</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NullPointerException</span><span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">concat</span><span class="o">(</span><span class="s">&#34; must not be null&#34;</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">e</span><span class="o">(</span><span class="n">nullPointerException</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">throw</span> <span class="n">nullPointerException</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>Если инстанс объекта существует, то все ок. Иначе будет выброшено NPE. Откуда это взялось и почему это важно? Это довольно типичная для скомпилированного кода на Kotlin конструкция и ее совершенно точно <strong>нужно запомнить</strong>. В самом языке такие штуки называются <code>Intrinsics</code> и живут <a href="https://github.com/JetBrains/kotlin/blob/master/libraries/stdlib/jvm/runtime/kotlin/jvm/internal/Intrinsics.java">здесь</a>.</p>
+<p>Вооружившись этим знанием, можно средствами студии отрефакторить(<em>Refactor-&gt;Rename</em>) <code>d</code> в <code>Intrinsics</code>, а <code>c</code> в <code>checkNotNull</code> и эти изменения применятся ко всему проекту, что позволит больше не думать над этими строчками в разных местах. Особо радикальные реверсеры могут даже удалить все упоминания этого класса из декомпилированного кода.</p>
+<h3 id="цикл-while-while-loophttpskotlinlangorgdocsbasic-syntaxhtmlwhile-loop">Цикл while (<a href="https://kotlinlang.org/docs/basic-syntax.html#while-loop">while loop</a>)</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Было
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">val</span> <span class="py">items</span> <span class="p">=</span> <span class="n">listOf</span><span class="p">(</span><span class="s2">&#34;apple&#34;</span><span class="p">,</span> <span class="s2">&#34;banana&#34;</span><span class="p">,</span> <span class="s2">&#34;kiwifruit&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">var</span> <span class="py">index</span> <span class="p">=</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="p">(</span><span class="n">index</span> <span class="p">&lt;</span> <span class="n">items</span><span class="p">.</span><span class="n">size</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nc">Log</span><span class="p">.</span><span class="n">d</span><span class="p">(</span><span class="s2">&#34;debug&#34;</span><span class="p">,</span> <span class="s2">&#34;item at </span><span class="si">$index</span><span class="s2"> is </span><span class="si">${items[index]}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">index</span><span class="o">++</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// Стало
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">List</span> <span class="n">asList</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">&#34;apple&#34;</span><span class="o">,</span> <span class="s">&#34;banana&#34;</span><span class="o">,</span> <span class="s">&#34;kiwifruit&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="o">.</span><span class="na">c</span><span class="o">(</span><span class="n">asList</span><span class="o">,</span> <span class="s">&#34;asList(this)&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i4</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i4</span> <span class="o">&lt;</span> <span class="n">asList</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i4</span><span class="o">++)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">&#34;debug&#34;</span><span class="o">,</span> <span class="s">&#34;item at &#34;</span> <span class="o">+</span> <span class="n">i4</span> <span class="o">+</span> <span class="s">&#34; is &#34;</span> <span class="o">+</span> <span class="o">((</span><span class="n">String</span><span class="o">)</span> <span class="n">asList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i4</span><span class="o">)));</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>Нет, это не копипаста из прошлого примера. Несмотря на <a href="https://www.w3schools.com/java/java_while_loop.asp">наличие</a> в Java самостоятельной конструкции <code>while (condition) { ... }</code>, Kotlin в этом случае, все равно делает цикл for. А как насчет <code>do-while</code>?</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Было
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">val</span> <span class="py">items</span> <span class="p">=</span> <span class="n">listOf</span><span class="p">(</span><span class="s2">&#34;apple&#34;</span><span class="p">,</span> <span class="s2">&#34;banana&#34;</span><span class="p">,</span> <span class="s2">&#34;kiwifruit&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">var</span> <span class="py">index</span> <span class="p">=</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">do</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nc">Log</span><span class="p">.</span><span class="n">d</span><span class="p">(</span><span class="s2">&#34;debug&#34;</span><span class="p">,</span> <span class="s2">&#34;item at </span><span class="si">$index</span><span class="s2"> is </span><span class="si">${items[index]}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">index</span><span class="o">++</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">index</span> <span class="p">&lt;</span> <span class="n">items</span><span class="p">.</span><span class="n">size</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// Стало
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">List</span> <span class="n">asList</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">&#34;apple&#34;</span><span class="o">,</span> <span class="s">&#34;banana&#34;</span><span class="o">,</span> <span class="s">&#34;kiwifruit&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="o">.</span><span class="na">c</span><span class="o">(</span><span class="n">asList</span><span class="o">,</span> <span class="s">&#34;asList(this)&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">i4</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">do</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">&#34;debug&#34;</span><span class="o">,</span> <span class="s">&#34;item at &#34;</span> <span class="o">+</span> <span class="n">i4</span> <span class="o">+</span> <span class="s">&#34; is &#34;</span> <span class="o">+</span> <span class="o">((</span><span class="n">String</span><span class="o">)</span> <span class="n">asList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i4</span><span class="o">)));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">i4</span><span class="o">++;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> <span class="k">while</span> <span class="o">(</span><span class="n">i4</span> <span class="o">&lt;</span> <span class="n">asList</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>
+</span></span></code></pre></div><p>Тут компилятор не стал изобретать велосипед и вспомнил маму Джаву.</p>
+<h3 id="выражение-when-when-expressionhttpskotlinlangorgdocsbasic-syntaxhtmlwhen-expression">Выражение when (<a href="https://kotlinlang.org/docs/basic-syntax.html#when-expression">when expression</a>)</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Было
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">fun</span> <span class="nf">describe</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span> <span class="n">String</span> <span class="p">=</span>
+</span></span><span class="line"><span class="cl">    <span class="k">when</span> <span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="m">1</span>          <span class="o">-&gt;</span> <span class="s2">&#34;One&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Hello&#34;</span>    <span class="o">-&gt;</span> <span class="s2">&#34;Greeting&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">is</span> <span class="n">Long</span>    <span class="o">-&gt;</span> <span class="s2">&#34;Long&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">!is</span> <span class="n">String</span> <span class="o">-&gt;</span> <span class="s2">&#34;Not a string&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span>       <span class="o">-&gt;</span> <span class="s2">&#34;Unknown&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// Стало
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="nf">describe</span><span class="o">(</span><span class="n">Object</span> <span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">d</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="n">obj</span><span class="o">,</span> <span class="s">&#34;obj&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(</span><span class="n">d</span><span class="o">.</span><span class="na">a</span><span class="o">(</span><span class="n">obj</span><span class="o">,</span> <span class="mi">1</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">&#34;One&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(</span><span class="n">d</span><span class="o">.</span><span class="na">a</span><span class="o">(</span><span class="n">obj</span><span class="o">,</span> <span class="s">&#34;Hello&#34;</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">&#34;Greeting&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(</span><span class="n">obj</span> <span class="k">instanceof</span> <span class="n">Long</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">&#34;Long&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(!(</span><span class="n">obj</span> <span class="k">instanceof</span> <span class="n">String</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">&#34;Not a string&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s">&#34;Unknown&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>Из интересного здесь можно выделить вызов <code>d.a(obj, ...)</code>, который догадливый читатель уже определил как метод класса <code>Intrinsics</code>. Осталось понять, что это за метод. Проваливаемся вовнутрь и понимаем, что это <code>areEqual</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// Декомпилированный код
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">a</span><span class="o">(</span><span class="n">Object</span> <span class="n">obj</span><span class="o">,</span> <span class="n">Object</span> <span class="n">obj2</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">obj</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">?</span> <span class="n">obj2</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">:</span> <span class="n">obj</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">obj2</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Исходный код
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">areEqual</span><span class="o">(</span><span class="n">Object</span> <span class="n">first</span><span class="o">,</span> <span class="n">Object</span> <span class="n">second</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">first</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">?</span> <span class="n">second</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">:</span> <span class="n">first</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">second</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><h3 id="диапазоны-rangeshttpskotlinlangorgdocsbasic-syntaxhtmlranges">Диапазоны (<a href="https://kotlinlang.org/docs/basic-syntax.html#ranges">Ranges</a>)</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Было
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">val</span> <span class="py">x</span> <span class="p">=</span> <span class="m">10</span>
+</span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="py">y</span> <span class="p">=</span> <span class="n">Date</span><span class="p">().</span><span class="n">time</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="k">in</span> <span class="m">1.</span><span class="p">.</span><span class="n">y</span><span class="p">+</span><span class="m">1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nc">Log</span><span class="p">.</span><span class="n">d</span><span class="p">(</span><span class="s2">&#34;debug&#34;</span><span class="p">,</span> <span class="s2">&#34;fits in range&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// Стало
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">long</span> <span class="n">time</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">().</span><span class="na">getTime</span><span class="o">()</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">long</span> <span class="n">j4</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">boolean</span> <span class="n">z3</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">j4</span> <span class="o">&amp;&amp;</span> <span class="n">j4</span> <span class="o">&lt;=</span> <span class="n">time</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">z3</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span><span class="n">z3</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">&#34;debug&#34;</span><span class="o">,</span> <span class="s">&#34;fits in range&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Было
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">for</span> <span class="p">(</span><span class="n">x</span> <span class="k">in</span> <span class="m">1.</span><span class="p">.</span><span class="n">Date</span><span class="p">().</span><span class="n">time</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nc">Log</span><span class="p">.</span><span class="n">d</span><span class="p">(</span><span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="n">x</span><span class="p">.</span><span class="n">toString</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// Стало
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">long</span> <span class="n">time</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">().</span><span class="na">getTime</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">time</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">long</span> <span class="n">j4</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">&#34;&#34;</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">j4</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">j4</span> <span class="o">!=</span> <span class="n">time</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">j4</span><span class="o">++;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>Тут Kotlin внезапно вспоминает про существование цикла <code>while</code> в Java и счастливо его использует.</p>
+<hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Было
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">for</span> <span class="p">(</span><span class="n">x</span> <span class="k">in</span> <span class="m">1.</span><span class="p">.</span><span class="n">Date</span><span class="p">().</span><span class="n">time</span> <span class="n">step</span> <span class="m">2</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nc">Log</span><span class="p">.</span><span class="n">d</span><span class="p">(</span><span class="s2">&#34;debug&#34;</span><span class="p">,</span> <span class="n">x</span><span class="p">.</span><span class="n">toString</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nc">Log</span><span class="p">.</span><span class="n">d</span><span class="p">(</span><span class="s2">&#34;debug&#34;</span><span class="p">,</span> <span class="s2">&#34;stub&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="p">(</span><span class="n">x</span> <span class="k">in</span> <span class="n">Date</span><span class="p">().</span><span class="n">time</span> <span class="n">downTo</span> <span class="m">0</span> <span class="n">step</span> <span class="m">3</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nc">Log</span><span class="p">.</span><span class="n">d</span><span class="p">(</span><span class="s2">&#34;debug&#34;</span><span class="p">,</span> <span class="n">x</span><span class="p">.</span><span class="n">toString</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// Стало
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">long</span> <span class="n">w3</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="na">w</span><span class="o">(</span><span class="mi">1L</span><span class="o">,</span> <span class="k">new</span> <span class="n">Date</span><span class="o">().</span><span class="na">getTime</span><span class="o">(),</span> <span class="mi">2L</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">long</span> <span class="n">j4</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">w3</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">&#34;debug&#34;</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">j4</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">j4</span> <span class="o">==</span> <span class="n">w3</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">break</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">j4</span> <span class="o">+=</span> <span class="mi">2</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">&#34;debug&#34;</span><span class="o">,</span> <span class="s">&#34;stub&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">long</span> <span class="n">time</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">().</span><span class="na">getTime</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="kt">long</span> <span class="n">w4</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="na">w</span><span class="o">(</span><span class="n">time</span><span class="o">,</span> <span class="mi">0</span><span class="n">L</span><span class="o">,</span> <span class="o">-</span><span class="mi">3L</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span><span class="n">w4</span> <span class="o">&gt;</span> <span class="n">time</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">&#34;debug&#34;</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">time</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(</span><span class="n">time</span> <span class="o">!=</span> <span class="n">w4</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">time</span> <span class="o">-=</span> <span class="mi">3</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>А вот и плата за &ldquo;сахар&rdquo; =) Выглядит уже не так приятно, хотя разобраться что происходит - вполне можно. Основные вопросы здесь вызывает конструкция <code>m.w(long, long, long);</code>, которая, при ближайшем рассмотрении оказывается еще одним внутренним механизмом языка Kotlin для работы с <a href="https://kotlinlang.org/docs/ranges.html#progression">прогрессиями</a> и живет <a href="https://github.com/JetBrains/kotlin/blob/83d1de56bfed89a911ce6564d32625b0be5b2b55/libraries/stdlib/src/kotlin/internal/progressionUtil.kt">здесь</a> :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// Декомпилированный код
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="nf">w</span><span class="o">(</span><span class="kt">long</span> <span class="n">j4</span><span class="o">,</span> <span class="kt">long</span> <span class="n">j5</span><span class="o">,</span> <span class="kt">long</span> <span class="n">j6</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">i4</span> <span class="o">=</span> <span class="o">(</span><span class="n">j6</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="n">L</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="o">(</span><span class="n">j6</span> <span class="o">==</span> <span class="mi">0</span><span class="n">L</span> <span class="o">?</span> <span class="mi">0</span> <span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(</span><span class="n">i4</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">j4</span> <span class="o">&lt;</span> <span class="n">j5</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">long</span> <span class="n">j7</span> <span class="o">=</span> <span class="n">j5</span> <span class="o">%</span> <span class="n">j6</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="o">(</span><span class="n">j7</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">j7</span> <span class="o">+=</span> <span class="n">j6</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">long</span> <span class="n">j8</span> <span class="o">=</span> <span class="n">j4</span> <span class="o">%</span> <span class="n">j6</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="o">(</span><span class="n">j8</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">j8</span> <span class="o">+=</span> <span class="n">j6</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">long</span> <span class="n">j9</span> <span class="o">=</span> <span class="o">(</span><span class="n">j7</span> <span class="o">-</span> <span class="n">j8</span><span class="o">)</span> <span class="o">%</span> <span class="n">j6</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="o">(</span><span class="n">j9</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">j9</span> <span class="o">+=</span> <span class="n">j6</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">j5</span> <span class="o">-</span> <span class="n">j9</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">j5</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">i4</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">j4</span> <span class="o">&gt;</span> <span class="n">j5</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">long</span> <span class="n">j10</span> <span class="o">=</span> <span class="o">-</span><span class="n">j6</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">long</span> <span class="n">j11</span> <span class="o">=</span> <span class="n">j4</span> <span class="o">%</span> <span class="n">j10</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="o">(</span><span class="n">j11</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">j11</span> <span class="o">+=</span> <span class="n">j10</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">long</span> <span class="n">j12</span> <span class="o">=</span> <span class="n">j5</span> <span class="o">%</span> <span class="n">j10</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="o">(</span><span class="n">j12</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">j12</span> <span class="o">+=</span> <span class="n">j10</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">long</span> <span class="n">j13</span> <span class="o">=</span> <span class="o">(</span><span class="n">j11</span> <span class="o">-</span> <span class="n">j12</span><span class="o">)</span> <span class="o">%</span> <span class="n">j10</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="o">(</span><span class="n">j13</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">j13</span> <span class="o">+=</span> <span class="n">j10</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">j5</span> <span class="o">+</span> <span class="n">j13</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">j5</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">throw</span> <span class="k">new</span> <span class="n">IllegalArgumentException</span><span class="o">(</span><span class="s">&#34;Step is zero.&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Исходный код
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">internal</span> <span class="n">fun</span> <span class="nf">getProgressionLastElement</span><span class="o">(</span><span class="n">start</span><span class="o">:</span> <span class="n">Int</span><span class="o">,</span> <span class="n">end</span><span class="o">:</span> <span class="n">Int</span><span class="o">,</span> <span class="n">step</span><span class="o">:</span> <span class="n">Int</span><span class="o">):</span> <span class="n">Int</span> <span class="o">=</span> <span class="n">when</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">step</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="k">if</span> <span class="o">(</span><span class="n">start</span> <span class="o">&gt;=</span> <span class="n">end</span><span class="o">)</span> <span class="n">end</span> <span class="k">else</span> <span class="n">end</span> <span class="o">-</span> <span class="n">differenceModulo</span><span class="o">(</span><span class="n">end</span><span class="o">,</span> <span class="n">start</span><span class="o">,</span> <span class="n">step</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">step</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="k">if</span> <span class="o">(</span><span class="n">start</span> <span class="o">&lt;=</span> <span class="n">end</span><span class="o">)</span> <span class="n">end</span> <span class="k">else</span> <span class="n">end</span> <span class="o">+</span> <span class="n">differenceModulo</span><span class="o">(</span><span class="n">start</span><span class="o">,</span> <span class="n">end</span><span class="o">,</span> <span class="o">-</span><span class="n">step</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="o">-&gt;</span> <span class="k">throw</span> <span class="n">kotlin</span><span class="o">.</span><span class="na">IllegalArgumentException</span><span class="o">(</span><span class="s">&#34;Step is zero.&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><h3 id="коллекции-collectionshttpskotlinlangorgdocsbasic-syntaxhtmlcollections">Коллекции (<a href="https://kotlinlang.org/docs/basic-syntax.html#collections">Collections</a>)</h3>
+<p>С коллекциями мы уже начинали разбираться, когда изучали циклы, поэтому тут будет чуть более сложный пример с лямда- функциями над коллекцией:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Было
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">val</span> <span class="py">fruits</span> <span class="p">=</span> <span class="n">listOf</span><span class="p">(</span><span class="s2">&#34;banana&#34;</span><span class="p">,</span> <span class="s2">&#34;avocado&#34;</span><span class="p">,</span> <span class="s2">&#34;apple&#34;</span><span class="p">,</span> <span class="s2">&#34;kiwifruit&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">fruits</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">filter</span> <span class="p">{</span> <span class="k">it</span> <span class="o">!=</span> <span class="s2">&#34;apple&#34;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">forEach</span> <span class="p">{</span> <span class="nc">Log</span><span class="p">.</span><span class="n">d</span><span class="p">(</span><span class="s2">&#34;debug&#34;</span><span class="p">,</span> <span class="k">it</span><span class="p">)</span> <span class="p">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// Стало
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">List</span> <span class="n">asList</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">&#34;banana&#34;</span><span class="o">,</span> <span class="s">&#34;avocado&#34;</span><span class="o">,</span> <span class="s">&#34;apple&#34;</span><span class="o">,</span> <span class="s">&#34;kiwifruit&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="o">.</span><span class="na">c</span><span class="o">(</span><span class="n">asList</span><span class="o">,</span> <span class="s">&#34;asList(this)&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">ArrayList</span> <span class="n">arrayList</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="o">(</span><span class="n">Object</span> <span class="n">obj</span> <span class="o">:</span> <span class="n">asList</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(!</span><span class="n">d</span><span class="o">.</span><span class="na">a</span><span class="o">((</span><span class="n">String</span><span class="o">)</span> <span class="n">obj</span><span class="o">,</span> <span class="s">&#34;apple&#34;</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">arrayList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">obj</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">Iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">arrayList</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">&#34;debug&#34;</span><span class="o">,</span> <span class="o">(</span><span class="n">String</span><span class="o">)</span> <span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>Могло быть и хуже. Ничего такого с чем бы мы до этого не встречались. Все те же знакомые вызовы <code>d.c()</code> и <code>d.a()</code> и привычные java-унижения с итераторами =) Даже лямбда красиво заинлайнилась, превратившись в обычный <code>if</code>. Всегда бы так&hellip;</p>
+<h3 id="проверка-и-автоматическое-приведение-типов-type-checks-and-automatic-castshttpskotlinlangorgdocsbasic-syntaxhtmltype-checks-and-automatic-casts">Проверка и автоматическое приведение типов (<a href="https://kotlinlang.org/docs/basic-syntax.html#type-checks-and-automatic-casts">Type checks and automatic casts</a>)</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Было
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">fun</span> <span class="nf">getStringLength</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span> <span class="n">Int</span><span class="p">?</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">obj</span> <span class="o">!is</span> <span class="n">String</span><span class="p">)</span> <span class="k">return</span> <span class="k">null</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// `obj` is automatically cast to `String` in this branch
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">return</span> <span class="n">obj</span><span class="p">.</span><span class="n">length</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// Стало
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">Integer</span> <span class="nf">getStringLength</span><span class="o">(</span><span class="n">Object</span> <span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">d</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="n">obj</span><span class="o">,</span> <span class="s">&#34;obj&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(!(</span><span class="n">obj</span> <span class="k">instanceof</span> <span class="n">String</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(((</span><span class="n">String</span><span class="o">)</span> <span class="n">obj</span><span class="o">).</span><span class="na">length</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="c1">// Было
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">fun</span> <span class="nf">getStringLength</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span> <span class="n">Int</span><span class="p">?</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// `obj` is automatically cast to `String` on the right-hand side of `&amp;&amp;`
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="n">obj</span> <span class="k">is</span> <span class="n">String</span> <span class="o">&amp;&amp;</span> <span class="n">obj</span><span class="p">.</span><span class="n">length</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">obj</span><span class="p">.</span><span class="n">length</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="k">null</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// Стало
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">Integer</span> <span class="nf">getStringLength</span><span class="o">(</span><span class="n">Object</span> <span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">d</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="n">obj</span><span class="o">,</span> <span class="s">&#34;obj&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(</span><span class="n">obj</span> <span class="k">instanceof</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="o">(</span><span class="n">String</span><span class="o">)</span> <span class="n">obj</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">length</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>Вызов <code>d.d(Object, String)</code> нам до этого не встречался. Конечно же это еще один <code>Intrinsic</code>. В декомпилированном виде это 3 метода скомпилированные в один, а сама функция <code>d()</code> это <code>checkNotNullParameter()</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// Декомпилированный код
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">d</span><span class="o">(</span><span class="n">Object</span> <span class="n">obj</span><span class="o">,</span> <span class="n">String</span> <span class="n">str</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">     <span class="k">if</span> <span class="o">(</span><span class="n">obj</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">         <span class="n">StackTraceElement</span><span class="o">[]</span> <span class="n">stackTrace</span> <span class="o">=</span> <span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">         <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getName</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">         <span class="kt">int</span> <span class="n">i4</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">         <span class="k">while</span> <span class="o">(!</span><span class="n">stackTrace</span><span class="o">[</span><span class="n">i4</span><span class="o">].</span><span class="na">getClassName</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">name</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">             <span class="n">i4</span><span class="o">++;</span>
+</span></span><span class="line"><span class="cl">         <span class="o">}</span>
+</span></span><span class="line"><span class="cl">         <span class="k">while</span> <span class="o">(</span><span class="n">stackTrace</span><span class="o">[</span><span class="n">i4</span><span class="o">].</span><span class="na">getClassName</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">name</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">             <span class="n">i4</span><span class="o">++;</span>
+</span></span><span class="line"><span class="cl">         <span class="o">}</span>
+</span></span><span class="line"><span class="cl">         <span class="n">StackTraceElement</span> <span class="n">stackTraceElement</span> <span class="o">=</span> <span class="n">stackTrace</span><span class="o">[</span><span class="n">i4</span><span class="o">];</span>
+</span></span><span class="line"><span class="cl">         <span class="n">String</span> <span class="n">className</span> <span class="o">=</span> <span class="n">stackTraceElement</span><span class="o">.</span><span class="na">getClassName</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">         <span class="n">String</span> <span class="n">methodName</span> <span class="o">=</span> <span class="n">stackTraceElement</span><span class="o">.</span><span class="na">getMethodName</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">         <span class="n">NullPointerException</span> <span class="n">nullPointerException</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NullPointerException</span><span class="o">(</span><span class="s">&#34;Parameter specified as non-null is null: method &#34;</span> <span class="o">+</span> <span class="n">className</span> <span class="o">+</span> <span class="s">&#34;.&#34;</span> <span class="o">+</span> <span class="n">methodName</span> <span class="o">+</span> <span class="s">&#34;, parameter &#34;</span> <span class="o">+</span> <span class="n">str</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">         <span class="n">e</span><span class="o">(</span><span class="n">nullPointerException</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">         <span class="k">throw</span> <span class="n">nullPointerException</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">     <span class="o">}</span>
+</span></span><span class="line"><span class="cl"> <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Исходный код
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">checkNotNullParameter</span><span class="o">(</span><span class="n">Object</span> <span class="n">value</span><span class="o">,</span> <span class="n">String</span> <span class="n">paramName</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(</span><span class="n">value</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">throwParameterIsNullNPE</span><span class="o">(</span><span class="n">paramName</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">throwParameterIsNullNPE</span><span class="o">(</span><span class="n">String</span> <span class="n">paramName</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">throw</span> <span class="n">sanitizeStackTrace</span><span class="o">(</span><span class="k">new</span> <span class="n">NullPointerException</span><span class="o">(</span><span class="n">createParameterIsNullExceptionMessage</span><span class="o">(</span><span class="n">paramName</span><span class="o">)));</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">createParameterIsNullExceptionMessage</span><span class="o">(</span><span class="n">String</span> <span class="n">paramName</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">StackTraceElement</span><span class="o">[]</span> <span class="n">stackTraceElements</span> <span class="o">=</span> <span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">String</span> <span class="n">thisClassName</span> <span class="o">=</span> <span class="n">Intrinsics</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getName</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Skip platform frames such as Thread.getStackTrace.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">while</span> <span class="o">(!</span><span class="n">stackTraceElements</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getClassName</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">thisClassName</span><span class="o">))</span> <span class="n">i</span><span class="o">++;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Skip all frames of this class such as createParameterIsNullExceptionMessage, throwParameterIsNullNPE, checkNotNullParameter.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">while</span> <span class="o">(</span><span class="n">stackTraceElements</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getClassName</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">thisClassName</span><span class="o">))</span> <span class="n">i</span><span class="o">++;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// This frame is our caller.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">StackTraceElement</span> <span class="n">caller</span> <span class="o">=</span> <span class="n">stackTraceElements</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+</span></span><span class="line"><span class="cl">    <span class="n">String</span> <span class="n">className</span> <span class="o">=</span> <span class="n">caller</span><span class="o">.</span><span class="na">getClassName</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">String</span> <span class="n">methodName</span> <span class="o">=</span> <span class="n">caller</span><span class="o">.</span><span class="na">getMethodName</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s">&#34;Parameter specified as non-null is null: method &#34;</span> <span class="o">+</span> <span class="n">className</span> <span class="o">+</span> <span class="s">&#34;.&#34;</span> <span class="o">+</span> <span class="n">methodName</span> <span class="o">+</span> <span class="s">&#34;, parameter &#34;</span> <span class="o">+</span> <span class="n">paramName</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>Декомпилированный код здесь даже как-то понятнее. Если объект <code>null</code>, но таковым быть не должен, то покажи красивую ошибку.</p>
+<h2 id="что-будет-дальше">Что будет дальше</h2>
+<p>Мы рассмотрели самые базовые конструкции и уже сейчас видно, что сахар Kotlin-а в разных случаях работает по разному. Иногда он помогает, иногда мешает. Но при последовательном подходе всегда можно докопаться до истины и понять что делает тот или иной код. Дальше будем разбирать уже более сложные конструкции и выдуманных примеров станет меньше. Я планирую брать типовой код для решения тех или иных android задач из различных open source приложений, и думаю это сделает мое исследование более релевантным существующей действительности.</p>
+<p>Всем легкого реверса! 😎</p>
+
+        
+          <div class="blog-tags">
+            
+              <a href="https://fi5t.xyz/tags/security/">security</a>&nbsp;
+            
+              <a href="https://fi5t.xyz/tags/reverse_engineering/">reverse_engineering</a>&nbsp;
+            
+              <a href="https://fi5t.xyz/tags/android/">android</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=https%3a%2f%2ffi5t.xyz%2fposts%2fdeobfuscation-in-the-mind%2f&amp;text=%d0%94%d0%b5%d0%be%d0%b1%d1%84%d1%83%d1%81%d0%ba%d0%b0%d1%86%d0%b8%d1%8f%20%d0%b2%20%d1%83%d0%bc%d0%b5%3a%20%d0%a7%d0%b0%d1%81%d1%82%d1%8c%201&amp;via=" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ffi5t.xyz%2fposts%2fdeobfuscation-in-the-mind%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=https%3a%2f%2ffi5t.xyz%2fposts%2fdeobfuscation-in-the-mind%2f&amp;title=%d0%94%d0%b5%d0%be%d0%b1%d1%84%d1%83%d1%81%d0%ba%d0%b0%d1%86%d0%b8%d1%8f%20%d0%b2%20%d1%83%d0%bc%d0%b5%3a%20%d0%a7%d0%b0%d1%81%d1%82%d1%8c%201" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2ffi5t.xyz%2fposts%2fdeobfuscation-in-the-mind%2f&amp;title=%d0%94%d0%b5%d0%be%d0%b1%d1%84%d1%83%d1%81%d0%ba%d0%b0%d1%86%d0%b8%d1%8f%20%d0%b2%20%d1%83%d0%bc%d0%b5%3a%20%d0%a7%d0%b0%d1%81%d1%82%d1%8c%201" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2ffi5t.xyz%2fposts%2fdeobfuscation-in-the-mind%2f&amp;title=%d0%94%d0%b5%d0%be%d0%b1%d1%84%d1%83%d1%81%d0%ba%d0%b0%d1%86%d0%b8%d1%8f%20%d0%b2%20%d1%83%d0%bc%d0%b5%3a%20%d0%a7%d0%b0%d1%81%d1%82%d1%8c%201" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2ffi5t.xyz%2fposts%2fdeobfuscation-in-the-mind%2f&amp;description=%d0%94%d0%b5%d0%be%d0%b1%d1%84%d1%83%d1%81%d0%ba%d0%b0%d1%86%d0%b8%d1%8f%20%d0%b2%20%d1%83%d0%bc%d0%b5%3a%20%d0%a7%d0%b0%d1%81%d1%82%d1%8c%201" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+
+              </div>
+            </section>
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">Смотрите также</h4>
+                  <ul>
+                
+                
+                    <li><a href="/posts/string-pool/">Бассейн со строками</a></li>
+                
+                    <li><a href="/posts/oppo-a16-easy-root/">Как получить root права на OPPO A16</a></li>
+                
+                    <li><a href="/posts/biometric-underauthentication/">Биометрическая недоаутентификация</a></li>
+                
+                    <li><a href="/posts/poisonous-ecosystem/">Ядовитая экосистема</a></li>
+                
+                    <li><a href="/posts/neoquest2022-writeup-task7/">NeoQUEST 2022: Задание 7</a></li>
+                
+              </ul>
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://fi5t.xyz/posts/string-pool/" data-toggle="tooltip" data-placement="top" title="Бассейн со строками">&larr; Предыдущий</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
+        
+          
+          <div class="disqus-comments">
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "not-unique-x" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+          </div>
+          
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+		
+		  <a href="https://github.com/Fi5t" title="GitHub">
+		
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+		
+		  <a href="https://www.youtube.com/c/AndroidGuards" title="Youtube">
+		
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-youtube fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              Fi5t
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2023
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://fi5t.xyz">(не)Уникальный опыт</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          На базе <a href="https://gohugo.io">Hugo v0.110.0</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://fi5t.xyz/js/main.js"></script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://fi5t.xyz/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

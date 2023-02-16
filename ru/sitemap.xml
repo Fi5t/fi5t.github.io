@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://fi5t.xyz/</loc>
-    <lastmod>2022-12-25T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-16T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -16,7 +16,7 @@
                 />
   </url><url>
     <loc>https://fi5t.xyz/tags/android/</loc>
-    <lastmod>2022-12-25T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-16T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -28,11 +28,8 @@
                 href="https://fi5t.xyz/tags/android/"
                 />
   </url><url>
-    <loc>https://fi5t.xyz/tags/jvm/</loc>
-    <lastmod>2022-12-25T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://fi5t.xyz/posts/</loc>
-    <lastmod>2022-12-25T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-16T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -44,8 +41,11 @@
                 href="https://fi5t.xyz/posts/"
                 />
   </url><url>
+    <loc>https://fi5t.xyz/tags/reverse_engineering/</loc>
+    <lastmod>2023-02-16T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://fi5t.xyz/tags/security/</loc>
-    <lastmod>2022-12-25T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-16T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -58,7 +58,7 @@
                 />
   </url><url>
     <loc>https://fi5t.xyz/tags/</loc>
-    <lastmod>2022-12-25T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-16T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -69,6 +69,12 @@
                 hreflang="ru"
                 href="https://fi5t.xyz/tags/"
                 />
+  </url><url>
+    <loc>https://fi5t.xyz/posts/deobfuscation-in-the-mind/</loc>
+    <lastmod>2023-02-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fi5t.xyz/tags/jvm/</loc>
+    <lastmod>2022-12-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://fi5t.xyz/posts/string-pool/</loc>
     <lastmod>2022-12-25T00:00:00+00:00</lastmod>
