@@ -88,7 +88,7 @@
   "headline": "Перехват трафика в Android. Большой гайд.",
   "description" : "Зачем еще одна статья? Задача перехвата трафика android приложений довольно хорошо описана на куче языков и даже не нужно уметь гуглить чтобы найти информацию о том, как настроить прокси и посмотреть заветные запросы. Даже набившая уже всем оскомину тема \u0026ldquo;как отломать ssl pinning\u0026rdquo; была множество раз разжевана и надо быть по пояс странным чтобы в этом не разобраться.\n\u0026hellip;когда ты слишком долго в пути, когда тебя обуревает жадность, приходит черный пес чтобы отобрать у тебя все.\nЧерный пес (1998)\nДа\u0026hellip; потом появляется то самое приложение, которое вопреки всем настройкам не хочет работать через прокси. Или через прокси проходит только часть трафика. В такой ситуации лучше не начинать нажимать все подряд, чтобы не увеличивать энтропию происходящего, а подойти к вопросу системно и последовательно попробовать разные методы для решения этой проблемы.\n",
   "inLanguage" : "ru",
-  "wordCount":  2386 ,
+  "wordCount":  2397 ,
   "datePublished" : "2022-01-25T00:00:00",
   "dateModified" : "2022-01-25T00:00:00",
   "image" : "https:\/\/fi5t.xyz\/img\/avatar-icon.jpg",
@@ -518,6 +518,7 @@
 <li>В Xposed под это есть модули: <a href="https://repo.xposed.info/module/mobi.acpm.sslunpinning">SSLUnpinning</a> и <a href="https://github.com/Fuzion24/JustTrustMe">JustTrustMe</a></li>
 <li>Скрипты для Frida: <a href="https://codeshare.frida.re/@pcipolloni/universal-android-ssl-pinning-bypass-with-frida/">один</a>, <a href="https://github.com/WooyunDota/DroidSSLUnpinning/blob/master/ObjectionUnpinningPlus/hooks.js">два</a>, <a href="https://codeshare.frida.re/@akabe1/frida-multiple-unpinning/">три</a>, <a href="https://codeshare.frida.re/@sowdust/universal-android-ssl-pinning-bypass-2/">четыре</a>, <a href="https://codeshare.frida.re/@masbog/frida-android-unpinning-ssl/">пять</a>, <a href="https://codeshare.frida.re/@segura2010/android-certificate-pinning-bypass/">шесть</a>, <a href="https://codeshare.frida.re/@akabe1/frida-universal-pinning-bypasser/">семь</a>, <a href="https://codeshare.frida.re/@akabe1/frida-universal-pinning-bypasser/">восемь</a> и обязательно напишите свой ;)</li>
 </ul>
+<p><strong>UPD 21.02.2023:</strong> Еще <a href="https://gist.github.com/incogbyte/1e0e2f38b5602e72b1380f21ba04b15e">один</a> довольно мощный скрипт. Умеет в динамический патчинг.</p>
 <p>Если досталось приложение на <strong>Xamarin</strong>/<strong>Unity</strong>, то придется разбираться в коде и патчить. Начать этот путь лучше всего с <a href="https://github.com/icsharpcode/ILSpyf">ILSpy</a> и <a href="https://github.com/NorthwaveSecurity/fridax">fridax</a>. А вот с Flutter-ом все несколько проще. Нужно использовать <a href="https://github.com/Impact-I/reFlutter">reFlutter</a>, который патчит <code>ssl_crypto_x509_session_verify_cert_chain</code>, что и позволяет обойти некоторые реализации пиннинга. Чуть больше подробностей <a href="https://thedarksource.com/reflutter-to-bypass-ssl-pinning-flutter-based-apps/">тут</a></p>
 <h4 id="подборка-статей-про-обход-ssl-pinning">Подборка статей про обход ssl pinning</h4>
 <ul>
