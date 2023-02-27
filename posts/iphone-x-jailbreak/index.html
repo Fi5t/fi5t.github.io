@@ -82,7 +82,7 @@
   "headline": "Как установить jailbreak на iPhone X",
   "description" : "Короткий туториал для тех кто хочет прямо с двух ног заскочить в исследование приложений под iOS, но не хочет изучать тонну информации о разных видах jailbreak-ов, которые работают под какие-то определенные версии, зависят фазы луны и прочее.\n",
   "inLanguage" : "ru",
-  "wordCount":  631 ,
+  "wordCount":  753 ,
   "datePublished" : "2023-02-27T00:00:00",
   "dateModified" : "2023-02-27T00:00:00",
   "image" : "https:\/\/fi5t.xyz\/img\/avatar-icon.jpg",
@@ -295,7 +295,7 @@
 <li><strong>Версия palera1n:</strong> 2.0 beta 4</li>
 </ul>
 <h2 id="активация">Активация</h2>
-<p>Опустим этап дефлорации упаковки и перейдем сразу к делу. Первое, что следует сделать - это предварительно <a href="https://appleid.apple.com/account">создать  Apple ID</a> чтобы не делать этого в процессе активации устройства. Активацию придется делать быстро, чтобы устройство не успело обновиться на более свежую версию iOS и не обломало нам весь процесс. Пароль тоже лучше поставить не сложный чтобы можно было быстро ввести его руками. Sim-карту лучше также не вставлять.</p>
+<p>Опустим этап дефлорации упаковки и перейдем сразу к делу. Первое, что следует сделать - это предварительно <a href="https://appleid.apple.com/account">создать  Apple ID</a> чтобы не делать этого в процессе активации устройства. Активацию придется делать быстро, чтобы устройство не успело обновиться на более свежую версию iOS и не обломало нам весь процесс. Пароль тоже лучше поставить не сложный чтобы можно было быстро ввести его руками. Sim-карту лучше также не вставлять и <strong>не настраивать</strong> Face ID и Applay Pay.</p>
 <blockquote>
 <p>Если на роутере есть возможность автоматически банить свежеподключенные устройства, то эту возможность надо использовать чтобы сделать походы айфона в сеть более контролируемыми. Включать доступ к сети нужно только тогда, когда без этого никак. В моменты активации и аутентификации через Apple ID например. Все остальное время сеть лучше держать выключенной.</p>
 </blockquote>
@@ -312,7 +312,19 @@
 </div>
 </p>
 <h2 id="установка-palera1n">Установка palera1n</h2>
-<p>Весь процесс будет показан для Linux, потому что на предыдущих версиях были проблемы с видимостью девайса в режиме <a href="https://www.theiphonewiki.com/wiki/DFU_Mode">DFU</a> из macOS, но может вы с этим и не столкнетесь. Официальный туториал лежит <a href="https://ios.cfw.guide/installing-palera1n/">здесь</a> и если у вас что-то пошло не так, то рекомендую обратиться к нему. Также очень желательно использовать кабель <code>Lightning&lt;-&gt;Type-C</code> (можно взять из коробки), но ваш компьютер, очевидно, должен иметь соответсвующий порт. И не вздумайте делать это из под виртуалки. Нужен именно компьютер с Linux (в моем случае). Теперь можно приступать к установке.</p>
+<p>Весь процесс будет показан для Linux, потому что на предыдущих версиях были проблемы с видимостью девайса в режиме <a href="https://www.theiphonewiki.com/wiki/DFU_Mode">DFU</a> из macOS, но может вы с этим и не столкнетесь. Официальный туториал лежит <a href="https://ios.cfw.guide/installing-palera1n/">здесь</a> и если у вас что-то пошло не так, то рекомендую обратиться к нему. Также очень желательно использовать кабель <code>Lightning&lt;-&gt;Type-C</code> (можно взять из коробки), но ваш компьютер, очевидно, должен иметь соответсвующий порт. И не вздумайте делать это из под виртуалки. Нужен именно компьютер с Linux (в моем случае). Перед началом установки нужно <strong>обязательно</strong> отключить Passcode, который был установлен на этапе активации устройства. Для этого идем в настройки и жмем <code>Face ID &amp; Passcode -&gt; Turn Passcode Off</code>.
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/iphone-x-jailbreak/remove_passcode.png" alt="/img/iphone-x-jailbreak/remove_passcode.png"/>
+    </div>
+    <a href="/img/iphone-x-jailbreak/remove_passcode.png" itemprop="contentUrl"></a>
+  </figure>
+</div>
+
+Теперь можно приступать к установке.</p>
 <ol>
 <li><a href="https://github.com/palera1n/palera1n-c/releases">Cкачиваем</a> подходящую версию <code>palera1n</code></li>
 </ol>
@@ -402,6 +414,17 @@
   </figure>
 </div>
 </p>
+<h2 id="важное-послесловие">Важное послесловие</h2>
+<p>Поскольку это полупривязанный jailbrake, то после перезагрузки он слетит и его нужно будет накатить заново. Для этого опять подключаем смартфон к тому же компьтеру на который устанавливали <code>palera1n</code> и выполняем следующие команды:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># Terminal window 1</span>
+</span></span><span class="line"><span class="cl">sudo systemctl stop usbmuxd
+</span></span><span class="line"><span class="cl">sudo usbmuxd -f -p
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Terminal window 2</span>
+</span></span><span class="line"><span class="cl">sudo palera1n -f
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Входим в DFU и дожидаемся полной загрузки устройства.</span>
+</span></span></code></pre></div><p>Если что-то стало работать не так хорошо как раньше, то можно зайти в <code>palera1n loader</code> и в меню <code>tools</code> нажать на <code>Do All</code>.</p>
 
         
           <div class="blog-tags">
