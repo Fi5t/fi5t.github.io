@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://fi5t.xyz/</loc>
-    <lastmod>2023-02-16T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-27T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -14,6 +14,57 @@
                 hreflang="ru"
                 href="https://fi5t.xyz/"
                 />
+  </url><url>
+    <loc>https://fi5t.xyz/tags/ios/</loc>
+    <lastmod>2023-02-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fi5t.xyz/tags/jailbreak/</loc>
+    <lastmod>2023-02-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fi5t.xyz/posts/</loc>
+    <lastmod>2023-02-27T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://fi5t.xyz/en/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://fi5t.xyz/posts/"
+                />
+  </url><url>
+    <loc>https://fi5t.xyz/tags/root/</loc>
+    <lastmod>2023-02-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fi5t.xyz/tags/</loc>
+    <lastmod>2023-02-27T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://fi5t.xyz/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://fi5t.xyz/tags/"
+                />
+  </url><url>
+    <loc>https://fi5t.xyz/tags/tutorial/</loc>
+    <lastmod>2023-02-27T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://fi5t.xyz/en/tags/tutorial/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://fi5t.xyz/tags/tutorial/"
+                />
+  </url><url>
+    <loc>https://fi5t.xyz/posts/iphone-x-jailbreak/</loc>
+    <lastmod>2023-02-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://fi5t.xyz/tags/android/</loc>
     <lastmod>2023-02-16T00:00:00+00:00</lastmod>
@@ -26,19 +77,6 @@
                 rel="alternate"
                 hreflang="ru"
                 href="https://fi5t.xyz/tags/android/"
-                />
-  </url><url>
-    <loc>https://fi5t.xyz/posts/</loc>
-    <lastmod>2023-02-16T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://fi5t.xyz/en/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://fi5t.xyz/posts/"
                 />
   </url><url>
     <loc>https://fi5t.xyz/tags/reverse_engineering/</loc>
@@ -57,19 +95,6 @@
                 href="https://fi5t.xyz/tags/security/"
                 />
   </url><url>
-    <loc>https://fi5t.xyz/tags/</loc>
-    <lastmod>2023-02-16T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://fi5t.xyz/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://fi5t.xyz/tags/"
-                />
-  </url><url>
     <loc>https://fi5t.xyz/posts/deobfuscation-in-the-mind/</loc>
     <lastmod>2023-02-16T00:00:00+00:00</lastmod>
   </url><url>
@@ -85,26 +110,10 @@
     <loc>https://fi5t.xyz/tags/reactnative/</loc>
     <lastmod>2022-11-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://fi5t.xyz/tags/tutorial/</loc>
-    <lastmod>2022-11-16T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://fi5t.xyz/en/tags/tutorial/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://fi5t.xyz/tags/tutorial/"
-                />
-  </url><url>
     <loc>https://fi5t.xyz/posts/disobedient-react-native/</loc>
     <lastmod>2022-11-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://fi5t.xyz/tags/firmware/</loc>
-    <lastmod>2022-07-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://fi5t.xyz/tags/root/</loc>
     <lastmod>2022-07-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://fi5t.xyz/posts/oppo-a16-easy-root/</loc>
