@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://fi5t.xyz/</loc>
-    <lastmod>2023-02-27T00:00:00+00:00</lastmod>
+    <lastmod>2023-04-18T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -15,14 +15,8 @@
                 href="https://fi5t.xyz/"
                 />
   </url><url>
-    <loc>https://fi5t.xyz/tags/ios/</loc>
-    <lastmod>2023-02-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://fi5t.xyz/tags/jailbreak/</loc>
-    <lastmod>2023-02-27T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://fi5t.xyz/posts/</loc>
-    <lastmod>2023-02-27T00:00:00+00:00</lastmod>
+    <lastmod>2023-04-18T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -34,11 +28,11 @@
                 href="https://fi5t.xyz/posts/"
                 />
   </url><url>
-    <loc>https://fi5t.xyz/tags/root/</loc>
-    <lastmod>2023-02-27T00:00:00+00:00</lastmod>
+    <loc>https://fi5t.xyz/tags/sdr/</loc>
+    <lastmod>2023-04-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://fi5t.xyz/tags/</loc>
-    <lastmod>2023-02-27T00:00:00+00:00</lastmod>
+    <lastmod>2023-04-18T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -51,7 +45,7 @@
                 />
   </url><url>
     <loc>https://fi5t.xyz/tags/tutorial/</loc>
-    <lastmod>2023-02-27T00:00:00+00:00</lastmod>
+    <lastmod>2023-04-18T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -62,6 +56,18 @@
                 hreflang="ru"
                 href="https://fi5t.xyz/tags/tutorial/"
                 />
+  </url><url>
+    <loc>https://fi5t.xyz/posts/usrp-b200-mini-i-macos-m1/</loc>
+    <lastmod>2023-04-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fi5t.xyz/tags/ios/</loc>
+    <lastmod>2023-02-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fi5t.xyz/tags/jailbreak/</loc>
+    <lastmod>2023-02-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fi5t.xyz/tags/root/</loc>
+    <lastmod>2023-02-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://fi5t.xyz/posts/iphone-x-jailbreak/</loc>
     <lastmod>2023-02-27T00:00:00+00:00</lastmod>

@@ -6,7 +6,31 @@
     <description>Recent content on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-ru</language>
-    <lastBuildDate>Mon, 27 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 18 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Заводим USRP B200-mini-i под macOS на M1</title>
+      <link>https://fi5t.xyz/posts/usrp-b200-mini-i-macos-m1/</link>
+      <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://fi5t.xyz/posts/usrp-b200-mini-i-macos-m1/</guid>
+      <description>&lt;p&gt;Я уже какое-то время изучаю &lt;a href=&#34;https://en.wikipedia.org/wiki/Software-defined_radio&#34;&gt;SDR&lt;/a&gt;, и вот наконец-то мне приехала более серьезная игрушка чем RTL-SDR, с которой я упражнялся ранее.&lt;/p&gt;
+
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;
+&lt;div class=&#34;box&#34; &gt;
+  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+    &lt;div class=&#34;img&#34;&gt;
+      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/usrp-b200-mini-i-macos-m1/device.jpg&#34; alt=&#34;/img/usrp-b200-mini-i-macos-m1/device.jpg&#34;/&gt;
+    &lt;/div&gt;
+    &lt;a href=&#34;https://fi5t.xyz/img/usrp-b200-mini-i-macos-m1/device.jpg&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Строго говоря, это не оригинальная B200-mini-i от Ettus Research, а ее китайский клон. Но так распорядилась судьба 🤗 По основным компонентам она сопоставима, поэтому жить можно.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Каких-то особых трудностей в том, чтобы заставить ее работать у меня не возникло, но для ее правильной работы все равно требуется пройти некоторый базовый сценарий. Его я и собираюсь описать.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Как установить jailbreak на iPhone X</title>
       <link>https://fi5t.xyz/posts/iphone-x-jailbreak/</link>
