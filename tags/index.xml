@@ -6,7 +6,43 @@
     <description>Recent content in Tags on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-ru</language>
-    <lastBuildDate>Tue, 18 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 23 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>android</title>
+      <link>https://fi5t.xyz/tags/android/</link>
+      <pubDate>Tue, 23 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://fi5t.xyz/tags/android/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mobile</title>
+      <link>https://fi5t.xyz/tags/mobile/</link>
+      <pubDate>Tue, 23 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://fi5t.xyz/tags/mobile/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>research</title>
+      <link>https://fi5t.xyz/tags/research/</link>
+      <pubDate>Tue, 23 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://fi5t.xyz/tags/research/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>security</title>
+      <link>https://fi5t.xyz/tags/security/</link>
+      <pubDate>Tue, 23 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://fi5t.xyz/tags/security/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>sdr</title>
       <link>https://fi5t.xyz/tags/sdr/</link>
@@ -53,15 +89,6 @@
     </item>
     
     <item>
-      <title>android</title>
-      <link>https://fi5t.xyz/tags/android/</link>
-      <pubDate>Thu, 16 Feb 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://fi5t.xyz/tags/android/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>reverse_engineering</title>
       <link>https://fi5t.xyz/tags/reverse_engineering/</link>
       <pubDate>Thu, 16 Feb 2023 00:00:00 +0000</pubDate>
@@ -71,29 +98,11 @@
     </item>
     
     <item>
-      <title>security</title>
-      <link>https://fi5t.xyz/tags/security/</link>
-      <pubDate>Thu, 16 Feb 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://fi5t.xyz/tags/security/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>jvm</title>
       <link>https://fi5t.xyz/tags/jvm/</link>
       <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://fi5t.xyz/tags/jvm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>mobile</title>
-      <link>https://fi5t.xyz/tags/mobile/</link>
-      <pubDate>Wed, 16 Nov 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://fi5t.xyz/tags/mobile/</guid>
       <description></description>
     </item>
     

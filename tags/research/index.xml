@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>research on (не)Уникальный опыт</title>
+    <link>https://fi5t.xyz/tags/research/</link>
+    <description>Recent content in research on (не)Уникальный опыт</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru-ru</language>
+    <lastBuildDate>Tue, 23 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/tags/research/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Безопасность мобильных приложений и устройств</title>
+      <link>https://fi5t.xyz/posts/mobile-apps-security/</link>
+      <pubDate>Tue, 23 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://fi5t.xyz/posts/mobile-apps-security/</guid>
+      <description>За 2022 год наша команда обнаружила 216 уязвимостей в 25 парах исследованных приложений для платформ Android и iOS. Наибольшая доля уязвимостей (14%) пришлась на хранение пользовательских данных в открытом виде. Несмотря на усилия со стороны разработчиков операционных систем и сообществ по безопасной разработке приложений, этот класс уязвимостей продолжает уверенно сохранять лидерство несколько лет подряд. Описанный тренд сохранит актуальность в 2023 году, хотя использовать криптографию в мобильных приложениях сегодня очень просто: и вендорские, и опенсорсные решения облегчают разработчикам работу с криптографическими примитивами.</description>
+    </item>
+    
+  </channel>
+</rss>

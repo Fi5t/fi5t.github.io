@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+<script type="text/javascript" >
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+ 
+    ym(64685116, "init", {
+         clickmap:true,
+         trackLinks:true,
+         accurateTrackBounce:true
+    });
+ </script>
+ <noscript><div><img src="https://mc.yandex.ru/watch/64685116" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+ 
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Mobile application security - (not)Unique experience</title>
+  <meta name="description" content="In 2022, our team discovered 216 vulnerabilities during studies of 25 pairs of apps for Android and iOS platforms. The storage of user data in clear text accounted for the largest share of vulnerabilities (14%). Despite the efforts of operation system developers and secure application development communities, this class of vulnerability has continued to be the most prevalent for several years in a row. This trend will remain relevant in 2023, although it is now very simple to use cryptography in mobile applications: both vendor and open-source solutions make working with cryptographic primitives easier for developers.">
+  <meta name="author" content="Fi5t"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "(not)Unique experience",
+    
+    "url": "https:\/\/fi5t.xyz"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/fi5t.xyz"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/fi5t.xyz",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/fi5t.xyz\/en\/posts\/mobile-apps-security\/",
+          "name": "Mobile application security"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Fi5t"
+  },
+  "headline": "Mobile application security",
+  "description" : "In 2022, our team discovered 216 vulnerabilities during studies of 25 pairs of apps for Android and iOS platforms. The storage of user data in clear text accounted for the largest share of vulnerabilities (14%). Despite the efforts of operation system developers and secure application development communities, this class of vulnerability has continued to be the most prevalent for several years in a row. This trend will remain relevant in 2023, although it is now very simple to use cryptography in mobile applications: both vendor and open-source solutions make working with cryptographic primitives easier for developers.",
+  "inLanguage" : "en",
+  "wordCount":  1180 ,
+  "datePublished" : "2023-05-23T00:00:00",
+  "dateModified" : "2023-05-23T00:00:00",
+  "image" : "https:\/\/fi5t.xyz\/img\/avatar-icon.jpg",
+  "keywords" : [ "android, mobile, security, research" ],
+  "mainEntityOfPage" : "https:\/\/fi5t.xyz\/en\/posts\/mobile-apps-security\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/fi5t.xyz",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/fi5t.xyz\/img\/avatar-icon.jpg",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Mobile application security" />
+<meta property="og:description" content="In 2022, our team discovered 216 vulnerabilities during studies of 25 pairs of apps for Android and iOS platforms. The storage of user data in clear text accounted for the largest share of vulnerabilities (14%). Despite the efforts of operation system developers and secure application development communities, this class of vulnerability has continued to be the most prevalent for several years in a row. This trend will remain relevant in 2023, although it is now very simple to use cryptography in mobile applications: both vendor and open-source solutions make working with cryptographic primitives easier for developers.">
+<meta property="og:image" content="https://fi5t.xyz/img/avatar-icon.jpg" />
+<meta property="og:url" content="https://fi5t.xyz/en/posts/mobile-apps-security/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="(not)Unique experience" />
+
+  <meta name="twitter:title" content="Mobile application security" />
+  <meta name="twitter:description" content="In 2022, our team discovered 216 vulnerabilities during studies of 25 pairs of apps for Android and iOS platforms. The storage of user data in clear text accounted for the largest share of …">
+  <meta name="twitter:image" content="https://fi5t.xyz/img/avatar-icon.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href='https://fi5t.xyz/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.111.3">
+  <link rel="alternate" href="https://fi5t.xyz/en/index.xml" type="application/rss+xml" title="(not)Unique experience"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fi5t.xyz/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://fi5t.xyz/css/syntax.css" /><link rel="stylesheet" href="https://fi5t.xyz/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://fi5t.xyz/en/">(not)Unique experience</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Tags" href="/en/tags">Tags</a>
+            </li>
+          
+        
+
+        
+          
+            <li>
+              
+                
+              
+                
+                  <a href="/ru" lang="ru">ru</a>
+                
+              
+            </li>
+          
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="(not)Unique experience" href="https://fi5t.xyz/en/">
+            <img class="avatar-img" src="https://fi5t.xyz/img/avatar-icon.jpg" alt="(not)Unique experience" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header-section ">
+  
+  <div class="intro-header no-img">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <div class="posts-heading">
+            
+            <h1>Mobile application security</h1>
+            
+            
+            <hr class="small">
+            
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>In 2022, our team discovered 216 vulnerabilities during studies of 25 pairs of apps for Android and iOS platforms. The
+storage of user data in clear text accounted for the largest share of vulnerabilities (14%). Despite the efforts of
+operation system developers and secure application development communities, this class of vulnerability has continued to
+be the most prevalent for several years in a row. This trend will remain relevant in 2023, although it is now very
+simple to use cryptography in mobile applications: both vendor and open-source solutions make working with cryptographic
+primitives easier for developers. Vulnerabilities related to application integrity checks and storing confidential
+information in the code shared second place, with 9% each. Third place (8%) was taken by vulnerabilities related to
+untrusted environment checks.</p>
+<p>If the above vulnerabilities can be found in an application, this indicates that the developers are not strict enough
+when controlling the integrity of their applications and execution environment. If we add to this the lack of good code
+obfuscation (we found this combination in 36% of the applications we studied in 2022), this creates a favorable
+situation for attackers: it becomes very easy to conduct qualitative analysis, which, in turn, makes it simpler to
+create bots, clones and trojans targeting specific products.</p>
+<h2 id="the-number-of-vulnerabilities-has-decreased">The number of vulnerabilities has decreased</h2>
+<p>The most curious trend of 2022 was that certain vulnerability classes were absent in applications. For example,
+developers no longer store cryptographic keys in the file system and don&rsquo;t allow errors that make it possible to
+traverse directories (Path Traversal). We encountered the vulnerability related to insecurely sending implicit
+inter-process messages only once in 2022, down from the six cases we found in the year prior. This is due to the fact
+that developers have begun to apply good architectural practices more often, significantly reducing the attack surface
+of applications and even completely neutralizing some types of vulnerabilities. For example, in Android applications
+using the Single Activity approach there is only one activity, which significantly reduces the number of possible entry
+points. This approach makes it easier for developers to control and secure application entry points. We expect this
+positive trend to get stronger in 2023.</p>
+<p>New versions of operating systems also help application developers: more granular permissions are being introduced for
+performing system operations and a number of permissions can be requested each time. For example, now you don&rsquo;t need to
+permanently give the application permission to access your geolocation.</p>
+<h2 id="fake-apps-are-the-scourge-of-2022-2023">Fake apps are the scourge of 2022-2023</h2>
+<p>In the past year, the problem of cloned and fake apps reached a new level. The mobile applications of many companies
+were <a href="https://time.news/google-play-removes-apps-from-a-number-of-sanctioned-russian-banks/">removed</a> from official
+stores, so users had to look for them on other sites. Attackers did not fail to take
+advantage of this and began to actively spread fake applications. Another interesting point: in order to install an
+application from a third-party source on your smartphone, you need to enable the corresponding function (downloading
+from non-official stores is prohibited by default by Android and iOS developers). Previously, attackers tricked users
+into activating it; now users are forced to give installation permission on their own, and it&rsquo;s often impossible to be
+sure that an application is the original when downloading from an unknown source. For example, scammers can modify the
+application of a well-known bank and steal the password from a personal account. The situation was exacerbated by the
+mobile application developers themselves when they began
+to <a href="https://russianfreepress.com/2022/08/16/sbol-application-appeared-in-the-appstore-completely-repeating-sberbank-online-removed-due-to-sanctions/">place</a>
+their apps in official stores under new names and on
+behalf of different companies . From then on, it became even more difficult to understand which products are legitimate
+and which are not. In our view, the creation of fake apps will remain one of the top cyberthreats in 2023.</p>
+<h2 id="domestic-app-stores-enter-the-arena">Domestic app stores enter the arena</h2>
+<p>The launch of Russian app stores designed to replace Google Play and the App Store was another enforced trend in 2022.
+Attracting users and gaining their trust won&rsquo;t be an easy task. Participating in bug bounty programs and cooperating
+with communities of information security specialists can help with this. The main problem with domestic stores is that
+they are in fact just ordinary user applications without any special rights in the system. As a result, it&rsquo;s necessary
+to give the same permission as when installing an application from an untrusted source. This permission poses the
+greatest danger for Android versions below 9 (Pie), because it is issued to the entire system at once. In version 9,
+this has changed, and now the right to install can be given to each specific application separately. This means you can
+grant permission to the installed app store and then only it will be able to install from untrusted sources. This
+approach somewhat reduces the attack surface.
+As we see it, cooperation between the developers of domestic stores and operating system suppliers could solve the
+problem. It&rsquo;s possible that the first integrations with Chinese vendors will start to appear in 2023. Another option is
+to create a domestic operating system in which such app stores would be installed in the system by default.</p>
+<h2 id="its-time-to-systematize-vulnerabilities-in-mobile-applications">It&rsquo;s time to systematize vulnerabilities in mobile applications</h2>
+<p>Global trends in mobile app vulnerabilities continue to surprise us year after year: WhatsApp integer overflow (
+<a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-36934">CVE-2022-36934</a>, <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-27492">CVE-2022-27492</a>),
+TikTok account takeover via deeplink (<a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-28799">CVE-2022-28799</a>)
+and a similar link processing
+issue at Zoom (<a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-28763">CVE-2022-28763</a>). In addition,
+researchers were able
+to <a href="https://research.nccgroup.com/2022/05/15/technical-advisory-tesla-ble-phone-as-a-key-passive-entry-vulnerable-to-relay-attacks/">hack</a>
+Tesla by conducting an MITM attack on the
+Bluetooth Low Energy connection between a car and the mobile
+app (<a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-37709">CVE-2022-37709</a>). This list of incidents is just a
+small part of what became publicly known in 2022. It&rsquo;s worth noting that these are not new types of attacks or unknown
+exploits, but typical vulnerabilities that we see every year. This points to one obvious conclusion: developers do not
+learn from their mistakes. Why? Perhaps it comes down to a lack of tools. Overall, the global information security
+community pays very little attention to the classification of vulnerabilities in mobile applications. The OWASP Mobile
+Top 10, a ranking of the most frequently encountered threats, has not been updated since 2016, while the OWASP Top 10
+for web threats was updated in 2021.
+The top three positions in the ranking of application vulnerabilities are held by &ldquo;Improper Platform Usage&rdquo;, &ldquo;Insecure
+Data Storage&rdquo;, and &ldquo;Insecure Communication&rdquo;, which differs from the results of our application security studies in 2021
+and 2022. A more recent standard, the OWASP Mobile Application Security Verification Standard (MASVS), is written from
+the standpoint of application testing by the developer, not by the attacker. In this regard, it has become necessary to
+make a classification of application vulnerabilities similar to the one that already exists for web applications.</p>
+<p>In 2023, the problem of the lack of mobile application security analysis specialists will still be present. At the same
+time, the development of thematic communities, bug bounty programs (including Russian ones), and the emergence of more
+advanced tools will encourage the appearance on the market of more specialists in this field—and with it the
+strengthening of mobile application security.</p>
+<h2 id="links">Links</h2>
+<ul>
+<li><a href="#">Positive Research magazine / 2023</a></li>
+</ul>
+
+
+        
+          <div class="blog-tags">
+            
+              <a href="https://fi5t.xyz/en/tags/android/">android</a>&nbsp;
+            
+              <a href="https://fi5t.xyz/en/tags/mobile/">mobile</a>&nbsp;
+            
+              <a href="https://fi5t.xyz/en/tags/security/">security</a>&nbsp;
+            
+              <a href="https://fi5t.xyz/en/tags/research/">research</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=https%3a%2f%2ffi5t.xyz%2fen%2fposts%2fmobile-apps-security%2f&amp;text=Mobile%20application%20security&amp;via=" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ffi5t.xyz%2fen%2fposts%2fmobile-apps-security%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=https%3a%2f%2ffi5t.xyz%2fen%2fposts%2fmobile-apps-security%2f&amp;title=Mobile%20application%20security" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2ffi5t.xyz%2fen%2fposts%2fmobile-apps-security%2f&amp;title=Mobile%20application%20security" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2ffi5t.xyz%2fen%2fposts%2fmobile-apps-security%2f&amp;title=Mobile%20application%20security" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2ffi5t.xyz%2fen%2fposts%2fmobile-apps-security%2f&amp;description=Mobile%20application%20security" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+
+              </div>
+            </section>
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">See also</h4>
+                  <ul>
+                
+                
+                    <li><a href="/en/posts/reverse-proxy-with-mtls-and-ktor/">Creating mTLS reverse proxy with Ktor</a></li>
+                
+                    <li><a href="/en/posts/drozer-on-mac/">Installing Drozer on macOS Catalina</a></li>
+                
+                    <li><a href="/en/posts/android-context/">Android Context</a></li>
+                
+              </ul>
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://fi5t.xyz/en/posts/reverse-proxy-with-mtls-and-ktor/" data-toggle="tooltip" data-placement="top" title="Creating mTLS reverse proxy with Ktor">&larr; Previous Post</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
+        
+          
+          <div class="disqus-comments">
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "not-unique-x" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+          </div>
+          
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+		
+		  <a href="https://github.com/Fi5t" title="GitHub">
+		
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+		
+		  <a href="https://www.youtube.com/c/AndroidGuards" title="Youtube">
+		
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-youtube fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              Fi5t
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2023
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://fi5t.xyz/en/">(not)Unique experience</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.111.3</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://fi5t.xyz/js/main.js"></script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://fi5t.xyz/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

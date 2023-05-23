@@ -6,7 +6,16 @@
     <description>Recent content on (not)Unique experience</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-ru</language>
-    <lastBuildDate>Sun, 01 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/en/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 23 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/en/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mobile application security</title>
+      <link>https://fi5t.xyz/en/posts/mobile-apps-security/</link>
+      <pubDate>Tue, 23 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://fi5t.xyz/en/posts/mobile-apps-security/</guid>
+      <description>In 2022, our team discovered 216 vulnerabilities during studies of 25 pairs of apps for Android and iOS platforms. The storage of user data in clear text accounted for the largest share of vulnerabilities (14%). Despite the efforts of operation system developers and secure application development communities, this class of vulnerability has continued to be the most prevalent for several years in a row. This trend will remain relevant in 2023, although it is now very simple to use cryptography in mobile applications: both vendor and open-source solutions make working with cryptographic primitives easier for developers.</description>
+    </item>
+    
     <item>
       <title>Creating mTLS reverse proxy with Ktor</title>
       <link>https://fi5t.xyz/en/posts/reverse-proxy-with-mtls-and-ktor/</link>
