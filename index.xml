@@ -6,7 +6,16 @@
     <description>Recent content on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-ru</language>
-    <lastBuildDate>Tue, 23 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 24 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Эволюция уязвимостей в приложениях для Android</title>
+      <link>https://fi5t.xyz/posts/evolution-of-vulnerabilities-in-android-apps/</link>
+      <pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://fi5t.xyz/posts/evolution-of-vulnerabilities-in-android-apps/</guid>
+      <description>История развития приложений для Android прошла несколько заметных этапов: небольшие приложения, работающие локально, клиент-серверные приложения, экосистемы приложений и суперапы (super-app). Каждый из этих этапов повышал планку сложности, порождал новые уязвимости и заставлял разработчиков все больше заботиться о безопасности как самих приложений, так и данных, которыми они оперируют. Развивалась и сама операционная система, предоставляя разработчикам больше возможностей и механизмов обеспечения безопасности. Но в этой системе уравнений всегда несколько больше неизвестных, чем кажется на первый взгляд.</description>
+    </item>
+    
     <item>
       <title>Безопасность мобильных приложений и устройств</title>
       <link>https://fi5t.xyz/posts/mobile-apps-security/</link>

@@ -6,7 +6,16 @@
     <description>Recent content in mobile on (not)Unique experience</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-ru</language>
-    <lastBuildDate>Tue, 23 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/en/tags/mobile/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 24 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/en/tags/mobile/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Evolution of vulnerabilities in Android apps</title>
+      <link>https://fi5t.xyz/en/posts/evolution-of-vulnerabilities-in-android-apps/</link>
+      <pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://fi5t.xyz/en/posts/evolution-of-vulnerabilities-in-android-apps/</guid>
+      <description>The history of Android app development has gone through several notable stages, from small apps running locally, to client-server apps, app ecosystems, and super-apps. Each of these stages raised the bar of complexity, creating new vulnerabilities, and increased developers&amp;rsquo; concern about the security of both the applications and the data they operate with. The operating system itself has evolved, providing developers with more options and security mechanisms. But there are always a few more unknowns in this system of equations than meets the eye.</description>
+    </item>
+    
     <item>
       <title>Mobile application security</title>
       <link>https://fi5t.xyz/en/posts/mobile-apps-security/</link>
