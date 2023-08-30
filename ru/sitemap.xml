@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://fi5t.xyz/</loc>
-    <lastmod>2023-05-24T00:00:00+00:00</lastmod>
+    <lastmod>2023-08-30T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -14,6 +14,38 @@
                 hreflang="ru"
                 href="https://fi5t.xyz/"
                 />
+  </url><url>
+    <loc>https://fi5t.xyz/posts/</loc>
+    <lastmod>2023-08-30T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://fi5t.xyz/en/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://fi5t.xyz/posts/"
+                />
+  </url><url>
+    <loc>https://fi5t.xyz/tags/</loc>
+    <lastmod>2023-08-30T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://fi5t.xyz/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://fi5t.xyz/tags/"
+                />
+  </url><url>
+    <loc>https://fi5t.xyz/posts/not-only-programmers-way/</loc>
+    <lastmod>2023-08-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fi5t.xyz/tags/%D1%84%D0%B8%D0%BB%D0%BE%D1%81%D0%BE%D1%84%D0%B8%D1%8F/</loc>
+    <lastmod>2023-08-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://fi5t.xyz/tags/android/</loc>
     <lastmod>2023-05-24T00:00:00+00:00</lastmod>
@@ -41,19 +73,6 @@
                 href="https://fi5t.xyz/tags/mobile/"
                 />
   </url><url>
-    <loc>https://fi5t.xyz/posts/</loc>
-    <lastmod>2023-05-24T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://fi5t.xyz/en/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://fi5t.xyz/posts/"
-                />
-  </url><url>
     <loc>https://fi5t.xyz/tags/research/</loc>
     <lastmod>2023-05-24T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -78,19 +97,6 @@
                 rel="alternate"
                 hreflang="ru"
                 href="https://fi5t.xyz/tags/security/"
-                />
-  </url><url>
-    <loc>https://fi5t.xyz/tags/</loc>
-    <lastmod>2023-05-24T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://fi5t.xyz/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://fi5t.xyz/tags/"
                 />
   </url><url>
     <loc>https://fi5t.xyz/posts/evolution-of-vulnerabilities-in-android-apps/</loc>
@@ -203,9 +209,6 @@
   </url><url>
     <loc>https://fi5t.xyz/posts/python-security-pitfalls/</loc>
     <lastmod>2022-03-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://fi5t.xyz/tags/%D1%84%D0%B8%D0%BB%D0%BE%D1%81%D0%BE%D1%84%D0%B8%D1%8F/</loc>
-    <lastmod>2022-03-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://fi5t.xyz/posts/hard-times/</loc>
     <lastmod>2022-03-06T00:00:00+00:00</lastmod>
