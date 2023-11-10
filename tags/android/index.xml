@@ -6,8 +6,16 @@
     <description>Recent content in android on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru</language>
-    <lastBuildDate>Wed, 24 May 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 10 Nov 2023 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://fi5t.xyz/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OWASP Mobile Top Ten 2023</title>
+      <link>https://fi5t.xyz/posts/owasp-mobile-top-ten-2023/</link>
+      <pubDate>Fri, 10 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://fi5t.xyz/posts/owasp-mobile-top-ten-2023/</guid>
+      <description>&lt;p&gt;Как-то тихо и незаметно для меня релизнулась новая редакция OWASP для мобилок. После ознакомления с новой редакцией появилось несколько мыслей, которыми хотел поделиться. Ну и в целом попытался простыми словами передать суть пунктов чтобы инфобез-неофитам и разработчикам было проще понять суть происходящего.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://owasp.org/www-project-mobile-top-10/2023-risks/assets/images/comparison-owasp-10.png&#34; alt=&#34;Comparison between 2016 and 2023&#34;&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Эволюция уязвимостей в приложениях для Android</title>
       <link>https://fi5t.xyz/posts/evolution-of-vulnerabilities-in-android-apps/</link>
