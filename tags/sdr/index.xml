@@ -6,12 +6,12 @@
     <description>Recent content in sdr on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru</language>
-    <lastBuildDate>Tue, 18 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/tags/sdr/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 18 Apr 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://fi5t.xyz/tags/sdr/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Заводим USRP B200-mini-i под macOS на M1</title>
       <link>https://fi5t.xyz/posts/usrp-b200-mini-i-macos-m1/</link>
       <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://fi5t.xyz/posts/usrp-b200-mini-i-macos-m1/</guid>
       <description>&lt;p&gt;Я уже какое-то время изучаю &lt;a href=&#34;https://en.wikipedia.org/wiki/Software-defined_radio&#34;&gt;SDR&lt;/a&gt;, и вот наконец-то мне приехала более серьезная игрушка чем RTL-SDR, с которой я упражнялся ранее.&lt;/p&gt;
 
@@ -30,6 +30,5 @@
 &lt;/blockquote&gt;
 &lt;p&gt;Каких-то особых трудностей в том, чтобы заставить ее работать у меня не возникло, но для ее правильной работы все равно требуется пройти некоторый базовый сценарий. Его я и собираюсь описать.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

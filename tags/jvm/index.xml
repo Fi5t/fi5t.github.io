@@ -6,12 +6,12 @@
     <description>Recent content in jvm on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru</language>
-    <lastBuildDate>Sun, 25 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/tags/jvm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 Dec 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://fi5t.xyz/tags/jvm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Бассейн со строками</title>
       <link>https://fi5t.xyz/posts/string-pool/</link>
       <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://fi5t.xyz/posts/string-pool/</guid>
       <description>&lt;p&gt;&lt;em&gt;Бывает так, что долго-долго собираюсь написать про какую-то тему и не нахожу на это время, а потом приходит человек и задает на эту тему вопрос (спасибо тебе, человек!), после которого находятся силы и время сделать разбор интересной темы.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Речь пойдет об организации памяти в JVM и таком явлении как &lt;strong&gt;String pool&lt;/strong&gt;, а также почему нельзя так просто взять и удалить секретную информацию из памяти android приложения.&lt;/p&gt;
@@ -28,6 +28,5 @@
 &lt;/div&gt;
 &lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

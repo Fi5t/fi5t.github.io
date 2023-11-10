@@ -6,18 +6,17 @@
     <description>Recent content in firmware on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru</language>
-    <lastBuildDate>Wed, 20 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/tags/firmware/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 20 Jul 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://fi5t.xyz/tags/firmware/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Как получить root права на OPPO A16</title>
       <link>https://fi5t.xyz/posts/oppo-a16-easy-root/</link>
       <pubDate>Wed, 20 Jul 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://fi5t.xyz/posts/oppo-a16-easy-root/</guid>
       <description>&lt;p&gt;Подозреваю, что есть больше одного способа получить root права на этом устройстве. В сети есть даже туториалы разной степени работоспособности. Часть из них требует каких-то сумрачных виндовых программ (в т.ч. платных), другая часть просто не работает или демонстрирует полное непонимание вопроса автором туториала. Поковырявшись с этим всем великолепием, я решил написать тот самый, &lt;strong&gt;правильный туториал©&lt;/strong&gt;, который хотел бы прочитать сам в начале пути.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Любое количество кирпичей, образовавшихся в результате описываемых ниже действий - на вашей совести.&lt;/p&gt;
 &lt;/blockquote&gt;</description>
     </item>
-    
   </channel>
 </rss>

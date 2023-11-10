@@ -6,12 +6,12 @@
     <description>Recent content in jailbreak on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru</language>
-    <lastBuildDate>Mon, 27 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/tags/jailbreak/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 27 Feb 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://fi5t.xyz/tags/jailbreak/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Как установить jailbreak на iPhone X</title>
       <link>https://fi5t.xyz/posts/iphone-x-jailbreak/</link>
       <pubDate>Mon, 27 Feb 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://fi5t.xyz/posts/iphone-x-jailbreak/</guid>
       <description>&lt;p&gt;Короткий туториал для тех кто хочет прямо с двух ног заскочить в исследование приложений под iOS, но не хочет изучать тонну информации о разных видах jailbreak-ов, которые работают под какие-то определенные версии, зависят фазы луны и прочее.&lt;/p&gt;
 
@@ -25,6 +25,5 @@
   &lt;/figure&gt;
 &lt;/div&gt;</description>
     </item>
-    
   </channel>
 </rss>

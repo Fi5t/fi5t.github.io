@@ -6,12 +6,12 @@
     <description>Recent content in философия on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru</language>
-    <lastBuildDate>Wed, 30 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/tags/%D1%84%D0%B8%D0%BB%D0%BE%D1%81%D0%BE%D1%84%D0%B8%D1%8F/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 30 Aug 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://fi5t.xyz/tags/%D1%84%D0%B8%D0%BB%D0%BE%D1%81%D0%BE%D1%84%D0%B8%D1%8F/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Путь программиста: альтернативный сценарий</title>
       <link>https://fi5t.xyz/posts/not-only-programmers-way/</link>
       <pubDate>Wed, 30 Aug 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://fi5t.xyz/posts/not-only-programmers-way/</guid>
       <description>&lt;p&gt;Я уже как-то &lt;a href=&#34;https://fi5t.xyz/posts/programmers-way/&#34;&gt;писал&lt;/a&gt; свои соображения на тему того, как может выглядеть путь развития программиста. С тех пор прошло больше трех лет, и несмотря на то, что статья не потеряла актуальности я решил ее немного дополнить описанием альтернативной ветки развития, которая тоже про IT, но немного про другое IT. Не то, к которому привык среднестатистический &lt;del&gt;смузихлеб из коворкинга&lt;/del&gt; писатель кода руками. Поговорим про путь разработчика в безопасность, а в частности про offensive security. Заварите себе чего-нибудь ядреного и погнали.&lt;/p&gt;
 
@@ -25,51 +25,42 @@
   &lt;/figure&gt;
 &lt;/div&gt;</description>
     </item>
-    
     <item>
       <title>Школа выживания в природных условиях</title>
       <link>https://fi5t.xyz/posts/hard-times/</link>
       <pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://fi5t.xyz/posts/hard-times/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Человек, оказавшийся в глухом бесконечном лесу, на безлюдном морском побережье, на опасной горной тропе, может и должен выжить.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Как разжечь костер из лошадиного говна, приготовить суп из березовой коры и профильтровать воду через носок с древесным углем я рассказывать вам не буду. Время для этой статьи еще не настало. Вместо этого мне стали все чаще задавать вопросы про VPN и прочие вынужденные меры. Об этом и поговорим. Если вы ожидаете увидеть гайд по настройке VPN, то вам не сюда. Не тратье свое время, лучше погуглите туториал.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Повелители DOOM</title>
       <link>https://fi5t.xyz/posts/masters-of-doom/</link>
       <pubDate>Mon, 16 Aug 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://fi5t.xyz/posts/masters-of-doom/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Однажды Джей решил проверить, насколько Кармак сосредоточен, вставив кассету с порно в &lt;a href=&#34;https://ru.wikipedia.org/wiki/%D0%92%D0%B8%D0%B4%D0%B5%D0%BE%D0%BC%D0%B0%D0%B3%D0%BD%D0%B8%D1%82%D0%BE%D1%84%D0%BE%D0%BD&#34;&gt;видеомагнитофон&lt;/a&gt; и включив фильм на полную громкость&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Давненько я не читал таких хороших историй, как в этой книге. Зарождение и трансформация целой индустрии это вам не хрен собачий и путь компании &lt;strong&gt;id Software&lt;/strong&gt; однозначно стоит внимания любого программиста, даже если он никогда не собирается работать в игровой индустрии. Не знаю был ли как-то специально идеализирован образ Джона Кармака в этой книге, но его подходы к работе впечатляют. В моем понимании так должен действовать каждый инженер-программист, который хочет делать что-то действительно стоящее внимания.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Путь программиста</title>
       <link>https://fi5t.xyz/posts/programmers-way/</link>
       <pubDate>Wed, 03 Jun 2020 11:28:37 +0300</pubDate>
-      
       <guid>https://fi5t.xyz/posts/programmers-way/</guid>
       <description>&lt;p&gt;Мне тут дядя из Джанхота новую партию чая прислал, а под чай, как известно, хорошо пишутся всякие разглагольствования на тему будущего, прошлого и настоящего. Говорить сегодня будем о программистах, я же больше ни про кого ничего не знаю. Расскажу, как я вижу путь развития современного программиста и дам в меру &lt;del&gt;без&lt;/del&gt;полезные советы о том как идти по этому пути.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Как выбрать сервер для web приложения</title>
       <link>https://fi5t.xyz/posts/choose-hardware-configuration/</link>
       <pubDate>Sat, 09 May 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://fi5t.xyz/posts/choose-hardware-configuration/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Привет. Можешь помочь с требованиям к прод серверу ? Какой мощности нам хватит?&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Вот такое сообщение я получил от менеджера в конце рабочего дня. Стоит ли говорить, что приложение для которого нужно было подобрать сервер еще не существовало даже в виде требований. Следовательно, посчитать хоть какой-то примерный &lt;a href=&#34;https://en.wikipedia.org/wiki/Web_server#requests_per_second&#34;&gt;RPS&lt;/a&gt; не представлялось возможным.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

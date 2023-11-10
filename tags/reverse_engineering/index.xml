@@ -6,12 +6,12 @@
     <description>Recent content in reverse_engineering on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru</language>
-    <lastBuildDate>Thu, 16 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/tags/reverse_engineering/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 16 Feb 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://fi5t.xyz/tags/reverse_engineering/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Деобфускация в уме: Часть 1</title>
       <link>https://fi5t.xyz/posts/deobfuscation-in-the-mind/</link>
       <pubDate>Thu, 16 Feb 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://fi5t.xyz/posts/deobfuscation-in-the-mind/</guid>
       <description>&lt;p&gt;Если вам на секунду показалось, что название статьи вам смутно знакомо, то вам не показалось.&lt;/p&gt;
 &lt;blockquote&gt;
@@ -31,6 +31,5 @@
 &lt;/div&gt;
 &lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

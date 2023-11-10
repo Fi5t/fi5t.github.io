@@ -126,7 +126,7 @@ tl;dr
   <meta name="twitter:image" content="https://fi5t.xyz/img/avatar-icon.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <link href='https://fi5t.xyz/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.118.2">
+  <meta name="generator" content="Hugo 0.120.3">
   <link rel="alternate" href="https://fi5t.xyz/index.xml" type="application/rss+xml" title="(не)Уникальный опыт"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fi5t.xyz/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -397,25 +397,25 @@ tl;dr
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LogoDecoderAIDL</span> <span class="kd">extends</span> <span class="n">Service</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">BinderC0595a</span> <span class="kd">extends</span> <span class="n">AbstractBinderC0641a</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="nf">BinderC0595a</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line hl"><span class="cl">    <span class="kd">static</span> <span class="o">{</span>
-</span></span><span class="line hl"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">loadLibrary</span><span class="o">(</span><span class="s">&#34;galery&#34;</span><span class="o">);</span>
-</span></span><span class="line hl"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line hl"><span class="cl">    <span class="kd">public</span> <span class="kd">native</span> <span class="kt">byte</span><span class="o">[]</span> <span class="nf">getData</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span> <span class="c1">// android.app.Service
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">public</span> <span class="n">IBinder</span> <span class="nf">onBind</span><span class="o">(</span><span class="n">Intent</span> <span class="n">intent</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">BinderC0595a</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">LogoDecoderAIDL</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Service</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BinderC0595a</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AbstractBinderC0641a</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="nf">BinderC0595a</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">loadLibrary</span><span class="p">(</span><span class="s">&#34;galery&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">native</span><span class="w"> </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="nf">getData</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w"> </span><span class="c1">// android.app.Service</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">IBinder</span><span class="w"> </span><span class="nf">onBind</span><span class="p">(</span><span class="n">Intent</span><span class="w"> </span><span class="n">intent</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BinderC0595a</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>Говорят, что однажды автор таски для android CTF не сделал нативную либу и у него отвалилась Android Studio&hellip; Ладно, с библиотекой разберемся потом. Судя по говорящему названию класса - где-то здесь должна быть реализация AIDL интерфейса.</p>
 <blockquote>
@@ -457,37 +457,37 @@ tl;dr
 </span><span class="lnt">30
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">AbstractBinderC0641a</span> <span class="kd">extends</span> <span class="n">Binder</span> <span class="kd">implements</span> <span class="n">IInterface</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="nf">AbstractBinderC0641a</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">attachInterface</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">&#34;com.newbrainindustrial.aidl.ILogoDecoderAIDL&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span> <span class="c1">// android.os.IInterface
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">public</span> <span class="n">IBinder</span> <span class="nf">asBinder</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span> <span class="c1">// android.os.Binder
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onTransact</span><span class="o">(</span><span class="kt">int</span> <span class="n">code</span><span class="o">,</span> <span class="n">Parcel</span> <span class="n">parcel</span><span class="o">,</span> <span class="n">Parcel</span> <span class="n">parcel2</span><span class="o">,</span> <span class="kt">int</span> <span class="n">flags</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">code</span> <span class="o">==</span> <span class="n">1</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">            <span class="n">parcel</span><span class="o">.</span><span class="na">enforceInterface</span><span class="o">(</span><span class="s">&#34;com.newbrainindustrial.aidl.ILogoDecoderAIDL&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">readInt</span> <span class="o">=</span> <span class="n">parcel</span><span class="o">.</span><span class="na">readInt</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">readInt2</span> <span class="o">=</span> <span class="n">parcel</span><span class="o">.</span><span class="na">readInt</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">readInt3</span> <span class="o">=</span> <span class="n">parcel</span><span class="o">.</span><span class="na">readInt</span><span class="o">();</span>
-</span></span><span class="line hl"><span class="cl">            <span class="n">Log</span><span class="o">.</span><span class="na">i</span><span class="o">(</span><span class="s">&#34;LogoDecoderAIDL&#34;</span><span class="o">,</span> <span class="s">&#34;com.newbrainindustrial.aidl.ILogoDecoderAIDL.ShowTheLogoOfTruth(args): called by some app!&#34;</span><span class="o">);</span>
-</span></span><span class="line hl"><span class="cl">            <span class="n">C0642a</span><span class="o">.</span><span class="na">f2694a</span> <span class="o">=</span> <span class="n">LogoDecoderAIDL</span><span class="o">.</span><span class="na">this</span><span class="o">.</span><span class="na">getData</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">            <span class="n">parcel2</span><span class="o">.</span><span class="na">writeNoException</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">            <span class="n">parcel2</span><span class="o">.</span><span class="na">writeInt</span><span class="o">(</span><span class="n">readInt</span> <span class="o">+</span> <span class="n">readInt2</span> <span class="o">+</span> <span class="n">readInt3</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">code</span> <span class="o">!=</span> <span class="n">Binder</span><span class="o">.</span><span class="na">INTERFACE_TRANSACTION</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">onTransact</span><span class="o">(</span><span class="n">code</span><span class="o">,</span> <span class="n">parcel</span><span class="o">,</span> <span class="n">parcel2</span><span class="o">,</span> <span class="n">flags</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">            <span class="n">parcel2</span><span class="o">.</span><span class="na">writeString</span><span class="o">(</span><span class="s">&#34;com.newbrainindustrial.aidl.ILogoDecoderAIDL&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">abstract</span><span class="w"> </span><span class="kd">class</span> <span class="nc">AbstractBinderC0641a</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Binder</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">IInterface</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">AbstractBinderC0641a</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">attachInterface</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;com.newbrainindustrial.aidl.ILogoDecoderAIDL&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w"> </span><span class="c1">// android.os.IInterface</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">IBinder</span><span class="w"> </span><span class="nf">asBinder</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w"> </span><span class="c1">// android.os.Binder</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">onTransact</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">code</span><span class="p">,</span><span class="w"> </span><span class="n">Parcel</span><span class="w"> </span><span class="n">parcel</span><span class="p">,</span><span class="w"> </span><span class="n">Parcel</span><span class="w"> </span><span class="n">parcel2</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">flags</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">code</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">parcel</span><span class="p">.</span><span class="na">enforceInterface</span><span class="p">(</span><span class="s">&#34;com.newbrainindustrial.aidl.ILogoDecoderAIDL&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">readInt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parcel</span><span class="p">.</span><span class="na">readInt</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">readInt2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parcel</span><span class="p">.</span><span class="na">readInt</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">readInt3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parcel</span><span class="p">.</span><span class="na">readInt</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w">            </span><span class="n">Log</span><span class="p">.</span><span class="na">i</span><span class="p">(</span><span class="s">&#34;LogoDecoderAIDL&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;com.newbrainindustrial.aidl.ILogoDecoderAIDL.ShowTheLogoOfTruth(args): called by some app!&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w">            </span><span class="n">C0642a</span><span class="p">.</span><span class="na">f2694a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LogoDecoderAIDL</span><span class="p">.</span><span class="na">this</span><span class="p">.</span><span class="na">getData</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">parcel2</span><span class="p">.</span><span class="na">writeNoException</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">parcel2</span><span class="p">.</span><span class="na">writeInt</span><span class="p">(</span><span class="n">readInt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">readInt2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">readInt3</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">code</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">Binder</span><span class="p">.</span><span class="na">INTERFACE_TRANSACTION</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kd">super</span><span class="p">.</span><span class="na">onTransact</span><span class="p">(</span><span class="n">code</span><span class="p">,</span><span class="w"> </span><span class="n">parcel</span><span class="p">,</span><span class="w"> </span><span class="n">parcel2</span><span class="p">,</span><span class="w"> </span><span class="n">flags</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">parcel2</span><span class="p">.</span><span class="na">writeString</span><span class="p">(</span><span class="s">&#34;com.newbrainindustrial.aidl.ILogoDecoderAIDL&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>Интерес для нас представляют две строчки - <strong>18</strong> и <strong>19</strong>. Первая любезно раскрывает нам название метода, который нужно дернуть, а вторая запускает получение данных из нативной библиотеки. Судя по остальному коду, метод можно вызывать с любыми  параметрами, т.к. они нигде не используются и ни на что не влияют. Отлично. Записываем этот факт в блокнотик и смотрим, как полученный из метода <code>getData()</code> байтовый массив используется дальше. Для этого ищем все ссылки на поле <code>f2694a</code>.</p>
 <h2 id="hahahugoshortcode42s0hbhb">
@@ -543,33 +543,33 @@ tl;dr
 </span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DraftPerArtistActivity_90vbsf45</span> <span class="kd">extends</span> <span class="n">ActivityC0680e</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span> <span class="c1">// r0.ActivityC0995f, androidx.activity.ComponentActivity, p025z.ActivityC1237d, android.app.Activity
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">bundle</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">bundle</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_copyright</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">m1081s</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span> <span class="c1">// r0.ActivityC0995f, android.app.Activity
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onResume</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="kd">super</span><span class="o">.</span><span class="na">onResume</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">m1081s</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/* renamed from: s */</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">final</span> <span class="kt">void</span> <span class="nf">m1081s</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line hl"><span class="cl">        <span class="kt">byte</span><span class="o">[]</span> <span class="n">bArr</span> <span class="o">=</span> <span class="n">C0642a</span><span class="o">.</span><span class="na">f2694a</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">bArr</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">            <span class="k">try</span> <span class="o">{</span>
-</span></span><span class="line hl"><span class="cl">                <span class="o">((</span><span class="n">ImageView</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">imageViewLogo</span><span class="o">)).</span><span class="na">setImageBitmap</span><span class="o">(</span><span class="n">Bitmap</span><span class="o">.</span><span class="na">createBitmap</span><span class="o">(</span><span class="n">BitmapFactory</span><span class="o">.</span><span class="na">decodeByteArray</span><span class="o">(</span><span class="n">bArr</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">bArr</span><span class="o">.</span><span class="na">length</span><span class="o">)));</span>
-</span></span><span class="line"><span class="cl">            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">            <span class="o">}</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DraftPerArtistActivity_90vbsf45</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">ActivityC0680e</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w"> </span><span class="c1">// r0.ActivityC0995f, androidx.activity.ComponentActivity, p025z.ActivityC1237d, android.app.Activity</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span><span class="w"> </span><span class="n">bundle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kd">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">bundle</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">activity_copyright</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">m1081s</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w"> </span><span class="c1">// r0.ActivityC0995f, android.app.Activity</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onResume</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kd">super</span><span class="p">.</span><span class="na">onResume</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">m1081s</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/* renamed from: s */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">m1081s</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w">        </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">bArr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">C0642a</span><span class="p">.</span><span class="na">f2694a</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bArr</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w">                </span><span class="p">((</span><span class="n">ImageView</span><span class="p">)</span><span class="w"> </span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">imageViewLogo</span><span class="p">)).</span><span class="na">setImageBitmap</span><span class="p">(</span><span class="n">Bitmap</span><span class="p">.</span><span class="na">createBitmap</span><span class="p">(</span><span class="n">BitmapFactory</span><span class="p">.</span><span class="na">decodeByteArray</span><span class="p">(</span><span class="n">bArr</span><span class="p">,</span><span class="w"> </span><span class="n">0</span><span class="p">,</span><span class="w"> </span><span class="n">bArr</span><span class="p">.</span><span class="na">length</span><span class="p">)));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>Судя по всему байтовый массив содержит какую-то картинку. Поиск ссылок на эту activity ничего не дает, поэтому придется вызывать руками. Итого, на текущем этапе можно составить такой алгоритм атаки на это приложение:</p>
 <ol>
@@ -589,13 +589,13 @@ tl;dr
   </figure>
 </div>
 </h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// ILogoDecoderAIDL.aidl
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kn">package</span> <span class="nn">com.newbrainindustrial.aidl</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">interface</span> <span class="nc">ILogoDecoderAIDL</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">ShowTheLogoOfTruth</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><p>И пишем обвязки для его вызова:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// ILogoDecoderAIDL.aidl</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">package</span><span class="w"> </span><span class="nn">com.newbrainindustrial.aidl</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">interface</span> <span class="nc">ILogoDecoderAIDL</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">ShowTheLogoOfTruth</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">args</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>И пишем обвязки для его вызова:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1533,7 +1533,7 @@ tl;dr
         </p>
         
         <p class="credits theme-by text-muted">
-          На базе <a href="https://gohugo.io">Hugo v0.118.2</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          На базе <a href="https://gohugo.io">Hugo v0.120.3</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>

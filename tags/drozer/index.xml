@@ -6,12 +6,12 @@
     <description>Recent content in drozer on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru</language>
-    <lastBuildDate>Fri, 20 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/tags/drozer/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 Aug 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://fi5t.xyz/tags/drozer/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Drozer, эмулятор и эльфийские костыли</title>
       <link>https://fi5t.xyz/posts/drozer-emu-workarounds/</link>
       <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://fi5t.xyz/posts/drozer-emu-workarounds/</guid>
       <description>&lt;p&gt;Вам когда-нибудь хотелось странного? Например запустить drozer в docker-контейнере и достучаться с него до эмулятора на том же хосте? Казалось бы задача предельно простая и понятная. Запускаем эмулятор, на нем &lt;code&gt;drozer-agent&lt;/code&gt;, пробрасываем порты, заводим контейнер говорим &lt;code&gt;drozer console connect —server &amp;lt;locahost ip&amp;gt;&lt;/code&gt; и&amp;hellip;. &lt;strong&gt;ничего не происходит&lt;/strong&gt;. При этом если попытаться таким образом подключиться на девайс, который висит на другом ip, то все будет хорошо. Давайте разбираться и чинить.
 
@@ -26,18 +26,15 @@
 &lt;/div&gt;
 &lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Старый Drozer MacOS не испортит</title>
       <link>https://fi5t.xyz/posts/drozer-on-mac/</link>
       <pubDate>Tue, 04 Aug 2020 14:13:10 +0300</pubDate>
-      
       <guid>https://fi5t.xyz/posts/drozer-on-mac/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Drozer - The Leading Security Assessment Framework for Android.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Обычно я не использую &lt;strong&gt;Drozer&lt;/strong&gt;, а еще реже (никогда) я использую его на MacOS. Обычно это все уже есть в Kali Linux и устанавливать ничего не нужно. Но необходимость появилась, а вместе с ней пришлось знатно покувыркаться и поправить скрипты самого Drozer-а чтобы все заработало. После чего я все удалил, потому что в системе было знатно насрано после всех этих замечательных туторилов и issue на гитхабе. В итоге стало понятно, что есть два нормальных способа установки. &lt;a href=&#34;https://hub.docker.com/r/kengannonmwr/drozer_docker&#34;&gt;Через Docker&lt;/a&gt;, и так как показано ниже. Все остальное - зло, ад и слезы по бездарно потраченным часам жизни.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

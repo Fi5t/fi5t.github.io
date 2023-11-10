@@ -6,12 +6,12 @@
     <description>Recent content in backend on (not)Unique experience</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 01 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/en/tags/backend/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 01 Aug 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://fi5t.xyz/en/tags/backend/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Creating mTLS reverse proxy with Ktor</title>
       <link>https://fi5t.xyz/en/posts/reverse-proxy-with-mtls-and-ktor/</link>
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://fi5t.xyz/en/posts/reverse-proxy-with-mtls-and-ktor/</guid>
       <description>&lt;p&gt;If you like to integrate with external security systems, then you have probably come across such a thing
 as &lt;a href=&#34;https://en.wikipedia.org/wiki/Mutual_authentication#mTLS&#34;&gt;Mutual TLS&lt;/a&gt; (also known as TLS mutual authentication or
@@ -29,6 +29,5 @@ farm on &lt;a href=&#34;https://ktor.io/&#34;&gt;Ktor&lt;/a&gt;, because why not
 a smart &lt;a href=&#34;https://en.wikipedia.org/wiki/Reverse_proxy&#34;&gt;reverse proxy&lt;/a&gt; which will take care of all hardships associated
 with an mTLS handshake and other security logic. I will implement all these things with Ktor, because why not ;)&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

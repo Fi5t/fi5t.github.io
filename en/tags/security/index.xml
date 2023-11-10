@@ -6,30 +6,26 @@
     <description>Recent content in security on (not)Unique experience</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 24 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/en/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 24 May 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://fi5t.xyz/en/tags/security/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Evolution of vulnerabilities in Android apps</title>
       <link>https://fi5t.xyz/en/posts/evolution-of-vulnerabilities-in-android-apps/</link>
       <pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://fi5t.xyz/en/posts/evolution-of-vulnerabilities-in-android-apps/</guid>
       <description>The history of Android app development has gone through several notable stages, from small apps running locally, to client-server apps, app ecosystems, and super-apps. Each of these stages raised the bar of complexity, creating new vulnerabilities, and increased developers&amp;rsquo; concern about the security of both the applications and the data they operate with. The operating system itself has evolved, providing developers with more options and security mechanisms. But there are always a few more unknowns in this system of equations than meets the eye.</description>
     </item>
-    
     <item>
       <title>Mobile application security</title>
       <link>https://fi5t.xyz/en/posts/mobile-apps-security/</link>
       <pubDate>Tue, 23 May 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://fi5t.xyz/en/posts/mobile-apps-security/</guid>
       <description>In 2022, our team discovered 216 vulnerabilities during studies of 25 pairs of apps for Android and iOS platforms. The storage of user data in clear text accounted for the largest share of vulnerabilities (14%). Despite the efforts of operation system developers and secure application development communities, this class of vulnerability has continued to be the most prevalent for several years in a row. This trend will remain relevant in 2023, although it is now very simple to use cryptography in mobile applications: both vendor and open-source solutions make working with cryptographic primitives easier for developers.</description>
     </item>
-    
     <item>
       <title>Creating mTLS reverse proxy with Ktor</title>
       <link>https://fi5t.xyz/en/posts/reverse-proxy-with-mtls-and-ktor/</link>
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://fi5t.xyz/en/posts/reverse-proxy-with-mtls-and-ktor/</guid>
       <description>&lt;p&gt;If you like to integrate with external security systems, then you have probably come across such a thing
 as &lt;a href=&#34;https://en.wikipedia.org/wiki/Mutual_authentication#mTLS&#34;&gt;Mutual TLS&lt;/a&gt; (also known as TLS mutual authentication or
@@ -47,16 +43,13 @@ farm on &lt;a href=&#34;https://ktor.io/&#34;&gt;Ktor&lt;/a&gt;, because why not
 a smart &lt;a href=&#34;https://en.wikipedia.org/wiki/Reverse_proxy&#34;&gt;reverse proxy&lt;/a&gt; which will take care of all hardships associated
 with an mTLS handshake and other security logic. I will implement all these things with Ktor, because why not ;)&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Installing Drozer on macOS Catalina</title>
       <link>https://fi5t.xyz/en/posts/drozer-on-mac/</link>
       <pubDate>Wed, 05 Aug 2020 12:17:39 +0300</pubDate>
-      
       <guid>https://fi5t.xyz/en/posts/drozer-on-mac/</guid>
       <description>&lt;p&gt;In general, I don&amp;rsquo;t use Drozer. And using this tool on macOS is unusual for me. If I do some &amp;ldquo;pentest things&amp;rdquo; I just take my Kali Linux with pre-installed Drozer and use it there. But the day has come, and I decided to install Drozer on my macOS. It was a real hell =)&lt;/p&gt;
 &lt;p&gt;I spent a lot of time trying to make it work. Eventually, I had to rewrite a piece of class loader script&amp;hellip; A living hell! When everything started working right, I came up with a better way of installing Drozer on macOS and removed all this stuff . In fact, there are two good ways to do it. The Docker-way and the following one&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

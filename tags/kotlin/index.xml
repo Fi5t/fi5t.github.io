@@ -6,12 +6,12 @@
     <description>Recent content in kotlin on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru</language>
-    <lastBuildDate>Sun, 01 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/tags/kotlin/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 01 Aug 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://fi5t.xyz/tags/kotlin/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Создаем reverse proxy с mTLS на Ktor</title>
       <link>https://fi5t.xyz/posts/reverse-proxy-with-mtls-and-ktor/</link>
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://fi5t.xyz/posts/reverse-proxy-with-mtls-and-ktor/</guid>
       <description>&lt;p&gt;Если вы любите интегрироваться с внешними системами, которые придерживаются высоких стандартов безопасности, то
 наверняка сталкивались с такой штукой как &lt;a href=&#34;https://en.wikipedia.org/wiki/Mutual_authentication#mTLS&#34;&gt;Mutual TLS&lt;/a&gt; (aka
@@ -26,6 +26,5 @@
 связанные с хэндшейком и возможно какой-то другой дополнительной логикой, которую накрутили авторы внешней системы.
 Делать это хозяйство будем на &lt;a href=&#34;https://ktor.io/&#34;&gt;Ktor&lt;/a&gt;, потому что почему бы и нет ;)&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

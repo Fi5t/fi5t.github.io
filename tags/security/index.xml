@@ -6,30 +6,26 @@
     <description>Recent content in security on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru</language>
-    <lastBuildDate>Wed, 24 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 24 May 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://fi5t.xyz/tags/security/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Эволюция уязвимостей в приложениях для Android</title>
       <link>https://fi5t.xyz/posts/evolution-of-vulnerabilities-in-android-apps/</link>
       <pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://fi5t.xyz/posts/evolution-of-vulnerabilities-in-android-apps/</guid>
       <description>История развития приложений для Android прошла несколько заметных этапов: небольшие приложения, работающие локально, клиент-серверные приложения, экосистемы приложений и суперапы (super-app). Каждый из этих этапов повышал планку сложности, порождал новые уязвимости и заставлял разработчиков все больше заботиться о безопасности как самих приложений, так и данных, которыми они оперируют. Развивалась и сама операционная система, предоставляя разработчикам больше возможностей и механизмов обеспечения безопасности. Но в этой системе уравнений всегда несколько больше неизвестных, чем кажется на первый взгляд.</description>
     </item>
-    
     <item>
       <title>Безопасность мобильных приложений и устройств</title>
       <link>https://fi5t.xyz/posts/mobile-apps-security/</link>
       <pubDate>Tue, 23 May 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://fi5t.xyz/posts/mobile-apps-security/</guid>
       <description>За 2022 год наша команда обнаружила 216 уязвимостей в 25 парах исследованных приложений для платформ Android и iOS. Наибольшая доля уязвимостей (14%) пришлась на хранение пользовательских данных в открытом виде. Несмотря на усилия со стороны разработчиков операционных систем и сообществ по безопасной разработке приложений, этот класс уязвимостей продолжает уверенно сохранять лидерство несколько лет подряд. Описанный тренд сохранит актуальность в 2023 году, хотя использовать криптографию в мобильных приложениях сегодня очень просто: и вендорские, и опенсорсные решения облегчают разработчикам работу с криптографическими примитивами.</description>
     </item>
-    
     <item>
       <title>Деобфускация в уме: Часть 1</title>
       <link>https://fi5t.xyz/posts/deobfuscation-in-the-mind/</link>
       <pubDate>Thu, 16 Feb 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://fi5t.xyz/posts/deobfuscation-in-the-mind/</guid>
       <description>&lt;p&gt;Если вам на секунду показалось, что название статьи вам смутно знакомо, то вам не показалось.&lt;/p&gt;
 &lt;blockquote&gt;
@@ -49,12 +45,10 @@
 &lt;/div&gt;
 &lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Бассейн со строками</title>
       <link>https://fi5t.xyz/posts/string-pool/</link>
       <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://fi5t.xyz/posts/string-pool/</guid>
       <description>&lt;p&gt;&lt;em&gt;Бывает так, что долго-долго собираюсь написать про какую-то тему и не нахожу на это время, а потом приходит человек и задает на эту тему вопрос (спасибо тебе, человек!), после которого находятся силы и время сделать разбор интересной темы.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Речь пойдет об организации памяти в JVM и таком явлении как &lt;strong&gt;String pool&lt;/strong&gt;, а также почему нельзя так просто взять и удалить секретную информацию из памяти android приложения.&lt;/p&gt;
@@ -71,6 +65,5 @@
 &lt;/div&gt;
 &lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

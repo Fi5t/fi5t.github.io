@@ -6,12 +6,12 @@
     <description>Recent content in python on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru</language>
-    <lastBuildDate>Sat, 12 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fi5t.xyz/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 12 Mar 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://fi5t.xyz/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Проблемы с безопасностью в Python</title>
       <link>https://fi5t.xyz/posts/python-security-pitfalls/</link>
       <pubDate>Sat, 12 Mar 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://fi5t.xyz/posts/python-security-pitfalls/</guid>
       <description>&lt;p&gt;Среди Python-боярей принято ругать язык PHP и программистов, которые на нем пишут. Дескать, дизайн языка ужасный, разработчики формошлепы, уязвимости лезут из каждого &lt;code&gt;$_GET[&#39;id&#39;]&lt;/code&gt; и как на таком говне вообще можно что-то разрабатывать в 202х году.&lt;/p&gt;
 
@@ -27,15 +27,12 @@
 
 &lt;p&gt;А что сам Python? Как там с безопасностью? Очевидно, что как и везде - &lt;strong&gt;плохо&lt;/strong&gt;. При чем это &amp;ldquo;плохо&amp;rdquo; часто приобретает довольно неявные формы. О них и поговорим.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Шифрование данных в Python без херни</title>
       <link>https://fi5t.xyz/posts/python-eats-tink/</link>
       <pubDate>Wed, 15 Jul 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://fi5t.xyz/posts/python-eats-tink/</guid>
       <description>&lt;p&gt;Этот пост должен был выйти сильно раньше, но я не смог собрать &lt;a href=&#34;https://github.com/google/tink&#34;&gt;&lt;strong&gt;Tink&lt;/strong&gt;&lt;/a&gt; для Python-а и поэтому остался ждать релиза &lt;code&gt;1.4.0&lt;/code&gt; где они &lt;a href=&#34;https://github.com/google/tink/issues/358&#34;&gt;пообещали&lt;/a&gt; добавить уже собранный пакет в PyPI. Наконец-то релиз настал, а с ним появилась возможность нормально покопаться в питонячьих биндингах для Tink и рассказать об этом вам.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>
