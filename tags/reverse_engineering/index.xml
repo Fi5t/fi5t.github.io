@@ -13,23 +13,7 @@
       <link>https://fi5t.xyz/posts/deobfuscation-in-the-mind/</link>
       <pubDate>Thu, 16 Feb 2023 00:00:00 +0000</pubDate>
       <guid>https://fi5t.xyz/posts/deobfuscation-in-the-mind/</guid>
-      <description>&lt;p&gt;Если вам на секунду показалось, что название статьи вам смутно знакомо, то вам не показалось.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Очень часто под рукой не оказывается ни отладчика, ни дизассемблера, ни даже компилятора, чтобы набросать хотя бы примитивный трассировщик. Разумеется, что говорить о взломе современных защитных механизмов в таких условиях просто смешно, но что делать если жизнь заставляет?&lt;/p&gt;
-&lt;p&gt;Касперски Крис&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Я задумал этот цикл статей, как попытку составить некий справочник того, как в android приложениях написанных на &lt;strong&gt;Kotlin&lt;/strong&gt;, могут выглядеть разные куски кода обфусцированные с помощью &lt;strong&gt;Proguard&lt;/strong&gt;.
-
-&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;
-&lt;div class=&#34;box&#34; &gt;
-  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-    &lt;div class=&#34;img&#34;&gt;
-      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/deobfuscation-in-the-mind/kdpv.png&#34; alt=&#34;/img/deobfuscation-in-the-mind/kdpv.png&#34;/&gt;
-    &lt;/div&gt;
-    &lt;a href=&#34;https://fi5t.xyz/img/deobfuscation-in-the-mind/kdpv.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;Если вам на секунду показалось, что название статьи вам смутно знакомо, то вам не показалось.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Очень часто под рукой не оказывается ни отладчика, ни дизассемблера, ни даже компилятора, чтобы набросать хотя бы примитивный трассировщик. Разумеется, что говорить о взломе современных защитных механизмов в таких условиях просто смешно, но что делать если жизнь заставляет?&lt;/p&gt;&#xA;&lt;p&gt;Касперски Крис&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Я задумал этот цикл статей, как попытку составить некий справочник того, как в android приложениях написанных на &lt;strong&gt;Kotlin&lt;/strong&gt;, могут выглядеть разные куски кода обфусцированные с помощью &lt;strong&gt;Proguard&lt;/strong&gt;.&#xA;&#xA;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;&#xA;&lt;div class=&#34;box&#34; &gt;&#xA;  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;&#xA;    &lt;div class=&#34;img&#34;&gt;&#xA;      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/deobfuscation-in-the-mind/kdpv.png&#34; alt=&#34;/img/deobfuscation-in-the-mind/kdpv.png&#34;/&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;a href=&#34;https://fi5t.xyz/img/deobfuscation-in-the-mind/kdpv.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;&#xA;  &lt;/figure&gt;&#xA;&lt;/div&gt;&#xA;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

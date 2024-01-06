@@ -6,32 +6,28 @@
     <description>Recent content in Posts on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru</language>
-    <lastBuildDate>Fri, 10 Nov 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 06 Jan 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://fi5t.xyz/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Как вкатиться в безопасность android приложений в 2024</title>
+      <link>https://fi5t.xyz/posts/how-to-join-mobilesec-2024/</link>
+      <pubDate>Sat, 06 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://fi5t.xyz/posts/how-to-join-mobilesec-2024/</guid>
+      <description>&lt;p&gt;С завидным постоянством получаю подобные вопросы лично или вижу их в &lt;a href=&#34;https://t.me/android_guards&#34;&gt;нашем уютном чате Android Guards&lt;/a&gt;. Поэтому решил систематизировать информацию чтобы упростить процедуру входа как для тех, кто только начинает свой путь в инфобезе, так и для тех, кто уже что-то умеет в соседних областях.&lt;/p&gt;&#xA;&#xA;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;&#xA;&lt;div class=&#34;box&#34; &gt;&#xA;  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;&#xA;    &lt;div class=&#34;img&#34;&gt;&#xA;      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/how-to-join-mobilesec-2024/kdpv.png&#34; alt=&#34;/img/how-to-join-mobilesec-2024/kdpv.png&#34;/&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;a href=&#34;https://fi5t.xyz/img/how-to-join-mobilesec-2024/kdpv.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;&#xA;  &lt;/figure&gt;&#xA;&lt;/div&gt;</description>
+    </item>
     <item>
       <title>OWASP Mobile Top Ten 2023</title>
       <link>https://fi5t.xyz/posts/owasp-mobile-top-ten-2023/</link>
       <pubDate>Fri, 10 Nov 2023 00:00:00 +0000</pubDate>
       <guid>https://fi5t.xyz/posts/owasp-mobile-top-ten-2023/</guid>
-      <description>&lt;p&gt;Как-то тихо и незаметно для меня релизнулась новая редакция OWASP для мобилок. После ознакомления с новой редакцией появилось несколько мыслей, которыми хотел поделиться. Ну и в целом попытался простыми словами передать суть пунктов чтобы инфобез-неофитам и разработчикам было проще понять суть происходящего.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://owasp.org/www-project-mobile-top-10/2023-risks/assets/images/comparison-owasp-10.png&#34; alt=&#34;Comparison between 2016 and 2023&#34;&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;Как-то тихо и незаметно для меня релизнулась новая редакция OWASP для мобилок. После ознакомления с новой редакцией появилось несколько мыслей, которыми хотел поделиться. Ну и в целом попытался простыми словами передать суть пунктов чтобы инфобез-неофитам и разработчикам было проще понять суть происходящего.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://owasp.org/www-project-mobile-top-10/2023-risks/assets/images/comparison-owasp-10.png&#34; alt=&#34;Comparison between 2016 and 2023&#34;&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Путь программиста: альтернативный сценарий</title>
       <link>https://fi5t.xyz/posts/not-only-programmers-way/</link>
       <pubDate>Wed, 30 Aug 2023 00:00:00 +0000</pubDate>
       <guid>https://fi5t.xyz/posts/not-only-programmers-way/</guid>
-      <description>&lt;p&gt;Я уже как-то &lt;a href=&#34;https://fi5t.xyz/posts/programmers-way/&#34;&gt;писал&lt;/a&gt; свои соображения на тему того, как может выглядеть путь развития программиста. С тех пор прошло больше трех лет, и несмотря на то, что статья не потеряла актуальности я решил ее немного дополнить описанием альтернативной ветки развития, которая тоже про IT, но немного про другое IT. Не то, к которому привык среднестатистический &lt;del&gt;смузихлеб из коворкинга&lt;/del&gt; писатель кода руками. Поговорим про путь разработчика в безопасность, а в частности про offensive security. Заварите себе чего-нибудь ядреного и погнали.&lt;/p&gt;
-
-&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;
-&lt;div class=&#34;box&#34; &gt;
-  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-    &lt;div class=&#34;img&#34;&gt;
-      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/not-only-programmers-way/kdpv.png&#34; alt=&#34;/img/not-only-programmers-way/kdpv.png&#34;/&gt;
-    &lt;/div&gt;
-    &lt;a href=&#34;https://fi5t.xyz/img/not-only-programmers-way/kdpv.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;</description>
+      <description>&lt;p&gt;Я уже как-то &lt;a href=&#34;https://fi5t.xyz/posts/programmers-way/&#34;&gt;писал&lt;/a&gt; свои соображения на тему того, как может выглядеть путь развития программиста. С тех пор прошло больше трех лет, и несмотря на то, что статья не потеряла актуальности я решил ее немного дополнить описанием альтернативной ветки развития, которая тоже про IT, но немного про другое IT. Не то, к которому привык среднестатистический &lt;del&gt;смузихлеб из коворкинга&lt;/del&gt; писатель кода руками. Поговорим про путь разработчика в безопасность, а в частности про offensive security. Заварите себе чего-нибудь ядреного и погнали.&lt;/p&gt;&#xA;&#xA;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;&#xA;&lt;div class=&#34;box&#34; &gt;&#xA;  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;&#xA;    &lt;div class=&#34;img&#34;&gt;&#xA;      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/not-only-programmers-way/kdpv.png&#34; alt=&#34;/img/not-only-programmers-way/kdpv.png&#34;/&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;a href=&#34;https://fi5t.xyz/img/not-only-programmers-way/kdpv.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;&#xA;  &lt;/figure&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>Эволюция уязвимостей в приложениях для Android</title>
@@ -52,231 +48,91 @@
       <link>https://fi5t.xyz/posts/usrp-b200-mini-i-macos-m1/</link>
       <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
       <guid>https://fi5t.xyz/posts/usrp-b200-mini-i-macos-m1/</guid>
-      <description>&lt;p&gt;Я уже какое-то время изучаю &lt;a href=&#34;https://en.wikipedia.org/wiki/Software-defined_radio&#34;&gt;SDR&lt;/a&gt;, и вот наконец-то мне приехала более серьезная игрушка чем RTL-SDR, с которой я упражнялся ранее.&lt;/p&gt;
-
-&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;
-&lt;div class=&#34;box&#34; &gt;
-  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-    &lt;div class=&#34;img&#34;&gt;
-      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/usrp-b200-mini-i-macos-m1/device.jpg&#34; alt=&#34;/img/usrp-b200-mini-i-macos-m1/device.jpg&#34;/&gt;
-    &lt;/div&gt;
-    &lt;a href=&#34;https://fi5t.xyz/img/usrp-b200-mini-i-macos-m1/device.jpg&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Строго говоря, это не оригинальная B200-mini-i от Ettus Research, а ее китайский клон. Но так распорядилась судьба 🤗 По основным компонентам она сопоставима, поэтому жить можно.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Каких-то особых трудностей в том, чтобы заставить ее работать у меня не возникло, но для ее правильной работы все равно требуется пройти некоторый базовый сценарий. Его я и собираюсь описать.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Я уже какое-то время изучаю &lt;a href=&#34;https://en.wikipedia.org/wiki/Software-defined_radio&#34;&gt;SDR&lt;/a&gt;, и вот наконец-то мне приехала более серьезная игрушка чем RTL-SDR, с которой я упражнялся ранее.&lt;/p&gt;&#xA;&#xA;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;&#xA;&lt;div class=&#34;box&#34; &gt;&#xA;  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;&#xA;    &lt;div class=&#34;img&#34;&gt;&#xA;      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/usrp-b200-mini-i-macos-m1/device.jpg&#34; alt=&#34;/img/usrp-b200-mini-i-macos-m1/device.jpg&#34;/&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;a href=&#34;https://fi5t.xyz/img/usrp-b200-mini-i-macos-m1/device.jpg&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;&#xA;  &lt;/figure&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Строго говоря, это не оригинальная B200-mini-i от Ettus Research, а ее китайский клон. Но так распорядилась судьба 🤗 По основным компонентам она сопоставима, поэтому жить можно.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Каких-то особых трудностей в том, чтобы заставить ее работать у меня не возникло, но для ее правильной работы все равно требуется пройти некоторый базовый сценарий. Его я и собираюсь описать.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Как установить jailbreak на iPhone X</title>
       <link>https://fi5t.xyz/posts/iphone-x-jailbreak/</link>
       <pubDate>Mon, 27 Feb 2023 00:00:00 +0000</pubDate>
       <guid>https://fi5t.xyz/posts/iphone-x-jailbreak/</guid>
-      <description>&lt;p&gt;Короткий туториал для тех кто хочет прямо с двух ног заскочить в исследование приложений под iOS, но не хочет изучать тонну информации о разных видах jailbreak-ов, которые работают под какие-то определенные версии, зависят фазы луны и прочее.&lt;/p&gt;
-
-&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;
-&lt;div class=&#34;box&#34; &gt;
-  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-    &lt;div class=&#34;img&#34;&gt;
-      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/iphone-x-jailbreak/kdpv.jpg&#34; alt=&#34;/img/iphone-x-jailbreak/kdpv.jpg&#34;/&gt;
-    &lt;/div&gt;
-    &lt;a href=&#34;https://fi5t.xyz/img/iphone-x-jailbreak/kdpv.jpg&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;</description>
+      <description>&lt;p&gt;Короткий туториал для тех кто хочет прямо с двух ног заскочить в исследование приложений под iOS, но не хочет изучать тонну информации о разных видах jailbreak-ов, которые работают под какие-то определенные версии, зависят фазы луны и прочее.&lt;/p&gt;&#xA;&#xA;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;&#xA;&lt;div class=&#34;box&#34; &gt;&#xA;  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;&#xA;    &lt;div class=&#34;img&#34;&gt;&#xA;      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/iphone-x-jailbreak/kdpv.jpg&#34; alt=&#34;/img/iphone-x-jailbreak/kdpv.jpg&#34;/&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;a href=&#34;https://fi5t.xyz/img/iphone-x-jailbreak/kdpv.jpg&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;&#xA;  &lt;/figure&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>Деобфускация в уме: Часть 1</title>
       <link>https://fi5t.xyz/posts/deobfuscation-in-the-mind/</link>
       <pubDate>Thu, 16 Feb 2023 00:00:00 +0000</pubDate>
       <guid>https://fi5t.xyz/posts/deobfuscation-in-the-mind/</guid>
-      <description>&lt;p&gt;Если вам на секунду показалось, что название статьи вам смутно знакомо, то вам не показалось.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Очень часто под рукой не оказывается ни отладчика, ни дизассемблера, ни даже компилятора, чтобы набросать хотя бы примитивный трассировщик. Разумеется, что говорить о взломе современных защитных механизмов в таких условиях просто смешно, но что делать если жизнь заставляет?&lt;/p&gt;
-&lt;p&gt;Касперски Крис&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Я задумал этот цикл статей, как попытку составить некий справочник того, как в android приложениях написанных на &lt;strong&gt;Kotlin&lt;/strong&gt;, могут выглядеть разные куски кода обфусцированные с помощью &lt;strong&gt;Proguard&lt;/strong&gt;.
-
-&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;
-&lt;div class=&#34;box&#34; &gt;
-  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-    &lt;div class=&#34;img&#34;&gt;
-      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/deobfuscation-in-the-mind/kdpv.png&#34; alt=&#34;/img/deobfuscation-in-the-mind/kdpv.png&#34;/&gt;
-    &lt;/div&gt;
-    &lt;a href=&#34;https://fi5t.xyz/img/deobfuscation-in-the-mind/kdpv.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;Если вам на секунду показалось, что название статьи вам смутно знакомо, то вам не показалось.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Очень часто под рукой не оказывается ни отладчика, ни дизассемблера, ни даже компилятора, чтобы набросать хотя бы примитивный трассировщик. Разумеется, что говорить о взломе современных защитных механизмов в таких условиях просто смешно, но что делать если жизнь заставляет?&lt;/p&gt;&#xA;&lt;p&gt;Касперски Крис&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Я задумал этот цикл статей, как попытку составить некий справочник того, как в android приложениях написанных на &lt;strong&gt;Kotlin&lt;/strong&gt;, могут выглядеть разные куски кода обфусцированные с помощью &lt;strong&gt;Proguard&lt;/strong&gt;.&#xA;&#xA;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;&#xA;&lt;div class=&#34;box&#34; &gt;&#xA;  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;&#xA;    &lt;div class=&#34;img&#34;&gt;&#xA;      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/deobfuscation-in-the-mind/kdpv.png&#34; alt=&#34;/img/deobfuscation-in-the-mind/kdpv.png&#34;/&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;a href=&#34;https://fi5t.xyz/img/deobfuscation-in-the-mind/kdpv.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;&#xA;  &lt;/figure&gt;&#xA;&lt;/div&gt;&#xA;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Бассейн со строками</title>
       <link>https://fi5t.xyz/posts/string-pool/</link>
       <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
       <guid>https://fi5t.xyz/posts/string-pool/</guid>
-      <description>&lt;p&gt;&lt;em&gt;Бывает так, что долго-долго собираюсь написать про какую-то тему и не нахожу на это время, а потом приходит человек и задает на эту тему вопрос (спасибо тебе, человек!), после которого находятся силы и время сделать разбор интересной темы.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Речь пойдет об организации памяти в JVM и таком явлении как &lt;strong&gt;String pool&lt;/strong&gt;, а также почему нельзя так просто взять и удалить секретную информацию из памяти android приложения.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Внутри много картинок!&lt;/strong&gt;
-
-&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;
-&lt;div class=&#34;box&#34; &gt;
-  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-    &lt;div class=&#34;img&#34;&gt;
-      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/string-pool/kdpv.jpg&#34; alt=&#34;/img/string-pool/kdpv.jpg&#34;/&gt;
-    &lt;/div&gt;
-    &lt;a href=&#34;https://fi5t.xyz/img/string-pool/kdpv.jpg&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;em&gt;Бывает так, что долго-долго собираюсь написать про какую-то тему и не нахожу на это время, а потом приходит человек и задает на эту тему вопрос (спасибо тебе, человек!), после которого находятся силы и время сделать разбор интересной темы.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;Речь пойдет об организации памяти в JVM и таком явлении как &lt;strong&gt;String pool&lt;/strong&gt;, а также почему нельзя так просто взять и удалить секретную информацию из памяти android приложения.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Внутри много картинок!&lt;/strong&gt;&#xA;&#xA;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;&#xA;&lt;div class=&#34;box&#34; &gt;&#xA;  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;&#xA;    &lt;div class=&#34;img&#34;&gt;&#xA;      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/string-pool/kdpv.jpg&#34; alt=&#34;/img/string-pool/kdpv.jpg&#34;/&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;a href=&#34;https://fi5t.xyz/img/string-pool/kdpv.jpg&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;&#xA;  &lt;/figure&gt;&#xA;&lt;/div&gt;&#xA;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Непокорный ReactNative</title>
       <link>https://fi5t.xyz/posts/disobedient-react-native/</link>
       <pubDate>Wed, 16 Nov 2022 00:00:00 +0000</pubDate>
       <guid>https://fi5t.xyz/posts/disobedient-react-native/</guid>
-      <description>&lt;p&gt;По моему скромному мнению - ReactNative уже прошел свой пик популярности в разработке мобильных приложений и дальше будет постепенно покидать эту область. Зачем он нужен, если есть божественный Flutter? 🤪 Но такие приложения все еще встречаются и порой доставляют проблемы исследователям безопасности. Впрочем, когда нас это останавливало? 😎&lt;/p&gt;
-
-&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;
-&lt;div class=&#34;box&#34; &gt;
-  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-    &lt;div class=&#34;img&#34;&gt;
-      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/disobedient-react-native/rnkdpv.jpg&#34; alt=&#34;/img/disobedient-react-native/rnkdpv.jpg&#34;/&gt;
-    &lt;/div&gt;
-    &lt;a href=&#34;https://fi5t.xyz/img/disobedient-react-native/rnkdpv.jpg&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;</description>
+      <description>&lt;p&gt;По моему скромному мнению - ReactNative уже прошел свой пик популярности в разработке мобильных приложений и дальше будет постепенно покидать эту область. Зачем он нужен, если есть божественный Flutter? 🤪 Но такие приложения все еще встречаются и порой доставляют проблемы исследователям безопасности. Впрочем, когда нас это останавливало? 😎&lt;/p&gt;&#xA;&#xA;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;&#xA;&lt;div class=&#34;box&#34; &gt;&#xA;  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;&#xA;    &lt;div class=&#34;img&#34;&gt;&#xA;      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/disobedient-react-native/rnkdpv.jpg&#34; alt=&#34;/img/disobedient-react-native/rnkdpv.jpg&#34;/&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;a href=&#34;https://fi5t.xyz/img/disobedient-react-native/rnkdpv.jpg&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;&#xA;  &lt;/figure&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>Как получить root права на OPPO A16</title>
       <link>https://fi5t.xyz/posts/oppo-a16-easy-root/</link>
       <pubDate>Wed, 20 Jul 2022 00:00:00 +0000</pubDate>
       <guid>https://fi5t.xyz/posts/oppo-a16-easy-root/</guid>
-      <description>&lt;p&gt;Подозреваю, что есть больше одного способа получить root права на этом устройстве. В сети есть даже туториалы разной степени работоспособности. Часть из них требует каких-то сумрачных виндовых программ (в т.ч. платных), другая часть просто не работает или демонстрирует полное непонимание вопроса автором туториала. Поковырявшись с этим всем великолепием, я решил написать тот самый, &lt;strong&gt;правильный туториал©&lt;/strong&gt;, который хотел бы прочитать сам в начале пути.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Любое количество кирпичей, образовавшихся в результате описываемых ниже действий - на вашей совести.&lt;/p&gt;
-&lt;/blockquote&gt;</description>
+      <description>&lt;p&gt;Подозреваю, что есть больше одного способа получить root права на этом устройстве. В сети есть даже туториалы разной степени работоспособности. Часть из них требует каких-то сумрачных виндовых программ (в т.ч. платных), другая часть просто не работает или демонстрирует полное непонимание вопроса автором туториала. Поковырявшись с этим всем великолепием, я решил написать тот самый, &lt;strong&gt;правильный туториал©&lt;/strong&gt;, который хотел бы прочитать сам в начале пути.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Любое количество кирпичей, образовавшихся в результате описываемых ниже действий - на вашей совести.&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
     </item>
     <item>
       <title>Биометрическая недоаутентификация</title>
       <link>https://fi5t.xyz/posts/biometric-underauthentication/</link>
       <pubDate>Mon, 16 May 2022 00:00:00 +0000</pubDate>
       <guid>https://fi5t.xyz/posts/biometric-underauthentication/</guid>
-      <description>&lt;p&gt;Много уже &lt;a href=&#34;https://habr.com/ru/company/redmadrobot/blog/475112/&#34;&gt;написано&lt;/a&gt; и &lt;a href=&#34;https://www.youtube.com/watch?v=2DLP2te7gYQ&#34;&gt;сказано&lt;/a&gt; про биометрическую аутентификацию в android приложениях. И это не прошло бесследно. Вижу много приложений где флоу аутентификации биометрия+пин-код сделан по всем канонам безопасности. Но дьявол кроется в деталях. И сегодня я покажу как всего один флаг способен умножить на 0 отлично выстроенную систему аутентификации. Речь пойдет об одном широко известном приложении 🤐
-
-&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;
-&lt;div class=&#34;box&#34; &gt;
-  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-    &lt;div class=&#34;img&#34;&gt;
-      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/biometric-underauthentication/logo.gif&#34; alt=&#34;/img/biometric-underauthentication/logo.gif&#34;/&gt;
-    &lt;/div&gt;
-    &lt;a href=&#34;https://fi5t.xyz/img/biometric-underauthentication/logo.gif&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;Много уже &lt;a href=&#34;https://habr.com/ru/company/redmadrobot/blog/475112/&#34;&gt;написано&lt;/a&gt; и &lt;a href=&#34;https://www.youtube.com/watch?v=2DLP2te7gYQ&#34;&gt;сказано&lt;/a&gt; про биометрическую аутентификацию в android приложениях. И это не прошло бесследно. Вижу много приложений где флоу аутентификации биометрия+пин-код сделан по всем канонам безопасности. Но дьявол кроется в деталях. И сегодня я покажу как всего один флаг способен умножить на 0 отлично выстроенную систему аутентификации. Речь пойдет об одном широко известном приложении 🤐&#xA;&#xA;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;&#xA;&lt;div class=&#34;box&#34; &gt;&#xA;  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;&#xA;    &lt;div class=&#34;img&#34;&gt;&#xA;      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/biometric-underauthentication/logo.gif&#34; alt=&#34;/img/biometric-underauthentication/logo.gif&#34;/&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;a href=&#34;https://fi5t.xyz/img/biometric-underauthentication/logo.gif&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;&#xA;  &lt;/figure&gt;&#xA;&lt;/div&gt;&#xA;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Ядовитая экосистема</title>
       <link>https://fi5t.xyz/posts/poisonous-ecosystem/</link>
       <pubDate>Fri, 29 Apr 2022 00:00:00 +0000</pubDate>
       <guid>https://fi5t.xyz/posts/poisonous-ecosystem/</guid>
-      <description>&lt;p&gt;Несколько лет назад был тренд на постройку экосистем мобильных приложений. Это же так круто, когда приложения одной компании могут общаться друг с другом используя какие-то системные механизмы и дарить радость пользователю. Потом правда маятник качнулся в другую сторону и все начали делать суперапы, но о проблемах связанных с ними мы поговорим в другой раз. Сегодня разберем один интересный баг, который хорошо показывает почему доверие внутри экосистемы должно базироваться на чем-то более надежном чем просто имя пакета.
-
-&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;
-&lt;div class=&#34;box&#34; &gt;
-  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-    &lt;div class=&#34;img&#34;&gt;
-      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/poisonous-ecosystem/logo.gif&#34; alt=&#34;/img/poisonous-ecosystem/logo.gif&#34;/&gt;
-    &lt;/div&gt;
-    &lt;a href=&#34;https://fi5t.xyz/img/poisonous-ecosystem/logo.gif&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;Несколько лет назад был тренд на постройку экосистем мобильных приложений. Это же так круто, когда приложения одной компании могут общаться друг с другом используя какие-то системные механизмы и дарить радость пользователю. Потом правда маятник качнулся в другую сторону и все начали делать суперапы, но о проблемах связанных с ними мы поговорим в другой раз. Сегодня разберем один интересный баг, который хорошо показывает почему доверие внутри экосистемы должно базироваться на чем-то более надежном чем просто имя пакета.&#xA;&#xA;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;&#xA;&lt;div class=&#34;box&#34; &gt;&#xA;  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;&#xA;    &lt;div class=&#34;img&#34;&gt;&#xA;      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/poisonous-ecosystem/logo.gif&#34; alt=&#34;/img/poisonous-ecosystem/logo.gif&#34;/&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;a href=&#34;https://fi5t.xyz/img/poisonous-ecosystem/logo.gif&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;&#xA;  &lt;/figure&gt;&#xA;&lt;/div&gt;&#xA;&lt;/p&gt;</description>
     </item>
     <item>
       <title>NeoQUEST 2022: Задание 7</title>
       <link>https://fi5t.xyz/posts/neoquest2022-writeup-task7/</link>
       <pubDate>Tue, 29 Mar 2022 00:00:00 +0000</pubDate>
       <guid>https://fi5t.xyz/posts/neoquest2022-writeup-task7/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;Выкрасть телефон – было малым делом, а вот взломать его сложнее. Но тут в дело вступает Том, который умеет взламывать такие приложения, словно это орешки!&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Тома под рукой у меня не оказалось, поэтому как всегда пришлось делать все самому.&lt;/p&gt;
-&lt;h1 id=&#34;tldr&#34;&gt;tl;dr&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;Вызвать метод AIDL интерфейса чтобы стригерить получение картинки из нативной библиотеки&lt;/li&gt;
-&lt;li&gt;открыть activity &lt;code&gt;DraftPerArtistActivity_90vbsf45&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;посмотреть имя художника&lt;/li&gt;
-&lt;li&gt;взять от него sha256 и отправить в качестве ключа.&lt;/li&gt;
-&lt;/ul&gt;</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;Выкрасть телефон – было малым делом, а вот взломать его сложнее. Но тут в дело вступает Том, который умеет взламывать такие приложения, словно это орешки!&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Тома под рукой у меня не оказалось, поэтому как всегда пришлось делать все самому.&lt;/p&gt;&#xA;&lt;h1 id=&#34;tldr&#34;&gt;tl;dr&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Вызвать метод AIDL интерфейса чтобы стригерить получение картинки из нативной библиотеки&lt;/li&gt;&#xA;&lt;li&gt;открыть activity &lt;code&gt;DraftPerArtistActivity_90vbsf45&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;посмотреть имя художника&lt;/li&gt;&#xA;&lt;li&gt;взять от него sha256 и отправить в качестве ключа.&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
     <item>
       <title>Проблемы с безопасностью в Python</title>
       <link>https://fi5t.xyz/posts/python-security-pitfalls/</link>
       <pubDate>Sat, 12 Mar 2022 00:00:00 +0000</pubDate>
       <guid>https://fi5t.xyz/posts/python-security-pitfalls/</guid>
-      <description>&lt;p&gt;Среди Python-боярей принято ругать язык PHP и программистов, которые на нем пишут. Дескать, дизайн языка ужасный, разработчики формошлепы, уязвимости лезут из каждого &lt;code&gt;$_GET[&#39;id&#39;]&lt;/code&gt; и как на таком говне вообще можно что-то разрабатывать в 202х году.&lt;/p&gt;
-
-&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;
-&lt;div class=&#34;box&#34; &gt;
-  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-    &lt;div class=&#34;img&#34;&gt;
-      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/python-security-pitfalls/php-creator.png&#34; alt=&#34;/img/python-security-pitfalls/php-creator.png&#34;/&gt;
-    &lt;/div&gt;
-    &lt;a href=&#34;https://fi5t.xyz/img/python-security-pitfalls/php-creator.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;
-
-&lt;p&gt;А что сам Python? Как там с безопасностью? Очевидно, что как и везде - &lt;strong&gt;плохо&lt;/strong&gt;. При чем это &amp;ldquo;плохо&amp;rdquo; часто приобретает довольно неявные формы. О них и поговорим.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Среди Python-боярей принято ругать язык PHP и программистов, которые на нем пишут. Дескать, дизайн языка ужасный, разработчики формошлепы, уязвимости лезут из каждого &lt;code&gt;$_GET[&#39;id&#39;]&lt;/code&gt; и как на таком говне вообще можно что-то разрабатывать в 202х году.&lt;/p&gt;&#xA;&#xA;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;&#xA;&lt;div class=&#34;box&#34; &gt;&#xA;  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;&#xA;    &lt;div class=&#34;img&#34;&gt;&#xA;      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/python-security-pitfalls/php-creator.png&#34; alt=&#34;/img/python-security-pitfalls/php-creator.png&#34;/&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;a href=&#34;https://fi5t.xyz/img/python-security-pitfalls/php-creator.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;&#xA;  &lt;/figure&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;А что сам Python? Как там с безопасностью? Очевидно, что как и везде - &lt;strong&gt;плохо&lt;/strong&gt;. При чем это &amp;ldquo;плохо&amp;rdquo; часто приобретает довольно неявные формы. О них и поговорим.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Школа выживания в природных условиях</title>
       <link>https://fi5t.xyz/posts/hard-times/</link>
       <pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate>
       <guid>https://fi5t.xyz/posts/hard-times/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;Человек, оказавшийся в глухом бесконечном лесу, на безлюдном морском побережье, на опасной горной тропе, может и должен выжить.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Как разжечь костер из лошадиного говна, приготовить суп из березовой коры и профильтровать воду через носок с древесным углем я рассказывать вам не буду. Время для этой статьи еще не настало. Вместо этого мне стали все чаще задавать вопросы про VPN и прочие вынужденные меры. Об этом и поговорим. Если вы ожидаете увидеть гайд по настройке VPN, то вам не сюда. Не тратье свое время, лучше погуглите туториал.&lt;/p&gt;</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;Человек, оказавшийся в глухом бесконечном лесу, на безлюдном морском побережье, на опасной горной тропе, может и должен выжить.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Как разжечь костер из лошадиного говна, приготовить суп из березовой коры и профильтровать воду через носок с древесным углем я рассказывать вам не буду. Время для этой статьи еще не настало. Вместо этого мне стали все чаще задавать вопросы про VPN и прочие вынужденные меры. Об этом и поговорим. Если вы ожидаете увидеть гайд по настройке VPN, то вам не сюда. Не тратье свое время, лучше погуглите туториал.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Android 13 Developer Preview 1: Что там по безопасности?</title>
       <link>https://fi5t.xyz/posts/android-13-preview-security/</link>
       <pubDate>Fri, 11 Feb 2022 00:00:00 +0000</pubDate>
       <guid>https://fi5t.xyz/posts/android-13-preview-security/</guid>
-      <description>&lt;p&gt;Вышла первая версия нового &lt;strong&gt;Android 13&lt;/strong&gt;, и Google обещает, что этот билд продолжит делать нам всем хорошо в плане приватности, безопасности и вообще котики никогда не умрут. Давайте посмотрим, что нового там завезли и стоит ли оно внимания.&lt;/p&gt;
-
-&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;
-&lt;div class=&#34;box&#34; &gt;
-  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-    &lt;div class=&#34;img&#34;&gt;
-      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/android-13-preview-security/logo.png&#34; alt=&#34;/img/android-13-preview-security/logo.png&#34;/&gt;
-    &lt;/div&gt;
-    &lt;a href=&#34;https://fi5t.xyz/img/android-13-preview-security/logo.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;</description>
+      <description>&lt;p&gt;Вышла первая версия нового &lt;strong&gt;Android 13&lt;/strong&gt;, и Google обещает, что этот билд продолжит делать нам всем хорошо в плане приватности, безопасности и вообще котики никогда не умрут. Давайте посмотрим, что нового там завезли и стоит ли оно внимания.&lt;/p&gt;&#xA;&#xA;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;&#xA;&lt;div class=&#34;box&#34; &gt;&#xA;  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;&#xA;    &lt;div class=&#34;img&#34;&gt;&#xA;      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/android-13-preview-security/logo.png&#34; alt=&#34;/img/android-13-preview-security/logo.png&#34;/&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;a href=&#34;https://fi5t.xyz/img/android-13-preview-security/logo.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;&#xA;  &lt;/figure&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>Перехват трафика в Android. Большой гайд.</title>
       <link>https://fi5t.xyz/posts/intercept-android-traffic/</link>
       <pubDate>Tue, 25 Jan 2022 00:00:00 +0000</pubDate>
       <guid>https://fi5t.xyz/posts/intercept-android-traffic/</guid>
-      <description>&lt;h2 id=&#34;зачем-еще-одна-статья&#34;&gt;Зачем еще одна статья?&lt;/h2&gt;
-&lt;p&gt;Задача перехвата трафика android приложений довольно хорошо описана на куче языков и даже не нужно уметь гуглить чтобы найти информацию о том, как настроить прокси и посмотреть заветные запросы. Даже набившая уже всем оскомину тема &amp;ldquo;как отломать ssl pinning&amp;rdquo; была &lt;a href=&#34;https://www.youtube.com/watch?v=Xn6CSqJpf6I&#34;&gt;множество&lt;/a&gt; &lt;a href=&#34;https://www.youtube.com/watch?v=zeU2wlcj_Bw&amp;amp;t=189s&#34;&gt;раз&lt;/a&gt; &lt;a href=&#34;https://github.com/Android-Guards/faq#%D0%BF%D1%8B%D1%82%D0%B0%D1%8E%D1%81%D1%8C-%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%B2%D0%B0%D1%82%D0%B8%D1%82%D1%8C-%D1%82%D1%80%D0%B0%D1%84%D0%B8%D0%BA-%D1%82%D0%B0%D0%BA-%D0%BA%D0%B0%D0%BA-%D0%BD%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%BE-%D0%B2%D1%8B%D1%88%D0%B5-%D0%BD%D0%B8%D1%87%D0%B5%D0%B3%D0%BE-%D0%BD%D0%B5-%D0%B2%D1%8B%D1%85%D0%BE%D0%B4%D0%B8%D1%82-%D1%87%D1%82%D0%BE-%D0%B4%D0%B5%D0%BB%D0%B0%D1%82%D1%8C&#34;&gt;разжевана&lt;/a&gt; и надо быть по пояс странным чтобы в этом не разобраться.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&amp;hellip;когда ты слишком долго в пути, когда тебя обуревает жадность, приходит черный пес чтобы отобрать у тебя все.&lt;br&gt;
-Черный пес (1998)&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Да&amp;hellip; потом появляется то самое приложение, которое вопреки всем настройкам не хочет работать через прокси. Или через прокси проходит только часть трафика. В такой ситуации лучше не начинать нажимать все подряд, чтобы не увеличивать энтропию происходящего, а подойти к вопросу системно и последовательно попробовать разные методы для решения этой проблемы.&lt;/p&gt;
-
-&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;
-&lt;div class=&#34;box&#34; &gt;
-  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-    &lt;div class=&#34;img&#34;&gt;
-      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/intercept-traffic-android/mitm-logo.gif&#34; alt=&#34;/img/intercept-traffic-android/mitm-logo.gif&#34;/&gt;
-    &lt;/div&gt;
-    &lt;a href=&#34;https://fi5t.xyz/img/intercept-traffic-android/mitm-logo.gif&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;</description>
+      <description>&lt;h2 id=&#34;зачем-еще-одна-статья&#34;&gt;Зачем еще одна статья?&lt;/h2&gt;&#xA;&lt;p&gt;Задача перехвата трафика android приложений довольно хорошо описана на куче языков и даже не нужно уметь гуглить чтобы найти информацию о том, как настроить прокси и посмотреть заветные запросы. Даже набившая уже всем оскомину тема &amp;ldquo;как отломать ssl pinning&amp;rdquo; была &lt;a href=&#34;https://www.youtube.com/watch?v=Xn6CSqJpf6I&#34;&gt;множество&lt;/a&gt; &lt;a href=&#34;https://www.youtube.com/watch?v=zeU2wlcj_Bw&amp;amp;t=189s&#34;&gt;раз&lt;/a&gt; &lt;a href=&#34;https://github.com/Android-Guards/faq#%D0%BF%D1%8B%D1%82%D0%B0%D1%8E%D1%81%D1%8C-%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%B2%D0%B0%D1%82%D0%B8%D1%82%D1%8C-%D1%82%D1%80%D0%B0%D1%84%D0%B8%D0%BA-%D1%82%D0%B0%D0%BA-%D0%BA%D0%B0%D0%BA-%D0%BD%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%BE-%D0%B2%D1%8B%D1%88%D0%B5-%D0%BD%D0%B8%D1%87%D0%B5%D0%B3%D0%BE-%D0%BD%D0%B5-%D0%B2%D1%8B%D1%85%D0%BE%D0%B4%D0%B8%D1%82-%D1%87%D1%82%D0%BE-%D0%B4%D0%B5%D0%BB%D0%B0%D1%82%D1%8C&#34;&gt;разжевана&lt;/a&gt; и надо быть по пояс странным чтобы в этом не разобраться.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;hellip;когда ты слишком долго в пути, когда тебя обуревает жадность, приходит черный пес чтобы отобрать у тебя все.&lt;br&gt;&#xA;Черный пес (1998)&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Да&amp;hellip; потом появляется то самое приложение, которое вопреки всем настройкам не хочет работать через прокси. Или через прокси проходит только часть трафика. В такой ситуации лучше не начинать нажимать все подряд, чтобы не увеличивать энтропию происходящего, а подойти к вопросу системно и последовательно попробовать разные методы для решения этой проблемы.&lt;/p&gt;&#xA;&#xA;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;&#xA;&lt;div class=&#34;box&#34; &gt;&#xA;  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;&#xA;    &lt;div class=&#34;img&#34;&gt;&#xA;      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/intercept-traffic-android/mitm-logo.gif&#34; alt=&#34;/img/intercept-traffic-android/mitm-logo.gif&#34;/&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;a href=&#34;https://fi5t.xyz/img/intercept-traffic-android/mitm-logo.gif&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;&#xA;  &lt;/figure&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>Часть 3: Атаки на биометрические системы</title>
@@ -297,58 +153,28 @@
       <link>https://fi5t.xyz/posts/biometrics-how-it-works/</link>
       <pubDate>Sun, 12 Dec 2021 00:00:01 +0300</pubDate>
       <guid>https://fi5t.xyz/posts/biometrics-how-it-works/</guid>
-      <description>&lt;h1 id=&#34;типы-сканеров&#34;&gt;Типы сканеров&lt;/h1&gt;
-&lt;h2 id=&#34;оптический&#34;&gt;Оптический&lt;/h2&gt;
-&lt;p&gt;Этот вид сенсора работает по простому принципу: есть фоточувствительная матрица (в большинстве случаев это ПЗС, которая используется во многих современных камерах) и несколько небольших светоизлучателей, которые подсвечивают поверхность пальца.&lt;/p&gt;
-&lt;p&gt;Свет отражается от папиллярного узора, и в зависимости от того, попал луч света на гребень или на впадину, интенсивность его варьируется.&lt;/p&gt;
-&lt;p&gt;Внешнее стекло такого сканера тонкое, чтобы вызвать эффект полного нарушенного внутреннего отражения. Из-за этого эффекта свет в местах контакта кожи со стеклом — на гребнях — полностью отражается в фотосенсор
-&lt;img src=&#34;https://fi5t.xyz/img/biometrics/opt-sensor.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+      <description>&lt;h1 id=&#34;типы-сканеров&#34;&gt;Типы сканеров&lt;/h1&gt;&#xA;&lt;h2 id=&#34;оптический&#34;&gt;Оптический&lt;/h2&gt;&#xA;&lt;p&gt;Этот вид сенсора работает по простому принципу: есть фоточувствительная матрица (в большинстве случаев это ПЗС, которая используется во многих современных камерах) и несколько небольших светоизлучателей, которые подсвечивают поверхность пальца.&lt;/p&gt;&#xA;&lt;p&gt;Свет отражается от папиллярного узора, и в зависимости от того, попал луч света на гребень или на впадину, интенсивность его варьируется.&lt;/p&gt;&#xA;&lt;p&gt;Внешнее стекло такого сканера тонкое, чтобы вызвать эффект полного нарушенного внутреннего отражения. Из-за этого эффекта свет в местах контакта кожи со стеклом — на гребнях — полностью отражается в фотосенсор&#xA;&lt;img src=&#34;https://fi5t.xyz/img/biometrics/opt-sensor.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Drozer, эмулятор и эльфийские костыли</title>
       <link>https://fi5t.xyz/posts/drozer-emu-workarounds/</link>
       <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
       <guid>https://fi5t.xyz/posts/drozer-emu-workarounds/</guid>
-      <description>&lt;p&gt;Вам когда-нибудь хотелось странного? Например запустить drozer в docker-контейнере и достучаться с него до эмулятора на том же хосте? Казалось бы задача предельно простая и понятная. Запускаем эмулятор, на нем &lt;code&gt;drozer-agent&lt;/code&gt;, пробрасываем порты, заводим контейнер говорим &lt;code&gt;drozer console connect —server &amp;lt;locahost ip&amp;gt;&lt;/code&gt; и&amp;hellip;. &lt;strong&gt;ничего не происходит&lt;/strong&gt;. При этом если попытаться таким образом подключиться на девайс, который висит на другом ip, то все будет хорошо. Давайте разбираться и чинить.
-
-&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;
-&lt;div class=&#34;box&#34; &gt;
-  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-    &lt;div class=&#34;img&#34;&gt;
-      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/drozer-emu-workaround/kdpv.png&#34; alt=&#34;/img/drozer-emu-workaround/kdpv.png&#34;/&gt;
-    &lt;/div&gt;
-    &lt;a href=&#34;https://fi5t.xyz/img/drozer-emu-workaround/kdpv.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;Вам когда-нибудь хотелось странного? Например запустить drozer в docker-контейнере и достучаться с него до эмулятора на том же хосте? Казалось бы задача предельно простая и понятная. Запускаем эмулятор, на нем &lt;code&gt;drozer-agent&lt;/code&gt;, пробрасываем порты, заводим контейнер говорим &lt;code&gt;drozer console connect —server &amp;lt;locahost ip&amp;gt;&lt;/code&gt; и&amp;hellip;. &lt;strong&gt;ничего не происходит&lt;/strong&gt;. При этом если попытаться таким образом подключиться на девайс, который висит на другом ip, то все будет хорошо. Давайте разбираться и чинить.&#xA;&#xA;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;&#xA;&lt;div class=&#34;box&#34; &gt;&#xA;  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;&#xA;    &lt;div class=&#34;img&#34;&gt;&#xA;      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/drozer-emu-workaround/kdpv.png&#34; alt=&#34;/img/drozer-emu-workaround/kdpv.png&#34;/&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;a href=&#34;https://fi5t.xyz/img/drozer-emu-workaround/kdpv.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;&#xA;  &lt;/figure&gt;&#xA;&lt;/div&gt;&#xA;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Повелители DOOM</title>
       <link>https://fi5t.xyz/posts/masters-of-doom/</link>
       <pubDate>Mon, 16 Aug 2021 00:00:00 +0000</pubDate>
       <guid>https://fi5t.xyz/posts/masters-of-doom/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;Однажды Джей решил проверить, насколько Кармак сосредоточен, вставив кассету с порно в &lt;a href=&#34;https://ru.wikipedia.org/wiki/%D0%92%D0%B8%D0%B4%D0%B5%D0%BE%D0%BC%D0%B0%D0%B3%D0%BD%D0%B8%D1%82%D0%BE%D1%84%D0%BE%D0%BD&#34;&gt;видеомагнитофон&lt;/a&gt; и включив фильм на полную громкость&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Давненько я не читал таких хороших историй, как в этой книге. Зарождение и трансформация целой индустрии это вам не хрен собачий и путь компании &lt;strong&gt;id Software&lt;/strong&gt; однозначно стоит внимания любого программиста, даже если он никогда не собирается работать в игровой индустрии. Не знаю был ли как-то специально идеализирован образ Джона Кармака в этой книге, но его подходы к работе впечатляют. В моем понимании так должен действовать каждый инженер-программист, который хочет делать что-то действительно стоящее внимания.&lt;/p&gt;</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;Однажды Джей решил проверить, насколько Кармак сосредоточен, вставив кассету с порно в &lt;a href=&#34;https://ru.wikipedia.org/wiki/%D0%92%D0%B8%D0%B4%D0%B5%D0%BE%D0%BC%D0%B0%D0%B3%D0%BD%D0%B8%D1%82%D0%BE%D1%84%D0%BE%D0%BD&#34;&gt;видеомагнитофон&lt;/a&gt; и включив фильм на полную громкость&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Давненько я не читал таких хороших историй, как в этой книге. Зарождение и трансформация целой индустрии это вам не хрен собачий и путь компании &lt;strong&gt;id Software&lt;/strong&gt; однозначно стоит внимания любого программиста, даже если он никогда не собирается работать в игровой индустрии. Не знаю был ли как-то специально идеализирован образ Джона Кармака в этой книге, но его подходы к работе впечатляют. В моем понимании так должен действовать каждый инженер-программист, который хочет делать что-то действительно стоящее внимания.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Создаем reverse proxy с mTLS на Ktor</title>
       <link>https://fi5t.xyz/posts/reverse-proxy-with-mtls-and-ktor/</link>
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
       <guid>https://fi5t.xyz/posts/reverse-proxy-with-mtls-and-ktor/</guid>
-      <description>&lt;p&gt;Если вы любите интегрироваться с внешними системами, которые придерживаются высоких стандартов безопасности, то
-наверняка сталкивались с такой штукой как &lt;a href=&#34;https://en.wikipedia.org/wiki/Mutual_authentication#mTLS&#34;&gt;Mutual TLS&lt;/a&gt; (aka
-взаимная TLS аутентификация или mTLS). Ничего особенно сложного в такой интеграции нет. За исключением двух нюансов:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Интеграцию придется делать в каждом сервисе&lt;/li&gt;
-&lt;li&gt;В каждый сервис нужно положить клиентские сертификаты для прохожения хэндшейка mTLS&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;И если с первым нюансом можно как-то жить и мириться, то второй уже вызывает гораздо больше проблем и приводит к
-грустным лицам вашей команды инфобеза. Чтобы сделать их снова счастливыми, а заодно ликвидировать потребность писать
-один и тот же код в каждом сервисе — можно сделать умный &lt;a href=&#34;https://en.wikipedia.org/wiki/Reverse_proxy&#34;&gt;reverse proxy&lt;/a&gt;, который возьмет на себя все тяготы и лишения
-связанные с хэндшейком и возможно какой-то другой дополнительной логикой, которую накрутили авторы внешней системы.
-Делать это хозяйство будем на &lt;a href=&#34;https://ktor.io/&#34;&gt;Ktor&lt;/a&gt;, потому что почему бы и нет ;)&lt;/p&gt;</description>
+      <description>&lt;p&gt;Если вы любите интегрироваться с внешними системами, которые придерживаются высоких стандартов безопасности, то&#xA;наверняка сталкивались с такой штукой как &lt;a href=&#34;https://en.wikipedia.org/wiki/Mutual_authentication#mTLS&#34;&gt;Mutual TLS&lt;/a&gt; (aka&#xA;взаимная TLS аутентификация или mTLS). Ничего особенно сложного в такой интеграции нет. За исключением двух нюансов:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Интеграцию придется делать в каждом сервисе&lt;/li&gt;&#xA;&lt;li&gt;В каждый сервис нужно положить клиентские сертификаты для прохожения хэндшейка mTLS&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;И если с первым нюансом можно как-то жить и мириться, то второй уже вызывает гораздо больше проблем и приводит к&#xA;грустным лицам вашей команды инфобеза. Чтобы сделать их снова счастливыми, а заодно ликвидировать потребность писать&#xA;один и тот же код в каждом сервисе — можно сделать умный &lt;a href=&#34;https://en.wikipedia.org/wiki/Reverse_proxy&#34;&gt;reverse proxy&lt;/a&gt;, который возьмет на себя все тяготы и лишения&#xA;связанные с хэндшейком и возможно какой-то другой дополнительной логикой, которую накрутили авторы внешней системы.&#xA;Делать это хозяйство будем на &lt;a href=&#34;https://ktor.io/&#34;&gt;Ktor&lt;/a&gt;, потому что почему бы и нет ;)&lt;/p&gt;</description>
     </item>
     <item>
       <title>Kotlin ❤️ Backend</title>
@@ -362,37 +188,28 @@
       <link>https://fi5t.xyz/posts/airvisual-pro-acc/</link>
       <pubDate>Sat, 26 Dec 2020 13:32:56 +0300</pubDate>
       <guid>https://fi5t.xyz/posts/airvisual-pro-acc/</guid>
-      <description>Пару лет назад я загорелся идеей мониторинга качества воздуха и уровня углекислого газа. Решив, что у меня не так много свободного времени, я не стал как обычно колхозить свое ноу-хау и по советам в интернете после тщательного изучения вариантов купил AirVisual Pro.
-Выглядело все страшно красиво и имело такую же страшную цену. Гарантию на сей девайс мне дали - 2 года. Хотя за его цену, как мне кажется, они должны давать лет 10 гарантии и пожизненную улыбку.</description>
+      <description>Пару лет назад я загорелся идеей мониторинга качества воздуха и уровня углекислого газа. Решив, что у меня не так много свободного времени, я не стал как обычно колхозить свое ноу-хау и по советам в интернете после тщательного изучения вариантов купил AirVisual Pro.&#xA;Выглядело все страшно красиво и имело такую же страшную цену. Гарантию на сей девайс мне дали - 2 года. Хотя за его цену, как мне кажется, они должны давать лет 10 гарантии и пожизненную улыбку.</description>
     </item>
     <item>
       <title>Ретроспектива 2020</title>
       <link>https://fi5t.xyz/posts/retrospective/</link>
       <pubDate>Tue, 22 Dec 2020 00:00:00 +0000</pubDate>
       <guid>https://fi5t.xyz/posts/retrospective/</guid>
-      <description>&lt;p&gt;Лучше всего для меня этот год описан в этом коротком видео:&lt;/p&gt;
-
-&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;https://www.youtube.com/embed/q9OYNyzP4dI&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
-&lt;/div&gt;</description>
+      <description>&lt;p&gt;Лучше всего для меня этот год описан в этом коротком видео:&lt;/p&gt;&#xA;&#xA;&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;&#xA;  &lt;iframe src=&#34;https://www.youtube.com/embed/q9OYNyzP4dI&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>Что нового я узнал на конференциях от JUG.RU</title>
       <link>https://fi5t.xyz/posts/jug-conferences-review/</link>
       <pubDate>Thu, 22 Oct 2020 00:00:00 +0000</pubDate>
       <guid>https://fi5t.xyz/posts/jug-conferences-review/</guid>
-      <description>&lt;p&gt;По роду своей деятельности мне повезло получить FullPass на все конференции, которые организовывают ребята из JUG.RU и хочется написать несколько слов о докладах, которые я послушал, покритиковать их или наборот рассказать о полезности.&lt;/p&gt;
-&lt;p&gt;Сразу скажу, что я не стремился посмотреть все доклады. Просто выбрал те, что мне показались наиболее интересными по названию/описанию, и посмотрел. Поэтому вся эта подборка лишь отражает круг моих интересов и может вам совершенно не пригодится. Если желание читать все еще осталось, то жмите &amp;ldquo;далее&amp;rdquo;.&lt;/p&gt;</description>
+      <description>&lt;p&gt;По роду своей деятельности мне повезло получить FullPass на все конференции, которые организовывают ребята из JUG.RU и хочется написать несколько слов о докладах, которые я послушал, покритиковать их или наборот рассказать о полезности.&lt;/p&gt;&#xA;&lt;p&gt;Сразу скажу, что я не стремился посмотреть все доклады. Просто выбрал те, что мне показались наиболее интересными по названию/описанию, и посмотрел. Поэтому вся эта подборка лишь отражает круг моих интересов и может вам совершенно не пригодится. Если желание читать все еще осталось, то жмите &amp;ldquo;далее&amp;rdquo;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Старый Drozer MacOS не испортит</title>
       <link>https://fi5t.xyz/posts/drozer-on-mac/</link>
       <pubDate>Tue, 04 Aug 2020 14:13:10 +0300</pubDate>
       <guid>https://fi5t.xyz/posts/drozer-on-mac/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;Drozer - The Leading Security Assessment Framework for Android.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Обычно я не использую &lt;strong&gt;Drozer&lt;/strong&gt;, а еще реже (никогда) я использую его на MacOS. Обычно это все уже есть в Kali Linux и устанавливать ничего не нужно. Но необходимость появилась, а вместе с ней пришлось знатно покувыркаться и поправить скрипты самого Drozer-а чтобы все заработало. После чего я все удалил, потому что в системе было знатно насрано после всех этих замечательных туторилов и issue на гитхабе. В итоге стало понятно, что есть два нормальных способа установки. &lt;a href=&#34;https://hub.docker.com/r/kengannonmwr/drozer_docker&#34;&gt;Через Docker&lt;/a&gt;, и так как показано ниже. Все остальное - зло, ад и слезы по бездарно потраченным часам жизни.&lt;/p&gt;</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;Drozer - The Leading Security Assessment Framework for Android.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Обычно я не использую &lt;strong&gt;Drozer&lt;/strong&gt;, а еще реже (никогда) я использую его на MacOS. Обычно это все уже есть в Kali Linux и устанавливать ничего не нужно. Но необходимость появилась, а вместе с ней пришлось знатно покувыркаться и поправить скрипты самого Drozer-а чтобы все заработало. После чего я все удалил, потому что в системе было знатно насрано после всех этих замечательных туторилов и issue на гитхабе. В итоге стало понятно, что есть два нормальных способа установки. &lt;a href=&#34;https://hub.docker.com/r/kengannonmwr/drozer_docker&#34;&gt;Через Docker&lt;/a&gt;, и так как показано ниже. Все остальное - зло, ад и слезы по бездарно потраченным часам жизни.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Шифрование данных в Python без херни</title>
@@ -413,18 +230,14 @@
       <link>https://fi5t.xyz/posts/secret-technologies/</link>
       <pubDate>Thu, 21 May 2020 20:44:03 +0300</pubDate>
       <guid>https://fi5t.xyz/posts/secret-technologies/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Disclamer:&lt;/strong&gt; Все совпадения случайны. Если вы узнали в этом тексте себя, то это ошибка и ваше больное воображение. Я это все придумал.&lt;/p&gt;
-&lt;p&gt;Темные времена, когда спецификации API создавались в файлах .txt и .docx прошли и теперь все используют нормальные форматы написания спецификаций. Да-да, моей наивности нет предела. В ходе очередного обсуждения с менеджером выяснилось, что есть заказчик с сервером которого нужно проинтегрироваться.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;strong&gt;Disclamer:&lt;/strong&gt; Все совпадения случайны. Если вы узнали в этом тексте себя, то это ошибка и ваше больное воображение. Я это все придумал.&lt;/p&gt;&#xA;&lt;p&gt;Темные времена, когда спецификации API создавались в файлах .txt и .docx прошли и теперь все используют нормальные форматы написания спецификаций. Да-да, моей наивности нет предела. В ходе очередного обсуждения с менеджером выяснилось, что есть заказчик с сервером которого нужно проинтегрироваться.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Как выбрать сервер для web приложения</title>
       <link>https://fi5t.xyz/posts/choose-hardware-configuration/</link>
       <pubDate>Sat, 09 May 2020 00:00:00 +0000</pubDate>
       <guid>https://fi5t.xyz/posts/choose-hardware-configuration/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;Привет. Можешь помочь с требованиям к прод серверу ? Какой мощности нам хватит?&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Вот такое сообщение я получил от менеджера в конце рабочего дня. Стоит ли говорить, что приложение для которого нужно было подобрать сервер еще не существовало даже в виде требований. Следовательно, посчитать хоть какой-то примерный &lt;a href=&#34;https://en.wikipedia.org/wiki/Web_server#requests_per_second&#34;&gt;RPS&lt;/a&gt; не представлялось возможным.&lt;/p&gt;</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;Привет. Можешь помочь с требованиям к прод серверу ? Какой мощности нам хватит?&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Вот такое сообщение я получил от менеджера в конце рабочего дня. Стоит ли говорить, что приложение для которого нужно было подобрать сервер еще не существовало даже в виде требований. Следовательно, посчитать хоть какой-то примерный &lt;a href=&#34;https://en.wikipedia.org/wiki/Web_server#requests_per_second&#34;&gt;RPS&lt;/a&gt; не представлялось возможным.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

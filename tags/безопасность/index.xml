@@ -6,173 +6,84 @@
     <description>Recent content in безопасность on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru</language>
-    <lastBuildDate>Fri, 10 Nov 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 06 Jan 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://fi5t.xyz/tags/%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Как вкатиться в безопасность android приложений в 2024</title>
+      <link>https://fi5t.xyz/posts/how-to-join-mobilesec-2024/</link>
+      <pubDate>Sat, 06 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://fi5t.xyz/posts/how-to-join-mobilesec-2024/</guid>
+      <description>&lt;p&gt;С завидным постоянством получаю подобные вопросы лично или вижу их в &lt;a href=&#34;https://t.me/android_guards&#34;&gt;нашем уютном чате Android Guards&lt;/a&gt;. Поэтому решил систематизировать информацию чтобы упростить процедуру входа как для тех, кто только начинает свой путь в инфобезе, так и для тех, кто уже что-то умеет в соседних областях.&lt;/p&gt;&#xA;&#xA;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;&#xA;&lt;div class=&#34;box&#34; &gt;&#xA;  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;&#xA;    &lt;div class=&#34;img&#34;&gt;&#xA;      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/how-to-join-mobilesec-2024/kdpv.png&#34; alt=&#34;/img/how-to-join-mobilesec-2024/kdpv.png&#34;/&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;a href=&#34;https://fi5t.xyz/img/how-to-join-mobilesec-2024/kdpv.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;&#xA;  &lt;/figure&gt;&#xA;&lt;/div&gt;</description>
+    </item>
     <item>
       <title>OWASP Mobile Top Ten 2023</title>
       <link>https://fi5t.xyz/posts/owasp-mobile-top-ten-2023/</link>
       <pubDate>Fri, 10 Nov 2023 00:00:00 +0000</pubDate>
       <guid>https://fi5t.xyz/posts/owasp-mobile-top-ten-2023/</guid>
-      <description>&lt;p&gt;Как-то тихо и незаметно для меня релизнулась новая редакция OWASP для мобилок. После ознакомления с новой редакцией появилось несколько мыслей, которыми хотел поделиться. Ну и в целом попытался простыми словами передать суть пунктов чтобы инфобез-неофитам и разработчикам было проще понять суть происходящего.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://owasp.org/www-project-mobile-top-10/2023-risks/assets/images/comparison-owasp-10.png&#34; alt=&#34;Comparison between 2016 and 2023&#34;&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;Как-то тихо и незаметно для меня релизнулась новая редакция OWASP для мобилок. После ознакомления с новой редакцией появилось несколько мыслей, которыми хотел поделиться. Ну и в целом попытался простыми словами передать суть пунктов чтобы инфобез-неофитам и разработчикам было проще понять суть происходящего.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://owasp.org/www-project-mobile-top-10/2023-risks/assets/images/comparison-owasp-10.png&#34; alt=&#34;Comparison between 2016 and 2023&#34;&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Биометрическая недоаутентификация</title>
       <link>https://fi5t.xyz/posts/biometric-underauthentication/</link>
       <pubDate>Mon, 16 May 2022 00:00:00 +0000</pubDate>
       <guid>https://fi5t.xyz/posts/biometric-underauthentication/</guid>
-      <description>&lt;p&gt;Много уже &lt;a href=&#34;https://habr.com/ru/company/redmadrobot/blog/475112/&#34;&gt;написано&lt;/a&gt; и &lt;a href=&#34;https://www.youtube.com/watch?v=2DLP2te7gYQ&#34;&gt;сказано&lt;/a&gt; про биометрическую аутентификацию в android приложениях. И это не прошло бесследно. Вижу много приложений где флоу аутентификации биометрия+пин-код сделан по всем канонам безопасности. Но дьявол кроется в деталях. И сегодня я покажу как всего один флаг способен умножить на 0 отлично выстроенную систему аутентификации. Речь пойдет об одном широко известном приложении 🤐
-
-&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;
-&lt;div class=&#34;box&#34; &gt;
-  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-    &lt;div class=&#34;img&#34;&gt;
-      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/biometric-underauthentication/logo.gif&#34; alt=&#34;/img/biometric-underauthentication/logo.gif&#34;/&gt;
-    &lt;/div&gt;
-    &lt;a href=&#34;https://fi5t.xyz/img/biometric-underauthentication/logo.gif&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;Много уже &lt;a href=&#34;https://habr.com/ru/company/redmadrobot/blog/475112/&#34;&gt;написано&lt;/a&gt; и &lt;a href=&#34;https://www.youtube.com/watch?v=2DLP2te7gYQ&#34;&gt;сказано&lt;/a&gt; про биометрическую аутентификацию в android приложениях. И это не прошло бесследно. Вижу много приложений где флоу аутентификации биометрия+пин-код сделан по всем канонам безопасности. Но дьявол кроется в деталях. И сегодня я покажу как всего один флаг способен умножить на 0 отлично выстроенную систему аутентификации. Речь пойдет об одном широко известном приложении 🤐&#xA;&#xA;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;&#xA;&lt;div class=&#34;box&#34; &gt;&#xA;  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;&#xA;    &lt;div class=&#34;img&#34;&gt;&#xA;      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/biometric-underauthentication/logo.gif&#34; alt=&#34;/img/biometric-underauthentication/logo.gif&#34;/&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;a href=&#34;https://fi5t.xyz/img/biometric-underauthentication/logo.gif&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;&#xA;  &lt;/figure&gt;&#xA;&lt;/div&gt;&#xA;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Ядовитая экосистема</title>
       <link>https://fi5t.xyz/posts/poisonous-ecosystem/</link>
       <pubDate>Fri, 29 Apr 2022 00:00:00 +0000</pubDate>
       <guid>https://fi5t.xyz/posts/poisonous-ecosystem/</guid>
-      <description>&lt;p&gt;Несколько лет назад был тренд на постройку экосистем мобильных приложений. Это же так круто, когда приложения одной компании могут общаться друг с другом используя какие-то системные механизмы и дарить радость пользователю. Потом правда маятник качнулся в другую сторону и все начали делать суперапы, но о проблемах связанных с ними мы поговорим в другой раз. Сегодня разберем один интересный баг, который хорошо показывает почему доверие внутри экосистемы должно базироваться на чем-то более надежном чем просто имя пакета.
-
-&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;
-&lt;div class=&#34;box&#34; &gt;
-  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-    &lt;div class=&#34;img&#34;&gt;
-      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/poisonous-ecosystem/logo.gif&#34; alt=&#34;/img/poisonous-ecosystem/logo.gif&#34;/&gt;
-    &lt;/div&gt;
-    &lt;a href=&#34;https://fi5t.xyz/img/poisonous-ecosystem/logo.gif&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;Несколько лет назад был тренд на постройку экосистем мобильных приложений. Это же так круто, когда приложения одной компании могут общаться друг с другом используя какие-то системные механизмы и дарить радость пользователю. Потом правда маятник качнулся в другую сторону и все начали делать суперапы, но о проблемах связанных с ними мы поговорим в другой раз. Сегодня разберем один интересный баг, который хорошо показывает почему доверие внутри экосистемы должно базироваться на чем-то более надежном чем просто имя пакета.&#xA;&#xA;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;&#xA;&lt;div class=&#34;box&#34; &gt;&#xA;  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;&#xA;    &lt;div class=&#34;img&#34;&gt;&#xA;      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/poisonous-ecosystem/logo.gif&#34; alt=&#34;/img/poisonous-ecosystem/logo.gif&#34;/&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;a href=&#34;https://fi5t.xyz/img/poisonous-ecosystem/logo.gif&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;&#xA;  &lt;/figure&gt;&#xA;&lt;/div&gt;&#xA;&lt;/p&gt;</description>
     </item>
     <item>
       <title>NeoQUEST 2022: Задание 7</title>
       <link>https://fi5t.xyz/posts/neoquest2022-writeup-task7/</link>
       <pubDate>Tue, 29 Mar 2022 00:00:00 +0000</pubDate>
       <guid>https://fi5t.xyz/posts/neoquest2022-writeup-task7/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;Выкрасть телефон – было малым делом, а вот взломать его сложнее. Но тут в дело вступает Том, который умеет взламывать такие приложения, словно это орешки!&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Тома под рукой у меня не оказалось, поэтому как всегда пришлось делать все самому.&lt;/p&gt;
-&lt;h1 id=&#34;tldr&#34;&gt;tl;dr&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;Вызвать метод AIDL интерфейса чтобы стригерить получение картинки из нативной библиотеки&lt;/li&gt;
-&lt;li&gt;открыть activity &lt;code&gt;DraftPerArtistActivity_90vbsf45&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;посмотреть имя художника&lt;/li&gt;
-&lt;li&gt;взять от него sha256 и отправить в качестве ключа.&lt;/li&gt;
-&lt;/ul&gt;</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;Выкрасть телефон – было малым делом, а вот взломать его сложнее. Но тут в дело вступает Том, который умеет взламывать такие приложения, словно это орешки!&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Тома под рукой у меня не оказалось, поэтому как всегда пришлось делать все самому.&lt;/p&gt;&#xA;&lt;h1 id=&#34;tldr&#34;&gt;tl;dr&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Вызвать метод AIDL интерфейса чтобы стригерить получение картинки из нативной библиотеки&lt;/li&gt;&#xA;&lt;li&gt;открыть activity &lt;code&gt;DraftPerArtistActivity_90vbsf45&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;посмотреть имя художника&lt;/li&gt;&#xA;&lt;li&gt;взять от него sha256 и отправить в качестве ключа.&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
     <item>
       <title>Проблемы с безопасностью в Python</title>
       <link>https://fi5t.xyz/posts/python-security-pitfalls/</link>
       <pubDate>Sat, 12 Mar 2022 00:00:00 +0000</pubDate>
       <guid>https://fi5t.xyz/posts/python-security-pitfalls/</guid>
-      <description>&lt;p&gt;Среди Python-боярей принято ругать язык PHP и программистов, которые на нем пишут. Дескать, дизайн языка ужасный, разработчики формошлепы, уязвимости лезут из каждого &lt;code&gt;$_GET[&#39;id&#39;]&lt;/code&gt; и как на таком говне вообще можно что-то разрабатывать в 202х году.&lt;/p&gt;
-
-&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;
-&lt;div class=&#34;box&#34; &gt;
-  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-    &lt;div class=&#34;img&#34;&gt;
-      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/python-security-pitfalls/php-creator.png&#34; alt=&#34;/img/python-security-pitfalls/php-creator.png&#34;/&gt;
-    &lt;/div&gt;
-    &lt;a href=&#34;https://fi5t.xyz/img/python-security-pitfalls/php-creator.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;
-
-&lt;p&gt;А что сам Python? Как там с безопасностью? Очевидно, что как и везде - &lt;strong&gt;плохо&lt;/strong&gt;. При чем это &amp;ldquo;плохо&amp;rdquo; часто приобретает довольно неявные формы. О них и поговорим.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Среди Python-боярей принято ругать язык PHP и программистов, которые на нем пишут. Дескать, дизайн языка ужасный, разработчики формошлепы, уязвимости лезут из каждого &lt;code&gt;$_GET[&#39;id&#39;]&lt;/code&gt; и как на таком говне вообще можно что-то разрабатывать в 202х году.&lt;/p&gt;&#xA;&#xA;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;&#xA;&lt;div class=&#34;box&#34; &gt;&#xA;  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;&#xA;    &lt;div class=&#34;img&#34;&gt;&#xA;      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/python-security-pitfalls/php-creator.png&#34; alt=&#34;/img/python-security-pitfalls/php-creator.png&#34;/&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;a href=&#34;https://fi5t.xyz/img/python-security-pitfalls/php-creator.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;&#xA;  &lt;/figure&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;А что сам Python? Как там с безопасностью? Очевидно, что как и везде - &lt;strong&gt;плохо&lt;/strong&gt;. При чем это &amp;ldquo;плохо&amp;rdquo; часто приобретает довольно неявные формы. О них и поговорим.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Android 13 Developer Preview 1: Что там по безопасности?</title>
       <link>https://fi5t.xyz/posts/android-13-preview-security/</link>
       <pubDate>Fri, 11 Feb 2022 00:00:00 +0000</pubDate>
       <guid>https://fi5t.xyz/posts/android-13-preview-security/</guid>
-      <description>&lt;p&gt;Вышла первая версия нового &lt;strong&gt;Android 13&lt;/strong&gt;, и Google обещает, что этот билд продолжит делать нам всем хорошо в плане приватности, безопасности и вообще котики никогда не умрут. Давайте посмотрим, что нового там завезли и стоит ли оно внимания.&lt;/p&gt;
-
-&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;
-&lt;div class=&#34;box&#34; &gt;
-  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-    &lt;div class=&#34;img&#34;&gt;
-      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/android-13-preview-security/logo.png&#34; alt=&#34;/img/android-13-preview-security/logo.png&#34;/&gt;
-    &lt;/div&gt;
-    &lt;a href=&#34;https://fi5t.xyz/img/android-13-preview-security/logo.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;</description>
+      <description>&lt;p&gt;Вышла первая версия нового &lt;strong&gt;Android 13&lt;/strong&gt;, и Google обещает, что этот билд продолжит делать нам всем хорошо в плане приватности, безопасности и вообще котики никогда не умрут. Давайте посмотрим, что нового там завезли и стоит ли оно внимания.&lt;/p&gt;&#xA;&#xA;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;&#xA;&lt;div class=&#34;box&#34; &gt;&#xA;  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;&#xA;    &lt;div class=&#34;img&#34;&gt;&#xA;      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/android-13-preview-security/logo.png&#34; alt=&#34;/img/android-13-preview-security/logo.png&#34;/&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;a href=&#34;https://fi5t.xyz/img/android-13-preview-security/logo.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;&#xA;  &lt;/figure&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>Перехват трафика в Android. Большой гайд.</title>
       <link>https://fi5t.xyz/posts/intercept-android-traffic/</link>
       <pubDate>Tue, 25 Jan 2022 00:00:00 +0000</pubDate>
       <guid>https://fi5t.xyz/posts/intercept-android-traffic/</guid>
-      <description>&lt;h2 id=&#34;зачем-еще-одна-статья&#34;&gt;Зачем еще одна статья?&lt;/h2&gt;
-&lt;p&gt;Задача перехвата трафика android приложений довольно хорошо описана на куче языков и даже не нужно уметь гуглить чтобы найти информацию о том, как настроить прокси и посмотреть заветные запросы. Даже набившая уже всем оскомину тема &amp;ldquo;как отломать ssl pinning&amp;rdquo; была &lt;a href=&#34;https://www.youtube.com/watch?v=Xn6CSqJpf6I&#34;&gt;множество&lt;/a&gt; &lt;a href=&#34;https://www.youtube.com/watch?v=zeU2wlcj_Bw&amp;amp;t=189s&#34;&gt;раз&lt;/a&gt; &lt;a href=&#34;https://github.com/Android-Guards/faq#%D0%BF%D1%8B%D1%82%D0%B0%D1%8E%D1%81%D1%8C-%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%B2%D0%B0%D1%82%D0%B8%D1%82%D1%8C-%D1%82%D1%80%D0%B0%D1%84%D0%B8%D0%BA-%D1%82%D0%B0%D0%BA-%D0%BA%D0%B0%D0%BA-%D0%BD%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%BE-%D0%B2%D1%8B%D1%88%D0%B5-%D0%BD%D0%B8%D1%87%D0%B5%D0%B3%D0%BE-%D0%BD%D0%B5-%D0%B2%D1%8B%D1%85%D0%BE%D0%B4%D0%B8%D1%82-%D1%87%D1%82%D0%BE-%D0%B4%D0%B5%D0%BB%D0%B0%D1%82%D1%8C&#34;&gt;разжевана&lt;/a&gt; и надо быть по пояс странным чтобы в этом не разобраться.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&amp;hellip;когда ты слишком долго в пути, когда тебя обуревает жадность, приходит черный пес чтобы отобрать у тебя все.&lt;br&gt;
-Черный пес (1998)&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Да&amp;hellip; потом появляется то самое приложение, которое вопреки всем настройкам не хочет работать через прокси. Или через прокси проходит только часть трафика. В такой ситуации лучше не начинать нажимать все подряд, чтобы не увеличивать энтропию происходящего, а подойти к вопросу системно и последовательно попробовать разные методы для решения этой проблемы.&lt;/p&gt;
-
-&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;
-&lt;div class=&#34;box&#34; &gt;
-  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-    &lt;div class=&#34;img&#34;&gt;
-      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/intercept-traffic-android/mitm-logo.gif&#34; alt=&#34;/img/intercept-traffic-android/mitm-logo.gif&#34;/&gt;
-    &lt;/div&gt;
-    &lt;a href=&#34;https://fi5t.xyz/img/intercept-traffic-android/mitm-logo.gif&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;</description>
+      <description>&lt;h2 id=&#34;зачем-еще-одна-статья&#34;&gt;Зачем еще одна статья?&lt;/h2&gt;&#xA;&lt;p&gt;Задача перехвата трафика android приложений довольно хорошо описана на куче языков и даже не нужно уметь гуглить чтобы найти информацию о том, как настроить прокси и посмотреть заветные запросы. Даже набившая уже всем оскомину тема &amp;ldquo;как отломать ssl pinning&amp;rdquo; была &lt;a href=&#34;https://www.youtube.com/watch?v=Xn6CSqJpf6I&#34;&gt;множество&lt;/a&gt; &lt;a href=&#34;https://www.youtube.com/watch?v=zeU2wlcj_Bw&amp;amp;t=189s&#34;&gt;раз&lt;/a&gt; &lt;a href=&#34;https://github.com/Android-Guards/faq#%D0%BF%D1%8B%D1%82%D0%B0%D1%8E%D1%81%D1%8C-%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%B2%D0%B0%D1%82%D0%B8%D1%82%D1%8C-%D1%82%D1%80%D0%B0%D1%84%D0%B8%D0%BA-%D1%82%D0%B0%D0%BA-%D0%BA%D0%B0%D0%BA-%D0%BD%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%BE-%D0%B2%D1%8B%D1%88%D0%B5-%D0%BD%D0%B8%D1%87%D0%B5%D0%B3%D0%BE-%D0%BD%D0%B5-%D0%B2%D1%8B%D1%85%D0%BE%D0%B4%D0%B8%D1%82-%D1%87%D1%82%D0%BE-%D0%B4%D0%B5%D0%BB%D0%B0%D1%82%D1%8C&#34;&gt;разжевана&lt;/a&gt; и надо быть по пояс странным чтобы в этом не разобраться.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;hellip;когда ты слишком долго в пути, когда тебя обуревает жадность, приходит черный пес чтобы отобрать у тебя все.&lt;br&gt;&#xA;Черный пес (1998)&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Да&amp;hellip; потом появляется то самое приложение, которое вопреки всем настройкам не хочет работать через прокси. Или через прокси проходит только часть трафика. В такой ситуации лучше не начинать нажимать все подряд, чтобы не увеличивать энтропию происходящего, а подойти к вопросу системно и последовательно попробовать разные методы для решения этой проблемы.&lt;/p&gt;&#xA;&#xA;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;&#xA;&lt;div class=&#34;box&#34; &gt;&#xA;  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;&#xA;    &lt;div class=&#34;img&#34;&gt;&#xA;      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/intercept-traffic-android/mitm-logo.gif&#34; alt=&#34;/img/intercept-traffic-android/mitm-logo.gif&#34;/&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;a href=&#34;https://fi5t.xyz/img/intercept-traffic-android/mitm-logo.gif&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;&#xA;  &lt;/figure&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>Drozer, эмулятор и эльфийские костыли</title>
       <link>https://fi5t.xyz/posts/drozer-emu-workarounds/</link>
       <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
       <guid>https://fi5t.xyz/posts/drozer-emu-workarounds/</guid>
-      <description>&lt;p&gt;Вам когда-нибудь хотелось странного? Например запустить drozer в docker-контейнере и достучаться с него до эмулятора на том же хосте? Казалось бы задача предельно простая и понятная. Запускаем эмулятор, на нем &lt;code&gt;drozer-agent&lt;/code&gt;, пробрасываем порты, заводим контейнер говорим &lt;code&gt;drozer console connect —server &amp;lt;locahost ip&amp;gt;&lt;/code&gt; и&amp;hellip;. &lt;strong&gt;ничего не происходит&lt;/strong&gt;. При этом если попытаться таким образом подключиться на девайс, который висит на другом ip, то все будет хорошо. Давайте разбираться и чинить.
-
-&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;
-&lt;div class=&#34;box&#34; &gt;
-  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-    &lt;div class=&#34;img&#34;&gt;
-      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/drozer-emu-workaround/kdpv.png&#34; alt=&#34;/img/drozer-emu-workaround/kdpv.png&#34;/&gt;
-    &lt;/div&gt;
-    &lt;a href=&#34;https://fi5t.xyz/img/drozer-emu-workaround/kdpv.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;Вам когда-нибудь хотелось странного? Например запустить drozer в docker-контейнере и достучаться с него до эмулятора на том же хосте? Казалось бы задача предельно простая и понятная. Запускаем эмулятор, на нем &lt;code&gt;drozer-agent&lt;/code&gt;, пробрасываем порты, заводим контейнер говорим &lt;code&gt;drozer console connect —server &amp;lt;locahost ip&amp;gt;&lt;/code&gt; и&amp;hellip;. &lt;strong&gt;ничего не происходит&lt;/strong&gt;. При этом если попытаться таким образом подключиться на девайс, который висит на другом ip, то все будет хорошо. Давайте разбираться и чинить.&#xA;&#xA;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://fi5t.xyz/css/hugo-easy-gallery.css&#34; /&gt;&#xA;&lt;div class=&#34;box&#34; &gt;&#xA;  &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;&#xA;    &lt;div class=&#34;img&#34;&gt;&#xA;      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://fi5t.xyz/img/drozer-emu-workaround/kdpv.png&#34; alt=&#34;/img/drozer-emu-workaround/kdpv.png&#34;/&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;a href=&#34;https://fi5t.xyz/img/drozer-emu-workaround/kdpv.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;&#xA;  &lt;/figure&gt;&#xA;&lt;/div&gt;&#xA;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Создаем reverse proxy с mTLS на Ktor</title>
       <link>https://fi5t.xyz/posts/reverse-proxy-with-mtls-and-ktor/</link>
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
       <guid>https://fi5t.xyz/posts/reverse-proxy-with-mtls-and-ktor/</guid>
-      <description>&lt;p&gt;Если вы любите интегрироваться с внешними системами, которые придерживаются высоких стандартов безопасности, то
-наверняка сталкивались с такой штукой как &lt;a href=&#34;https://en.wikipedia.org/wiki/Mutual_authentication#mTLS&#34;&gt;Mutual TLS&lt;/a&gt; (aka
-взаимная TLS аутентификация или mTLS). Ничего особенно сложного в такой интеграции нет. За исключением двух нюансов:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Интеграцию придется делать в каждом сервисе&lt;/li&gt;
-&lt;li&gt;В каждый сервис нужно положить клиентские сертификаты для прохожения хэндшейка mTLS&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;И если с первым нюансом можно как-то жить и мириться, то второй уже вызывает гораздо больше проблем и приводит к
-грустным лицам вашей команды инфобеза. Чтобы сделать их снова счастливыми, а заодно ликвидировать потребность писать
-один и тот же код в каждом сервисе — можно сделать умный &lt;a href=&#34;https://en.wikipedia.org/wiki/Reverse_proxy&#34;&gt;reverse proxy&lt;/a&gt;, который возьмет на себя все тяготы и лишения
-связанные с хэндшейком и возможно какой-то другой дополнительной логикой, которую накрутили авторы внешней системы.
-Делать это хозяйство будем на &lt;a href=&#34;https://ktor.io/&#34;&gt;Ktor&lt;/a&gt;, потому что почему бы и нет ;)&lt;/p&gt;</description>
+      <description>&lt;p&gt;Если вы любите интегрироваться с внешними системами, которые придерживаются высоких стандартов безопасности, то&#xA;наверняка сталкивались с такой штукой как &lt;a href=&#34;https://en.wikipedia.org/wiki/Mutual_authentication#mTLS&#34;&gt;Mutual TLS&lt;/a&gt; (aka&#xA;взаимная TLS аутентификация или mTLS). Ничего особенно сложного в такой интеграции нет. За исключением двух нюансов:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Интеграцию придется делать в каждом сервисе&lt;/li&gt;&#xA;&lt;li&gt;В каждый сервис нужно положить клиентские сертификаты для прохожения хэндшейка mTLS&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;И если с первым нюансом можно как-то жить и мириться, то второй уже вызывает гораздо больше проблем и приводит к&#xA;грустным лицам вашей команды инфобеза. Чтобы сделать их снова счастливыми, а заодно ликвидировать потребность писать&#xA;один и тот же код в каждом сервисе — можно сделать умный &lt;a href=&#34;https://en.wikipedia.org/wiki/Reverse_proxy&#34;&gt;reverse proxy&lt;/a&gt;, который возьмет на себя все тяготы и лишения&#xA;связанные с хэндшейком и возможно какой-то другой дополнительной логикой, которую накрутили авторы внешней системы.&#xA;Делать это хозяйство будем на &lt;a href=&#34;https://ktor.io/&#34;&gt;Ktor&lt;/a&gt;, потому что почему бы и нет ;)&lt;/p&gt;</description>
     </item>
     <item>
       <title>Старый Drozer MacOS не испортит</title>
       <link>https://fi5t.xyz/posts/drozer-on-mac/</link>
       <pubDate>Tue, 04 Aug 2020 14:13:10 +0300</pubDate>
       <guid>https://fi5t.xyz/posts/drozer-on-mac/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;Drozer - The Leading Security Assessment Framework for Android.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Обычно я не использую &lt;strong&gt;Drozer&lt;/strong&gt;, а еще реже (никогда) я использую его на MacOS. Обычно это все уже есть в Kali Linux и устанавливать ничего не нужно. Но необходимость появилась, а вместе с ней пришлось знатно покувыркаться и поправить скрипты самого Drozer-а чтобы все заработало. После чего я все удалил, потому что в системе было знатно насрано после всех этих замечательных туторилов и issue на гитхабе. В итоге стало понятно, что есть два нормальных способа установки. &lt;a href=&#34;https://hub.docker.com/r/kengannonmwr/drozer_docker&#34;&gt;Через Docker&lt;/a&gt;, и так как показано ниже. Все остальное - зло, ад и слезы по бездарно потраченным часам жизни.&lt;/p&gt;</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;Drozer - The Leading Security Assessment Framework for Android.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Обычно я не использую &lt;strong&gt;Drozer&lt;/strong&gt;, а еще реже (никогда) я использую его на MacOS. Обычно это все уже есть в Kali Linux и устанавливать ничего не нужно. Но необходимость появилась, а вместе с ней пришлось знатно покувыркаться и поправить скрипты самого Drozer-а чтобы все заработало. После чего я все удалил, потому что в системе было знатно насрано после всех этих замечательных туторилов и issue на гитхабе. В итоге стало понятно, что есть два нормальных способа установки. &lt;a href=&#34;https://hub.docker.com/r/kengannonmwr/drozer_docker&#34;&gt;Через Docker&lt;/a&gt;, и так как показано ниже. Все остальное - зло, ад и слезы по бездарно потраченным часам жизни.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

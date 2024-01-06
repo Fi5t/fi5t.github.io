@@ -13,8 +13,7 @@
       <link>https://fi5t.xyz/en/posts/drozer-on-mac/</link>
       <pubDate>Wed, 05 Aug 2020 12:17:39 +0300</pubDate>
       <guid>https://fi5t.xyz/en/posts/drozer-on-mac/</guid>
-      <description>&lt;p&gt;In general, I don&amp;rsquo;t use Drozer. And using this tool on macOS is unusual for me. If I do some &amp;ldquo;pentest things&amp;rdquo; I just take my Kali Linux with pre-installed Drozer and use it there. But the day has come, and I decided to install Drozer on my macOS. It was a real hell =)&lt;/p&gt;
-&lt;p&gt;I spent a lot of time trying to make it work. Eventually, I had to rewrite a piece of class loader script&amp;hellip; A living hell! When everything started working right, I came up with a better way of installing Drozer on macOS and removed all this stuff . In fact, there are two good ways to do it. The Docker-way and the following one&lt;/p&gt;</description>
+      <description>&lt;p&gt;In general, I don&amp;rsquo;t use Drozer. And using this tool on macOS is unusual for me. If I do some &amp;ldquo;pentest things&amp;rdquo; I just take my Kali Linux with pre-installed Drozer and use it there. But the day has come, and I decided to install Drozer on my macOS. It was a real hell =)&lt;/p&gt;&#xA;&lt;p&gt;I spent a lot of time trying to make it work. Eventually, I had to rewrite a piece of class loader script&amp;hellip; A living hell! When everything started working right, I came up with a better way of installing Drozer on macOS and removed all this stuff . In fact, there are two good ways to do it. The Docker-way and the following one&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
