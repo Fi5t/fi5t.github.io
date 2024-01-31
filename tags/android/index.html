@@ -52,7 +52,7 @@
   <meta name="twitter:image" content="https://fi5t.xyz/img/avatar-icon.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <link href='https://fi5t.xyz/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.121.1">
+  <meta name="generator" content="Hugo 0.121.2">
   <link rel="alternate" href="https://fi5t.xyz/index.xml" type="application/rss+xml" title="(не)Уникальный опыт"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fi5t.xyz/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -204,6 +204,72 @@
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         
         <div class="posts-list">
+          
+            <article class="post-preview">
+    <a href="https://fi5t.xyz/posts/sslpinning-holy-cow/">
+        <h2 class="post-title">Святая корова SSL Pinning-а</h2>
+        
+        <h3 class="post-subtitle">
+            Еще раз про MITM в Android
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Опубликовано January 31, 2024
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;7&nbsp;минут
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1341&nbsp;слова
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Fi5t
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <p>Долгое время я советовал всем разработчикам включать <a href="https://owasp.org/www-community/controls/Certificate_and_Public_Key_Pinning">SSL Pinning</a> в своих приложениях, чтобы защитить пользователей от MITM атак. И многие до сих пор делают это по инерции, даже не задумываясь о том так ли это необходимо, и от чего это вообще защищает. Пришло время разобраться и расставить все точки в вопросе про необходимость реализации этого подхода в ваших приложениях.</p>
+<blockquote>
+<p>– Стой и не шевелись! Я тебя породил, я тебя и убью!</p>
+</blockquote>
+
+<link rel="stylesheet" href="https://fi5t.xyz/css/hugo-easy-gallery.css" />
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/sslpinning-holy-cow/kdpv.png" alt="/img/sslpinning-holy-cow/kdpv.png"/>
+    </div>
+    <a href="/img/sslpinning-holy-cow/kdpv.png" itemprop="contentUrl"></a>
+  </figure>
+</div>
+        <a href="https://fi5t.xyz/posts/sslpinning-holy-cow/" class="post-read-more">[Далее]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://fi5t.xyz/tags/android/">android</a>&nbsp;
+        
+        <a href="https://fi5t.xyz/tags/mitm/">mitm</a>&nbsp;
+        
+    </div>
+    
+
+</article>
           
             <article class="post-preview">
     <a href="https://fi5t.xyz/posts/how-to-join-mobilesec-2024/">
@@ -737,69 +803,6 @@
 
 </article>
           
-            <article class="post-preview">
-    <a href="https://fi5t.xyz/posts/neoquest2022-writeup-task7/">
-        <h2 class="post-title">NeoQUEST 2022: Задание 7</h2>
-        
-        
-        
-    </a>
-
-    <p class="post-meta">
-        <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;Опубликовано March 29, 2022
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;13&nbsp;минут
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2601&nbsp;слова
-  
-  
-    
-      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Fi5t
-    
-  
-  
-</span>
-
-
-    </p>
-    <div class="post-entry">
-        
-        <blockquote>
-<p>Выкрасть телефон – было малым делом, а вот взломать его сложнее. Но тут в дело вступает Том, который умеет взламывать такие приложения, словно это орешки!</p>
-</blockquote>
-<p>Тома под рукой у меня не оказалось, поэтому как всегда пришлось делать все самому.</p>
-<h1 id="tldr">tl;dr</h1>
-<ul>
-<li>Вызвать метод AIDL интерфейса чтобы стригерить получение картинки из нативной библиотеки</li>
-<li>открыть activity <code>DraftPerArtistActivity_90vbsf45</code></li>
-<li>посмотреть имя художника</li>
-<li>взять от него sha256 и отправить в качестве ключа.</li>
-</ul>
-        <a href="https://fi5t.xyz/posts/neoquest2022-writeup-task7/" class="post-read-more">[Далее]</a>
-        
-    </div>
-
-    
-    <div class="blog-tags">
-        
-        <a href="https://fi5t.xyz/tags/android/">android</a>&nbsp;
-        
-        <a href="https://fi5t.xyz/tags/%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C/">безопасность</a>&nbsp;
-        
-        <a href="https://fi5t.xyz/tags/ctf/">ctf</a>&nbsp;
-        
-        <a href="https://fi5t.xyz/tags/frida/">frida</a>&nbsp;
-        
-    </div>
-    
-
-</article>
-          
         </div>
         
           <ul class="pager main-pager">
@@ -873,7 +876,7 @@
         </p>
         
         <p class="credits theme-by text-muted">
-          На базе <a href="https://gohugo.io">Hugo v0.121.1</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          На базе <a href="https://gohugo.io">Hugo v0.121.2</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>
