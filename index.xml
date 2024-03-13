@@ -6,8 +6,15 @@
     <description>Recent content on (не)Уникальный опыт</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru</language>
-    <lastBuildDate>Wed, 31 Jan 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 13 Mar 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://fi5t.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CVE-2023-40121</title>
+      <link>https://fi5t.xyz/posts/cve-2023-40121/</link>
+      <pubDate>Wed, 13 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://fi5t.xyz/posts/cve-2023-40121/</guid>
+      <description>&lt;p&gt;В одном из бюллетеней безопасности ребята из Google рассказали про &lt;a href=&#34;https://android.googlesource.com/platform/frameworks/base/+/3287ac2d2565dc96bf6177967f8e3aed33954253&#34;&gt;исправление&lt;/a&gt; интересной уязвимости в коде, отвечающем за работу с SQLite. Сам фикс довольно простой, да и сама уязвимость не то чтобы сильно страшная, но вот причины ее возникновения затрагивают очень глубокие и темные слои технологий кодирования информации. Поэтому давайте разберемся что же там под капотом и научимся эксплуатировать подобные уязвимости за границами android.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://fi5t.xyz/img/cve-2023-40121/kdpv.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Святая корова SSL Pinning-а</title>
       <link>https://fi5t.xyz/posts/sslpinning-holy-cow/</link>
